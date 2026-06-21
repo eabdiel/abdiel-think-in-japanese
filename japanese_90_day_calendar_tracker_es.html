@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Calendario de Estudio</title>
+<style>
+    :root {
+      --bg: #f7f3ea;
+      --panel: #fffaf0;
+      --ink: #2f2a24;
+      --muted: #746a5f;
+      --accent: #3f7d75;
+      --accent2: #b7654b;
+      --line: #ded2bd;
+      --complete: #d9ead7;
+      --deferred: #fff1c2;
+      --today: #d7eef0;
+      --shadow: 0 8px 22px rgba(59, 45, 32, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top left, #fff8e8 0, var(--bg) 42%, #efe5d2 100%);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(247, 243, 234, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+      padding: 14px 18px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.35rem, 2vw, 2.1rem);
+      line-height: 1.1;
+    }
+    .subtitle { color: var(--muted); margin-top: 4px; font-size: 0.95rem; }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    button, input[type="date"] {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fffdf7;
+      color: var(--ink);
+      padding: 9px 11px;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.03);
+    }
+    button:hover { border-color: var(--accent); }
+    .primary { background: var(--accent); color: white; border-color: var(--accent); }
+    .danger { background: #7d3f3f; color: white; border-color: #7d3f3f; }
+    .ghost { background: transparent; }
+
+    main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    .metric .label { color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: .05em; }
+    .metric .value { font-size: 1.75rem; font-weight: 800; margin-top: 4px; }
+
+    .progress-wrap {
+      background: #eadfca;
+      height: 12px;
+      border-radius: 99px;
+      overflow: hidden;
+      margin: 8px 0 18px;
+      border: 1px solid var(--line);
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #6ca59c);
+      transition: width .25s ease;
+    }
+
+    .legend, .view-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      border-radius: 99px;
+      padding: 6px 10px;
+      background: #fffdf7;
+    }
+    .dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; border: 1px solid rgba(0,0,0,.15); }
+    .dot.complete { background: var(--complete); }
+    .dot.deferred { background: var(--deferred); }
+    .dot.today { background: var(--today); }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .day-card {
+      min-height: 260px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .day-card.complete { background: linear-gradient(180deg, var(--complete), var(--panel)); }
+    .day-card.deferred { background: linear-gradient(180deg, var(--deferred), var(--panel)); }
+    .day-card.today { outline: 3px solid var(--accent); }
+
+    .day-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: flex-start;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 7px;
+    }
+    .day-num { font-weight: 900; color: var(--accent2); }
+    .date { font-size: .83rem; color: var(--muted); text-align: right; }
+    .phase {
+      font-size: .78rem;
+      font-weight: 800;
+      color: white;
+      background: var(--accent2);
+      border-radius: 999px;
+      padding: 3px 8px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+    .focus { font-weight: 800; font-size: .96rem; }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin-bottom: 5px; font-size: .89rem; }
+    .time { color: var(--muted); font-size: .82rem; }
+    .actions {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+    .actions button { padding: 7px 8px; font-size: .82rem; border-radius: 9px; }
+    .status-line { font-size: .8rem; color: var(--muted); min-height: 18px; }
+
+    .month-title {
+      grid-column: 1 / -1;
+      font-size: 1.3rem;
+      font-weight: 900;
+      margin: 18px 0 2px;
+      padding: 8px 4px;
+      color: var(--accent);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .compact .day-card { min-height: 185px; }
+    .compact li:nth-child(n+4) { display: none; }
+    .compact .time { display: none; }
+
+    .notes-panel {
+      margin-top: 18px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    textarea {
+      width: 100%;
+      min-height: 120px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      font: inherit;
+      background: #fffdf7;
+      color: var(--ink);
+    }
+
+    @media (max-width: 1100px) {
+      .calendar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .dashboard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      .topbar { grid-template-columns: 1fr; }
+      .controls { justify-content: flex-start; }
+      .calendar { grid-template-columns: 1fr; }
+      .dashboard { grid-template-columns: 1fr 1fr; }
+      header { position: static; }
+    }
+    @media print {
+      header, .actions, .notes-panel, .view-controls { display: none; }
+      body { background: white; }
+      main { padding: 0; }
+      .calendar { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+      .day-card { box-shadow: none; break-inside: avoid; min-height: 210px; }
+      .dashboard, .legend, .progress-wrap { display: none; }
+    }
+  </style>
+<link href="pixel-theme-v2.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="pixel-site-header">
+<div class="pixel-hero-inner">
+<div class="pixel-brand">
+<span class="pixel-badge">Edición Pixel Pastel v2</span>
+<h1>Piensa en Japonés</h1>
+<p>Aprende de forma natural. Habla con confianza. 一緒に日本語を学ぼう!</p>
+</div>
+<div class="pixel-teacher"><img alt="Chibi teacher mascot" src="assets/chibi_teacher.png"/><div class="pixel-mini-title">Modo Sensei</div></div>
+</div>
+</header>
+<nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index_es.html">Inicio</a><a data-file="kana_dojo.html" href="kana_dojo_es.html">Dojo Kana</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker_es.html">Rastreador 90 Días</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted_es.html">Frases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2_es.html">Frases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3_es.html">Estilo Gaki</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4_es.html">Ayuda de Lectura</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck_es.html">Mazo de Frecuencia</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan_es.html">Plan de 90 Días</a></div></nav><div aria-label="Selector de idioma" class="lang-toggle"><a class="lang-pill" href="japanese_90_day_calendar_tracker.html">English</a><span class="lang-pill active">Español</span></div>
+
+<div class="pixel-page-shell">
+<section class="pixel-welcome">
+<div class="pixel-card"><div class="pixel-mini-title">Misión de hoy</div><strong>Usa el portal como un mapa retro de aprendizaje:</strong> elige una lección, practica en voz alta y luego marca tu progreso en el rastreador. El tema se mantiene igual en PC, TV, tablet, teléfono y dispositivos plegables.</div>
+<div class="pixel-side-art pixel-flag-pair"><img alt="Bandera de Japón" class="flag-art" src="assets/flag_japan.svg"/><img alt="Bandera de Puerto Rico" class="flag-art" src="assets/flag_puerto_rico.svg"/></div>
+</section>
+</div>
+<script>document.querySelectorAll('.pixel-nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('active')});</script>
+<header>
+<div class="topbar">
+<div>
+<h1>Plan de Estudio</h1>
+<div class="subtitle">Genki I + cuaderno de ejercicios, Michel Thomas, Piensa en Japonés, repasos de kana, lectura y práctica de escritura.</div>
+</div>
+<div class="controls">
+<label>Inicio <input id="startDate" type="date"/></label>
+<button class="primary" id="applyStart">Aplicar fecha</button>
+<button id="toggleCompact">Vista compacta</button>
+<button id="printBtn">Imprimir</button>
+<button class="danger" id="resetBtn">Reiniciar progreso</button>
+</div>
+</div>
+</header>
+<main>
+<section class="dashboard">
+<div class="metric"><div class="label">Completado</div><div class="value" id="completeCount">0</div></div>
+<div class="metric"><div class="label">Pospuesto</div><div class="value" id="deferCount">0</div></div>
+<div class="metric"><div class="label">Objetivo actual</div><div class="value" id="currentTarget">Día 1</div></div>
+<div class="metric"><div class="label">Fecha final</div><div class="value" id="finishDate">—</div></div>
+</section>
+<div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+<div class="legend">
+<span class="pill"><span class="dot today"></span> Hoy</span>
+<span class="pill"><span class="dot complete"></span> Completado</span>
+<span class="pill"><span class="dot deferred"></span> Pospuesto / desplazado</span>
+<span class="pill">Posponer mueve ese día y todos los días futuros no completados un día hacia adelante.</span>
+</div>
+<div class="view-controls">
+<span class="pill">Regla: termina la tarjeta del día antes de continuar.</span>
+<span class="pill">Día mínimo: 45–60 min. Buen día: 75–90 min. Fin de semana: 2–3 h.</span>
+</div>
+<section class="calendar" id="calendar"></section>
+<section class="notes-panel">
+<h2>Notas personales / ajustes</h2>
+<textarea id="notes" placeholder="Ejemplo: las partículas del capítulo 3 de Genki siguen flojas. Añade repaso extra el domingo."></textarea>
+</section>
+<section class="sensei-recommends" id="sensei-recommends">
+<div class="sensei-note">
+<img alt="Chibi Sensei Abdiel" class="sensei-avatar" src="assets/chibi_teacher.png"/>
+<div>
+<h2>El Sensei recomienda</h2>
+<p>Usa cada herramienta en el momento correcto en vez de intentar estudiarlo todo a la vez.</p>
+</div>
+</div>
+<div class="tool-card-grid">
+<article class="tool-card">
+<span class="tool-badge">Días 1–30 • Base auditiva</span>
+<h3>Michel Thomas Japonés</h3>
+<p>Ideal para desarrollar primero el instinto de formar frases. Úsalo mientras caminas, conduces o haces tareas para que el japonés empiece a sentirse conversacional.</p>
+<a class="tool-button" href="https://amzn.to/43JOn6N" rel="nofollow sponsored noopener" target="_blank">Ver Michel Thomas</a>
+</article>
+<article class="tool-card">
+<span class="tool-badge">Días 15–90 • Libro principal</span>
+<h3>Paquete Genki 1</h3>
+<p>Usa el libro, el cuaderno de ejercicios y la clave de respuestas para estructura, lectura de kana, gramática y práctica tipo tarea.</p>
+<a class="tool-button" href="https://amzn.to/4oQzU2v" rel="nofollow sponsored noopener" target="_blank">Ver paquete Genki</a>
+</article>
+<article class="tool-card">
+<span class="tool-badge">Suplemento diario • Mantener la racha</span>
+<h3>Mondly Premium de por vida</h3>
+<p>Usa Mondly como práctica diaria ligera para vocabulario, escucha y mantener el impulso cuando solo tengas unos minutos.</p>
+<a class="tool-button" href="https://www.stacksocial.com/sales/mondly-premium-lifetime-subscription-all-languages?aid=a-qlrk51n8" rel="nofollow sponsored noopener" target="_blank">Obtener Mondly Lifetime</a>
+</article>
+</div>
+<p class="affiliate-disclosure">Aviso: algunos enlaces son de afiliado. Ayudan a apoyar este proyecto sin costo adicional para ti.</p>
+</section>
+</main>
+<script>
+(function(){
+  const STORE_KEY = 'jp90Tracker.es.v1';
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  const fmtISO = d => d.toISOString().slice(0,10);
+  const addDays = (d, n) => { const x = new Date(d); x.setDate(x.getDate() + n); return x; };
+  const fmtDate = d => d.toLocaleDateString('es-ES', { weekday:'short', month:'short', day:'numeric' });
+  const fmtShort = d => d.toLocaleDateString('es-ES', { month:'short', day:'numeric' });
+
+  const defaultStart = fmtISO(today);
+  let state = loadState();
+
+  function loadState(){
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORE_KEY));
+      if (saved && saved.days && saved.days.length === 90) return saved;
+    } catch(e) {}
+    return createState(defaultStart);
+  }
+
+  function createState(startISO){
+    return {
+      startISO,
+      compact: false,
+      notes: '',
+      days: makePlan().map((item, i) => ({...item, dateISO: fmtISO(addDays(new Date(startISO + 'T00:00:00'), i)), status: 'open', deferCount: 0}))
+    };
+  }
+
+  function save(){ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+
+  function phase(day){
+    if (day <= 30) return 'Fase 1: Fundamentos';
+    if (day <= 60) return 'Fase 2: Japonés real';
+    return 'Fase 3: Principiante funcional';
+  }
+
+  function genkiChapter(day){
+    const chapters = [
+      [1, 7, 'Genki Cap. 1'], [8, 14, 'Genki Cap. 2'], [15, 22, 'Genki Cap. 3'], [23, 30, 'Repaso + ponerse al día'],
+      [31, 38, 'Genki Cap. 4'], [39, 46, 'Genki Cap. 5'], [47, 53, 'Genki Cap. 6'], [54, 60, 'Genki Cap. 7'],
+      [61, 67, 'Genki Cap. 8'], [68, 74, 'Genki Cap. 9'], [75, 80, 'Genki Cap. 10'], [81, 85, 'Genki Cap. 11'], [86, 90, 'Genki Cap. 12 + repaso final']
+    ];
+    return chapters.find(([a,b]) => day >= a && day <= b)[2];
+  }
+
+  function mtTask(day){
+    if (day <= 30) return 'Michel Thomas: audio de la lección principal / recuerdo activo';
+    if (day <= 60) return 'Michel Thomas: repetir solo las pistas débiles';
+    return 'Michel Thomas: calentamiento oral opcional';
+  }
+
+  function kanaTask(day){
+    const mod = day % 7;
+    if ([1,4].includes(mod)) return 'Dojo Kana: práctica rápida de 10 minutos';
+    if ([2,5].includes(mod)) return 'Práctica de escritura kana: escribir de memoria';
+    if ([0,3].includes(mod)) return 'Tarjetas Dr. Moku: solo kana débiles';
+    return 'Revisión mixta de lectura/escritura kana';
+  }
+
+  function thinkTask(day){
+    if (day <= 30) return 'Piensa en Japonés: 5 frases, repetir en voz alta';
+    if (day <= 60) return 'Piensa en Japonés: 8 frases, crear 2 variantes personales';
+    return 'Piensa en Japonés: 10 frases, práctica de monólogo interno';
+  }
+
+  function readingTask(day){
+    if (day <= 30) return 'Leer el diálogo de Genki en voz alta 3 veces';
+    if (day <= 60) return 'Leer el diálogo de Genki + lectura del workbook en voz alta';
+    return 'Leer Genki + una frase o fragmento nativo sencillo';
+  }
+
+  function writingTask(day){
+    if (day <= 30) return 'Escribir kana + vocabulario de Genki a mano por 10 minutos';
+    if (day <= 60) return 'Escribir vocabulario + primeros kanji a mano por 15 minutos';
+    return 'Escribir un mini diario de 3–5 oraciones en japonés';
+  }
+
+  function dayType(day){
+    const dow = (day - 1) % 7;
+    return ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado de estudio profundo', 'Repaso del domingo'][dow];
+  }
+
+  function makePlan(){
+    const arr = [];
+    for (let d=1; d<=90; d++) {
+      const dow = (d - 1) % 7;
+      let tasks = [];
+      let focus = genkiChapter(d);
+      let time = dow >= 5 ? 'Bloque de fin de semana: 1.5–3 horas' : 'Bloque de día laboral: 45–90 minutos';
+
+      if (dow === 5) {
+        tasks = [
+          `${focus}: terminar la sección de la lección y los ejemplos`,
+          'Workbook de Genki: completar ejercicios/tareas asignadas',
+          writingTask(d),
+          'Conversación: leer los diálogos 5 veces y responder las preguntas en voz alta',
+          thinkTask(d),
+          kanaTask(d)
+        ];
+      } else if (dow === 6) {
+        tasks = [
+          'Sin gramática nueva salvo que te estés poniendo al día',
+          `${focus}: repasar toda la gramática y vocabulario de la semana`,
+          'Corregir errores del workbook y repetir lo fallado',
+          kanaTask(d),
+          'Autoevaluación: explicar la gramática de la semana sin notas',
+          'Audio opcional de Living Language solo si quieres más práctica auditiva'
+        ];
+      } else {
+        const weekdayPattern = [
+          [`${focus}: estudio de gramática`, 'Workbook de Genki: 1 bloque de ejercicios', kanaTask(d), thinkTask(d)],
+          [mtTask(d), 'Vocabulario de Genki: recuerdo activo', writingTask(d), thinkTask(d)],
+          [`${focus}: diálogo + partículas`, 'Workbook de Genki: 1 bloque de ejercicios', readingTask(d), kanaTask(d)],
+          [mtTask(d), `${focus}: repaso de gramática`, writingTask(d), 'Crear 3 oraciones personales con la gramática de hoy'],
+          ['Repaso ligero semanal', mtTask(d), kanaTask(d), 'Escucha: Mondly/Lingopie/Living Language solo como práctica extra']
+        ];
+        tasks = weekdayPattern[dow];
+      }
+
+      if (d === 30) tasks.unshift('Punto de control: Michel Thomas debe estar completo o casi completo');
+      if (d === 60) tasks.unshift('Punto de control: meta Genki cap. 7 + exposición a 40–60 kanji');
+      if (d === 90) tasks.unshift('Punto final: terminar Genki I y crear plan de transición a Genki II');
+
+      arr.push({ day: d, phase: phase(d), type: dayType(d), focus, time, tasks });
+    }
+    return arr;
+  }
+
+  function render(){
+    document.body.classList.toggle('compact', state.compact);
+    document.getElementById('startDate').value = state.startISO;
+    document.getElementById('notes').value = state.notes || '';
+    document.getElementById('toggleCompact').textContent = state.compact ? 'Vista completa' : 'Vista compacta';
+
+    const cal = document.getElementById('calendar');
+    cal.innerHTML = '';
+    let currentMonth = '';
+    state.days.forEach((day, idx) => {
+      const date = new Date(day.dateISO + 'T00:00:00');
+      const month = date.toLocaleDateString('es-ES', { month:'long', year:'numeric' });
+      if (month !== currentMonth) {
+        currentMonth = month;
+        const mt = document.createElement('div');
+        mt.className = 'month-title';
+        mt.textContent = month;
+        cal.appendChild(mt);
+      }
+
+      const card = document.createElement('article');
+      card.className = 'day-card';
+      if (day.status === 'complete') card.classList.add('complete');
+      if (day.deferCount > 0 || day.status === 'deferred') card.classList.add('deferred');
+      if (fmtISO(today) === day.dateISO) card.classList.add('today');
+
+      card.innerHTML = `
+        <div class="day-head">
+          <div><div class="day-num">Día ${day.day}</div><span class="phase">${day.phase}</span></div>
+          <div class="date">${fmtDate(date)}<br>${day.type}</div>
+        </div>
+        <div class="focus">${day.focus}</div>
+        <div class="time">${day.time}</div>
+        <ul>${day.tasks.map(t => `<li>${escapeHTML(t)}</li>`).join('')}</ul>
+        <div class="status-line">${statusText(day)}</div>
+        <div class="actions">
+          <button class="primary" data-action="complete" data-idx="${idx}">${day.status === 'complete' ? 'Deshacer completado' : 'Completado'}</button>
+          <button data-action="defer" data-idx="${idx}">Posponer + mover</button>
+        </div>`;
+      cal.appendChild(card);
+    });
+    updateMetrics();
+  }
+
+  function escapeHTML(str){
+    return String(str).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+  }
+  function statusText(day){
+    if (day.status === 'complete') return 'Estado: completado';
+    if (day.deferCount > 0) return `Movido ${day.deferCount} día${day.deferCount === 1 ? '' : 's'} por posposiciones`;
+    return 'Estado: abierto';
+  }
+
+  function updateMetrics(){
+    const complete = state.days.filter(d => d.status === 'complete').length;
+    const deferred = state.days.reduce((sum, d) => sum + (d.deferCount || 0), 0);
+    const next = state.days.find(d => d.status !== 'complete');
+    const finish = new Date(state.days[state.days.length - 1].dateISO + 'T00:00:00');
+    document.getElementById('completeCount').textContent = `${complete}/90`;
+    document.getElementById('deferCount').textContent = deferred;
+    document.getElementById('currentTarget').textContent = next ? `Día ${next.day}` : 'Listo';
+    document.getElementById('finishDate').textContent = fmtShort(finish);
+    document.getElementById('progressBar').style.width = `${Math.round((complete/90)*100)}%`;
+  }
+
+  document.getElementById('calendar').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    const idx = Number(btn.dataset.idx);
+    const action = btn.dataset.action;
+    if (action === 'complete') {
+      state.days[idx].status = state.days[idx].status === 'complete' ? 'open' : 'complete';
+    }
+    if (action === 'defer') {
+      for (let i = idx; i < state.days.length; i++) {
+        if (state.days[i].status !== 'complete') {
+          const nd = addDays(new Date(state.days[i].dateISO + 'T00:00:00'), 1);
+          state.days[i].dateISO = fmtISO(nd);
+          state.days[i].deferCount = (state.days[i].deferCount || 0) + 1;
+        }
+      }
+      state.days[idx].status = 'open';
+    }
+    save(); render();
+  });
+
+  document.getElementById('applyStart').addEventListener('click', () => {
+    const newStart = document.getElementById('startDate').value || defaultStart;
+    if (!confirm('¿Cambiar la fecha de inicio y reconstruir todas las fechas? Se mantendrá el progreso, pero se reiniciarán los desplazamientos anteriores.')) return;
+    const oldStatuses = state.days.map(d => d.status);
+    const oldNotes = state.notes;
+    const compact = state.compact;
+    state = createState(newStart);
+    state.days.forEach((d, i) => d.status = oldStatuses[i] || 'open');
+    state.notes = oldNotes;
+    state.compact = compact;
+    save(); render();
+  });
+
+  document.getElementById('toggleCompact').addEventListener('click', () => { state.compact = !state.compact; save(); render(); });
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+  document.getElementById('resetBtn').addEventListener('click', () => {
+    if (!confirm('¿Reiniciar todo el rastreador de 90 días?')) return;
+    state = createState(document.getElementById('startDate').value || defaultStart);
+    save(); render();
+  });
+  document.getElementById('notes').addEventListener('input', e => { state.notes = e.target.value; save(); });
+
+  render();
+})();
+</script>
+<footer class="pixel-footer"><span class="pixel-badge">Piensa en Japonés · Tema Pixel Pastel de los 80</span></footer>
+</body>
+</html>

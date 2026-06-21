@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Kana Click Game - ProgreTech Japanese Dojo</title>
+<style>
+:root{
+  --bg:#0b1219; --bg2:#111b25; --panel:#172332; --panel2:#1d2b3a;
+  --tile:#223246; --tile2:#27384d; --ink:#f5f1e6; --muted:#b8c7c7;
+  --cream:#fff3d6; --gold:#d8b76a; --teal:#4ea6a6; --teal2:#6ed3ca;
+  --red:#d96b6b; --good:#75d18a; --bad:#ff7b7b; --line:#2f465c;
+  --v:#4ea6a6; --k:#6aa66a; --s:#d8a24a; --t:#c56b62; --n:#9b7acb;
+  --h:#56a9bd; --m:#d0b45f; --y:#c9789c; --r:#a87855; --w:#87909a;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at top left,rgba(78,166,166,.18),transparent 32%),
+    radial-gradient(circle at bottom right,rgba(216,183,106,.12),transparent 30%),
+    linear-gradient(135deg,#081018 0%,#0f1720 45%,#101923 100%);
+  color:var(--ink);
+  font-family:Inter,Arial,'Noto Sans JP','Yu Gothic',sans-serif;
+}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:radial-gradient(circle at 12px 12px,#fff 2px,transparent 2.5px);background-size:28px 28px}
+.app{max-width:1540px;margin:0 auto;padding:8px 18px 28px}
+.titlebar{padding:6px 10px 10px;border-bottom:1px solid rgba(216,183,106,.18)}
+h1{margin:0;text-align:center;font-size:clamp(28px,4vw,46px);letter-spacing:.08em;color:var(--cream);text-transform:uppercase;text-shadow:0 2px 20px rgba(78,166,166,.22)}
+h1:after{content:"";display:block;width:min(360px,62vw);height:2px;margin:4px auto 0;background:linear-gradient(90deg,transparent,var(--teal),var(--gold),transparent);border-radius:999px}.sub{text-align:center;font-weight:800;color:var(--muted);font-size:clamp(13px,1.2vw,17px);margin:5px 0 8px}.mainlayout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:14px;align-items:start;margin-top:10px}.contentarea{min-width:0}.controlpanel{position:sticky;top:10px;z-index:10;background:linear-gradient(180deg,rgba(23,35,50,.96),rgba(16,25,35,.96));border:1px solid rgba(78,166,166,.55);border-radius:22px;padding:12px;box-shadow:0 16px 38px rgba(0,0,0,.32),0 0 0 1px rgba(255,243,214,.05) inset}.prompt{background:linear-gradient(180deg,var(--panel),var(--panel2));border:2px solid var(--teal);border-radius:18px;box-shadow:0 10px 22px rgba(0,0,0,.30),0 0 0 1px rgba(255,243,214,.08) inset;padding:8px 12px;text-align:center;margin-bottom:10px}.prompt small{display:block;color:var(--gold);font-weight:900;text-transform:uppercase;letter-spacing:.12em}.prompt .romaji{font-size:clamp(36px,5vw,58px);font-weight:950;line-height:1;color:#fff}.answer{min-height:46px;background:rgba(255,243,214,.06);border:2px dashed rgba(216,183,106,.45);border-radius:14px;padding:6px 10px;font-size:25px;text-align:center;color:var(--cream);margin:10px 0 6px}.stats{font-weight:900;display:grid;grid-template-columns:1fr 1fr;gap:8px}.pill{background:rgba(255,243,214,.08);border:1px solid rgba(216,183,106,.26);border-radius:999px;padding:7px 10px;box-shadow:0 6px 16px rgba(0,0,0,.20);color:var(--cream);text-align:center}.controls{display:grid;grid-template-columns:1fr;gap:8px;align-items:center;margin-top:10px}.btn,.select{width:100%;border-radius:12px;padding:9px 12px;font-weight:950;cursor:pointer;background:linear-gradient(180deg,#223246,#172332);color:var(--cream);border:1px solid rgba(216,183,106,.28);box-shadow:0 8px 18px rgba(0,0,0,.22)}.btn.secondary{background:rgba(255,243,214,.08);color:var(--cream);border:1px solid rgba(78,166,166,.55)}.btn.toggle-on{background:linear-gradient(180deg,var(--teal),#3a8f8f);color:#081018;border-color:var(--teal2)}.btn:hover,.select:hover{border-color:var(--gold);transform:translateY(-1px)}.btn:active{transform:translateY(1px)}.select{appearance:auto}.select option{background:var(--cream);color:#081018;font-weight:800}.message{min-height:36px;text-align:center;font-size:15px;font-weight:900;margin:6px 0}.message.good{color:var(--good)}.message.bad{color:var(--bad)}
+.boardwrap{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:14px;align-items:start;margin-top:0}.board{background:linear-gradient(180deg,rgba(23,35,50,.96),rgba(16,25,35,.96));border:1px solid rgba(78,166,166,.55);border-radius:22px;padding:12px;box-shadow:0 16px 38px rgba(0,0,0,.32),0 0 0 1px rgba(255,243,214,.05) inset}.row{display:grid;grid-template-columns:115px repeat(5,1fr);gap:6px;margin-bottom:6px}.row.y,.row.w{grid-template-columns:115px repeat(5,1fr)}.label{border-radius:14px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#081018;font-weight:950;min-height:108px;padding:7px;font-size:20px;box-shadow:0 6px 12px rgba(0,0,0,.18)}.label small{font-size:13px;opacity:.82}.label.v{background:var(--v)}.label.k{background:var(--k)}.label.s{background:var(--s)}.label.t{background:var(--t)}.label.n{background:var(--n)}.label.h{background:var(--h)}.label.m{background:var(--m)}.label.y{background:var(--y)}.label.r{background:var(--r)}.label.w{background:var(--w)}
+.tile{position:relative;min-height:108px;border:1px solid rgba(216,183,106,.25);border-radius:14px;background:linear-gradient(180deg,var(--tile),var(--tile2));display:grid;grid-template-rows:auto 1fr auto;align-items:center;text-align:center;cursor:pointer;transition:.10s;overflow:hidden;color:var(--ink);box-shadow:0 6px 14px rgba(0,0,0,.22)}.tile:hover{transform:translateY(-2px);box-shadow:0 12px 22px rgba(0,0,0,.34);border-color:var(--teal2);background:linear-gradient(180deg,#2b4058,#23364c)}.tile:active{transform:scale(.985)}.tile.empty{background:rgba(255,243,214,.04);border-style:dashed;cursor:default;opacity:.38}.tile.empty:hover{transform:none;box-shadow:none;border-color:rgba(216,183,106,.25)}.kana{font-size:clamp(28px,3vw,46px);font-weight:950;line-height:1;padding-top:6px;color:#fff}.pic{font-size:clamp(28px,4vw,50px);line-height:1;filter:drop-shadow(0 3px 4px rgba(0,0,0,.25))}.word{font-size:12px;font-weight:950;text-transform:uppercase;letter-spacing:.04em;padding:0 2px 8px;color:var(--gold)}.tile.selected{outline:4px solid var(--teal);box-shadow:0 0 0 6px rgba(78,166,166,.14)}.tile.correctflash{animation:goodflash .35s ease}.tile.wrongflash{animation:badflash .35s ease}@keyframes goodflash{0%{background:#174a2c}100%{background:linear-gradient(180deg,var(--tile),var(--tile2))}}@keyframes badflash{0%{background:#5a2020}100%{background:linear-gradient(180deg,var(--tile),var(--tile2))}}
+.side,.history{background:linear-gradient(180deg,rgba(23,35,50,.96),rgba(16,25,35,.96));border:1px solid rgba(216,183,106,.25);border-radius:22px;padding:15px;box-shadow:0 14px 34px rgba(0,0,0,.28)}.side{position:sticky;top:126px}.side h2,.history h2{margin:0 0 9px;font-size:22px;color:var(--cream)}.side ol{padding-left:22px;margin:8px 0}.side li{margin:10px 0;font-weight:750;color:var(--muted)}code{background:rgba(255,243,214,.10);border:1px solid rgba(216,183,106,.25);border-radius:8px;padding:1px 6px;color:var(--cream)}.legend{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:13px;margin-top:12px;color:var(--muted)}.dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:5px}.history{margin-top:16px}.histgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px}.histitem{border:1px solid rgba(216,183,106,.18);border-radius:13px;padding:8px 10px;background:rgba(255,243,214,.06);font-weight:900;display:flex;justify-content:space-between;gap:8px;align-items:center;color:var(--cream)}.histitem .kanaHist{font-size:22px}.histText{min-width:0}.histMain{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px}.histTranslation{font-size:12px;color:var(--muted);margin-top:3px;font-style:italic;line-height:1.25}.ok{color:var(--good)}.no{color:var(--bad)}.footer{margin-top:8px;color:var(--muted);font-size:13px;text-align:center}.mode{display:flex;gap:6px;justify-content:center;margin-top:8px}.mode button{padding:7px 10px;border-radius:999px;border:1px solid rgba(216,183,106,.28);background:rgba(255,243,214,.06);color:var(--cream);font-weight:900;cursor:pointer}.mode button.active{background:var(--teal);color:#081018;border-color:var(--teal)}.board.hide-labels .label{display:none}.board.hide-mnemonic-labels .word{display:none}.board.mode-recall .word{display:none}.board.mode-kana .word,.board.mode-kana .pic{display:none}.board.mode-expert .word,.board.mode-expert .kana{display:none}.board.mode-expert .tile{grid-template-rows:1fr}.board.mode-expert .pic{font-size:clamp(38px,5vw,64px)}.missedBox{margin-top:12px;border-top:1px solid rgba(216,183,106,.22);padding-top:10px;font-size:13px;font-weight:850;color:var(--muted)}.missedItem{display:flex;justify-content:space-between;border:1px solid rgba(216,183,106,.18);background:rgba(255,243,214,.06);border-radius:10px;padding:5px 8px;margin:5px 0;color:var(--cream)}.missKana{font-size:20px}.board.hide-labels .row,.board.hide-labels .row.y,.board.hide-labels .row.w{grid-template-columns:repeat(5,1fr)}.board.randomized .row{margin-bottom:6px}.hardnote{font-size:12px;color:var(--muted);text-align:left;margin-top:8px;font-weight:750;line-height:1.45}.daily{margin-top:10px;padding:10px;border:1px solid rgba(78,166,166,.35);background:rgba(78,166,166,.08);border-radius:14px;color:var(--muted);font-weight:800}
+@media(max-width:1180px){.mainlayout{grid-template-columns:1fr}.controlpanel{position:static;display:grid;grid-template-columns:minmax(220px,320px) 1fr;gap:10px;align-items:start}.controlpanel .prompt{grid-row:span 3;margin-bottom:0}.controls{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:0}.stats{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}.answer,.message{margin:0}}
+@media(max-width:1040px){.boardwrap{grid-template-columns:1fr}.side{position:static}.row,.row.y,.row.w{grid-template-columns:72px repeat(5,1fr)}.label{font-size:14px;min-height:88px}.label small{font-size:11px}.tile{min-height:88px}.word{font-size:10px}.kana{font-size:30px}.pic{font-size:30px}}
+@media(max-width:720px){.app{padding:6px 10px 22px}.titlebar{padding:4px 6px 8px}h1{font-size:34px}.sub{font-size:13px}.controlpanel{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.prompt .romaji{font-size:48px}.stats{grid-template-columns:1fr 1fr}.row,.row.y,.row.w,.board.hide-labels .row,.board.hide-labels .row.y,.board.hide-labels .row.w{grid-template-columns:repeat(5,minmax(54px,1fr))}.label{display:none}.board{padding:8px}.kana{font-size:26px}.pic{font-size:26px}}
+</style>
+<link href="pixel-theme-v2.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="pixel-site-header">
+<div class="pixel-hero-inner">
+<div class="pixel-brand">
+<span class="pixel-badge">Pixel Pastel Edition v2</span>
+<h1>Think in Japanese</h1>
+<p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
+</div>
+<div class="pixel-teacher"><img alt="Chibi teacher mascot" src="assets/chibi_teacher.png"/><div class="pixel-mini-title">Sensei Mode</div></div>
+</div>
+</header>
+<nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index.html">Home</a><a data-file="kana_dojo.html" href="kana_dojo.html">Kana Dojo</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a></div></nav><div aria-label="Language selector" class="lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="kana_dojo_es.html">Español</a></div>
+
+<div class="pixel-page-shell">
+<section class="pixel-welcome">
+<div class="pixel-card"><div class="pixel-mini-title">Today's Quest</div><strong>Use the portal like a retro learning map:</strong> pick a lesson, practice out loud, then mark progress in the tracker. The theme is shared across all pages for PC, TV, tablet, phone, and foldables.</div>
+<div class="pixel-side-art pixel-flag-pair"><img alt="Japanese flag" class="flag-art" src="assets/flag_japan.svg"/><img alt="Puerto Rican flag" class="flag-art" src="assets/flag_puerto_rico.svg"/></div>
+</section>
+</div>
+<script>document.querySelectorAll('.pixel-nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('active')});</script>
+<div class="app">
+<header class="titlebar">
+<h1>Kana Dojo</h1>
+<div class="sub">ProgreTech Japanese Dojo Edition · Read the romaji, click the kana in order, remove hints as you improve.</div>
+</header>
+<div class="mainlayout">
+<aside class="controlpanel">
+<div class="prompt"><small>Current word</small><div class="romaji" id="prompt">hai</div><div class="mode"><button aria-pressed="true" class="active" id="hiraganaMode">Hiragana</button><button aria-pressed="false" id="katakanaMode">Katakana</button></div></div>
+<div class="stats"><span class="pill">Score: <span id="score">0</span></span><span class="pill">Accuracy: <span id="accuracy">100%</span></span><span class="pill">Streak: <span id="streak">0</span></span><span class="pill">Best: <span id="bestStreak">0</span></span><span class="pill">Played: <span id="played">0</span></span></div>
+<div class="answer" id="answer"></div>
+<div class="message" id="message"></div>
+<div class="controls"><button class="btn secondary" id="newBtn">Next Word</button><button class="btn secondary" id="dailyBtn">Daily 50</button><select class="select" id="difficultySelect" title="Difficulty"><option value="learning">Learning</option><option value="recall">Recall</option><option value="kana">Kana Only</option></select><button class="btn secondary" id="shuffleBtn">Randomize Kana</button><button class="btn secondary" id="helpBtn">Hide Row Help</button><button class="btn secondary" id="labelBtn">Hide Mnemonic Labels</button><button class="btn secondary" id="dakutenBtn">Dakuten: Off</button><button class="btn secondary" id="handakutenBtn">Handakuten: Off</button><button class="btn secondary" id="resetBtn">Reset</button></div>
+</aside>
+<div class="contentarea">
+<div class="boardwrap">
+<main class="board" id="board">
+</main>
+<aside class="side">
+<h2>Training Notes</h2>
+<ol><li>Start in Learning mode.</li><li>Move to Recall, then Kana Only.</li><li>Use Randomize Kana when you want a harder board.</li><li>Your score and missed kana save in this browser.</li></ol><div class="daily" id="dailyStatus">Daily Challenge: Off</div>
+<p><b>Example:</b> <code>hai</code> = click <b>ha</b> then <b>i</b>.</p><p class="hardnote"><b>Difficulty modes:</b><br/>Learning = image + kana + label<br/>Recall = image + kana<br/>Kana Only = kana only</p><div class="missedBox" id="missedBox"><b>Most missed:</b><div id="missedList">None yet</div></div>
+<div class="legend" id="legend"></div>
+</aside>
+</div>
+<section class="history"><h2>Game History</h2><div class="histgrid" id="history"></div><div class="footer">Tip: Print this page to have a kana worksheet you can use to practice anywhere!</div> </section>
+</div>
+</div>
+</div>
+<script>
+const KANA = [
+ {row:'Vowels', cls:'v', items:[['a','あ','ア','🐊','Alligator'],['i','い','イ','🦅','Eagle'],['u','う','ウ','🛸','UFO'],['e','え','エ','🙌','Excited'],['o','お','オ','🐙','Octopus']]},
+ {row:'K Row', cls:'k', items:[['ka','か','カ','🪁','Kite'],['ki','き','キ','🔑','Key'],['ku','く','ク','🐦','Cuckoo'],['ke','け','ケ','🛢️','Keg'],['ko','こ','コ','🐟','Koi']]},
+ {row:'S Row', cls:'s', items:[['sa','さ','サ','🪚','Saw'],['shi','し','シ','🐑','Sheep'],['su','す','ス','🍣','Sushi'],['se','せ','セ','⚖️','Seesaw'],['so','そ','ソ','🧦','Socks']]},
+ {row:'T Row', cls:'t', items:[['ta','た','タ','🌮','Taco'],['chi','ち','チ','🐆','Cheetah'],['tsu','つ','ツ','🌊','Tsunami'],['te','て','テ','🎾','Tennis'],['to','と','ト','🍅','Tomato']]},
+ {row:'N Row', cls:'n', items:[['na','な','ナ','🐋','Narwhal'],['ni','に','ニ','🪡','Needle'],['nu','ぬ','ヌ','🍜','Noodles'],['ne','ね','ネ','🪺','Nest'],['no','の','ノ','📘','Notebook']]},
+ {row:'H Row', cls:'h', items:[['ha','は','ハ','🎩','Hat'],['hi','ひ','ヒ','🦛','Hippo'],['fu','ふ','フ','🍱','Food'],['he','へ','ヘ','🚁','Helicopter'],['ho','ほ','ホ','🐴','Horse']]},
+ {row:'M Row', cls:'m', items:[['ma','ま','マ','🗺️','Map'],['mi','み','ミ','🥛','Milk'],['mu','む','ム','🌙','Moon'],['me','め','メ','🍈','Melon'],['mo','も','モ','🐒','Monkey']]},
+ {row:'Y Row', cls:'y', items:[['ya','や','ヤ','🐂','Yak'],null,['yu','ゆ','ユ','🦄','Unicorn'],null,['yo','よ','ヨ','🪀','Yo-yo']]},
+ {row:'R Row', cls:'r', items:[['ra','ら','ラ','📻','Radio'],['ri','り','リ','💍','Ring'],['ru','る','ル','📏','Ruler'],['re','れ','レ','🤖','Robot'],['ro','ろ','ロ','🚀','Rocket']]},
+ {row:'W & N', cls:'w', items:[['wa','わ','ワ','🌊','Wave'],null,['wo','を','ヲ','🐺','Wolf'],null,['n','ん','ン','🥷','Ninja']]}
+];
+const DAKUTEN_ROWS = [
+ {row:'G Row', cls:'k', items:[['ga','が','ガ','🐊','Gator'],['gi','ぎ','ギ','🎸','Guitar'],['gu','ぐ','グ','🪿','Goose'],['ge','げ','ゲ','🦎','Gecko'],['go','ご','ゴ','🦍','Gorilla']]},
+ {row:'Z Row', cls:'s', items:[['za','ざ','ザ','🦓','Zebra'],['ji','じ','ジ','🚙','Jeep'],['zu','ず','ズ','🥒','Zucchini'],['ze','ぜ','ゼ','🛩️','Zeppelin'],['zo','ぞ','ゾ','🧟','Zombie']]},
+ {row:'D Row', cls:'t', items:[['da','だ','ダ','🎲','Dice'],['di','ぢ','ヂ','💿','Disc'],['du','づ','ヅ','🦆','Duck'],['de','で','デ','🪑','Desk'],['do','ど','ド','🚪','Door']]},
+ {row:'B Row', cls:'h', items:[['ba','ば','バ','🎈','Balloon'],['bi','び','ビ','🐝','Bee'],['bu','ぶ','ブ','👢','Boot'],['be','べ','ベ','🔔','Bell'],['bo','ぼ','ボ','⛵','Boat']]}
+];
+const HANDAKUTEN_ROWS = [
+ {row:'P Row', cls:'h', items:[['pa','ぱ','パ','🐼','Panda'],['pi','ぴ','ピ','🍕','Pizza'],['pu','ぷ','プ','🍮','Pudding'],['pe','ぺ','ペ','🖊️','Pen'],['po','ぽ','ポ','🍿','Popcorn']]}
+];
+function activeRows(){ return KANA; }
+const ALL_ROWS = [...KANA, ...DAKUTEN_ROWS, ...HANDAKUTEN_ROWS];
+const syllables = {}; ALL_ROWS.forEach(r=>r.items.forEach(it=>{if(it) syllables[it[0]]={h:it[1],k:it[2]}}));
+const dakutenMap = {};
+const handakutenMap = {};
+[['ka','ga'],['ki','gi'],['ku','gu'],['ke','ge'],['ko','go'],['sa','za'],['shi','ji'],['su','zu'],['se','ze'],['so','zo'],['ta','da'],['chi','di'],['tsu','du'],['te','de'],['to','do'],['ha','ba'],['hi','bi'],['fu','bu'],['he','be'],['ho','bo']].forEach(([base,mod])=>dakutenMap[base]=mod);
+[['ha','pa'],['hi','pi'],['fu','pu'],['he','pe'],['ho','po']].forEach(([base,mod])=>handakutenMap[base]=mod);
+const itemBySyl = {}; ALL_ROWS.forEach(r=>r.items.forEach(it=>{if(it) itemBySyl[it[0]]=it;}));
+function displayItem(it){
+ if(!it) return null;
+ if(enableHandakuten && handakutenMap[it[0]]) return itemBySyl[handakutenMap[it[0]]];
+ if(enableDakuten && dakutenMap[it[0]]) return itemBySyl[dakutenMap[it[0]]];
+ return it;
+}
+const parseOrder = ['shi','chi','tsu','ji','di','du','ga','gi','gu','ge','go','za','zu','ze','zo','da','de','do','ba','bi','bu','be','bo','pa','pi','pu','pe','po','ka','ki','ku','ke','ko','sa','su','se','so','ta','te','to','na','ni','nu','ne','no','ha','hi','fu','he','ho','ma','mi','mu','me','mo','ya','yu','yo','ra','ri','ru','re','ro','wa','wo','a','i','u','e','o','n'];
+const BASE_COMMON = ["hai", "iie", "ai", "ao", "ie", "ue", "koi", "ika", "aki", "eki", "ookii", "kaki", "kiku", "koko", "koke", "sake", "saki", "sushi", "suki", "soko", "seki", "asa", "ashi", "uso", "isu", "taiko", "tako", "taki", "tsuki", "tsuchi", "te", "to", "tokei", "tori", "nani", "naka", "neko", "inu", "niwa", "nori", "nuno", "hana", "hito", "hifu", "hane", "hon", "hoshi", "haha", "fune", "heya", "mae", "mimi", "mame", "mori", "momo", "mune", "ame", "umi", "yama", "yume", "yuki", "yori", "yoru", "raion", "ringo", "raku", "renkon", "roku", "iro", "sora", "kumo", "mura", "machi", "michi", "miso", "kasa", "kushi", "kutsushita", "tenisu", "tomato", "ramen", "kamera", "meron", "banana", "miruku", "terebi", "rajio", "anime", "karaoke", "kimono", "samurai", "ninja", "tsunami", "sakura", "sensei", "senpai", "kouhai", "watashi", "anata", "kare", "kanojo", "are", "kore", "sore", "dore", "au", "aka", "aku", "ako", "asu", "ase", "ata", "achi", "atsu", "ato", "ana", "ani", "ane", "ano", "aha", "ahi", "afu", "aho", "ama", "ami", "amo", "aya", "ayu", "ayo", "ara", "ari", "aru", "aro", "awa", "an", "ii", "iu", "io", "iki", "iku", "iko", "isa", "ishi", "ise", "ita", "ichi", "itsu", "ito", "ina", "ini", "ine", "ino", "iha", "ihi", "ifu", "iho", "ima", "imi", "ime", "imo", "iya", "iyu", "iyo", "ira", "iri", "iru", "ire", "iwa", "in", "ui", "uu", "uo", "uka", "uki", "uku", "uko", "usa", "ushi", "usu", "use", "uta", "uchi", "utsu", "uto", "una", "uni", "une", "uno", "uha", "uhi", "ufu", "uho", "uma", "ume", "umo", "uya", "uyu", "uyo", "ura", "uri", "uru", "ure", "uro", "uwa", "un", "ei", "eu", "eo", "eka", "eku", "eko", "esa", "eshi", "esu", "ese", "eta", "echi", "etsu", "eto", "ena", "eni", "ene", "eno", "eha", "ehi", "efu", "eho", "ema", "emi", "eme", "emo", "eya", "eyu", "eyo", "era", "eri", "eru", "ere", "ero", "ewa", "en", "oi", "ou", "oo", "oka", "oki", "oku", "oko", "osa", "oshi", "osu", "ose", "ota", "ochi", "otsu", "oto", "ona", "oni", "one", "ono", "oha", "ohi", "ofu", "oho", "oma", "omi", "ome", "omo", "oya", "oyu", "oyo", "ora", "ori", "oru", "ore", "oro", "owa", "on", "kai", "kau", "kao", "kaka", "kaku", "kako", "kashi", "kasu", "kase", "kata", "kachi", "katsu", "kato", "kana", "kani", "kane", "kano", "kaha", "kahi", "kafu", "kaho", "kama"];
+const DAKUTEN_HAND_WORDS = ["gogo", "goma", "gohan", "kagi", "migi", "sugoi", "gake", "geki", "gaku", "goi", "zaru", "mizu", "kaze", "kazu", "zutto", "zero", "zoni", "doko", "dare", "dame", "denwa", "mado", "taberu", "boku", "bara", "buta", "basho", "bento", "biiru", "asobu", "yobu", "kaban", "kubi", "tabe", "gari", "giri", "guru", "gero", "goro", "zaki", "zushi", "zaseki", "zoori", "dango", "dai", "demo", "doro", "dora", "doki", "bari", "biri", "bura", "bero", "boro", "baikin", "bijin", "bunka", "benri", "booru", "gomu", "gomi", "genki", "ginko", "ginkou", "gosen", "zubon", "zannen", "zenbu", "dozo", "daiji", "daikon", "doubutsu", "bideo", "basu", "biru", "boushi", "budou", "bebii", "pan", "pen", "piano", "pika", "piko", "puka", "paku", "poko", "peko", "pura", "puro", "papa", "pipi", "popo", "puu", "puchi", "peta", "pote", "pomu", "puri", "pasuta", "panda", "pinku", "posuto", "gaa", "gai", "gau", "gae", "gao", "gaka", "gaki", "gako", "gasa", "gashi", "gasu", "gase", "gaso", "gata", "gachi", "gatsu", "gate", "gato", "gana", "gani", "ganu", "gane", "gano", "gaha", "gahi", "gafu", "gahe", "gaho", "gama", "gami", "gamu", "game", "gamo", "gaya", "gayu", "gayo", "gara", "garu", "gare", "garo", "gawa", "gan", "gaga", "gagi", "gagu", "gage", "gago", "gaza", "gaji", "gazu", "gaze", "gazo", "gada", "gade", "gado", "gaba", "gabi", "gabu", "gabe", "gabo", "gapa", "gapi", "gapu", "gape", "gapo", "gia", "gii", "giu", "gie", "gio", "gika", "giki", "giku", "gike", "giko", "gisa", "gishi", "gisu", "gise", "giso", "gita", "gichi", "gitsu", "gite", "gito", "gina", "gini", "ginu", "gine", "gino", "giha", "gihi", "gifu", "gihe", "giho", "gima", "gimi", "gimu"];
+const WORD_TRANSLATIONS = {
+  hai:"yes", iie:"no", ai:"love", ao:"blue", ie:"house", ue:"up / above", koi:"carp / love", ika:"squid", aki:"autumn", eki:"station", ookii:"big", kaki:"persimmon / oyster", kiku:"to listen / chrysanthemum", koko:"here", koke:"moss", sake:"sake / alcohol", saki:"ahead / previous", sushi:"sushi", suki:"like", soko:"there", seki:"seat / cough", asa:"morning", ashi:"leg / foot", uso:"lie", isu:"chair", taiko:"drum", tako:"octopus", taki:"waterfall", tsuki:"moon", tsuchi:"earth / soil", te:"hand", to:"door / and", tokei:"clock / watch", tori:"bird", nani:"what", naka:"inside", neko:"cat", inu:"dog", niwa:"garden", nori:"seaweed / ride", nuno:"cloth", hana:"flower / nose", hito:"person", hifu:"skin", hane:"wing / feather", hon:"book", hoshi:"star", haha:"mother", fune:"boat", heya:"room", mae:"front / before", mimi:"ear", mame:"bean", mori:"forest", momo:"peach", mune:"chest", ame:"rain / candy", umi:"sea", yama:"mountain", yume:"dream", yuki:"snow", yori:"from / than", yoru:"night", raion:"lion", ringo:"apple", raku:"easy / comfort", renkon:"lotus root", roku:"six", iro:"color", sora:"sky", kumo:"cloud / spider", mura:"village", machi:"town", michi:"road", miso:"miso", kasa:"umbrella", kushi:"comb / skewer", kutsushita:"socks", tenisu:"tennis", tomato:"tomato", ramen:"ramen", kamera:"camera", meron:"melon", banana:"banana", miruku:"milk", terebi:"TV", rajio:"radio", anime:"anime", karaoke:"karaoke", kimono:"kimono", samurai:"samurai", ninja:"ninja", tsunami:"tsunami", sakura:"cherry blossom", sensei:"teacher", senpai:"senior / mentor", kouhai:"junior", watashi:"I / me", anata:"you", kare:"he / boyfriend", kanojo:"she / girlfriend", are:"that over there", kore:"this", sore:"that", dore:"which one",
+  ichi:"one", ima:"now", imi:"meaning", imo:"potato", iya:"no / unpleasant", iru:"to be / need", ire:"container / put in", iwa:"rock", in:"syllabic n practice", uta:"song", uchi:"inside / home", utsu:"to hit", uma:"horse / good", ume:"plum", ura:"back side", uri:"melon / selling", uru:"to sell", ebi:"shrimp", en:"yen / circle / connection", oi:"hey", ou:"king / chase", oka:"hill", oki:"open sea", oku:"to put / back", osu:"to push", oto:"sound", oni:"demon", one:"older sister variant / practice", ono:"axe", oya:"parent", ore:"I / me casual", oro:"practice pattern", on:"sound / favor", kai:"shellfish / meeting", kau:"to buy", kao:"face", kaku:"to write", kashi:"sweets / lyrics", kasu:"to lend", kata:"shoulder / way", kachi:"win / value", katsu:"to win / cutlet", kana:"kana / I wonder", kani:"crab", kane:"money / bell", kama:"pot / sickle",
+  gogo:"afternoon", goma:"sesame", gohan:"rice / meal", kagi:"key", migi:"right side", sugoi:"amazing", gake:"cliff", geki:"drama / intense", gaku:"study / learning", goi:"vocabulary", zaru:"basket / sieve", mizu:"water", kaze:"wind / cold", kazu:"number", zutto:"continuously", zero:"zero", zoni:"New Year soup", doko:"where", dare:"who", dame:"not good", denwa:"phone", mado:"window", taberu:"to eat", boku:"I / me casual", bara:"rose", buta:"pig", basho:"place", bento:"boxed lunch", biiru:"beer", asobu:"to play", yobu:"to call", kaban:"bag", kubi:"neck", tabe:"eat stem / practice", giri:"obligation / duty", guru:"guru / spinning", gero:"vomit / frog sound", goro:"around / rumble", zushi:"sushi city/name", zaseki:"seat", zoori:"sandals", dango:"dumpling", dai:"large / topic", demo:"but / demo", doro:"mud", dora:"gong / Dora", doki:"heartbeat", bijin:"beautiful person", bunka:"culture", benri:"convenient", booru:"ball", gomu:"rubber", gomi:"trash", genki:"healthy / energetic", ginko:"ginkgo", ginkou:"bank", gosen:"five thousand", zubon:"pants", zannen:"too bad", zenbu:"all", dozo:"please / go ahead", daiji:"important", daikon:"daikon radish", doubutsu:"animal", bideo:"video", basu:"bus", biru:"building", boushi:"hat", budou:"grapes", bebii:"baby", pan:"bread", pen:"pen", piano:"piano", pika:"sparkle", piko:"beep / chirp", puka:"floating", paku:"bite / chomp", poko:"popping sound", peko:"hungry / bow", pura:"plastic / plus", puro:"professional", papa:"dad", pipi:"beep-beep", popo:"pop / coo", puu:"poof", puchi:"small / petite", peta:"sticky slap", pote:"plop", pomu:"pom", puri:"プリ / cute pose", pasuta:"pasta", panda:"panda", pinku:"pink", posuto:"post / mailbox",
+  au:"to meet", aka:"red", asu:"tomorrow", ase:"sweat", ato:"after / later", ana:"hole", ani:"older brother", ane:"older sister", ano:"that / um", aho:"foolish", ama:"sweet / amateur", ari:"ant / exists", aru:"to exist / to have", ii:"good", iku:"to go", iko:"let's go", ishi:"stone / will", ita:"was / board", itsu:"when", ito:"thread", ina:"rice plant", ine:"rice plant", uo:"fish", ushi:"cow", uni:"sea urchin", ura:"back side", eri:"collar", era:"gills", oko:"practice form / kana drill", oshi:"favorite / push", oya:"parent", ore:"I / me casual", kai:"shellfish / meeting", kau:"to buy", kao:"face", kaku:"to write", kashi:"sweets / lyrics", kasu:"to lend", kata:"shoulder / way", kachi:"win / value", katsu:"to win / cutlet", kato:"Kato / name", kani:"crab", kane:"money / bell", kama:"pot / sickle"
+};
+function getWordTranslation(word){
+  return WORD_TRANSLATIONS[word] || 'translation missing';
+}
+
+function makeWordPool(){
+ const pool=[...BASE_COMMON];
+ if(enableDakuten || enableHandakuten) pool.push(...DAKUTEN_HAND_WORDS);
+ const allowed=new Set(ALL_ROWS.flatMap(r=>r.items).filter(Boolean).map(it=>it[0]));
+ return [...new Set(pool)].filter(w=>{
+   const parsed=toKana(w,'h');
+   return WORD_TRANSLATIONS[w] && parsed && parsed.parts.every(p=>allowed.has(p));
+ }).slice(0,500);
+}
+let WORDS=[];
+let mode='h', current=null, expected=[], clicks=[], locked=false, score=0, streak=0, bestStreak=0, played=0, used=[], randomized=false, hideLabels=false, hideMnemonicLabels=false, tileMode='learning', nightmare=false, dailyActive=false, dailyGoal=50, dailyPlayed=0, enableDakuten=false, enableHandakuten=false;
+const misses = {};
+const STORAGE_KEY='kanaDojoProgressV2';
+function loadProgress(){try{const saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}');score=saved.score||0;played=saved.played||0;bestStreak=saved.bestStreak||0;Object.assign(misses,saved.misses||{});}catch(e){}}
+function saveProgress(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify({score,played,bestStreak,misses}));}catch(e){}}
+function setDifficulty(value){nightmare=false;if(value==='nightmare'){nightmare=true;randomized=true;hideLabels=true;hideMnemonicLabels=true;tileMode='expert';}else{tileMode=value;if(value==='learning'){hideMnemonicLabels=false;}else{hideMnemonicLabels=true;}}syncButtons();buildBoard();}
+
+function shuffleArray(arr){
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function flatKanaTiles(){
+  return activeRows().flatMap(r=>r.items.map(displayItem)).filter(Boolean);
+}
+function chunk(arr,size){
+  const out=[];
+  for(let i=0;i<arr.length;i+=size) out.push(arr.slice(i,i+size));
+  return out;
+}
+function toKana(romaji, m){ let s=romaji.toLowerCase().replace(/[^a-z]/g,''); let out='', parts=[]; while(s.length){ let found=false; for(const p of parseOrder){ if(s.startsWith(p)){ out+=syllables[p][m]; parts.push(p); s=s.slice(p.length); found=true; break; } } if(!found) return null; } return {text:out, parts}; }
+function makeTile(it){
+ const d=document.createElement('button');
+ if(!it){d.className='tile empty'; d.tabIndex=-1; d.innerHTML=''; return d;}
+ d.className='tile';
+ d.dataset.syl=it[0];
+ d.innerHTML=`<div class="kana">${it[1]} ${it[2]}</div><div class="pic">${it[3]}</div><div class="word">${it[4]}</div>`;
+ d.onclick=()=>choose(it[0],d);
+ return d;
+}
+function buildBoard(){
+ const board=document.getElementById('board');
+ board.innerHTML='';
+ board.classList.toggle('hide-labels', hideLabels);
+ board.classList.toggle('hide-mnemonic-labels', hideMnemonicLabels);
+ board.classList.toggle('randomized', randomized);
+ board.classList.remove('mode-learning','mode-recall','mode-kana','mode-expert');
+ board.classList.add('mode-'+tileMode);
+ if(randomized){
+   const tiles=shuffleArray(flatKanaTiles());
+   const rows=chunk(tiles,5);
+   rows.forEach((items,idx)=>{
+     const row=document.createElement('div');
+     row.className='row random-row';
+     if(!hideLabels){
+       const lab=document.createElement('div');
+       lab.className='label w';
+       lab.innerHTML=`Mixed<small>${idx+1}</small>`;
+       row.appendChild(lab);
+     }
+     items.forEach(it=>row.appendChild(makeTile(it)));
+     while(items.length<5){ row.appendChild(makeTile(null)); items.push(null); }
+     board.appendChild(row);
+   });
+ } else {
+   activeRows().forEach(r=>{
+     const row=document.createElement('div'); row.className='row '+r.cls;
+     if(!hideLabels){
+       const lab=document.createElement('div'); lab.className='label '+r.cls;
+       lab.innerHTML=`${r.row}<small>${r.cls}</small>`; row.appendChild(lab);
+     }
+     r.items.forEach(it=>row.appendChild(makeTile(displayItem(it))));
+     board.appendChild(row);
+   });
+ }
+ const legend=document.getElementById('legend'); legend.innerHTML='';
+ activeRows().forEach(r=>{ const div=document.createElement('div'); div.innerHTML=`<span class="dot" style="background:var(--${r.cls})"></span>${r.row}`; legend.appendChild(div); });
+}
+function nextWord(){ if(dailyActive && dailyPlayed>=dailyGoal){msg('Daily 50 complete. Reset or keep practicing freely.','good'); dailyActive=false; updateDailyStatus(); return;} enableDakuten=false; enableHandakuten=false; if(nightmare){ randomized=true; hideLabels=true; hideMnemonicLabels=true; tileMode='expert'; } syncButtons(); buildBoard(); locked=false; clicks=[]; document.getElementById('message').className='message'; document.getElementById('message').textContent=''; document.getElementById('answer').textContent=''; document.querySelectorAll('.tile').forEach(t=>t.classList.remove('selected','correctflash','wrongflash')); WORDS=makeWordPool(); if(used.length===WORDS.length) used=[]; let w; do{ w=WORDS[Math.floor(Math.random()*WORDS.length)]; }while(used.includes(w)&&used.length<WORDS.length); used.push(w); current=w; const k=toKana(w,mode); expected=k.parts; document.getElementById('prompt').textContent=w; }
+function choose(syl, el){ if(locked || !current) return; clicks.push(syl); el.classList.add('selected'); document.getElementById('answer').textContent = clicks.map(x=>syllables[x][mode]).join(''); const idx=clicks.length-1; if(syl!==expected[idx]){ el.classList.add('wrongflash'); fail(); return; } el.classList.add('correctflash'); if(clicks.length===expected.length){ success(); }}
+function success(){ locked=true; score++; streak++; bestStreak=Math.max(bestStreak,streak); played++; if(dailyActive) dailyPlayed++; const kana=toKana(current,mode).text; msg(`Correct: ${current} = ${kana}`,'good'); addHistory(current,kana,true); updateStats(); updateDailyStatus(); saveProgress(); setTimeout(nextWord,700); }
+function fail(){ locked=true; streak=0; played++; if(dailyActive) dailyPlayed++; const kana=toKana(current,mode).text; msg(`Not quite. Correct answer: ${current} = ${kana}`,'bad'); document.getElementById('answer').textContent=kana; expected.forEach(x=>{misses[x]=(misses[x]||0)+1}); addHistory(current,kana,false); updateStats(); updateMissed(); updateDailyStatus(); saveProgress(); }
+function msg(t,c){ const m=document.getElementById('message'); m.textContent=t; m.className='message '+c; }
+function addHistory(r,k,ok){ const h=document.getElementById('history'); const d=document.createElement('div'); d.className='histitem'; const translation=getWordTranslation(r); d.innerHTML=`<div class="histText"><div class="histMain"><span>${r}</span><span class="kanaHist">${k}</span></div><div class="histTranslation">${translation}</div></div><span class="${ok?'ok':'no'}">${ok?'✓':'✕'}</span>`; h.prepend(d); while(h.children.length>60) h.lastChild.remove(); }
+function updateStats(){ document.getElementById('score').textContent=score; document.getElementById('streak').textContent=streak; document.getElementById('bestStreak').textContent=bestStreak; document.getElementById('played').textContent=played; document.getElementById('accuracy').textContent=played?Math.round((score/played)*100)+'%':'100%'; }
+function updateMissed(){ const el=document.getElementById('missedList'); const top=Object.entries(misses).sort((a,b)=>b[1]-a[1]).slice(0,6); if(!top.length){el.textContent='None yet'; return;} el.innerHTML=top.map(([syl,count])=>`<div class="missedItem"><span><span class="missKana">${syllables[syl].h} ${syllables[syl].k}</span> ${syl}</span><span>${count}</span></div>`).join(''); }
+function syncButtons(){ document.getElementById('shuffleBtn').textContent=randomized?'Restore Order':'Randomize Kana'; document.getElementById('helpBtn').textContent=hideLabels?'Show Row Help':'Hide Row Help'; document.getElementById('labelBtn').textContent=hideMnemonicLabels?'Show Mnemonic Labels':'Hide Mnemonic Labels'; document.getElementById('dakutenBtn').textContent=enableDakuten?'Dakuten: On':'Dakuten: Off'; document.getElementById('dakutenBtn').classList.toggle('toggle-on',enableDakuten); document.getElementById('handakutenBtn').textContent=enableHandakuten?'Handakuten: On':'Handakuten: Off'; document.getElementById('handakutenBtn').classList.toggle('toggle-on',enableHandakuten); document.getElementById('difficultySelect').value=nightmare?'nightmare':tileMode; }
+function updateDailyStatus(){const el=document.getElementById('dailyStatus'); if(!el) return; el.textContent=dailyActive?`Daily Challenge: ${dailyPlayed}/${dailyGoal} words`:'Daily Challenge: Off';}
+document.getElementById('newBtn').onclick=nextWord; document.getElementById('resetBtn').onclick=()=>{score=0;streak=0;bestStreak=0;played=0;dailyActive=false;dailyPlayed=0;used=[];Object.keys(misses).forEach(k=>delete misses[k]);document.getElementById('history').innerHTML='';updateStats();updateMissed();updateDailyStatus();saveProgress();nextWord();};
+document.getElementById('dailyBtn').onclick=()=>{dailyActive=true;dailyPlayed=0;used=[];updateDailyStatus();nextWord();};
+document.getElementById('shuffleBtn').onclick=()=>{randomized=!randomized; syncButtons(); buildBoard();};
+document.getElementById('helpBtn').onclick=()=>{hideLabels=!hideLabels; syncButtons(); buildBoard();};
+document.getElementById('labelBtn').onclick=()=>{hideMnemonicLabels=!hideMnemonicLabels; syncButtons(); buildBoard();};
+document.getElementById('dakutenBtn').onclick=()=>{enableDakuten=!enableDakuten; if(enableDakuten) enableHandakuten=false; syncButtons(); buildBoard();};
+document.getElementById('handakutenBtn').onclick=()=>{enableHandakuten=!enableHandakuten; if(enableHandakuten) enableDakuten=false; syncButtons(); buildBoard();};
+document.getElementById('difficultySelect').onchange=(e)=>setDifficulty(e.target.value);
+document.getElementById('hiraganaMode').onclick=()=>{mode='h';document.getElementById('hiraganaMode').classList.add('active');document.getElementById('hiraganaMode').setAttribute('aria-pressed','true');document.getElementById('katakanaMode').classList.remove('active');document.getElementById('katakanaMode').setAttribute('aria-pressed','false');nextWord();};
+document.getElementById('katakanaMode').onclick=()=>{mode='k';document.getElementById('katakanaMode').classList.add('active');document.getElementById('katakanaMode').setAttribute('aria-pressed','true');document.getElementById('hiraganaMode').classList.remove('active');document.getElementById('hiraganaMode').setAttribute('aria-pressed','false');nextWord();};
+WORDS=makeWordPool(); loadProgress(); syncButtons(); buildBoard(); updateStats(); updateMissed(); updateDailyStatus(); nextWord();
+</script>
+<footer class="pixel-footer"><span class="pixel-badge">Think in Japanese · 80s Pixel Pastel Theme</span></footer>
+</body>
+</html>

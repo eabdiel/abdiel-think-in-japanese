@@ -1,0 +1,2994 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Think in Japanese - Character Reading Aid, Part 4</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<style>
+  body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: linear-gradient(135deg, #111827, #1f2937); color: #f9fafb; line-height: 1.5; }
+  header { padding: 38px 22px 22px; text-align: center; background: rgba(0,0,0,0.22); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  h1 { margin: 0; font-size: clamp(28px, 5vw, 46px); }
+  .subtitle { max-width: 980px; margin: 14px auto 0; color: #d1d5db; font-size: 18px; }
+  main { max-width: 1260px; margin: 0 auto; padding: 26px 18px 60px; }
+  .note { background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.35); padding: 18px; border-radius: 14px; margin-bottom: 22px; }
+  .note strong { color: #fbbf24; }
+  .mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-bottom: 22px; }
+  .card { background: rgba(31,41,55,0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 16px; }
+  .card h2 { margin: 0 0 8px; font-size: 19px; color: #93c5fd; }
+  .stat { font-size: 30px; font-weight: 700; color: #fbbf24; }
+  .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .controls input, .controls select { background: #111827; color: #f9fafb; border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; padding: 10px 12px; font-size: 15px; }
+  .controls input { min-width: min(460px, 100%); flex: 1; }
+  .table-wrap { overflow-x: auto; background: rgba(31,41,55,0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; min-width: 1120px; }
+  th, td { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+  th { position: sticky; top: 0; background: #111827; color: #fbbf24; text-align: left; z-index: 1; cursor: pointer; }
+  tr:hover { background: rgba(255,255,255,0.04); }
+  .num { color: #9ca3af; width: 44px; text-align: right; }
+  .char { font-size: 34px; font-weight: 800; color: #ffffff; text-align: center; min-width: 76px; }
+  .jp { font-size: 18px; font-weight: 700; color: #ffffff; min-width: 210px; }
+  .romaji { color: #bfdbfe; font-style: italic; min-width: 120px; }
+  .freq { color: #fbbf24; font-weight: 700; text-align: right; }
+  .tag { display: inline-block; border-radius: 999px; padding: 4px 9px; font-size: 12px; white-space: nowrap; border: 1px solid rgba(96,165,250,0.35); }
+  .hiragana { background: rgba(34,197,94,0.14); color: #bbf7d0; border-color: rgba(34,197,94,0.35); }
+  .katakana { background: rgba(59,130,246,0.14); color: #bfdbfe; border-color: rgba(59,130,246,0.35); }
+  .kanji { background: rgba(245,158,11,0.14); color: #fde68a; border-color: rgba(245,158,11,0.35); }
+  footer { text-align: center; color: #9ca3af; padding: 22px; font-size: 14px; }
+  @media print {
+    body { background: white; color: black; }
+    header, main, footer { padding: 10px; }
+    .controls { display: none; }
+    .table-wrap, .card, .note { border: 1px solid #aaa; background: white; }
+    th { position: static; background: #eee; color: black; }
+    .char, .jp, .romaji, .tag, .card h2, .note strong, .stat, .freq { color: black; }
+    .tag { border: 1px solid #aaa; background: white; }
+  }
+</style>
+<link href="pixel-theme-v2.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="pixel-site-header">
+<div class="pixel-hero-inner">
+<div class="pixel-brand">
+<span class="pixel-badge">Pixel Pastel Edition v2</span>
+<h1>Think in Japanese</h1>
+<p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
+</div>
+<div class="pixel-teacher"><img alt="Chibi teacher mascot" src="assets/chibi_teacher.png"/><div class="pixel-mini-title">Sensei Mode</div></div>
+</div>
+</header>
+<nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index.html">Home</a><a data-file="kana_dojo.html" href="kana_dojo.html">Kana Dojo</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a></div></nav><div aria-label="Language selector" class="lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="think_in_japanese_character_reading_aid_part4_es.html">Español</a></div>
+
+<div class="pixel-page-shell">
+<section class="pixel-welcome">
+<div class="pixel-card"><div class="pixel-mini-title">Today's Quest</div><strong>Use the portal like a retro learning map:</strong> pick a lesson, practice out loud, then mark progress in the tracker. The theme is shared across all pages for PC, TV, tablet, phone, and foldables.</div>
+<div class="pixel-side-art pixel-flag-pair"><img alt="Japanese flag" class="flag-art" src="assets/flag_japan.svg"/><img alt="Puerto Rican flag" class="flag-art" src="assets/flag_puerto_rico.svg"/></div>
+</section>
+</div>
+<script>document.querySelectorAll('.pixel-nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('active')});</script>
+<header>
+<h1>Think in Japanese: Character Reading Aid, Part 4</h1>
+<p class="subtitle">A deduped writing and reading aid built only from the 300 phrases in Parts 1–3. Sorted by romaji sound, with character type, frequency, and an example phrase from your own study sheets.</p>
+</header>
+<main>
+<section class="note">
+<strong>Important:</strong> Hiragana and katakana sounds are stable here. Kanji readings are context-based from your 300 phrases, so a kanji may have more than one romaji reading when it appeared in different words. This keeps the sheet practical for reading your existing phrases instead of becoming a full dictionary.
+  </section>
+<section class="mini-grid">
+<div class="card"><h2>Total unique characters</h2><div class="stat">260</div><p>No duplicates across the 300 phrases.</p></div>
+<div class="card"><h2>Hiragana</h2><div class="stat">60</div><p>Core native Japanese syllables used in the phrases.</p></div>
+<div class="card"><h2>Katakana</h2><div class="stat">24</div><p>Loanword and emphasis characters used in the phrases.</p></div>
+<div class="card"><h2>Kanji</h2><div class="stat">176</div><p>Contextual readings from the actual phrases.</p></div>
+</section>
+<section class="controls">
+<input id="searchBox" placeholder="Search character, romaji, type, example, or English meaning..." type="text"/>
+<select id="typeFilter">
+<option value="All">All types</option>
+<option value="Hiragana">Hiragana</option>
+<option value="Katakana">Katakana</option>
+<option value="Kanji">Kanji</option>
+</select>
+</section>
+<section class="table-wrap">
+<table id="charTable">
+<thead>
+<tr>
+<th>#</th>
+<th>Character</th>
+<th>Romaji Sound</th>
+<th>Type</th>
+<th>Count</th>
+<th>Example From Your 300 Phrases</th>
+<th>Example Romaji</th>
+<th>Example Meaning</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr data-type="Hiragana">
+<td class="num">1</td>
+<td class="char">あ</td>
+<td class="romaji">a</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">21</td>
+<td class="jp">あれ、何だろう？</td>
+<td>Are, nan darou?</td>
+<td>I wonder what that is.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">2</td>
+<td class="char">合</td>
+<td class="romaji">a</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">5</td>
+<td class="jp">これで合ってる？</td>
+<td>Kore de atteru?</td>
+<td>Is this right?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">3</td>
+<td class="char">当</td>
+<td class="romaji">a</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">適当すぎるやろ。</td>
+<td>Tekitou sugiru yaro.</td>
+<td>That's way too half-baked.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">4</td>
+<td class="char">ア</td>
+<td class="romaji">a</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">5</td>
+<td class="jp">見た瞬間アウト。</td>
+<td>Mita shunkan auto.</td>
+<td>The moment I saw it, I was out.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">5</td>
+<td class="char">危</td>
+<td class="romaji">abu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">危なかった。</td>
+<td>Abunakatta.</td>
+<td>That was close.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">6</td>
+<td class="char">悪</td>
+<td class="romaji">aku / waru</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">タイミング悪いわ。</td>
+<td>Taimingu warui wa.</td>
+<td>Bad timing.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">7</td>
+<td class="char">歩</td>
+<td class="romaji">aru</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ちょっと歩こう。</td>
+<td>Chotto arukou.</td>
+<td>Let's walk a little.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">8</td>
+<td class="char">焦</td>
+<td class="romaji">ase</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">焦らなくていい。</td>
+<td>Aseranakute ii.</td>
+<td>No need to rush.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">9</td>
+<td class="char">明</td>
+<td class="romaji">ashi / a</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">説明して。</td>
+<td>Setsumei shite.</td>
+<td>Explain it.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">10</td>
+<td class="char">頭</td>
+<td class="romaji">atama</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">今日は頭が回らない。</td>
+<td>Kyou wa atama ga mawaranai.</td>
+<td>My brain isn't working today.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">11</td>
+<td class="char">後</td>
+<td class="romaji">ato / go</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">これは後回しでいい。</td>
+<td>Kore wa atomawashi de ii.</td>
+<td>This can wait.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">12</td>
+<td class="char">怪</td>
+<td class="romaji">aya</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">怪しいな。</td>
+<td>Ayashii na.</td>
+<td>That's suspicious.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">13</td>
+<td class="char">ば</td>
+<td class="romaji">ba</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">2</td>
+<td class="jp">たとえば？</td>
+<td>Tatoeba?</td>
+<td>For example?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">14</td>
+<td class="char">張</td>
+<td class="romaji">ba</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">今日も頑張ろう。</td>
+<td>Kyou mo ganbarou.</td>
+<td>Let's do our best today too.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">15</td>
+<td class="char">場</td>
+<td class="romaji">ba / basho</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">この場所、いいね。</td>
+<td>Kono basho, ii ne.</td>
+<td>This place is nice.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">16</td>
+<td class="char">べ</td>
+<td class="romaji">be</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">3</td>
+<td class="jp">なるべく簡単に言って。</td>
+<td>Narubeku kantan ni itte.</td>
+<td>Say it as simply as possible.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">17</td>
+<td class="char">び</td>
+<td class="romaji">bi</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">2</td>
+<td class="jp">びっくりした。</td>
+<td>Bikkuri shita.</td>
+<td>That surprised me.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">18</td>
+<td class="char">備</td>
+<td class="romaji">bi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">準備できた。</td>
+<td>Junbi dekita.</td>
+<td>I'm ready.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">19</td>
+<td class="char">微</td>
+<td class="romaji">bi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ちょっと微妙。</td>
+<td>Chotto bimyou.</td>
+<td>It's kind of iffy.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">20</td>
+<td class="char">ぶ</td>
+<td class="romaji">bu</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">3</td>
+<td class="jp">たぶんこれかな。</td>
+<td>Tabun kore kana.</td>
+<td>Maybe this one.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">21</td>
+<td class="char">夫</td>
+<td class="romaji">bu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">大丈夫？</td>
+<td>Daijoubu?</td>
+<td>Are you okay?</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">22</td>
+<td class="char">ち</td>
+<td class="romaji">chi</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">30</td>
+<td class="jp">ちょっと考えよう。</td>
+<td>Chotto kangaeyou.</td>
+<td>Let me think for a second.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">23</td>
+<td class="char">チ</td>
+<td class="romaji">chi</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">オチないんかい。</td>
+<td>Ochi nain kai.</td>
+<td>There's no punchline?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">24</td>
+<td class="char">違</td>
+<td class="romaji">chiga</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">何か違う気がする。</td>
+<td>Nanka chigau ki ga suru.</td>
+<td>Something feels off.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">25</td>
+<td class="char">近</td>
+<td class="romaji">chika</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">近い近い。</td>
+<td>Chikai chikai.</td>
+<td>Too close, too close.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">26</td>
+<td class="char">だ</td>
+<td class="romaji">da</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">20</td>
+<td class="jp">日本語で何て言うんだっけ？</td>
+<td>Nihongo de nan te iun dakke?</td>
+<td>How do you say it in Japanese again?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">27</td>
+<td class="char">ダ</td>
+<td class="romaji">da</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">まだダメか。</td>
+<td>Mada dame ka.</td>
+<td>Still no good, huh.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">28</td>
+<td class="char">大</td>
+<td class="romaji">dai / oo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">それは大事やろ。</td>
+<td>Sore wa daiji yaro.</td>
+<td>That part matters, though.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">29</td>
+<td class="char">黙</td>
+<td class="romaji">dama</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">なんで黙ってんねん。</td>
+<td>Nande damatten nen.</td>
+<td>Why are you quiet?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">30</td>
+<td class="char">誰</td>
+<td class="romaji">dare</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">誰が決めたん？</td>
+<td>Dare ga kimetan?</td>
+<td>Who decided that?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">31</td>
+<td class="char">で</td>
+<td class="romaji">de</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">30</td>
+<td class="jp">英語で何て言うの？</td>
+<td>Eigo de nan te iu no?</td>
+<td>How do you say it in English?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">32</td>
+<td class="char">出</td>
+<td class="romaji">de / da</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">また出た。</td>
+<td>Mata deta.</td>
+<td>There it is again.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">33</td>
+<td class="char">電</td>
+<td class="romaji">den</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">電気を消そう。</td>
+<td>Denki o kesou.</td>
+<td>Let's turn off the light.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">34</td>
+<td class="char">ど</td>
+<td class="romaji">do</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">17</td>
+<td class="jp">どういう意味？</td>
+<td>Dou iu imi?</td>
+<td>What does that mean?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">35</td>
+<td class="char">え</td>
+<td class="romaji">e</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">25</td>
+<td class="jp">ちょっと考えよう。</td>
+<td>Chotto kangaeyou.</td>
+<td>Let me think for a second.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">36</td>
+<td class="char">エ</td>
+<td class="romaji">e</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">このエラー、何だろう？</td>
+<td>Kono eraa, nan darou?</td>
+<td>I wonder what this error is.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">37</td>
+<td class="char">英</td>
+<td class="romaji">ei</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">英語で何て言うの？</td>
+<td>Eigo de nan te iu no?</td>
+<td>How do you say it in English?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">38</td>
+<td class="char">駅</td>
+<td class="romaji">eki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">駅はどっち？</td>
+<td>Eki wa docchi?</td>
+<td>Which way is the station?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">39</td>
+<td class="char">不</td>
+<td class="romaji">fu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">理不尽やわ。</td>
+<td>Rifujin ya wa.</td>
+<td>That's unreasonable.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">40</td>
+<td class="char">フ</td>
+<td class="romaji">fu</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">セーフやろ？</td>
+<td>Seefu yaro?</td>
+<td>I'm safe, right?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">41</td>
+<td class="char">が</td>
+<td class="romaji">ga</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">16</td>
+<td class="jp">何か違う気がする。</td>
+<td>Nanka chigau ki ga suru.</td>
+<td>Something feels off.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">42</td>
+<td class="char">外</td>
+<td class="romaji">gai / hoka</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">意外と簡単。</td>
+<td>Igai to kantan.</td>
+<td>Surprisingly easy.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">43</td>
+<td class="char">頑</td>
+<td class="romaji">gan</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">今日も頑張ろう。</td>
+<td>Kyou mo ganbarou.</td>
+<td>Let's do our best today too.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">44</td>
+<td class="char">元</td>
+<td class="romaji">gen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">元気？</td>
+<td>Genki?</td>
+<td>How are you?</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">45</td>
+<td class="char">原</td>
+<td class="romaji">gen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">原因はこれかも。</td>
+<td>Gen'in wa kore kamo.</td>
+<td>This might be the cause.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">46</td>
+<td class="char">減</td>
+<td class="romaji">gen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ええ加減にせえ。</td>
+<td>Ee kagen ni see.</td>
+<td>Cut it out already.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">47</td>
+<td class="char">ぎ</td>
+<td class="romaji">gi</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">2</td>
+<td class="jp">眠すぎる。</td>
+<td>Nemusugiru.</td>
+<td>I'm way too sleepy.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">48</td>
+<td class="char">ギ</td>
+<td class="romaji">gi</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">ギリギリ耐えた。</td>
+<td>Girigiri taeta.</td>
+<td>I barely held it in.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">49</td>
+<td class="char">ご</td>
+<td class="romaji">go</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">3</td>
+<td class="jp">すごく疲れた。</td>
+<td>Sugoku tsukareta.</td>
+<td>I'm really tired.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">50</td>
+<td class="char">語</td>
+<td class="romaji">go</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">英語で何て言うの？</td>
+<td>Eigo de nan te iu no?</td>
+<td>How do you say it in English?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">51</td>
+<td class="char">獄</td>
+<td class="romaji">goku</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">地獄やん。</td>
+<td>Jigoku yan.</td>
+<td>This is hell.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">52</td>
+<td class="char">グ</td>
+<td class="romaji">gu</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">3</td>
+<td class="jp">ログ見てみよう。</td>
+<td>Rogu mite miyou.</td>
+<td>Let's check the log.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">53</td>
+<td class="char">は</td>
+<td class="romaji">ha / wa</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">31</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">54</td>
+<td class="char">始</td>
+<td class="romaji">haji</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">よし、始めよう。</td>
+<td>Yoshi, hajimeyou.</td>
+<td>Alright, let's start.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">55</td>
+<td class="char">反</td>
+<td class="romaji">han</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">反則やん。</td>
+<td>Hansoku yan.</td>
+<td>That's against the rules.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">56</td>
+<td class="char">腹</td>
+<td class="romaji">hara / naka</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">お腹すいた。</td>
+<td>Onaka suita.</td>
+<td>I'm hungry.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">57</td>
+<td class="char">早</td>
+<td class="romaji">haya</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">今日は早く寝よう。</td>
+<td>Kyou wa hayaku neyou.</td>
+<td>I'll sleep early today.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">58</td>
+<td class="char">部</td>
+<td class="romaji">he</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">部屋を片付けよう。</td>
+<td>Heya o katazukeyou.</td>
+<td>Let's clean up the room.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">59</td>
+<td class="char">へ</td>
+<td class="romaji">he / e</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">5</td>
+<td class="jp">へえ、そうなんだ。</td>
+<td>Hee, sou nan da.</td>
+<td>Ohh, really?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">60</td>
+<td class="char">変</td>
+<td class="romaji">hen / ka</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">変な空気なった。</td>
+<td>Hen na kuuki natta.</td>
+<td>The vibe got weird.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">61</td>
+<td class="char">卑</td>
+<td class="romaji">hi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">それは卑怯やわ。</td>
+<td>Sore wa hikyou ya wa.</td>
+<td>That's unfair.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">62</td>
+<td class="char">ヒ</td>
+<td class="romaji">hi</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">コーヒーが必要。</td>
+<td>Koohii ga hitsuyou.</td>
+<td>I need coffee.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">63</td>
+<td class="char">日</td>
+<td class="romaji">hi / nichi / kyou / ashita</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">13</td>
+<td class="jp">日本語で何て言うんだっけ？</td>
+<td>Nihongo de nan te iun dakke?</td>
+<td>How do you say it in Japanese again?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">64</td>
+<td class="char">拾</td>
+<td class="romaji">hiro</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">そこ拾うんかい。</td>
+<td>Soko hiroun kai.</td>
+<td>That's what you're reacting to?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">65</td>
+<td class="char">久</td>
+<td class="romaji">hisa</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">久しぶり。</td>
+<td>Hisashiburi.</td>
+<td>Long time no see.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">66</td>
+<td class="char">人</td>
+<td class="romaji">hito / jin</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">人が多い。</td>
+<td>Hito ga ooi.</td>
+<td>There are a lot of people.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">67</td>
+<td class="char">必</td>
+<td class="romaji">hitsu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">コーヒーが必要。</td>
+<td>Koohii ga hitsuyou.</td>
+<td>I need coffee.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">68</td>
+<td class="char">ほ</td>
+<td class="romaji">ho</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">6</td>
+<td class="jp">なるほど、そういうことか。</td>
+<td>Naruhodo, sou iu koto ka.</td>
+<td>Ah, I see, that's what it means.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">69</td>
+<td class="char">ホ</td>
+<td class="romaji">ho</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">アホやろ。</td>
+<td>Aho yaro.</td>
+<td>You're ridiculous.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">70</td>
+<td class="char">本</td>
+<td class="romaji">hon</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">日本語で何て言うんだっけ？</td>
+<td>Nihongo de nan te iun dakke?</td>
+<td>How do you say it in Japanese again?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">71</td>
+<td class="char">い</td>
+<td class="romaji">i</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">113</td>
+<td class="jp">どういう意味？</td>
+<td>Dou iu imi?</td>
+<td>What does that mean?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">72</td>
+<td class="char">意</td>
+<td class="romaji">i</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">5</td>
+<td class="jp">どういう意味？</td>
+<td>Dou iu imi?</td>
+<td>What does that mean?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">73</td>
+<td class="char">イ</td>
+<td class="romaji">i</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">4</td>
+<td class="jp">今言うタイミングちゃう。</td>
+<td>Ima yuu taimingu chau.</td>
+<td>This is not the time to say that.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">74</td>
+<td class="char">言</td>
+<td class="romaji">i / gen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">14</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">75</td>
+<td class="char">行</td>
+<td class="romaji">i / kou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">そろそろ行こう。</td>
+<td>Sorosoro ikou.</td>
+<td>Let's get going soon.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">76</td>
+<td class="char">一</td>
+<td class="romaji">ichi / hitotsu / ikkai</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">6</td>
+<td class="jp">一個ずつやろう。</td>
+<td>Ikko zutsu yarou.</td>
+<td>Let's do it one at a time.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">77</td>
+<td class="char">家</td>
+<td class="romaji">ie</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">家に帰りたい。</td>
+<td>Ie ni kaeritai.</td>
+<td>I want to go home.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">78</td>
+<td class="char">今</td>
+<td class="romaji">ima / kyou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">18</td>
+<td class="jp">今わかった。</td>
+<td>Ima wakatta.</td>
+<td>I get it now.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">79</td>
+<td class="char">因</td>
+<td class="romaji">in</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">原因はこれかも。</td>
+<td>Gen'in wa kore kamo.</td>
+<td>This might be the cause.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">80</td>
+<td class="char">忙</td>
+<td class="romaji">isoga</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">今日は忙しそう。</td>
+<td>Kyou wa isogashisou.</td>
+<td>Today looks busy.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">81</td>
+<td class="char">嫌</td>
+<td class="romaji">iya / kira</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">嫌な予感する。</td>
+<td>Iya na yokan suru.</td>
+<td>I have a bad feeling.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">82</td>
+<td class="char">じ</td>
+<td class="romaji">ji</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">3</td>
+<td class="jp">まじで？</td>
+<td>Maji de?</td>
+<td>Seriously?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">83</td>
+<td class="char">地</td>
+<td class="romaji">ji</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">地獄やん。</td>
+<td>Jigoku yan.</td>
+<td>This is hell.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">84</td>
+<td class="char">自</td>
+<td class="romaji">ji / shizen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">自然に言えるようになりたい。</td>
+<td>Shizen ni ieru you ni naritai.</td>
+<td>I want to be able to say it naturally.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">85</td>
+<td class="char">時</td>
+<td class="romaji">ji / toki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">何の時間やねん。</td>
+<td>Nan no jikan ya nen.</td>
+<td>What kind of segment is this?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">86</td>
+<td class="char">丈</td>
+<td class="romaji">jou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">大丈夫？</td>
+<td>Daijoubu?</td>
+<td>Are you okay?</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">87</td>
+<td class="char">準</td>
+<td class="romaji">jun</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">準備できた。</td>
+<td>Junbi dekita.</td>
+<td>I'm ready.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">88</td>
+<td class="char">か</td>
+<td class="romaji">ka</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">63</td>
+<td class="jp">これでいいかな？</td>
+<td>Kore de ii kana?</td>
+<td>I wonder if this is okay.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">89</td>
+<td class="char">加</td>
+<td class="romaji">ka</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ええ加減にせえ。</td>
+<td>Ee kagen ni see.</td>
+<td>Cut it out already.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">90</td>
+<td class="char">帰</td>
+<td class="romaji">kaeri</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">家に帰りたい。</td>
+<td>Ie ni kaeritai.</td>
+<td>I want to go home.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">91</td>
+<td class="char">回</td>
+<td class="romaji">kai / mawa</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">6</td>
+<td class="jp">今日は頭が回らない。</td>
+<td>Kyou wa atama ga mawaranai.</td>
+<td>My brain isn't working today.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">92</td>
+<td class="char">係</td>
+<td class="romaji">kakari / kankei</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">俺関係ないやん。</td>
+<td>Ore kankei nai yan.</td>
+<td>This has nothing to do with me.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">93</td>
+<td class="char">確</td>
+<td class="romaji">kaku / tashi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">あとで確認しよう。</td>
+<td>Ato de kakunin shiyou.</td>
+<td>I'll check later.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">94</td>
+<td class="char">感</td>
+<td class="romaji">kan</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">なんかいい感じ。</td>
+<td>Nanka ii kanji.</td>
+<td>It feels pretty good.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">95</td>
+<td class="char">簡</td>
+<td class="romaji">kan</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">意外と簡単。</td>
+<td>Igai to kantan.</td>
+<td>Surprisingly easy.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">96</td>
+<td class="char">関</td>
+<td class="romaji">kan</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">俺関係ないやん。</td>
+<td>Ore kankei nai yan.</td>
+<td>This has nothing to do with me.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">97</td>
+<td class="char">考</td>
+<td class="romaji">kanga</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">ちょっと考えよう。</td>
+<td>Chotto kangaeyou.</td>
+<td>Let me think for a second.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">98</td>
+<td class="char">顔</td>
+<td class="romaji">kao</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">なんちゅう顔してんねん。</td>
+<td>Nanchuu kao shiten nen.</td>
+<td>What kind of face is that?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">99</td>
+<td class="char">体</td>
+<td class="romaji">karada</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">体が重い。</td>
+<td>Karada ga omoi.</td>
+<td>My body feels heavy.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">100</td>
+<td class="char">方</td>
+<td class="romaji">kata</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">今の言い方、いいね。</td>
+<td>Ima no iikata, ii ne.</td>
+<td>That way of saying it was nice.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">101</td>
+<td class="char">片</td>
+<td class="romaji">kata</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">部屋を片付けよう。</td>
+<td>Heya o katazukeyou.</td>
+<td>Let's clean up the room.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">102</td>
+<td class="char">け</td>
+<td class="romaji">ke</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">16</td>
+<td class="jp">日本語で何て言うんだっけ？</td>
+<td>Nihongo de nan te iun dakke?</td>
+<td>How do you say it in Japanese again?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">103</td>
+<td class="char">消</td>
+<td class="romaji">ke</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">電気を消そう。</td>
+<td>Denki o kesou.</td>
+<td>Let's turn off the light.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">104</td>
+<td class="char">憩</td>
+<td class="romaji">kei</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">ちょっと休憩しよう。</td>
+<td>Chotto kyuukei shiyou.</td>
+<td>Let's take a quick break.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">105</td>
+<td class="char">剣</td>
+<td class="romaji">ken</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">顔だけ真剣やん。</td>
+<td>Kao dake shinken yan.</td>
+<td>Only your face looks serious.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">106</td>
+<td class="char">き</td>
+<td class="romaji">ki</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">13</td>
+<td class="jp">今の、聞き取れなかった。</td>
+<td>Ima no, kikitorenakatta.</td>
+<td>I couldn't catch that.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">107</td>
+<td class="char">気</td>
+<td class="romaji">ki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">7</td>
+<td class="jp">何か違う気がする。</td>
+<td>Nanka chigau ki ga suru.</td>
+<td>Something feels off.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">108</td>
+<td class="char">決</td>
+<td class="romaji">ki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">誰が決めたん？</td>
+<td>Dare ga kimetan?</td>
+<td>Who decided that?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">109</td>
+<td class="char">聞</td>
+<td class="romaji">ki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">ちょっと聞いてもいい？</td>
+<td>Chotto kiite mo ii?</td>
+<td>Can I ask something?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">110</td>
+<td class="char">こ</td>
+<td class="romaji">ko</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">54</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">111</td>
+<td class="char">個</td>
+<td class="romaji">ko</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">一個ずつやろう。</td>
+<td>Ikko zutsu yarou.</td>
+<td>Let's do it one at a time.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">112</td>
+<td class="char">込</td>
+<td class="romaji">ko</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">巻き込まれた。</td>
+<td>Makikomareta.</td>
+<td>I got dragged into this.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">113</td>
+<td class="char">コ</td>
+<td class="romaji">ko</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">コーヒーが必要。</td>
+<td>Koohii ga hitsuyou.</td>
+<td>I need coffee.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">114</td>
+<td class="char">声</td>
+<td class="romaji">koe</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">声でかいねん。</td>
+<td>Koe dekai nen.</td>
+<td>You're too loud.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">115</td>
+<td class="char">心</td>
+<td class="romaji">kokoro / shin</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">心臓止まるわ。</td>
+<td>Shinzou tomaru wa.</td>
+<td>My heart almost stopped.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">116</td>
+<td class="char">細</td>
+<td class="romaji">koma</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">細かいねん。</td>
+<td>Komakai nen.</td>
+<td>You're too picky/detail-focused.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">117</td>
+<td class="char">事</td>
+<td class="romaji">koto / ji</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">それは大事やろ。</td>
+<td>Sore wa daiji yaro.</td>
+<td>That part matters, though.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">118</td>
+<td class="char">怖</td>
+<td class="romaji">kowa</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">怖い怖い。</td>
+<td>Kowai kowai.</td>
+<td>Scary, scary.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">119</td>
+<td class="char">く</td>
+<td class="romaji">ku</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">18</td>
+<td class="jp">焦らなくていい。</td>
+<td>Aseranakute ii.</td>
+<td>No need to rush.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">120</td>
+<td class="char">来</td>
+<td class="romaji">ku / kita</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">急に来るな。</td>
+<td>Kyuu ni kuru na.</td>
+<td>Don't come at me suddenly.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">121</td>
+<td class="char">空</td>
+<td class="romaji">kuu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">空気おかしいやろ。</td>
+<td>Kuuki okashii yaro.</td>
+<td>The vibe is weird, right?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">122</td>
+<td class="char">悔</td>
+<td class="romaji">kuya</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">悔しいけど笑った。</td>
+<td>Kuyashii kedo waratta.</td>
+<td>I'm annoyed, but I laughed.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">123</td>
+<td class="char">怯</td>
+<td class="romaji">kyou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">それは卑怯やわ。</td>
+<td>Sore wa hikyou ya wa.</td>
+<td>That's unfair.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">124</td>
+<td class="char">急</td>
+<td class="romaji">kyuu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">急に来るな。</td>
+<td>Kyuu ni kuru na.</td>
+<td>Don't come at me suddenly.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">125</td>
+<td class="char">ー</td>
+<td class="romaji">long vowel</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">4</td>
+<td class="jp">このエラー、何だろう？</td>
+<td>Kono eraa, nan darou?</td>
+<td>I wonder what this error is.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">126</td>
+<td class="char">ま</td>
+<td class="romaji">ma</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">22</td>
+<td class="jp">まあ、なんとかなる。</td>
+<td>Maa, nantoka naru.</td>
+<td>Eh, I'll figure it out.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">127</td>
+<td class="char">待</td>
+<td class="romaji">ma</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ちょっと待って。</td>
+<td>Chotto matte.</td>
+<td>Wait a second.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">128</td>
+<td class="char">負</td>
+<td class="romaji">ma</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">これは負けたわ。</td>
+<td>Kore wa maketa wa.</td>
+<td>This one beat me.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">129</td>
+<td class="char">間</td>
+<td class="romaji">ma / aida</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">6</td>
+<td class="jp">間に合うかな？</td>
+<td>Maniau kana?</td>
+<td>I wonder if I'll make it in time.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">130</td>
+<td class="char">真</td>
+<td class="romaji">ma / shin</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">急に真面目になるな。</td>
+<td>Kyuu ni majime ni naru na.</td>
+<td>Don't suddenly get serious.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">131</td>
+<td class="char">巻</td>
+<td class="romaji">maki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">巻き込まれた。</td>
+<td>Makikomareta.</td>
+<td>I got dragged into this.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">132</td>
+<td class="char">迷</td>
+<td class="romaji">mayo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">迷ったかも。</td>
+<td>Mayotta kamo.</td>
+<td>I might be lost.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">133</td>
+<td class="char">め</td>
+<td class="romaji">me</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">12</td>
+<td class="jp">やっぱりやめとこう。</td>
+<td>Yappari yametokou.</td>
+<td>Actually, let's skip it.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">134</td>
+<td class="char">目</td>
+<td class="romaji">me</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">急に真面目になるな。</td>
+<td>Kyuu ni majime ni naru na.</td>
+<td>Don't suddenly get serious.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">135</td>
+<td class="char">メ</td>
+<td class="romaji">me</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">メモしとこう。</td>
+<td>Memo shitokou.</td>
+<td>Let me write that down.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">136</td>
+<td class="char">面</td>
+<td class="romaji">men</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">急に真面目になるな。</td>
+<td>Kyuu ni majime ni naru na.</td>
+<td>Don't suddenly get serious.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">137</td>
+<td class="char">み</td>
+<td class="romaji">mi</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">7</td>
+<td class="jp">これ食べてみたい。</td>
+<td>Kore tabete mitai.</td>
+<td>I want to try eating this.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">138</td>
+<td class="char">見</td>
+<td class="romaji">mi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">ログ見てみよう。</td>
+<td>Rogu mite miyou.</td>
+<td>Let's check the log.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">139</td>
+<td class="char">ミ</td>
+<td class="romaji">mi</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">今言うタイミングちゃう。</td>
+<td>Ima yuu taimingu chau.</td>
+<td>This is not the time to say that.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">140</td>
+<td class="char">味</td>
+<td class="romaji">mi / aji</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">5</td>
+<td class="jp">どういう意味？</td>
+<td>Dou iu imi?</td>
+<td>What does that mean?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">141</td>
+<td class="char">道</td>
+<td class="romaji">michi / dou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">道に迷った。</td>
+<td>Michi ni mayotta.</td>
+<td>I got lost.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">142</td>
+<td class="char">水</td>
+<td class="romaji">mizu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">水が飲みたい。</td>
+<td>Mizu ga nomitai.</td>
+<td>I want to drink water.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">143</td>
+<td class="char">も</td>
+<td class="romaji">mo</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">26</td>
+<td class="jp">そうかもしれない。</td>
+<td>Sou kamo shirenai.</td>
+<td>That might be true.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">144</td>
+<td class="char">モ</td>
+<td class="romaji">mo</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">メモしとこう。</td>
+<td>Memo shitokou.</td>
+<td>Let me write that down.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">145</td>
+<td class="char">物</td>
+<td class="romaji">mono</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">忘れ物ないかな。</td>
+<td>Wasuremono nai kana.</td>
+<td>I wonder if I forgot anything.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">146</td>
+<td class="char">無</td>
+<td class="romaji">mu / na</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">今日は無理かも。</td>
+<td>Kyou wa muri kamo.</td>
+<td>Today might be impossible.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">147</td>
+<td class="char">難</td>
+<td class="romaji">muzu / nan</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">思ったより難しい。</td>
+<td>Omotta yori muzukashii.</td>
+<td>Harder than I expected.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">148</td>
+<td class="char">妙</td>
+<td class="romaji">myou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ちょっと微妙。</td>
+<td>Chotto bimyou.</td>
+<td>It's kind of iffy.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">149</td>
+<td class="char">ん</td>
+<td class="romaji">n</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">71</td>
+<td class="jp">日本語で何て言うんだっけ？</td>
+<td>Nihongo de nan te iun dakke?</td>
+<td>How do you say it in Japanese again?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">150</td>
+<td class="char">ン</td>
+<td class="romaji">n</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">今言うタイミングちゃう。</td>
+<td>Ima yuu taimingu chau.</td>
+<td>This is not the time to say that.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">151</td>
+<td class="char">な</td>
+<td class="romaji">na</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">65</td>
+<td class="jp">これでいいかな？</td>
+<td>Kore de ii kana?</td>
+<td>I wonder if this is okay.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">152</td>
+<td class="char">長</td>
+<td class="romaji">naga</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">今日は長い日だ。</td>
+<td>Kyou wa nagai hi da.</td>
+<td>Today is a long day.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">153</td>
+<td class="char">中</td>
+<td class="romaji">naka / chuu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">今はこれに集中。</td>
+<td>Ima wa kore ni shuuchuu.</td>
+<td>Focus on this for now.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">154</td>
+<td class="char">何</td>
+<td class="romaji">nani / nan</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">18</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">155</td>
+<td class="char">直</td>
+<td class="romaji">nao</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">これで直るかな？</td>
+<td>Kore de naoru kana?</td>
+<td>I wonder if this will fix it.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">156</td>
+<td class="char">納</td>
+<td class="romaji">nattoku</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">納得いかん。</td>
+<td>Nattoku ikan.</td>
+<td>I don't accept that.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">157</td>
+<td class="char">ね</td>
+<td class="romaji">ne</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">17</td>
+<td class="jp">今の言い方、いいね。</td>
+<td>Ima no iikata, ii ne.</td>
+<td>That way of saying it was nice.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">158</td>
+<td class="char">寝</td>
+<td class="romaji">ne</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">今日は早く寝よう。</td>
+<td>Kyou wa hayaku neyou.</td>
+<td>I'll sleep early today.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">159</td>
+<td class="char">眠</td>
+<td class="romaji">nemu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">眠すぎる。</td>
+<td>Nemusugiru.</td>
+<td>I'm way too sleepy.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">160</td>
+<td class="char">に</td>
+<td class="romaji">ni</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">22</td>
+<td class="jp">今はこれに集中。</td>
+<td>Ima wa kore ni shuuchuu.</td>
+<td>Focus on this for now.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">161</td>
+<td class="char">認</td>
+<td class="romaji">nin</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">あとで確認しよう。</td>
+<td>Ato de kakunin shiyou.</td>
+<td>I'll check later.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">162</td>
+<td class="char">の</td>
+<td class="romaji">no</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">13</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">163</td>
+<td class="char">飲</td>
+<td class="romaji">no</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">水が飲みたい。</td>
+<td>Mizu ga nomitai.</td>
+<td>I want to drink water.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">164</td>
+<td class="char">喉</td>
+<td class="romaji">nodo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">喉かわいた。</td>
+<td>Nodo kawaita.</td>
+<td>I'm thirsty.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">165</td>
+<td class="char">お</td>
+<td class="romaji">o</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">15</td>
+<td class="jp">お腹すいた。</td>
+<td>Onaka suita.</td>
+<td>I'm hungry.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">166</td>
+<td class="char">を</td>
+<td class="romaji">o</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">7</td>
+<td class="jp">何を見せられてんねん。</td>
+<td>Nani o miserareten nen.</td>
+<td>What am I even watching?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">167</td>
+<td class="char">起</td>
+<td class="romaji">o</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">何が起きたん？</td>
+<td>Nani ga okitan?</td>
+<td>What happened?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">168</td>
+<td class="char">降</td>
+<td class="romaji">o</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ここで降りるの？</td>
+<td>Koko de oriru no?</td>
+<td>Do I get off here?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">169</td>
+<td class="char">オ</td>
+<td class="romaji">o</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">オチないんかい。</td>
+<td>Ochi nain kai.</td>
+<td>There's no punchline?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">170</td>
+<td class="char">覚</td>
+<td class="romaji">obo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">これは覚えたい。</td>
+<td>Kore wa oboetai.</td>
+<td>I want to remember this.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">171</td>
+<td class="char">美</td>
+<td class="romaji">oishi / bi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">これ美味しそう。</td>
+<td>Kore oishisou.</td>
+<td>This looks tasty.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">172</td>
+<td class="char">思</td>
+<td class="romaji">omo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">6</td>
+<td class="jp">思ったよりいい。</td>
+<td>Omotta yori ii.</td>
+<td>Better than I expected.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">173</td>
+<td class="char">重</td>
+<td class="romaji">omo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">体が重い。</td>
+<td>Karada ga omoi.</td>
+<td>My body feels heavy.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">174</td>
+<td class="char">多</td>
+<td class="romaji">oo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">人が多い。</td>
+<td>Hito ga ooi.</td>
+<td>There are a lot of people.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">175</td>
+<td class="char">俺</td>
+<td class="romaji">ore</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">なんで俺だけ？</td>
+<td>Nande ore dake?</td>
+<td>Why only me?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">176</td>
+<td class="char">終</td>
+<td class="romaji">owa</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">終わり方おかしい。</td>
+<td>Owarikata okashii.</td>
+<td>That ending was weird.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">177</td>
+<td class="char">ぱ</td>
+<td class="romaji">pa</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">5</td>
+<td class="jp">やっぱりね。</td>
+<td>Yappari ne.</td>
+<td>I knew it.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">178</td>
+<td class="char">ぽ</td>
+<td class="romaji">po</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">1</td>
+<td class="jp">あっちっぽい。</td>
+<td>Acchi ppoi.</td>
+<td>It seems like it's that way.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">179</td>
+<td class="char">ら</td>
+<td class="romaji">ra</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">15</td>
+<td class="jp">今日は頭が回らない。</td>
+<td>Kyou wa atama ga mawaranai.</td>
+<td>My brain isn't working today.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">180</td>
+<td class="char">ラ</td>
+<td class="romaji">ra</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">3</td>
+<td class="jp">このエラー、何だろう？</td>
+<td>Kono eraa, nan darou?</td>
+<td>I wonder what this error is.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">181</td>
+<td class="char">れ</td>
+<td class="romaji">re</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">56</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">182</td>
+<td class="char">り</td>
+<td class="romaji">ri</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">19</td>
+<td class="jp">ゆっくりでいい。</td>
+<td>Yukkuri de ii.</td>
+<td>Slow is fine.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">183</td>
+<td class="char">理</td>
+<td class="romaji">ri</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">5</td>
+<td class="jp">今日は無理かも。</td>
+<td>Kyou wa muri kamo.</td>
+<td>Today might be impossible.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">184</td>
+<td class="char">リ</td>
+<td class="romaji">ri</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">ギリギリ耐えた。</td>
+<td>Girigiri taeta.</td>
+<td>I barely held it in.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">185</td>
+<td class="char">ろ</td>
+<td class="romaji">ro</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">26</td>
+<td class="jp">これ、何だろう？</td>
+<td>Kore, nan darou?</td>
+<td>Hmm, I wonder what this is.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">186</td>
+<td class="char">ロ</td>
+<td class="romaji">ro</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">ログ見てみよう。</td>
+<td>Rogu mite miyou.</td>
+<td>Let's check the log.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">187</td>
+<td class="char">る</td>
+<td class="romaji">ru</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">37</td>
+<td class="jp">これで合ってる？</td>
+<td>Kore de atteru?</td>
+<td>Is this right?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">188</td>
+<td class="char">さ</td>
+<td class="romaji">sa</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">3</td>
+<td class="jp">さすがやな。</td>
+<td>Sasuga ya na.</td>
+<td>That's impressive.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">189</td>
+<td class="char">才</td>
+<td class="romaji">sai</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">天才か。</td>
+<td>Tensai ka.</td>
+<td>Are you a genius?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">190</td>
+<td class="char">最</td>
+<td class="romaji">sai</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">最高。</td>
+<td>Saikou.</td>
+<td>Awesome / the best.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">191</td>
+<td class="char">先</td>
+<td class="romaji">saki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">これを先に終わらせよう。</td>
+<td>Kore o saki ni owaraseyou.</td>
+<td>Let me finish this first.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">192</td>
+<td class="char">せ</td>
+<td class="romaji">se</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">3</td>
+<td class="jp">ええ加減にせえ。</td>
+<td>Ee kagen ni see.</td>
+<td>Cut it out already.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">193</td>
+<td class="char">セ</td>
+<td class="romaji">se</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">1</td>
+<td class="jp">セーフやろ？</td>
+<td>Seefu yaro?</td>
+<td>I'm safe, right?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">194</td>
+<td class="char">洗</td>
+<td class="romaji">sen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">洗濯しなきゃ。</td>
+<td>Sentaku shinakya.</td>
+<td>I have to do laundry.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">195</td>
+<td class="char">説</td>
+<td class="romaji">setsu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">説明して。</td>
+<td>Setsumei shite.</td>
+<td>Explain it.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">196</td>
+<td class="char">写</td>
+<td class="romaji">sha</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">写真を撮りたい。</td>
+<td>Shashin o toritai.</td>
+<td>I want to take a picture.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">197</td>
+<td class="char">し</td>
+<td class="romaji">shi</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">41</td>
+<td class="jp">忘れないようにしよう。</td>
+<td>Wasurenai you ni shiyou.</td>
+<td>Let me make sure I don't forget.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">198</td>
+<td class="char">知</td>
+<td class="romaji">shi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">知らんけど。</td>
+<td>Shiran kedo.</td>
+<td>I don't know though.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">199</td>
+<td class="char">静</td>
+<td class="romaji">shizu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">静かでいい。</td>
+<td>Shizuka de ii.</td>
+<td>It's nice and quiet.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">200</td>
+<td class="char">瞬</td>
+<td class="romaji">shun</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">見た瞬間アウト。</td>
+<td>Mita shunkan auto.</td>
+<td>The moment I saw it, I was out.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">201</td>
+<td class="char">集</td>
+<td class="romaji">shuu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">今はこれに集中。</td>
+<td>Ima wa kore ni shuuchuu.</td>
+<td>Focus on this for now.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">202</td>
+<td class="char">っ</td>
+<td class="romaji">small tsu</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">70</td>
+<td class="jp">日本語で何て言うんだっけ？</td>
+<td>Nihongo de nan te iun dakke?</td>
+<td>How do you say it in Japanese again?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">203</td>
+<td class="char">そ</td>
+<td class="romaji">so</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">28</td>
+<td class="jp">なるほど、そういうことか。</td>
+<td>Naruhodo, sou iu koto ka.</td>
+<td>Ah, I see, that's what it means.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">204</td>
+<td class="char">則</td>
+<td class="romaji">soku</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">反則やん。</td>
+<td>Hansoku yan.</td>
+<td>That's against the rules.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">205</td>
+<td class="char">す</td>
+<td class="romaji">su</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">16</td>
+<td class="jp">何か違う気がする。</td>
+<td>Nanka chigau ki ga suru.</td>
+<td>Something feels off.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">206</td>
+<td class="char">少</td>
+<td class="romaji">suko / shou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">もう少しだけ。</td>
+<td>Mou sukoshi dake.</td>
+<td>Just a little more.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">207</td>
+<td class="char">た</td>
+<td class="romaji">ta</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">61</td>
+<td class="jp">たぶんこれかな。</td>
+<td>Tabun kore kana.</td>
+<td>Maybe this one.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">208</td>
+<td class="char">耐</td>
+<td class="romaji">ta</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">ギリギリ耐えた。</td>
+<td>Girigiri taeta.</td>
+<td>I barely held it in.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">209</td>
+<td class="char">食</td>
+<td class="romaji">ta</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">これ食べてみたい。</td>
+<td>Kore tabete mitai.</td>
+<td>I want to try eating this.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">210</td>
+<td class="char">タ</td>
+<td class="romaji">ta</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">2</td>
+<td class="jp">今言うタイミングちゃう。</td>
+<td>Ima yuu taimingu chau.</td>
+<td>This is not the time to say that.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">211</td>
+<td class="char">対</td>
+<td class="romaji">tai</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">絶対そうやと思った。</td>
+<td>Zettai sou ya to omotta.</td>
+<td>I totally knew it.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">212</td>
+<td class="char">高</td>
+<td class="romaji">taka</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">高っ。</td>
+<td>Takaa.</td>
+<td>Whoa, expensive.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">213</td>
+<td class="char">濯</td>
+<td class="romaji">taku</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">洗濯しなきゃ。</td>
+<td>Sentaku shinakya.</td>
+<td>I have to do laundry.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">214</td>
+<td class="char">試</td>
+<td class="romaji">tame</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">一回試してみよう。</td>
+<td>Ikkai tameshite miyou.</td>
+<td>Let's try it once.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">215</td>
+<td class="char">単</td>
+<td class="romaji">tan</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">意外と簡単。</td>
+<td>Igai to kantan.</td>
+<td>Surprisingly easy.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">216</td>
+<td class="char">楽</td>
+<td class="romaji">tano / raku</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">楽しい。</td>
+<td>Tanoshii.</td>
+<td>This is fun.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">217</td>
+<td class="char">助</td>
+<td class="romaji">tasuke</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">これは助かる。</td>
+<td>Kore wa tasukaru.</td>
+<td>This helps a lot.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">218</td>
+<td class="char">て</td>
+<td class="romaji">te</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">32</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">219</td>
+<td class="char">適</td>
+<td class="romaji">teki</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">適当すぎるやろ。</td>
+<td>Tekitou sugiru yaro.</td>
+<td>That's way too half-baked.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">220</td>
+<td class="char">天</td>
+<td class="romaji">ten</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">天才か。</td>
+<td>Tensai ka.</td>
+<td>Are you a genius?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">221</td>
+<td class="char">と</td>
+<td class="romaji">to</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">32</td>
+<td class="jp">なるほど、そういうことか。</td>
+<td>Naruhodo, sou iu koto ka.</td>
+<td>Ah, I see, that's what it means.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">222</td>
+<td class="char">取</td>
+<td class="romaji">to</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">今の、聞き取れなかった。</td>
+<td>Ima no, kikitorenakatta.</td>
+<td>I couldn't catch that.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">223</td>
+<td class="char">撮</td>
+<td class="romaji">to</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">写真を撮りたい。</td>
+<td>Shashin o toritai.</td>
+<td>I want to take a picture.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">224</td>
+<td class="char">止</td>
+<td class="romaji">to</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">心臓止まるわ。</td>
+<td>Shinzou tomaru wa.</td>
+<td>My heart almost stopped.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">225</td>
+<td class="char">ト</td>
+<td class="romaji">to</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">4</td>
+<td class="jp">見た瞬間アウト。</td>
+<td>Mita shunkan auto.</td>
+<td>The moment I saw it, I was out.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">226</td>
+<td class="char">所</td>
+<td class="romaji">tokoro / sho</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">この場所、いいね。</td>
+<td>Kono basho, ii ne.</td>
+<td>This place is nice.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">227</td>
+<td class="char">得</td>
+<td class="romaji">toku</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">納得いかん。</td>
+<td>Nattoku ikan.</td>
+<td>I don't accept that.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">228</td>
+<td class="char">つ</td>
+<td class="romaji">tsu</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">7</td>
+<td class="jp">一個ずつやろう。</td>
+<td>Ikko zutsu yarou.</td>
+<td>Let's do it one at a time.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">229</td>
+<td class="char">付</td>
+<td class="romaji">tsu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">部屋を片付けよう。</td>
+<td>Heya o katazukeyou.</td>
+<td>Let's clean up the room.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">230</td>
+<td class="char">尽</td>
+<td class="romaji">tsu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">理不尽やわ。</td>
+<td>Rifujin ya wa.</td>
+<td>That's unreasonable.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">231</td>
+<td class="char">次</td>
+<td class="romaji">tsugi</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">次はどこに行く？</td>
+<td>Tsugi wa doko ni iku?</td>
+<td>Where do we go next?</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">232</td>
+<td class="char">使</td>
+<td class="romaji">tsuka</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">これ、どう使うの？</td>
+<td>Kore, dou tsukau no?</td>
+<td>How do I use this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">233</td>
+<td class="char">疲</td>
+<td class="romaji">tsuka</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">すごく疲れた。</td>
+<td>Sugoku tsukareta.</td>
+<td>I'm really tired.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">234</td>
+<td class="char">う</td>
+<td class="romaji">u</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">96</td>
+<td class="jp">これは何て言うの？</td>
+<td>Kore wa nan te iu no?</td>
+<td>How do you say this?</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Katakana">
+<td class="num">235</td>
+<td class="char">ウ</td>
+<td class="romaji">u</td>
+<td><span class="tag katakana">Katakana</span></td>
+<td class="freq">4</td>
+<td class="jp">見た瞬間アウト。</td>
+<td>Mita shunkan auto.</td>
+<td>The moment I saw it, I was out.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">236</td>
+<td class="char">動</td>
+<td class="romaji">ugo / dou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">やっと動いた。</td>
+<td>Yatto ugoita.</td>
+<td>It finally worked.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">237</td>
+<td class="char">嬉</td>
+<td class="romaji">ure</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">嬉しい。</td>
+<td>Ureshii.</td>
+<td>I'm happy.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">238</td>
+<td class="char">わ</td>
+<td class="romaji">wa</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">21</td>
+<td class="jp">今わかった。</td>
+<td>Ima wakatta.</td>
+<td>I get it now.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">239</td>
+<td class="char">分</td>
+<td class="romaji">wa / fun / bun</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">意味が分からない。</td>
+<td>Imi ga wakaranai.</td>
+<td>I don't understand what it means.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">240</td>
+<td class="char">罠</td>
+<td class="romaji">wana</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">これ罠やろ。</td>
+<td>Kore wana yaro.</td>
+<td>This is a trap, right?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">241</td>
+<td class="char">笑</td>
+<td class="romaji">wara</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">6</td>
+<td class="jp">笑ってもうた。</td>
+<td>Waratte mouta.</td>
+<td>I ended up laughing.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">242</td>
+<td class="char">忘</td>
+<td class="romaji">wasu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">忘れないようにしよう。</td>
+<td>Wasurenai you ni shiyou.</td>
+<td>Let me make sure I don't forget.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">243</td>
+<td class="char">ゃ</td>
+<td class="romaji">ya</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">13</td>
+<td class="jp">めっちゃうまい。</td>
+<td>Meccha umai.</td>
+<td>This is super good.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">244</td>
+<td class="char">や</td>
+<td class="romaji">ya</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">54</td>
+<td class="jp">一個ずつやろう。</td>
+<td>Ikko zutsu yarou.</td>
+<td>Let's do it one at a time.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">245</td>
+<td class="char">屋</td>
+<td class="romaji">ya</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">部屋を片付けよう。</td>
+<td>Heya o katazukeyou.</td>
+<td>Let's clean up the room.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">246</td>
+<td class="char">安</td>
+<td class="romaji">yasu / an</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">3</td>
+<td class="jp">安っ。</td>
+<td>Yasuu.</td>
+<td>Whoa, cheap.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">247</td>
+<td class="char">休</td>
+<td class="romaji">yasu / kyuu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">4</td>
+<td class="jp">ちょっと休憩しよう。</td>
+<td>Chotto kyuukei shiyou.</td>
+<td>Let's take a quick break.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">248</td>
+<td class="char">ょ</td>
+<td class="romaji">yo</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">15</td>
+<td class="jp">ちょっと考えよう。</td>
+<td>Chotto kangaeyou.</td>
+<td>Let me think for a second.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">249</td>
+<td class="char">よ</td>
+<td class="romaji">yo</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">26</td>
+<td class="jp">ちょっと考えよう。</td>
+<td>Chotto kangaeyou.</td>
+<td>Let me think for a second.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">250</td>
+<td class="char">予</td>
+<td class="romaji">yo</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">嫌な予感する。</td>
+<td>Iya na yokan suru.</td>
+<td>I have a bad feeling.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">251</td>
+<td class="char">要</td>
+<td class="romaji">you</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">コーヒーが必要。</td>
+<td>Koohii ga hitsuyou.</td>
+<td>I need coffee.</td>
+<td>Part 1</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">252</td>
+<td class="char">弱</td>
+<td class="romaji">yowa</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">オチ弱いな。</td>
+<td>Ochi yowai na.</td>
+<td>That punchline is weak.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">253</td>
+<td class="char">ゅ</td>
+<td class="romaji">yu</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">1</td>
+<td class="jp">なんちゅう顔してんねん。</td>
+<td>Nanchuu kao shiten nen.</td>
+<td>What kind of face is that?</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">254</td>
+<td class="char">ゆ</td>
+<td class="romaji">yu</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">3</td>
+<td class="jp">ゆっくりでいい。</td>
+<td>Yukkuri de ii.</td>
+<td>Slow is fine.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">255</td>
+<td class="char">雑</td>
+<td class="romaji">zatsu</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">雑やな。</td>
+<td>Zatsu ya na.</td>
+<td>That's sloppy.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">256</td>
+<td class="char">全</td>
+<td class="romaji">zen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">全然あかん。</td>
+<td>Zenzen akan.</td>
+<td>Totally not good.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">257</td>
+<td class="char">然</td>
+<td class="romaji">zen</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">自然に言えるようになりたい。</td>
+<td>Shizen ni ieru you ni naritai.</td>
+<td>I want to be able to say it naturally.</td>
+<td>Part 2</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">258</td>
+<td class="char">絶</td>
+<td class="romaji">zet</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">2</td>
+<td class="jp">絶対そうやと思った。</td>
+<td>Zettai sou ya to omotta.</td>
+<td>I totally knew it.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Kanji">
+<td class="num">259</td>
+<td class="char">臓</td>
+<td class="romaji">zou</td>
+<td><span class="tag kanji">Kanji</span></td>
+<td class="freq">1</td>
+<td class="jp">心臓止まるわ。</td>
+<td>Shinzou tomaru wa.</td>
+<td>My heart almost stopped.</td>
+<td>Part 3</td>
+</tr>
+<tr data-type="Hiragana">
+<td class="num">260</td>
+<td class="char">ず</td>
+<td class="romaji">zu</td>
+<td><span class="tag hiragana">Hiragana</span></td>
+<td class="freq">6</td>
+<td class="jp">まずはこれから。</td>
+<td>Mazu wa kore kara.</td>
+<td>First, let's start with this.</td>
+<td>Part 2</td>
+</tr>
+</tbody>
+</table>
+</section>
+</main>
+<footer>Built as a personalized kana + kanji reading aid from Think in Japanese Parts 1–3.</footer>
+<script>
+const searchBox = document.getElementById('searchBox');
+const typeFilter = document.getElementById('typeFilter');
+const rows = Array.from(document.querySelectorAll('#charTable tbody tr'));
+
+function applyFilters() {
+  const q = searchBox.value.toLowerCase().trim();
+  const t = typeFilter.value;
+  rows.forEach(row => {
+    const matchesText = !q || row.innerText.toLowerCase().includes(q);
+    const matchesType = t === 'All' || row.dataset.type === t;
+    row.style.display = matchesText && matchesType ? '' : 'none';
+  });
+}
+
+searchBox.addEventListener('input', applyFilters);
+typeFilter.addEventListener('change', applyFilters);
+</script>
+<footer class="pixel-footer"><span class="pixel-badge">Think in Japanese · 80s Pixel Pastel Theme</span></footer>
+</body>
+</html>
