@@ -83,8 +83,6 @@ Contributions are welcome, especially:
 
 ## License
 
-Recommended:
-
 - Code: MIT License
 - Learning Content: CC BY-NC 4.0
 
