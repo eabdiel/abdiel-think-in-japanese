@@ -35,6 +35,38 @@ h1:after{content:"";display:block;width:min(360px,62vw);height:2px;margin:4px au
 @media(max-width:1180px){.mainlayout{grid-template-columns:1fr}.controlpanel{position:static;display:grid;grid-template-columns:minmax(220px,320px) 1fr;gap:10px;align-items:start}.controlpanel .prompt{grid-row:span 3;margin-bottom:0}.controls{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:0}.stats{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}.answer,.message{margin:0}}
 @media(max-width:1040px){.boardwrap{grid-template-columns:1fr}.side{position:static}.row,.row.y,.row.w{grid-template-columns:72px repeat(5,1fr)}.label{font-size:14px;min-height:88px}.label small{font-size:11px}.tile{min-height:88px}.word{font-size:10px}.kana{font-size:30px}.pic{font-size:30px}}
 @media(max-width:720px){.app{padding:6px 10px 22px}.titlebar{padding:4px 6px 8px}h1{font-size:34px}.sub{font-size:13px}.controlpanel{grid-template-columns:1fr}.controls{grid-template-columns:1fr 1fr}.prompt .romaji{font-size:48px}.stats{grid-template-columns:1fr 1fr}.row,.row.y,.row.w,.board.hide-labels .row,.board.hide-labels .row.y,.board.hide-labels .row.w{grid-template-columns:repeat(5,minmax(54px,1fr))}.label{display:none}.board{padding:8px}.kana{font-size:26px}.pic{font-size:26px}}
+
+
+/* === Final fix: move hero title card below language selector and remove Sensei card === */
+.pixel-site-header .pixel-brand,
+.pixel-site-header .pixel-teacher {
+  display: none !important;
+}
+
+.moved-hero-title {
+  max-width: 760px;
+  margin: 22px auto 22px;
+  padding: 0 16px;
+}
+
+.moved-hero-title .pixel-brand {
+  display: block !important;
+  padding: 18px 24px;
+  text-align: center;
+  border: 3px solid rgba(171, 142, 226, 0.85);
+  border-radius: 22px;
+  background: rgba(255, 250, 255, 0.94);
+  box-shadow: 0 8px 0 rgba(101, 83, 168, 0.16), 0 20px 45px rgba(63, 54, 126, 0.13);
+}
+
+.moved-hero-title .pixel-brand h1 {
+  margin: 6px 0 8px;
+}
+
+.moved-hero-title .pixel-brand p {
+  margin: 0;
+}
+
 </style>
 <link href="pixel-theme-v2.css" rel="stylesheet"/>
 </head>
@@ -42,7 +74,7 @@ h1:after{content:"";display:block;width:min(360px,62vw);height:2px;margin:4px au
 <header class="pixel-site-header">
 <div class="pixel-hero-inner">
 <div class="pixel-brand">
-<span class="pixel-badge">Pixel Pastel Edition v2</span>
+<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
 <h1>Think in Japanese</h1>
 <p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
 </div>
@@ -50,6 +82,16 @@ h1:after{content:"";display:block;width:min(360px,62vw);height:2px;margin:4px au
 </div>
 </header>
 <nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index.html">Home</a><a data-file="kana_dojo.html" href="kana_dojo.html">Kana Dojo</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a></div></nav><div aria-label="Language selector" class="lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="kana_dojo_es.html">Español</a></div>
+<section class="moved-hero-title">
+<div class="pixel-brand">
+<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+<h1>Think in Japanese</h1>
+<p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
+</div>
+
+</section>
+
+
 
 <div class="pixel-page-shell">
 <section class="pixel-welcome">
@@ -96,7 +138,7 @@ const KANA = [
  {row:'H Row', cls:'h', items:[['ha','は','ハ','🎩','Hat'],['hi','ひ','ヒ','🦛','Hippo'],['fu','ふ','フ','🍱','Food'],['he','へ','ヘ','🚁','Helicopter'],['ho','ほ','ホ','🐴','Horse']]},
  {row:'M Row', cls:'m', items:[['ma','ま','マ','🗺️','Map'],['mi','み','ミ','🥛','Milk'],['mu','む','ム','🌙','Moon'],['me','め','メ','🍈','Melon'],['mo','も','モ','🐒','Monkey']]},
  {row:'Y Row', cls:'y', items:[['ya','や','ヤ','🐂','Yak'],null,['yu','ゆ','ユ','🦄','Unicorn'],null,['yo','よ','ヨ','🪀','Yo-yo']]},
- {row:'R Row', cls:'r', items:[['ra','ら','ラ','📻','Radio'],['ri','り','リ','💍','Ring'],['ru','る','ル','📏','Ruler'],['re','れ','レ','🤖','Robot'],['ro','ろ','ロ','🚀','Rocket']]},
+ {row:'R Row', cls:'r', items:[['ra','ら','ラ','📻','Radio'],['ri','り','リ','💍','Ring'],['ru','る','ル','📏','Ruler'],['re','れ','レ','🧾','Receipt'],['ro','ろ','ロ','🚀','Rocket']]},
  {row:'W & N', cls:'w', items:[['wa','わ','ワ','🌊','Wave'],null,['wo','を','ヲ','🐺','Wolf'],null,['n','ん','ン','🥷','Ninja']]}
 ];
 const DAKUTEN_ROWS = [
@@ -239,5 +281,29 @@ document.getElementById('katakanaMode').onclick=()=>{mode='k';document.getElemen
 WORDS=makeWordPool(); loadProgress(); syncButtons(); buildBoard(); updateStats(); updateMissed(); updateDailyStatus(); nextWord();
 </script>
 <footer class="pixel-footer"><span class="pixel-badge">Think in Japanese · 80s Pixel Pastel Theme</span></footer>
+<script>
+(function(){
+  function applyTheme(theme){
+    theme = (theme === 'garden' || theme === 'night') ? theme : 'pixel';
+    document.body.classList.remove('theme-pixel','theme-garden','theme-night');
+    document.body.classList.add('theme-' + theme);
+    try{ localStorage.setItem('tij-theme', theme); }catch(e){}
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      var on = btn.getAttribute('data-theme') === theme;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function initTheme(){
+    var saved = 'pixel';
+    try{ saved = localStorage.getItem('tij-theme') || 'pixel'; }catch(e){}
+    applyTheme(saved);
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ applyTheme(btn.getAttribute('data-theme')); });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
+})();
+</script>
 </body>
 </html>

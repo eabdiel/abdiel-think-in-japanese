@@ -242,14 +242,129 @@
       .day-card { box-shadow: none; break-inside: avoid; min-height: 210px; }
       .dashboard, .legend, .progress-wrap { display: none; }
     }
-  </style>
+
+
+/* === Header restore fix: keep original hero styling, move only calendar controls lower === */
+.pixel-site-header .pixel-brand,
+.pixel-site-header .pixel-teacher {
+  display: initial !important;
+}
+
+.pixel-site-header .pixel-brand {
+  display: block !important;
+}
+
+.pixel-site-header .pixel-teacher {
+  display: flex !important;
+}
+
+.pixel-title-strip {
+  display: none !important;
+}
+
+header:not(.pixel-site-header) {
+  position: static !important;
+  top: auto !important;
+  z-index: 1 !important;
+  margin: 34px auto 26px;
+  max-width: 1320px;
+}
+
+main {
+  max-width: 1320px !important;
+  padding-top: 10px !important;
+}
+
+.calendar {
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 22px !important;
+  overflow-x: visible !important;
+  padding: 10px 8px 26px !important;
+}
+
+.day-card {
+  min-width: 0 !important;
+  min-height: 360px;
+  padding: 16px !important;
+  gap: 11px !important;
+}
+
+.day-card li {
+  line-height: 1.5;
+  margin-bottom: 8px !important;
+}
+
+.day-card .actions {
+  gap: 10px !important;
+}
+
+.day-card .actions button {
+  line-height: 1.15;
+  white-space: normal;
+}
+
+.month-title {
+  margin-top: 28px !important;
+}
+
+@media (max-width: 1180px) {
+  .calendar {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  header:not(.pixel-site-header) .topbar {
+    grid-template-columns: 1fr;
+  }
+  header:not(.pixel-site-header) .controls {
+    justify-content: flex-start;
+    max-width: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .calendar {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
+/* === Final fix: move hero title card below language selector and remove Sensei card === */
+.pixel-site-header .pixel-brand,
+.pixel-site-header .pixel-teacher {
+  display: none !important;
+}
+
+.moved-hero-title {
+  max-width: 760px;
+  margin: 22px auto 22px;
+  padding: 0 16px;
+}
+
+.moved-hero-title .pixel-brand {
+  display: block !important;
+  padding: 18px 24px;
+  text-align: center;
+  border: 3px solid rgba(171, 142, 226, 0.85);
+  border-radius: 22px;
+  background: rgba(255, 250, 255, 0.94);
+  box-shadow: 0 8px 0 rgba(101, 83, 168, 0.16), 0 20px 45px rgba(63, 54, 126, 0.13);
+}
+
+.moved-hero-title .pixel-brand h1 {
+  margin: 6px 0 8px;
+}
+
+.moved-hero-title .pixel-brand p {
+  margin: 0;
+}
+
+</style>
 <link href="pixel-theme-v2.css" rel="stylesheet"/>
 </head>
 <body>
 <header class="pixel-site-header">
 <div class="pixel-hero-inner">
 <div class="pixel-brand">
-<span class="pixel-badge">Edición Pixel Pastel v2</span>
+<div class="theme-switcher title-theme-switcher" aria-label="Selector de tema"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Jardín Crema</button><button class="theme-btn" type="button" data-theme="night">Tokio Noche</button></div>
 <h1>Piensa en Japonés</h1>
 <p>Aprende de forma natural. Habla con confianza. 一緒に日本語を学ぼう!</p>
 </div>
@@ -257,6 +372,16 @@
 </div>
 </header>
 <nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index_es.html">Inicio</a><a data-file="kana_dojo.html" href="kana_dojo_es.html">Dojo Kana</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker_es.html">Rastreador 90 Días</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted_es.html">Frases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2_es.html">Frases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3_es.html">Estilo Gaki</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4_es.html">Ayuda de Lectura</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck_es.html">Mazo de Frecuencia</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan_es.html">Plan de 90 Días</a></div></nav><div aria-label="Selector de idioma" class="lang-toggle"><a class="lang-pill" href="japanese_90_day_calendar_tracker.html">English</a><span class="lang-pill active">Español</span></div>
+<section class="moved-hero-title">
+<div class="pixel-brand">
+<div class="theme-switcher title-theme-switcher" aria-label="Selector de tema"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Jardín Crema</button><button class="theme-btn" type="button" data-theme="night">Tokio Noche</button></div>
+<h1>Piensa en Japonés</h1>
+<p>Aprende de forma natural. Habla con confianza. 一緒に日本語を学ぼう!</p>
+</div>
+
+</section>
+
+
 
 <div class="pixel-page-shell">
 <section class="pixel-welcome">
@@ -577,5 +702,29 @@
 })();
 </script>
 <footer class="pixel-footer"><span class="pixel-badge">Piensa en Japonés · Tema Pixel Pastel de los 80</span></footer>
+<script>
+(function(){
+  function applyTheme(theme){
+    theme = (theme === 'garden' || theme === 'night') ? theme : 'pixel';
+    document.body.classList.remove('theme-pixel','theme-garden','theme-night');
+    document.body.classList.add('theme-' + theme);
+    try{ localStorage.setItem('tij-theme', theme); }catch(e){}
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      var on = btn.getAttribute('data-theme') === theme;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function initTheme(){
+    var saved = 'pixel';
+    try{ saved = localStorage.getItem('tij-theme') || 'pixel'; }catch(e){}
+    applyTheme(saved);
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ applyTheme(btn.getAttribute('data-theme')); });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
+})();
+</script>
 </body>
 </html>

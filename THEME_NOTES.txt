@@ -1,0 +1,1 @@
+Theme selector added: Pixel Pastel default, Garden Cream professional pastel green/cream, and Tokyo Night dark anime-inspired mode. Preference is saved in browser localStorage and shared across pages. Reference concept art saved under assets/theme_concepts_green_tokyo.png.
