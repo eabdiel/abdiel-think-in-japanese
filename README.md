@@ -44,7 +44,7 @@ All progress, settings, and game history are stored locally in your browser when
 
 If you prefer using the hosted version instead of running the site locally, the latest public release can be accessed at:
 
-https://progretech.com/abdiel-think-in-japanese/
+https://thinkinjapanese.com
 
 The online version contains the same core learning tools while allowing access from any device with a browser.
 
@@ -68,7 +68,7 @@ in your browser.
 
 Visit:
 
-https://progretech.com/abdiel-think-in-japanese/
+https://thinkinjapanese.com
 
 ## Contributing
 
