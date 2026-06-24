@@ -718,3 +718,308 @@ body.theme-night .pixel-site-header{
     max-height:260px!important;
   }
 }
+
+/* === Tokyo Night readability patch ===
+   Fixes washed-out legacy title/note cards and low-contrast subtitle text
+   on phrase/deck pages when the Tokyo Night theme is active. */
+body.theme-night > header:not(.pixel-site-header),
+body.theme-night .moved-hero-title .pixel-brand,
+body.theme-night .note,
+body.theme-night .table-wrap,
+body.theme-night .mini-grid .card,
+body.theme-night .pixel-welcome .pixel-card,
+body.theme-night .pixel-flag-pair,
+body.theme-night .quest-card {
+  background: linear-gradient(180deg, rgba(13,19,40,.96), rgba(8,12,28,.96)) !important;
+  color: #f4f7ff !important;
+  border-color: #5f6f9a !important;
+  box-shadow: 0 18px 42px rgba(0,0,0,.48), 0 0 26px rgba(255,112,183,.10) !important;
+}
+
+body.theme-night > header:not(.pixel-site-header) h1,
+body.theme-night .moved-hero-title .pixel-brand h1 {
+  color: #ff7cc4 !important;
+  text-shadow: 0 0 14px rgba(255,112,183,.42) !important;
+}
+
+body.theme-night > header:not(.pixel-site-header) .subtitle,
+body.theme-night .moved-hero-title .pixel-brand p,
+body.theme-night .pixel-welcome .pixel-card,
+body.theme-night .pixel-welcome .pixel-card strong,
+body.theme-night .note,
+body.theme-night .note p,
+body.theme-night .mini-grid .card p,
+body.theme-night .card p,
+body.theme-night .panel p,
+body.theme-night .section p,
+body.theme-night .box p,
+body.theme-night .lead,
+body.theme-night .subtitle,
+body.theme-night .meta {
+  color: #f1f5ff !important;
+  opacity: 1 !important;
+}
+
+body.theme-night .pixel-mini-title {
+  color: #7ee7ff !important;
+  text-shadow: 0 0 10px rgba(40,215,255,.35) !important;
+}
+
+body.theme-night .note {
+  background: linear-gradient(180deg, rgba(31,24,54,.96), rgba(19,18,43,.96)) !important;
+  border-color: #b46cff !important;
+}
+
+body.theme-night .note strong {
+  color: #ffd1ea !important;
+}
+
+body.theme-night .mini-grid .card h2,
+body.theme-night .card h2,
+body.theme-night .panel h2 {
+  color: #ff91cf !important;
+}
+
+body.theme-night .pixel-flag-pair img,
+body.theme-night .flag-art {
+  background: #ffffff !important;
+  border-color: #b9c7ff !important;
+}
+
+body.theme-night .table-wrap {
+  overflow-x: auto !important;
+}
+
+/* === Tokyo Night calendar readability patch ===
+   Keeps the 90-day tracker readable when global night-theme text colors are active. */
+body.theme-night .dashboard .metric,
+body.theme-night .legend .pill,
+body.theme-night .view-controls .pill,
+body.theme-night .notes-panel,
+body.theme-night .day-card {
+  background: linear-gradient(180deg, rgba(17,25,54,.97), rgba(9,14,32,.97)) !important;
+  color: #f4f7ff !important;
+  border-color: #56658a !important;
+  box-shadow: 0 14px 34px rgba(0,0,0,.42), 0 0 18px rgba(255,112,183,.08) !important;
+}
+
+body.theme-night .day-card.complete {
+  background: linear-gradient(180deg, rgba(22,58,50,.98), rgba(10,24,34,.98)) !important;
+  border-color: #4fbda9 !important;
+}
+
+body.theme-night .day-card.deferred {
+  background: linear-gradient(180deg, rgba(66,48,20,.98), rgba(25,20,32,.98)) !important;
+  border-color: #d5a64d !important;
+}
+
+body.theme-night .day-card.today {
+  outline: 3px solid #69e8ff !important;
+  box-shadow: 0 0 0 2px rgba(105,232,255,.18), 0 16px 38px rgba(0,0,0,.46) !important;
+}
+
+body.theme-night .day-head {
+  border-bottom-color: rgba(185,199,255,.34) !important;
+}
+
+body.theme-night .day-num,
+body.theme-night .month-title,
+body.theme-night .focus,
+body.theme-night .metric .value {
+  color: #ff91cf !important;
+  text-shadow: 0 0 10px rgba(255,112,183,.25) !important;
+}
+
+body.theme-night .date,
+body.theme-night .time,
+body.theme-night .status-line,
+body.theme-night .metric .label,
+body.theme-night .legend,
+body.theme-night .view-controls {
+  color: #cfd9ff !important;
+  opacity: 1 !important;
+}
+
+body.theme-night .day-card li,
+body.theme-night .day-card p,
+body.theme-night .day-card .focus,
+body.theme-night .day-card .time,
+body.theme-night .day-card .status-line {
+  color: #eef3ff !important;
+  opacity: 1 !important;
+}
+
+body.theme-night .phase {
+  color: #071024 !important;
+  background: linear-gradient(180deg, #ff9fd0, #ff70b7) !important;
+  border: 1px solid rgba(255,255,255,.35) !important;
+}
+
+body.theme-night .progress-wrap {
+  background: #101735 !important;
+  border-color: #465579 !important;
+}
+
+body.theme-night .progress-bar {
+  background: linear-gradient(90deg, #ff70b7, #69e8ff) !important;
+}
+
+body.theme-night .dot.complete { background: #41c7a8 !important; }
+body.theme-night .dot.deferred { background: #d5a64d !important; }
+body.theme-night .dot.today { background: #69e8ff !important; }
+
+body.theme-night textarea#notes {
+  background: #0b1024 !important;
+  color: #f4f7ff !important;
+  border-color: #56658a !important;
+}
+
+/* === Reading Aid table width fix ===
+   Fits all Reading Aid columns into the page instead of forcing a horizontal scrollbar. */
+body.theme-pixel .table-wrap,
+body.theme-garden .table-wrap,
+body.theme-night .table-wrap,
+.table-wrap {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+#charTable {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  table-layout: fixed !important;
+  border-collapse: collapse !important;
+  font-size: .88rem !important;
+}
+
+#charTable th,
+#charTable td {
+  padding: 10px 8px !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+  line-height: 1.35 !important;
+}
+
+#charTable th:nth-child(1),
+#charTable td:nth-child(1) { width: 40px !important; }
+#charTable th:nth-child(2),
+#charTable td:nth-child(2) { width: 78px !important; }
+#charTable th:nth-child(3),
+#charTable td:nth-child(3) { width: 96px !important; }
+#charTable th:nth-child(4),
+#charTable td:nth-child(4) { width: 92px !important; }
+#charTable th:nth-child(5),
+#charTable td:nth-child(5) { width: 58px !important; }
+#charTable th:nth-child(6),
+#charTable td:nth-child(6) { width: 23% !important; }
+#charTable th:nth-child(7),
+#charTable td:nth-child(7) { width: 16% !important; }
+#charTable th:nth-child(8),
+#charTable td:nth-child(8) { width: 18% !important; }
+#charTable th:nth-child(9),
+#charTable td:nth-child(9) { width: 86px !important; }
+
+#charTable .char {
+  min-width: 0 !important;
+  font-size: 1.85rem !important;
+}
+
+#charTable .jp,
+#charTable .romaji {
+  min-width: 0 !important;
+}
+
+#charTable .tag {
+  white-space: normal !important;
+  text-align: center !important;
+  padding: 3px 7px !important;
+}
+
+@media (max-width: 900px) {
+  #charTable { font-size: .78rem !important; }
+  #charTable th,
+  #charTable td { padding: 8px 5px !important; }
+  #charTable .char { font-size: 1.55rem !important; }
+  #charTable th:nth-child(1),
+  #charTable td:nth-child(1) { width: 32px !important; }
+  #charTable th:nth-child(2),
+  #charTable td:nth-child(2) { width: 58px !important; }
+  #charTable th:nth-child(3),
+  #charTable td:nth-child(3) { width: 76px !important; }
+  #charTable th:nth-child(4),
+  #charTable td:nth-child(4) { width: 70px !important; }
+  #charTable th:nth-child(5),
+  #charTable td:nth-child(5) { width: 42px !important; }
+  #charTable th:nth-child(9),
+  #charTable td:nth-child(9) { width: 62px !important; }
+}
+
+
+/* Kanji Hub readability + footer link polish */
+.kanji-card{
+  background:linear-gradient(180deg,#202b3d,#182235)!important;
+  color:#f8fbff!important;
+  border-color:rgba(255,255,255,.18)!important;
+}
+.kanji-card .glyph{color:#f8fbff!important;opacity:1!important;text-shadow:0 2px 12px rgba(0,0,0,.35)!important;}
+.kanji-card h3{color:#ff7cc4!important;text-shadow:none!important;}
+.kanji-card p,.kanji-card .muted,.kanji-card .romaji,.kanji-card .jp,.kanji-card b,.kanji-card strong{
+  color:#f6f8ff!important;
+  opacity:1!important;
+  text-shadow:none!important;
+}
+.kanji-card .muted{color:#dbe5ff!important;}
+.kanji-card .jp{color:#ffffff!important;font-weight:900!important;}
+.kanji-card .romaji{color:#d8e8ff!important;font-style:italic!important;font-weight:800!important;}
+.kanji-card .mnemonic{
+  background:rgba(255,206,74,.12)!important;
+  border-left:4px solid #fbbf24!important;
+  color:#fff1b8!important;
+  padding:10px 12px!important;
+  border-radius:0 10px 10px 0!important;
+}
+.kanji-card .badge{
+  background:rgba(255,255,255,.10)!important;
+  color:#e8f6ff!important;
+  border-color:rgba(255,255,255,.28)!important;
+}
+.kanji-card .badge.source-core{
+  background:rgba(134,239,172,.16)!important;
+  color:#d6ffe4!important;
+  border-color:rgba(134,239,172,.42)!important;
+}
+body.theme-garden .kanji-card{
+  background:linear-gradient(180deg,#fefcf4,#f2ead5)!important;
+  color:#21371f!important;
+  border-color:#b9aa7a!important;
+}
+body.theme-garden .kanji-card .glyph,body.theme-garden .kanji-card .jp{color:#1c2e1b!important;}
+body.theme-garden .kanji-card h3{color:#2f6f42!important;text-shadow:none!important;}
+body.theme-garden .kanji-card p,body.theme-garden .kanji-card .muted,body.theme-garden .kanji-card .romaji,body.theme-garden .kanji-card b,body.theme-garden .kanji-card strong{color:#24391f!important;}
+body.theme-garden .kanji-card .romaji{color:#254f66!important;}
+body.theme-garden .kanji-card .mnemonic{background:rgba(139,111,44,.12)!important;color:#263b1e!important;border-left-color:#b78a19!important;}
+body.theme-garden .kanji-card .badge{background:rgba(76,107,72,.10)!important;color:#2f5f3b!important;border-color:#8ca881!important;}
+body.theme-night .kanji-card{
+  background:linear-gradient(180deg,#202b3d,#182235)!important;
+  color:#f8fbff!important;
+  border-color:#465579!important;
+}
+body.theme-night .kanji-card .glyph,body.theme-night .kanji-card .jp{color:#f8fbff!important;}
+body.theme-night .kanji-card h3{color:#ff7cc4!important;text-shadow:none!important;}
+body.theme-night .kanji-card p,body.theme-night .kanji-card .muted,body.theme-night .kanji-card .romaji,body.theme-night .kanji-card b,body.theme-night .kanji-card strong{color:#f6f8ff!important;}
+body.theme-night .kanji-card .romaji{color:#d8e8ff!important;}
+body.theme-night .kanji-card .mnemonic{background:rgba(255,206,74,.12)!important;color:#fff1b8!important;border-left-color:#fbbf24!important;}
+.pixel-footer a,.footer a{color:inherit!important;text-decoration:underline;text-underline-offset:3px;font-weight:900;}
+.footer{font-weight:800!important;color:#55527b!important;}
+body.theme-night .footer{color:#dbe5ff!important;}
+
+
+/* Footer spacing cleanup: keep one compact ProgreTech footer close to page content */
+main{padding-bottom:18px!important;}
+.pixel-footer{padding:12px 10px 18px!important;margin:10px auto 0!important;text-align:center!important;}
+.pixel-badge{display:inline-block!important;}
+.pixel-footer a{color:inherit!important;text-decoration:underline!important;text-underline-offset:3px!important;font-weight:900!important;}
+body.theme-night .pixel-footer, body.theme-night .pixel-badge{color:#dbe5ff!important;}
+body.theme-garden .pixel-footer, body.theme-garden .pixel-badge{color:#2d4f33!important;}

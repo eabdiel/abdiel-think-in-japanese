@@ -20,15 +20,15 @@
   .controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
   .controls input, .controls select { background: #111827; color: #f9fafb; border: 1px solid rgba(255,255,255,0.18); border-radius: 10px; padding: 10px 12px; font-size: 15px; }
   .controls input { min-width: min(460px, 100%); flex: 1; }
-  .table-wrap { overflow-x: auto; background: rgba(31,41,55,0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; }
-  table { width: 100%; border-collapse: collapse; min-width: 1120px; }
-  th, td { padding: 12px 10px; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
+  .table-wrap { overflow-x: hidden; background: rgba(31,41,55,0.9); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; }
+  table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+  th, td { padding: 10px 8px; overflow-wrap: anywhere; word-break: normal; border-bottom: 1px solid rgba(255,255,255,0.08); vertical-align: top; }
   th { position: sticky; top: 0; background: #111827; color: #fbbf24; text-align: left; z-index: 1; cursor: pointer; }
   tr:hover { background: rgba(255,255,255,0.04); }
   .num { color: #9ca3af; width: 44px; text-align: right; }
-  .char { font-size: 34px; font-weight: 800; color: #ffffff; text-align: center; min-width: 76px; }
-  .jp { font-size: 18px; font-weight: 700; color: #ffffff; min-width: 210px; }
-  .romaji { color: #bfdbfe; font-style: italic; min-width: 120px; }
+  .char { font-size: 30px; font-weight: 800; color: #ffffff; text-align: center; width: 6%; }
+  .jp { font-size: 17px; font-weight: 700; color: #ffffff; }
+  .romaji { color: #bfdbfe; font-style: italic; }
   .freq { color: #fbbf24; font-weight: 700; text-align: right; }
   .tag { display: inline-block; border-radius: 999px; padding: 4px 9px; font-size: 12px; white-space: nowrap; border: 1px solid rgba(96,165,250,0.35); }
   .hiragana { background: rgba(34,197,94,0.14); color: #bbf7d0; border-color: rgba(34,197,94,0.35); }
@@ -76,6 +76,21 @@
   margin: 0;
 }
 
+
+  #charTable th:nth-child(1), #charTable td:nth-child(1) { width: 4%; }
+  #charTable th:nth-child(2), #charTable td:nth-child(2) { width: 7%; }
+  #charTable th:nth-child(3), #charTable td:nth-child(3) { width: 10%; }
+  #charTable th:nth-child(4), #charTable td:nth-child(4) { width: 9%; }
+  #charTable th:nth-child(5), #charTable td:nth-child(5) { width: 6%; }
+  #charTable th:nth-child(6), #charTable td:nth-child(6) { width: 20%; }
+  #charTable th:nth-child(7), #charTable td:nth-child(7) { width: 14%; }
+  #charTable th:nth-child(8), #charTable td:nth-child(8) { width: 22%; }
+  #charTable th:nth-child(9), #charTable td:nth-child(9) { width: 8%; }
+  @media (max-width: 900px) {
+    table { table-layout: auto; }
+    .table-wrap { overflow-x: auto; }
+    table { min-width: 920px; }
+  }
 </style>
 <link href="pixel-theme-v2.css" rel="stylesheet"/>
 </head>
@@ -83,50 +98,44 @@
 <header class="pixel-site-header">
 <div class="pixel-hero-inner">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Selector de tema"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Jardín Crema</button><button class="theme-btn" type="button" data-theme="night">Tokio Noche</button></div>
+<div aria-label="Selector de tema" class="theme-switcher title-theme-switcher"><button class="theme-btn active" data-theme="pixel" type="button">Pixel Pastel v2</button><button class="theme-btn" data-theme="garden" type="button">Jardín Crema</button><button class="theme-btn" data-theme="night" type="button">Tokio Noche</button></div>
 <h1>Piensa en Japonés</h1>
 <p>Aprende de forma natural. Habla con confianza. 一緒に日本語を学ぼう!</p>
 </div>
 <div class="pixel-teacher"><img alt="Chibi teacher mascot" src="assets/chibi_teacher.png"/><div class="pixel-mini-title">Modo Sensei</div></div>
 </div>
 </header>
-<nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index_es.html">Inicio</a><a data-file="kana_dojo.html" href="kana_dojo_es.html">Dojo Kana</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker_es.html">Rastreador 90 Días</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted_es.html">Frases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2_es.html">Frases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3_es.html">Estilo Gaki</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4_es.html">Ayuda de Lectura</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck_es.html">Mazo de Frecuencia</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan_es.html">Plan de 90 Días</a></div></nav><div aria-label="Selector de idioma" class="lang-toggle"><a class="lang-pill" href="think_in_japanese_character_reading_aid_part4.html">English</a><span class="lang-pill active">Español</span></div>
+<nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index_es.html">Inicio</a><a data-file="kana_dojo.html" href="kana_dojo_es.html">Dojo Kana</a><a data-file="kanji_hub.html" href="kanji_hub_es.html">Centro Kanji</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker_es.html">Rastreador 90 Días</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted_es.html">Frases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2_es.html">Frases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3_es.html">Estilo Gaki</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4_es.html">Ayuda de Lectura</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck_es.html">Mazo de Frecuencia</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan_es.html">Plan de 90 Días</a></div></nav><div aria-label="Selector de idioma" class="lang-toggle"><a class="lang-pill" href="think_in_japanese_character_reading_aid_part4.html">English</a><span class="lang-pill active">Español</span></div>
 <section class="moved-hero-title">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Selector de tema"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Jardín Crema</button><button class="theme-btn" type="button" data-theme="night">Tokio Noche</button></div>
+<div aria-label="Selector de tema" class="theme-switcher title-theme-switcher"><button class="theme-btn active" data-theme="pixel" type="button">Pixel Pastel v2</button><button class="theme-btn" data-theme="garden" type="button">Jardín Crema</button><button class="theme-btn" data-theme="night" type="button">Tokio Noche</button></div>
 <h1>Piensa en Japonés</h1>
 <p>Aprende de forma natural. Habla con confianza. 一緒に日本語を学ぼう!</p>
 </div>
-
 </section>
-
-
-
 <div class="pixel-page-shell">
 <section class="pixel-welcome">
-<div class="pixel-card"><div class="pixel-mini-title">Misión de hoy</div><strong>Usa el portal como un mapa retro de aprendizaje:</strong> elige una lección, practica en voz alta y luego marca tu progreso en el rastreador. El tema se mantiene igual en PC, TV, tablet, teléfono y dispositivos plegables.</div>
-<div class="pixel-side-art pixel-flag-pair"><img alt="Japonés flag" class="flag-art" src="assets/flag_japan.svg"/><img alt="Puerto Rican flag" class="flag-art" src="assets/flag_puerto_rico.svg"/></div>
+<div class="pixel-card"><div class="pixel-mini-title">Cómo empezar</div><strong>Usa el portal como una ruta de estudio guiada:</strong> • Aprende frases en las Partes 1–3 • Estudia caracteres en Ayuda de Lectura y Mazo de Frecuencia • Practica en el Dojo Kana y el Kanji Hub • Sigue el Rastreador y el Plan de 90 Días • Reduce el romaji gradualmente. La constancia diaria es más efectiva que sesiones largas ocasionales.</div>
+<div class="pixel-side-art pixel-flag-pair"><img alt="Bandera de Japón" class="flag-art" src="assets/flag_japan.svg"/><img alt="Bandera de Puerto Rico" class="flag-art" src="assets/flag_puerto_rico.svg"/></div>
 </section>
 </div>
 <script>document.querySelectorAll('.pixel-nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('active')});</script>
 <header>
-<h1>Piensa en Japonés: Ayuda de lectura de caracteres, Partee 4</h1>
-<p class="subtitle">A deduped writing and reading aid built only from the 300 phrases in Partes 1–3. Sorted by romaji sound, with character type, frequency, and an example phrase from your own study sheets.</p>
+<h1>Piensa en Japonés: Ayuda de Lectura de Caracteres, Parte 4</h1>
+<p class="subtitle">Una ayuda de escritura y lectura sin duplicados, creada únicamente a partir de las 300 frases de las Partes 1–3. Está ordenada por sonido romaji e incluye tipo de carácter, frecuencia y una frase de ejemplo de tus propias hojas de estudio.</p>
 </header>
 <main>
-<section class="note">
-<strong>Important:</strong> Hiragana and katakana sounds are stable here. Kanji readings are context-based from your 300 phrases, so a kanji may have more than one romaji reading when it appeared in different words. This keeps the sheet practical for reading your existing phrases instead of becoming a full dictionary.
-  </section>
+<section class="note"><strong>Importante:</strong> Los sonidos de hiragana y katakana se mantienen estables aquí. Las lecturas de kanji dependen del contexto de tus 300 frases, así que un kanji puede tener más de una lectura romaji cuando aparece en palabras diferentes. Esto mantiene la hoja práctica para leer tus frases actuales en vez de convertirla en un diccionario completo.</section>
 <section class="mini-grid">
-<div class="card"><h2>Total unique characters</h2><div class="stat">260</div><p>No duplicates across the 300 phrases.</p></div>
-<div class="card"><h2>Hiragana</h2><div class="stat">60</div><p>Core native Japonés syllables used in the phrases.</p></div>
-<div class="card"><h2>Katakana</h2><div class="stat">24</div><p>Loanword and emphasis characters used in the phrases.</p></div>
-<div class="card"><h2>Kanji</h2><div class="stat">176</div><p>Contextual readings from the actual phrases.</p></div>
+<div class="card"><h2>Total de caracteres únicos</h2><div class="stat">260</div><p>Sin duplicados entre las 300 frases.</p></div>
+<div class="card"><h2>Hiragana</h2><div class="stat">60</div><p>Sílabas japonesas nativas principales usadas en las frases.</p></div>
+<div class="card"><h2>Katakana</h2><div class="stat">24</div><p>Caracteres usados para préstamos, énfasis y palabras extranjeras dentro de las frases.</p></div>
+<div class="card"><h2>Kanji</h2><div class="stat">176</div><p>Lecturas contextuales tomadas de las frases reales.</p></div>
 </section>
 <section class="controls">
-<input id="searchBox" placeholder="Search character, romaji, type, example, or English meaning..." type="text"/>
+<input id="searchBox" placeholder="Buscar carácter, romaji, tipo, ejemplo o significado en español..." type="text"/>
 <select id="typeFilter">
-<option value="All">All types</option>
+<option value="All">Todos los tipos</option>
 <option value="Hiragana">Hiragana</option>
 <option value="Katakana">Katakana</option>
 <option value="Kanji">Kanji</option>
@@ -137,14 +146,14 @@
 <thead>
 <tr>
 <th>#</th>
-<th>Caracteres</th>
-<th>Romaji Sound</th>
-<th>Type</th>
-<th>Count</th>
-<th>Example From Your 300 Frases</th>
-<th>Example Romaji</th>
-<th>Example Meaning</th>
-<th>Source</th>
+<th>Carácter</th>
+<th>Sonido romaji</th>
+<th>Tipo</th>
+<th>Frecuencia</th>
+<th>Ejemplo de tus 300 frases</th>
+<th>Romaji del ejemplo</th>
+<th>Significado del ejemplo</th>
+<th>Fuente</th>
 </tr>
 </thead>
 <tbody>
@@ -156,7 +165,7 @@
 <td class="freq">21</td>
 <td class="jp">あれ、何だろう？</td>
 <td>Are, nan darou?</td>
-<td>I wonder what that is.</td>
+<td>Me pregunto qué será eso.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -167,7 +176,7 @@
 <td class="freq">5</td>
 <td class="jp">これで合ってる？</td>
 <td>Kore de atteru?</td>
-<td>Is this right?</td>
+<td>¿Esto está bien?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -178,7 +187,7 @@
 <td class="freq">1</td>
 <td class="jp">適当すぎるやろ。</td>
 <td>Tekitou sugiru yaro.</td>
-<td>That's way too half-baked.</td>
+<td>Eso está demasiado improvisado.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -189,7 +198,7 @@
 <td class="freq">5</td>
 <td class="jp">見た瞬間アウト。</td>
 <td>Mita shunkan auto.</td>
-<td>The moment I saw it, I was out.</td>
+<td>En cuanto lo vi, perdí.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -200,7 +209,7 @@
 <td class="freq">1</td>
 <td class="jp">危なかった。</td>
 <td>Abunakatta.</td>
-<td>That was close.</td>
+<td>Eso estuvo cerca.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -211,7 +220,7 @@
 <td class="freq">2</td>
 <td class="jp">タイミング悪いわ。</td>
 <td>Taimingu warui wa.</td>
-<td>Bad timing.</td>
+<td>Qué mal timing.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -222,7 +231,7 @@
 <td class="freq">1</td>
 <td class="jp">ちょっと歩こう。</td>
 <td>Chotto arukou.</td>
-<td>Let's walk a little.</td>
+<td>Vamos a caminar un poco.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -233,7 +242,7 @@
 <td class="freq">1</td>
 <td class="jp">焦らなくていい。</td>
 <td>Aseranakute ii.</td>
-<td>No need to rush.</td>
+<td>No hace falta apurarse.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -244,7 +253,7 @@
 <td class="freq">4</td>
 <td class="jp">説明して。</td>
 <td>Setsumei shite.</td>
-<td>Explain it.</td>
+<td>Explícalo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -255,7 +264,7 @@
 <td class="freq">2</td>
 <td class="jp">今日は頭が回らない。</td>
 <td>Kyou wa atama ga mawaranai.</td>
-<td>My brain isn't working today.</td>
+<td>Hoy mi cerebro no arranca.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -266,7 +275,7 @@
 <td class="freq">1</td>
 <td class="jp">これは後回しでいい。</td>
 <td>Kore wa atomawashi de ii.</td>
-<td>This can wait.</td>
+<td>Esto puede esperar.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -277,7 +286,7 @@
 <td class="freq">2</td>
 <td class="jp">怪しいな。</td>
 <td>Ayashii na.</td>
-<td>That's suspicious.</td>
+<td>Eso está sospechoso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -288,7 +297,7 @@
 <td class="freq">2</td>
 <td class="jp">たとえば？</td>
 <td>Tatoeba?</td>
-<td>For example?</td>
+<td>¿Por ejemplo?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -299,7 +308,7 @@
 <td class="freq">1</td>
 <td class="jp">今日も頑張ろう。</td>
 <td>Kyou mo ganbarou.</td>
-<td>Let's do our best today too.</td>
+<td>Vamos a dar lo mejor hoy también.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -310,7 +319,7 @@
 <td class="freq">1</td>
 <td class="jp">この場所、いいね。</td>
 <td>Kono basho, ii ne.</td>
-<td>This place is nice.</td>
+<td>Este lugar está lindo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -321,7 +330,7 @@
 <td class="freq">3</td>
 <td class="jp">なるべく簡単に言って。</td>
 <td>Narubeku kantan ni itte.</td>
-<td>Say it as simply as possible.</td>
+<td>Dilo lo más sencillo posible.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -332,7 +341,7 @@
 <td class="freq">2</td>
 <td class="jp">びっくりした。</td>
 <td>Bikkuri shita.</td>
-<td>That surprised me.</td>
+<td>Me asustaste.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -343,7 +352,7 @@
 <td class="freq">1</td>
 <td class="jp">準備できた。</td>
 <td>Junbi dekita.</td>
-<td>I'm ready.</td>
+<td>Ya estoy listo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -354,7 +363,7 @@
 <td class="freq">1</td>
 <td class="jp">ちょっと微妙。</td>
 <td>Chotto bimyou.</td>
-<td>It's kind of iffy.</td>
+<td>Está un poco dudoso / raro.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -365,7 +374,7 @@
 <td class="freq">3</td>
 <td class="jp">たぶんこれかな。</td>
 <td>Tabun kore kana.</td>
-<td>Maybe this one.</td>
+<td>Tal vez sea este.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -376,7 +385,7 @@
 <td class="freq">2</td>
 <td class="jp">大丈夫？</td>
 <td>Daijoubu?</td>
-<td>Are you okay?</td>
+<td>¿Estás bien?</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -387,7 +396,7 @@
 <td class="freq">30</td>
 <td class="jp">ちょっと考えよう。</td>
 <td>Chotto kangaeyou.</td>
-<td>Let me think for a second.</td>
+<td>Déjame pensar un segundo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -398,7 +407,7 @@
 <td class="freq">2</td>
 <td class="jp">オチないんかい。</td>
 <td>Ochi nain kai.</td>
-<td>There's no punchline?</td>
+<td>¿No hay remate?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -409,7 +418,7 @@
 <td class="freq">4</td>
 <td class="jp">何か違う気がする。</td>
 <td>Nanka chigau ki ga suru.</td>
-<td>Something feels off.</td>
+<td>Siento que algo está raro.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -420,7 +429,7 @@
 <td class="freq">2</td>
 <td class="jp">近い近い。</td>
 <td>Chikai chikai.</td>
-<td>Too close, too close.</td>
+<td>Muy cerca, muy cerca.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -431,7 +440,7 @@
 <td class="freq">20</td>
 <td class="jp">日本語で何て言うんだっけ？</td>
 <td>Nihongo de nan te iun dakke?</td>
-<td>How do you say it in Japonés again?</td>
+<td>¿Cómo se decía en japonés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -442,7 +451,7 @@
 <td class="freq">1</td>
 <td class="jp">まだダメか。</td>
 <td>Mada dame ka.</td>
-<td>Still no good, huh.</td>
+<td>Todavía no sirve, ¿eh?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -453,7 +462,7 @@
 <td class="freq">4</td>
 <td class="jp">それは大事やろ。</td>
 <td>Sore wa daiji yaro.</td>
-<td>That part matters, though.</td>
+<td>Esa parte sí importa.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -464,7 +473,7 @@
 <td class="freq">1</td>
 <td class="jp">なんで黙ってんねん。</td>
 <td>Nande damatten nen.</td>
-<td>Why are you quiet?</td>
+<td>¿Por qué te quedas callado?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -475,7 +484,7 @@
 <td class="freq">2</td>
 <td class="jp">誰が決めたん？</td>
 <td>Dare ga kimetan?</td>
-<td>Who decided that?</td>
+<td>¿Quién decidió eso?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -486,7 +495,7 @@
 <td class="freq">30</td>
 <td class="jp">英語で何て言うの？</td>
 <td>Eigo de nan te iu no?</td>
-<td>How do you say it in English?</td>
+<td>¿Cómo se dice en inglés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -497,7 +506,7 @@
 <td class="freq">1</td>
 <td class="jp">また出た。</td>
 <td>Mata deta.</td>
-<td>There it is again.</td>
+<td>Ahí salió otra vez.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -508,7 +517,7 @@
 <td class="freq">1</td>
 <td class="jp">電気を消そう。</td>
 <td>Denki o kesou.</td>
-<td>Let's turn off the light.</td>
+<td>Apaguemos la luz.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -519,7 +528,7 @@
 <td class="freq">17</td>
 <td class="jp">どういう意味？</td>
 <td>Dou iu imi?</td>
-<td>What does that mean?</td>
+<td>¿Qué significa eso?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -530,7 +539,7 @@
 <td class="freq">25</td>
 <td class="jp">ちょっと考えよう。</td>
 <td>Chotto kangaeyou.</td>
-<td>Let me think for a second.</td>
+<td>Déjame pensar un segundo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -541,7 +550,7 @@
 <td class="freq">1</td>
 <td class="jp">このエラー、何だろう？</td>
 <td>Kono eraa, nan darou?</td>
-<td>I wonder what this error is.</td>
+<td>Me pregunto qué será este error.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -552,7 +561,7 @@
 <td class="freq">1</td>
 <td class="jp">英語で何て言うの？</td>
 <td>Eigo de nan te iu no?</td>
-<td>How do you say it in English?</td>
+<td>¿Cómo se dice en inglés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -563,7 +572,7 @@
 <td class="freq">2</td>
 <td class="jp">駅はどっち？</td>
 <td>Eki wa docchi?</td>
-<td>Which way is the station?</td>
+<td>¿Por dónde queda la estación?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -574,7 +583,7 @@
 <td class="freq">2</td>
 <td class="jp">理不尽やわ。</td>
 <td>Rifujin ya wa.</td>
-<td>That's unreasonable.</td>
+<td>Eso no es justo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -585,7 +594,7 @@
 <td class="freq">1</td>
 <td class="jp">セーフやろ？</td>
 <td>Seefu yaro?</td>
-<td>I'm safe, right?</td>
+<td>Estoy a salvo, ¿no?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -596,7 +605,7 @@
 <td class="freq">16</td>
 <td class="jp">何か違う気がする。</td>
 <td>Nanka chigau ki ga suru.</td>
-<td>Something feels off.</td>
+<td>Siento que algo está raro.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -607,7 +616,7 @@
 <td class="freq">1</td>
 <td class="jp">意外と簡単。</td>
 <td>Igai to kantan.</td>
-<td>Surprisingly easy.</td>
+<td>Sorprendentemente fácil.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -618,7 +627,7 @@
 <td class="freq">1</td>
 <td class="jp">今日も頑張ろう。</td>
 <td>Kyou mo ganbarou.</td>
-<td>Let's do our best today too.</td>
+<td>Vamos a dar lo mejor hoy también.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -629,7 +638,7 @@
 <td class="freq">1</td>
 <td class="jp">元気？</td>
 <td>Genki?</td>
-<td>How are you?</td>
+<td>¿Cómo estás?</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -640,7 +649,7 @@
 <td class="freq">1</td>
 <td class="jp">原因はこれかも。</td>
 <td>Gen'in wa kore kamo.</td>
-<td>This might be the cause.</td>
+<td>Esta podría ser la causa.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -651,7 +660,7 @@
 <td class="freq">1</td>
 <td class="jp">ええ加減にせえ。</td>
 <td>Ee kagen ni see.</td>
-<td>Cut it out already.</td>
+<td>Ya para con eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -662,7 +671,7 @@
 <td class="freq">2</td>
 <td class="jp">眠すぎる。</td>
 <td>Nemusugiru.</td>
-<td>I'm way too sleepy.</td>
+<td>Tengo demasiado sueño.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -673,7 +682,7 @@
 <td class="freq">2</td>
 <td class="jp">ギリギリ耐えた。</td>
 <td>Girigiri taeta.</td>
-<td>I barely held it in.</td>
+<td>Apenas me aguanté.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -684,7 +693,7 @@
 <td class="freq">3</td>
 <td class="jp">すごく疲れた。</td>
 <td>Sugoku tsukareta.</td>
-<td>I'm really tired.</td>
+<td>Estoy bien cansado.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -695,7 +704,7 @@
 <td class="freq">2</td>
 <td class="jp">英語で何て言うの？</td>
 <td>Eigo de nan te iu no?</td>
-<td>How do you say it in English?</td>
+<td>¿Cómo se dice en inglés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -706,7 +715,7 @@
 <td class="freq">1</td>
 <td class="jp">地獄やん。</td>
 <td>Jigoku yan.</td>
-<td>This is hell.</td>
+<td>Esto es un desastre.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -717,7 +726,7 @@
 <td class="freq">3</td>
 <td class="jp">ログ見てみよう。</td>
 <td>Rogu mite miyou.</td>
-<td>Let's check the log.</td>
+<td>Vamos a revisar el log.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -728,7 +737,7 @@
 <td class="freq">31</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -739,7 +748,7 @@
 <td class="freq">1</td>
 <td class="jp">よし、始めよう。</td>
 <td>Yoshi, hajimeyou.</td>
-<td>Alright, let's start.</td>
+<td>Bueno, vamos a empezar.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -750,7 +759,7 @@
 <td class="freq">1</td>
 <td class="jp">反則やん。</td>
 <td>Hansoku yan.</td>
-<td>That's against the rules.</td>
+<td>Eso rompe las reglas.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -761,7 +770,7 @@
 <td class="freq">3</td>
 <td class="jp">お腹すいた。</td>
 <td>Onaka suita.</td>
-<td>I'm hungry.</td>
+<td>Tengo hambre.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -772,7 +781,7 @@
 <td class="freq">2</td>
 <td class="jp">今日は早く寝よう。</td>
 <td>Kyou wa hayaku neyou.</td>
-<td>I'll sleep early today.</td>
+<td>Hoy me voy a dormir temprano.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -783,7 +792,7 @@
 <td class="freq">1</td>
 <td class="jp">部屋を片付けよう。</td>
 <td>Heya o katazukeyou.</td>
-<td>Let's clean up the room.</td>
+<td>Vamos a recoger el cuarto.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -794,7 +803,7 @@
 <td class="freq">5</td>
 <td class="jp">へえ、そうなんだ。</td>
 <td>Hee, sou nan da.</td>
-<td>Ohh, really?</td>
+<td>Ah, ¿de verdad?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -805,7 +814,7 @@
 <td class="freq">2</td>
 <td class="jp">変な空気なった。</td>
 <td>Hen na kuuki natta.</td>
-<td>The vibe got weird.</td>
+<td>El ambiente se puso raro.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -816,7 +825,7 @@
 <td class="freq">1</td>
 <td class="jp">それは卑怯やわ。</td>
 <td>Sore wa hikyou ya wa.</td>
-<td>That's unfair.</td>
+<td>Eso es trampa.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -827,7 +836,7 @@
 <td class="freq">1</td>
 <td class="jp">コーヒーが必要。</td>
 <td>Koohii ga hitsuyou.</td>
-<td>I need coffee.</td>
+<td>Necesito café.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -838,7 +847,7 @@
 <td class="freq">13</td>
 <td class="jp">日本語で何て言うんだっけ？</td>
 <td>Nihongo de nan te iun dakke?</td>
-<td>How do you say it in Japonés again?</td>
+<td>¿Cómo se decía en japonés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -849,7 +858,7 @@
 <td class="freq">1</td>
 <td class="jp">そこ拾うんかい。</td>
 <td>Soko hiroun kai.</td>
-<td>That's what you're reacting to?</td>
+<td>¿A eso es que vas a reaccionar?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -860,7 +869,7 @@
 <td class="freq">1</td>
 <td class="jp">久しぶり。</td>
 <td>Hisashiburi.</td>
-<td>Long time no see.</td>
+<td>Tanto tiempo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -871,7 +880,7 @@
 <td class="freq">1</td>
 <td class="jp">人が多い。</td>
 <td>Hito ga ooi.</td>
-<td>There are a lot of people.</td>
+<td>Hay mucha gente.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -882,7 +891,7 @@
 <td class="freq">1</td>
 <td class="jp">コーヒーが必要。</td>
 <td>Koohii ga hitsuyou.</td>
-<td>I need coffee.</td>
+<td>Necesito café.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -893,7 +902,7 @@
 <td class="freq">6</td>
 <td class="jp">なるほど、そういうことか。</td>
 <td>Naruhodo, sou iu koto ka.</td>
-<td>Ah, I see, that's what it means.</td>
+<td>Ah, ya entiendo, era eso.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -904,7 +913,7 @@
 <td class="freq">1</td>
 <td class="jp">アホやろ。</td>
 <td>Aho yaro.</td>
-<td>You're ridiculous.</td>
+<td>Eres un caso. / Estás brutal.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -915,7 +924,7 @@
 <td class="freq">1</td>
 <td class="jp">日本語で何て言うんだっけ？</td>
 <td>Nihongo de nan te iun dakke?</td>
-<td>How do you say it in Japonés again?</td>
+<td>¿Cómo se decía en japonés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -926,7 +935,7 @@
 <td class="freq">113</td>
 <td class="jp">どういう意味？</td>
 <td>Dou iu imi?</td>
-<td>What does that mean?</td>
+<td>¿Qué significa eso?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -937,7 +946,7 @@
 <td class="freq">5</td>
 <td class="jp">どういう意味？</td>
 <td>Dou iu imi?</td>
-<td>What does that mean?</td>
+<td>¿Qué significa eso?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -948,7 +957,7 @@
 <td class="freq">4</td>
 <td class="jp">今言うタイミングちゃう。</td>
 <td>Ima yuu taimingu chau.</td>
-<td>This is not the time to say that.</td>
+<td>Ahora no es el momento de decir eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -959,7 +968,7 @@
 <td class="freq">14</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -970,7 +979,7 @@
 <td class="freq">4</td>
 <td class="jp">そろそろ行こう。</td>
 <td>Sorosoro ikou.</td>
-<td>Let's get going soon.</td>
+<td>Ya casi vámonos.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -981,7 +990,7 @@
 <td class="freq">6</td>
 <td class="jp">一個ずつやろう。</td>
 <td>Ikko zutsu yarou.</td>
-<td>Let's do it one at a time.</td>
+<td>Hagámoslo uno por uno.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -992,7 +1001,7 @@
 <td class="freq">1</td>
 <td class="jp">家に帰りたい。</td>
 <td>Ie ni kaeritai.</td>
-<td>I want to go home.</td>
+<td>Quiero volver a casa.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1003,7 +1012,7 @@
 <td class="freq">18</td>
 <td class="jp">今わかった。</td>
 <td>Ima wakatta.</td>
-<td>I get it now.</td>
+<td>Ahora entendí.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1014,7 +1023,7 @@
 <td class="freq">1</td>
 <td class="jp">原因はこれかも。</td>
 <td>Gen'in wa kore kamo.</td>
-<td>This might be the cause.</td>
+<td>Esta podría ser la causa.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1025,7 +1034,7 @@
 <td class="freq">2</td>
 <td class="jp">今日は忙しそう。</td>
 <td>Kyou wa isogashisou.</td>
-<td>Today looks busy.</td>
+<td>Parece que hoy va a ser un día ocupado.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1036,7 +1045,7 @@
 <td class="freq">1</td>
 <td class="jp">嫌な予感する。</td>
 <td>Iya na yokan suru.</td>
-<td>I have a bad feeling.</td>
+<td>Tengo un mal presentimiento.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1047,7 +1056,7 @@
 <td class="freq">3</td>
 <td class="jp">まじで？</td>
 <td>Maji de?</td>
-<td>Seriously?</td>
+<td>¿En serio?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1058,7 +1067,7 @@
 <td class="freq">1</td>
 <td class="jp">地獄やん。</td>
 <td>Jigoku yan.</td>
-<td>This is hell.</td>
+<td>Esto es un desastre.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1069,7 +1078,7 @@
 <td class="freq">1</td>
 <td class="jp">自然に言えるようになりたい。</td>
 <td>Shizen ni ieru you ni naritai.</td>
-<td>I want to be able to say it naturally.</td>
+<td>Quiero poder decirlo de forma natural.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1080,7 +1089,7 @@
 <td class="freq">2</td>
 <td class="jp">何の時間やねん。</td>
 <td>Nan no jikan ya nen.</td>
-<td>What kind of segment is this?</td>
+<td>¿Qué clase de segmento es este?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1091,7 +1100,7 @@
 <td class="freq">2</td>
 <td class="jp">大丈夫？</td>
 <td>Daijoubu?</td>
-<td>Are you okay?</td>
+<td>¿Estás bien?</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1102,7 +1111,7 @@
 <td class="freq">1</td>
 <td class="jp">準備できた。</td>
 <td>Junbi dekita.</td>
-<td>I'm ready.</td>
+<td>Ya estoy listo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1113,7 +1122,7 @@
 <td class="freq">63</td>
 <td class="jp">これでいいかな？</td>
 <td>Kore de ii kana?</td>
-<td>I wonder if this is okay.</td>
+<td>Me pregunto si con esto está bien.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1124,7 +1133,7 @@
 <td class="freq">1</td>
 <td class="jp">ええ加減にせえ。</td>
 <td>Ee kagen ni see.</td>
-<td>Cut it out already.</td>
+<td>Ya para con eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1135,7 +1144,7 @@
 <td class="freq">1</td>
 <td class="jp">家に帰りたい。</td>
 <td>Ie ni kaeritai.</td>
-<td>I want to go home.</td>
+<td>Quiero volver a casa.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1146,7 +1155,7 @@
 <td class="freq">6</td>
 <td class="jp">今日は頭が回らない。</td>
 <td>Kyou wa atama ga mawaranai.</td>
-<td>My brain isn't working today.</td>
+<td>Hoy mi cerebro no arranca.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1157,7 +1166,7 @@
 <td class="freq">1</td>
 <td class="jp">俺関係ないやん。</td>
 <td>Ore kankei nai yan.</td>
-<td>This has nothing to do with me.</td>
+<td>Esto no tiene nada que ver conmigo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1168,7 +1177,7 @@
 <td class="freq">1</td>
 <td class="jp">あとで確認しよう。</td>
 <td>Ato de kakunin shiyou.</td>
-<td>I'll check later.</td>
+<td>Lo reviso después.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1179,7 +1188,7 @@
 <td class="freq">3</td>
 <td class="jp">なんかいい感じ。</td>
 <td>Nanka ii kanji.</td>
-<td>It feels pretty good.</td>
+<td>Se siente bastante bien.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1190,7 +1199,7 @@
 <td class="freq">2</td>
 <td class="jp">意外と簡単。</td>
 <td>Igai to kantan.</td>
-<td>Surprisingly easy.</td>
+<td>Sorprendentemente fácil.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1201,7 +1210,7 @@
 <td class="freq">1</td>
 <td class="jp">俺関係ないやん。</td>
 <td>Ore kankei nai yan.</td>
-<td>This has nothing to do with me.</td>
+<td>Esto no tiene nada que ver conmigo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1212,7 +1221,7 @@
 <td class="freq">3</td>
 <td class="jp">ちょっと考えよう。</td>
 <td>Chotto kangaeyou.</td>
-<td>Let me think for a second.</td>
+<td>Déjame pensar un segundo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1223,7 +1232,7 @@
 <td class="freq">4</td>
 <td class="jp">なんちゅう顔してんねん。</td>
 <td>Nanchuu kao shiten nen.</td>
-<td>What kind of face is that?</td>
+<td>¿Qué clase de cara es esa?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1234,7 +1243,7 @@
 <td class="freq">1</td>
 <td class="jp">体が重い。</td>
 <td>Karada ga omoi.</td>
-<td>My body feels heavy.</td>
+<td>Siento el cuerpo pesado.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1245,7 +1254,7 @@
 <td class="freq">3</td>
 <td class="jp">今の言い方、いいね。</td>
 <td>Ima no iikata, ii ne.</td>
-<td>That way of saying it was nice.</td>
+<td>Esa forma de decirlo está buena.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1256,7 +1265,7 @@
 <td class="freq">1</td>
 <td class="jp">部屋を片付けよう。</td>
 <td>Heya o katazukeyou.</td>
-<td>Let's clean up the room.</td>
+<td>Vamos a recoger el cuarto.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1267,7 +1276,7 @@
 <td class="freq">16</td>
 <td class="jp">日本語で何て言うんだっけ？</td>
 <td>Nihongo de nan te iun dakke?</td>
-<td>How do you say it in Japonés again?</td>
+<td>¿Cómo se decía en japonés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1278,7 +1287,7 @@
 <td class="freq">1</td>
 <td class="jp">電気を消そう。</td>
 <td>Denki o kesou.</td>
-<td>Let's turn off the light.</td>
+<td>Apaguemos la luz.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1289,7 +1298,7 @@
 <td class="freq">2</td>
 <td class="jp">ちょっと休憩しよう。</td>
 <td>Chotto kyuukei shiyou.</td>
-<td>Let's take a quick break.</td>
+<td>Tomemos un descansito.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1300,7 +1309,7 @@
 <td class="freq">1</td>
 <td class="jp">顔だけ真剣やん。</td>
 <td>Kao dake shinken yan.</td>
-<td>Only your face looks serious.</td>
+<td>Solo tu cara se ve seria.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1311,7 +1320,7 @@
 <td class="freq">13</td>
 <td class="jp">今の、聞き取れなかった。</td>
 <td>Ima no, kikitorenakatta.</td>
-<td>I couldn't catch that.</td>
+<td>No pude captar lo que dijiste.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1322,7 +1331,7 @@
 <td class="freq">7</td>
 <td class="jp">何か違う気がする。</td>
 <td>Nanka chigau ki ga suru.</td>
-<td>Something feels off.</td>
+<td>Siento que algo está raro.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1333,7 +1342,7 @@
 <td class="freq">2</td>
 <td class="jp">誰が決めたん？</td>
 <td>Dare ga kimetan?</td>
-<td>Who decided that?</td>
+<td>¿Quién decidió eso?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1344,7 +1353,7 @@
 <td class="freq">2</td>
 <td class="jp">ちょっと聞いてもいい？</td>
 <td>Chotto kiite mo ii?</td>
-<td>Can I ask something?</td>
+<td>¿Puedo preguntar algo?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1355,7 +1364,7 @@
 <td class="freq">54</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1366,7 +1375,7 @@
 <td class="freq">1</td>
 <td class="jp">一個ずつやろう。</td>
 <td>Ikko zutsu yarou.</td>
-<td>Let's do it one at a time.</td>
+<td>Hagámoslo uno por uno.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1377,7 +1386,7 @@
 <td class="freq">1</td>
 <td class="jp">巻き込まれた。</td>
 <td>Makikomareta.</td>
-<td>I got dragged into this.</td>
+<td>Me arrastraron a esto.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -1388,7 +1397,7 @@
 <td class="freq">1</td>
 <td class="jp">コーヒーが必要。</td>
 <td>Koohii ga hitsuyou.</td>
-<td>I need coffee.</td>
+<td>Necesito café.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1399,7 +1408,7 @@
 <td class="freq">1</td>
 <td class="jp">声でかいねん。</td>
 <td>Koe dekai nen.</td>
-<td>You're too loud.</td>
+<td>Estás hablando demasiado alto.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1410,7 +1419,7 @@
 <td class="freq">2</td>
 <td class="jp">心臓止まるわ。</td>
 <td>Shinzou tomaru wa.</td>
-<td>My heart almost stopped.</td>
+<td>Casi se me para el corazón.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1421,7 +1430,7 @@
 <td class="freq">1</td>
 <td class="jp">細かいねん。</td>
 <td>Komakai nen.</td>
-<td>You're too picky/detail-focused.</td>
+<td>Estás demasiado detallista.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1432,7 +1441,7 @@
 <td class="freq">2</td>
 <td class="jp">それは大事やろ。</td>
 <td>Sore wa daiji yaro.</td>
-<td>That part matters, though.</td>
+<td>Esa parte sí importa.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1443,7 +1452,7 @@
 <td class="freq">3</td>
 <td class="jp">怖い怖い。</td>
 <td>Kowai kowai.</td>
-<td>Scary, scary.</td>
+<td>Qué miedo, qué miedo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1454,7 +1463,7 @@
 <td class="freq">18</td>
 <td class="jp">焦らなくていい。</td>
 <td>Aseranakute ii.</td>
-<td>No need to rush.</td>
+<td>No hace falta apurarse.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1465,7 +1474,7 @@
 <td class="freq">3</td>
 <td class="jp">急に来るな。</td>
 <td>Kyuu ni kuru na.</td>
-<td>Don't come at me suddenly.</td>
+<td>No me salgas de repente.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1476,7 +1485,7 @@
 <td class="freq">2</td>
 <td class="jp">空気おかしいやろ。</td>
 <td>Kuuki okashii yaro.</td>
-<td>The vibe is weird, right?</td>
+<td>El ambiente está raro, ¿verdad?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1487,7 +1496,7 @@
 <td class="freq">1</td>
 <td class="jp">悔しいけど笑った。</td>
 <td>Kuyashii kedo waratta.</td>
-<td>I'm annoyed, but I laughed.</td>
+<td>Me da coraje, pero me reí.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1498,7 +1507,7 @@
 <td class="freq">1</td>
 <td class="jp">それは卑怯やわ。</td>
 <td>Sore wa hikyou ya wa.</td>
-<td>That's unfair.</td>
+<td>Eso es trampa.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1509,7 +1518,7 @@
 <td class="freq">2</td>
 <td class="jp">急に来るな。</td>
 <td>Kyuu ni kuru na.</td>
-<td>Don't come at me suddenly.</td>
+<td>No me salgas de repente.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -1520,7 +1529,7 @@
 <td class="freq">4</td>
 <td class="jp">このエラー、何だろう？</td>
 <td>Kono eraa, nan darou?</td>
-<td>I wonder what this error is.</td>
+<td>Me pregunto qué será este error.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1531,7 +1540,7 @@
 <td class="freq">22</td>
 <td class="jp">まあ、なんとかなる。</td>
 <td>Maa, nantoka naru.</td>
-<td>Eh, I'll figure it out.</td>
+<td>Bueno, de alguna forma se resuelve.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1542,7 +1551,7 @@
 <td class="freq">1</td>
 <td class="jp">ちょっと待って。</td>
 <td>Chotto matte.</td>
-<td>Wait a second.</td>
+<td>Espera un segundo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1553,7 +1562,7 @@
 <td class="freq">1</td>
 <td class="jp">これは負けたわ。</td>
 <td>Kore wa maketa wa.</td>
-<td>This one beat me.</td>
+<td>Con esta perdí.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1564,7 +1573,7 @@
 <td class="freq">6</td>
 <td class="jp">間に合うかな？</td>
 <td>Maniau kana?</td>
-<td>I wonder if I'll make it in time.</td>
+<td>¿Llegaré a tiempo?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1575,7 +1584,7 @@
 <td class="freq">4</td>
 <td class="jp">急に真面目になるな。</td>
 <td>Kyuu ni majime ni naru na.</td>
-<td>Don't suddenly get serious.</td>
+<td>No te pongas serio de repente.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1586,7 +1595,7 @@
 <td class="freq">1</td>
 <td class="jp">巻き込まれた。</td>
 <td>Makikomareta.</td>
-<td>I got dragged into this.</td>
+<td>Me arrastraron a esto.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1597,7 +1606,7 @@
 <td class="freq">3</td>
 <td class="jp">迷ったかも。</td>
 <td>Mayotta kamo.</td>
-<td>I might be lost.</td>
+<td>Creo que me perdí.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1608,7 +1617,7 @@
 <td class="freq">12</td>
 <td class="jp">やっぱりやめとこう。</td>
 <td>Yappari yametokou.</td>
-<td>Actually, let's skip it.</td>
+<td>Mejor no, lo dejo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1619,7 +1628,7 @@
 <td class="freq">2</td>
 <td class="jp">急に真面目になるな。</td>
 <td>Kyuu ni majime ni naru na.</td>
-<td>Don't suddenly get serious.</td>
+<td>No te pongas serio de repente.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -1630,7 +1639,7 @@
 <td class="freq">2</td>
 <td class="jp">メモしとこう。</td>
 <td>Memo shitokou.</td>
-<td>Let me write that down.</td>
+<td>Voy a anotarlo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1641,7 +1650,7 @@
 <td class="freq">2</td>
 <td class="jp">急に真面目になるな。</td>
 <td>Kyuu ni majime ni naru na.</td>
-<td>Don't suddenly get serious.</td>
+<td>No te pongas serio de repente.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1652,7 +1661,7 @@
 <td class="freq">7</td>
 <td class="jp">これ食べてみたい。</td>
 <td>Kore tabete mitai.</td>
-<td>I want to try eating this.</td>
+<td>Quiero probar esto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1663,7 +1672,7 @@
 <td class="freq">4</td>
 <td class="jp">ログ見てみよう。</td>
 <td>Rogu mite miyou.</td>
-<td>Let's check the log.</td>
+<td>Vamos a revisar el log.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -1674,7 +1683,7 @@
 <td class="freq">2</td>
 <td class="jp">今言うタイミングちゃう。</td>
 <td>Ima yuu taimingu chau.</td>
-<td>This is not the time to say that.</td>
+<td>Ahora no es el momento de decir eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1685,7 +1694,7 @@
 <td class="freq">5</td>
 <td class="jp">どういう意味？</td>
 <td>Dou iu imi?</td>
-<td>What does that mean?</td>
+<td>¿Qué significa eso?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1696,7 +1705,7 @@
 <td class="freq">1</td>
 <td class="jp">道に迷った。</td>
 <td>Michi ni mayotta.</td>
-<td>I got lost.</td>
+<td>Me perdí.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1707,7 +1716,7 @@
 <td class="freq">1</td>
 <td class="jp">水が飲みたい。</td>
 <td>Mizu ga nomitai.</td>
-<td>I want to drink water.</td>
+<td>Quiero tomar agua.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1718,7 +1727,7 @@
 <td class="freq">26</td>
 <td class="jp">そうかもしれない。</td>
 <td>Sou kamo shirenai.</td>
-<td>That might be true.</td>
+<td>Puede que sea cierto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -1729,7 +1738,7 @@
 <td class="freq">1</td>
 <td class="jp">メモしとこう。</td>
 <td>Memo shitokou.</td>
-<td>Let me write that down.</td>
+<td>Voy a anotarlo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1740,7 +1749,7 @@
 <td class="freq">1</td>
 <td class="jp">忘れ物ないかな。</td>
 <td>Wasuremono nai kana.</td>
-<td>I wonder if I forgot anything.</td>
+<td>Me pregunto si se me olvidó algo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1751,7 +1760,7 @@
 <td class="freq">4</td>
 <td class="jp">今日は無理かも。</td>
 <td>Kyou wa muri kamo.</td>
-<td>Today might be impossible.</td>
+<td>Quizás hoy no se pueda.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1762,7 +1771,7 @@
 <td class="freq">1</td>
 <td class="jp">思ったより難しい。</td>
 <td>Omotta yori muzukashii.</td>
-<td>Harder than I expected.</td>
+<td>Más difícil de lo que esperaba.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1773,7 +1782,7 @@
 <td class="freq">1</td>
 <td class="jp">ちょっと微妙。</td>
 <td>Chotto bimyou.</td>
-<td>It's kind of iffy.</td>
+<td>Está un poco dudoso / raro.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1784,7 +1793,7 @@
 <td class="freq">71</td>
 <td class="jp">日本語で何て言うんだっけ？</td>
 <td>Nihongo de nan te iun dakke?</td>
-<td>How do you say it in Japonés again?</td>
+<td>¿Cómo se decía en japonés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -1795,7 +1804,7 @@
 <td class="freq">2</td>
 <td class="jp">今言うタイミングちゃう。</td>
 <td>Ima yuu taimingu chau.</td>
-<td>This is not the time to say that.</td>
+<td>Ahora no es el momento de decir eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1806,7 +1815,7 @@
 <td class="freq">65</td>
 <td class="jp">これでいいかな？</td>
 <td>Kore de ii kana?</td>
-<td>I wonder if this is okay.</td>
+<td>Me pregunto si con esto está bien.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1817,7 +1826,7 @@
 <td class="freq">1</td>
 <td class="jp">今日は長い日だ。</td>
 <td>Kyou wa nagai hi da.</td>
-<td>Today is a long day.</td>
+<td>Hoy ha sido un día largo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1828,7 +1837,7 @@
 <td class="freq">2</td>
 <td class="jp">今はこれに集中。</td>
 <td>Ima wa kore ni shuuchuu.</td>
-<td>Focus on this for now.</td>
+<td>Por ahora, enfoque en esto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1839,7 +1848,7 @@
 <td class="freq">18</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1850,7 +1859,7 @@
 <td class="freq">1</td>
 <td class="jp">これで直るかな？</td>
 <td>Kore de naoru kana?</td>
-<td>I wonder if this will fix it.</td>
+<td>¿Será que con esto se arregla?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1861,7 +1870,7 @@
 <td class="freq">1</td>
 <td class="jp">納得いかん。</td>
 <td>Nattoku ikan.</td>
-<td>I don't accept that.</td>
+<td>No acepto eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1872,7 +1881,7 @@
 <td class="freq">17</td>
 <td class="jp">今の言い方、いいね。</td>
 <td>Ima no iikata, ii ne.</td>
-<td>That way of saying it was nice.</td>
+<td>Esa forma de decirlo está buena.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1883,7 +1892,7 @@
 <td class="freq">3</td>
 <td class="jp">今日は早く寝よう。</td>
 <td>Kyou wa hayaku neyou.</td>
-<td>I'll sleep early today.</td>
+<td>Hoy me voy a dormir temprano.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1894,7 +1903,7 @@
 <td class="freq">3</td>
 <td class="jp">眠すぎる。</td>
 <td>Nemusugiru.</td>
-<td>I'm way too sleepy.</td>
+<td>Tengo demasiado sueño.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1905,7 +1914,7 @@
 <td class="freq">22</td>
 <td class="jp">今はこれに集中。</td>
 <td>Ima wa kore ni shuuchuu.</td>
-<td>Focus on this for now.</td>
+<td>Por ahora, enfoque en esto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1916,7 +1925,7 @@
 <td class="freq">1</td>
 <td class="jp">あとで確認しよう。</td>
 <td>Ato de kakunin shiyou.</td>
-<td>I'll check later.</td>
+<td>Lo reviso después.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1927,7 +1936,7 @@
 <td class="freq">13</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -1938,7 +1947,7 @@
 <td class="freq">1</td>
 <td class="jp">水が飲みたい。</td>
 <td>Mizu ga nomitai.</td>
-<td>I want to drink water.</td>
+<td>Quiero tomar agua.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -1949,7 +1958,7 @@
 <td class="freq">1</td>
 <td class="jp">喉かわいた。</td>
 <td>Nodo kawaita.</td>
-<td>I'm thirsty.</td>
+<td>Tengo sed.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1960,7 +1969,7 @@
 <td class="freq">15</td>
 <td class="jp">お腹すいた。</td>
 <td>Onaka suita.</td>
-<td>I'm hungry.</td>
+<td>Tengo hambre.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -1971,7 +1980,7 @@
 <td class="freq">7</td>
 <td class="jp">何を見せられてんねん。</td>
 <td>Nani o miserareten nen.</td>
-<td>What am I even watching?</td>
+<td>¿Qué rayos estoy viendo?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1982,7 +1991,7 @@
 <td class="freq">2</td>
 <td class="jp">何が起きたん？</td>
 <td>Nani ga okitan?</td>
-<td>What happened?</td>
+<td>¿Qué pasó?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -1993,7 +2002,7 @@
 <td class="freq">1</td>
 <td class="jp">ここで降りるの？</td>
 <td>Koko de oriru no?</td>
-<td>Do I get off here?</td>
+<td>¿Me bajo aquí?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -2004,7 +2013,7 @@
 <td class="freq">2</td>
 <td class="jp">オチないんかい。</td>
 <td>Ochi nain kai.</td>
-<td>There's no punchline?</td>
+<td>¿No hay remate?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2015,7 +2024,7 @@
 <td class="freq">1</td>
 <td class="jp">これは覚えたい。</td>
 <td>Kore wa oboetai.</td>
-<td>I want to remember this.</td>
+<td>Quiero recordar esto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2026,7 +2035,7 @@
 <td class="freq">1</td>
 <td class="jp">これ美味しそう。</td>
 <td>Kore oishisou.</td>
-<td>This looks tasty.</td>
+<td>Esto se ve rico.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2037,7 +2046,7 @@
 <td class="freq">6</td>
 <td class="jp">思ったよりいい。</td>
 <td>Omotta yori ii.</td>
-<td>Better than I expected.</td>
+<td>Mejor de lo que esperaba.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2048,7 +2057,7 @@
 <td class="freq">1</td>
 <td class="jp">体が重い。</td>
 <td>Karada ga omoi.</td>
-<td>My body feels heavy.</td>
+<td>Siento el cuerpo pesado.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2059,7 +2068,7 @@
 <td class="freq">1</td>
 <td class="jp">人が多い。</td>
 <td>Hito ga ooi.</td>
-<td>There are a lot of people.</td>
+<td>Hay mucha gente.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2070,7 +2079,7 @@
 <td class="freq">2</td>
 <td class="jp">なんで俺だけ？</td>
 <td>Nande ore dake?</td>
-<td>Why only me?</td>
+<td>¿Por qué solo yo?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2081,7 +2090,7 @@
 <td class="freq">4</td>
 <td class="jp">終わり方おかしい。</td>
 <td>Owarikata okashii.</td>
-<td>That ending was weird.</td>
+<td>Ese final estuvo raro.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2092,7 +2101,7 @@
 <td class="freq">5</td>
 <td class="jp">やっぱりね。</td>
 <td>Yappari ne.</td>
-<td>I knew it.</td>
+<td>Lo sabía.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2103,7 +2112,7 @@
 <td class="freq">1</td>
 <td class="jp">あっちっぽい。</td>
 <td>Acchi ppoi.</td>
-<td>It seems like it's that way.</td>
+<td>Parece que es por allá.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2114,7 +2123,7 @@
 <td class="freq">15</td>
 <td class="jp">今日は頭が回らない。</td>
 <td>Kyou wa atama ga mawaranai.</td>
-<td>My brain isn't working today.</td>
+<td>Hoy mi cerebro no arranca.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -2125,7 +2134,7 @@
 <td class="freq">3</td>
 <td class="jp">このエラー、何だろう？</td>
 <td>Kono eraa, nan darou?</td>
-<td>I wonder what this error is.</td>
+<td>Me pregunto qué será este error.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2136,7 +2145,7 @@
 <td class="freq">56</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2147,7 +2156,7 @@
 <td class="freq">19</td>
 <td class="jp">ゆっくりでいい。</td>
 <td>Yukkuri de ii.</td>
-<td>Slow is fine.</td>
+<td>Despacio está bien.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2158,7 +2167,7 @@
 <td class="freq">5</td>
 <td class="jp">今日は無理かも。</td>
 <td>Kyou wa muri kamo.</td>
-<td>Today might be impossible.</td>
+<td>Quizás hoy no se pueda.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -2169,7 +2178,7 @@
 <td class="freq">2</td>
 <td class="jp">ギリギリ耐えた。</td>
 <td>Girigiri taeta.</td>
-<td>I barely held it in.</td>
+<td>Apenas me aguanté.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2180,7 +2189,7 @@
 <td class="freq">26</td>
 <td class="jp">これ、何だろう？</td>
 <td>Kore, nan darou?</td>
-<td>Hmm, I wonder what this is.</td>
+<td>Mmm, me pregunto qué será esto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -2191,7 +2200,7 @@
 <td class="freq">1</td>
 <td class="jp">ログ見てみよう。</td>
 <td>Rogu mite miyou.</td>
-<td>Let's check the log.</td>
+<td>Vamos a revisar el log.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2202,7 +2211,7 @@
 <td class="freq">37</td>
 <td class="jp">これで合ってる？</td>
 <td>Kore de atteru?</td>
-<td>Is this right?</td>
+<td>¿Esto está bien?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2213,7 +2222,7 @@
 <td class="freq">3</td>
 <td class="jp">さすがやな。</td>
 <td>Sasuga ya na.</td>
-<td>That's impressive.</td>
+<td>Eso estuvo brutal.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2224,7 +2233,7 @@
 <td class="freq">1</td>
 <td class="jp">天才か。</td>
 <td>Tensai ka.</td>
-<td>Are you a genius?</td>
+<td>¿Eres un genio o qué?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2235,7 +2244,7 @@
 <td class="freq">2</td>
 <td class="jp">最高。</td>
 <td>Saikou.</td>
-<td>Awesome / the best.</td>
+<td>Brutal / lo máximo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2246,7 +2255,7 @@
 <td class="freq">1</td>
 <td class="jp">これを先に終わらせよう。</td>
 <td>Kore o saki ni owaraseyou.</td>
-<td>Let me finish this first.</td>
+<td>Voy a terminar esto primero.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2257,7 +2266,7 @@
 <td class="freq">3</td>
 <td class="jp">ええ加減にせえ。</td>
 <td>Ee kagen ni see.</td>
-<td>Cut it out already.</td>
+<td>Ya para con eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -2268,7 +2277,7 @@
 <td class="freq">1</td>
 <td class="jp">セーフやろ？</td>
 <td>Seefu yaro?</td>
-<td>I'm safe, right?</td>
+<td>Estoy a salvo, ¿no?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2279,7 +2288,7 @@
 <td class="freq">1</td>
 <td class="jp">洗濯しなきゃ。</td>
 <td>Sentaku shinakya.</td>
-<td>I have to do laundry.</td>
+<td>Tengo que lavar ropa.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2290,7 +2299,7 @@
 <td class="freq">2</td>
 <td class="jp">説明して。</td>
 <td>Setsumei shite.</td>
-<td>Explain it.</td>
+<td>Explícalo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2301,7 +2310,7 @@
 <td class="freq">1</td>
 <td class="jp">写真を撮りたい。</td>
 <td>Shashin o toritai.</td>
-<td>I want to take a picture.</td>
+<td>Quiero tomar una foto.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2312,7 +2321,7 @@
 <td class="freq">41</td>
 <td class="jp">忘れないようにしよう。</td>
 <td>Wasurenai you ni shiyou.</td>
-<td>Let me make sure I don't forget.</td>
+<td>Voy a asegurarme de no olvidarlo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2323,7 +2332,7 @@
 <td class="freq">1</td>
 <td class="jp">知らんけど。</td>
 <td>Shiran kedo.</td>
-<td>I don't know though.</td>
+<td>Aunque no sé.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2334,7 +2343,7 @@
 <td class="freq">1</td>
 <td class="jp">静かでいい。</td>
 <td>Shizuka de ii.</td>
-<td>It's nice and quiet.</td>
+<td>Está tranquilo y agradable.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2345,7 +2354,7 @@
 <td class="freq">1</td>
 <td class="jp">見た瞬間アウト。</td>
 <td>Mita shunkan auto.</td>
-<td>The moment I saw it, I was out.</td>
+<td>En cuanto lo vi, perdí.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2356,7 +2365,7 @@
 <td class="freq">2</td>
 <td class="jp">今はこれに集中。</td>
 <td>Ima wa kore ni shuuchuu.</td>
-<td>Focus on this for now.</td>
+<td>Por ahora, enfoque en esto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2367,7 +2376,7 @@
 <td class="freq">70</td>
 <td class="jp">日本語で何て言うんだっけ？</td>
 <td>Nihongo de nan te iun dakke?</td>
-<td>How do you say it in Japonés again?</td>
+<td>¿Cómo se decía en japonés?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2378,7 +2387,7 @@
 <td class="freq">28</td>
 <td class="jp">なるほど、そういうことか。</td>
 <td>Naruhodo, sou iu koto ka.</td>
-<td>Ah, I see, that's what it means.</td>
+<td>Ah, ya entiendo, era eso.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2389,7 +2398,7 @@
 <td class="freq">1</td>
 <td class="jp">反則やん。</td>
 <td>Hansoku yan.</td>
-<td>That's against the rules.</td>
+<td>Eso rompe las reglas.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2400,7 +2409,7 @@
 <td class="freq">16</td>
 <td class="jp">何か違う気がする。</td>
 <td>Nanka chigau ki ga suru.</td>
-<td>Something feels off.</td>
+<td>Siento que algo está raro.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2411,7 +2420,7 @@
 <td class="freq">3</td>
 <td class="jp">もう少しだけ。</td>
 <td>Mou sukoshi dake.</td>
-<td>Just a little more.</td>
+<td>Solo un poquito más.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2422,7 +2431,7 @@
 <td class="freq">61</td>
 <td class="jp">たぶんこれかな。</td>
 <td>Tabun kore kana.</td>
-<td>Maybe this one.</td>
+<td>Tal vez sea este.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2433,7 +2442,7 @@
 <td class="freq">1</td>
 <td class="jp">ギリギリ耐えた。</td>
 <td>Girigiri taeta.</td>
-<td>I barely held it in.</td>
+<td>Apenas me aguanté.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2444,7 +2453,7 @@
 <td class="freq">2</td>
 <td class="jp">これ食べてみたい。</td>
 <td>Kore tabete mitai.</td>
-<td>I want to try eating this.</td>
+<td>Quiero probar esto.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -2455,7 +2464,7 @@
 <td class="freq">2</td>
 <td class="jp">今言うタイミングちゃう。</td>
 <td>Ima yuu taimingu chau.</td>
-<td>This is not the time to say that.</td>
+<td>Ahora no es el momento de decir eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2466,7 +2475,7 @@
 <td class="freq">2</td>
 <td class="jp">絶対そうやと思った。</td>
 <td>Zettai sou ya to omotta.</td>
-<td>I totally knew it.</td>
+<td>Yo sabía que iba a ser eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2477,7 +2486,7 @@
 <td class="freq">2</td>
 <td class="jp">高っ。</td>
 <td>Takaa.</td>
-<td>Whoa, expensive.</td>
+<td>¡Uff, caro!</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2488,7 +2497,7 @@
 <td class="freq">1</td>
 <td class="jp">洗濯しなきゃ。</td>
 <td>Sentaku shinakya.</td>
-<td>I have to do laundry.</td>
+<td>Tengo que lavar ropa.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2499,7 +2508,7 @@
 <td class="freq">1</td>
 <td class="jp">一回試してみよう。</td>
 <td>Ikkai tameshite miyou.</td>
-<td>Let's try it once.</td>
+<td>Probemos una vez.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2510,7 +2519,7 @@
 <td class="freq">2</td>
 <td class="jp">意外と簡単。</td>
 <td>Igai to kantan.</td>
-<td>Surprisingly easy.</td>
+<td>Sorprendentemente fácil.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2521,7 +2530,7 @@
 <td class="freq">2</td>
 <td class="jp">楽しい。</td>
 <td>Tanoshii.</td>
-<td>This is fun.</td>
+<td>Esto está divertido.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2532,7 +2541,7 @@
 <td class="freq">3</td>
 <td class="jp">これは助かる。</td>
 <td>Kore wa tasukaru.</td>
-<td>This helps a lot.</td>
+<td>Esto ayuda muchísimo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2543,7 +2552,7 @@
 <td class="freq">32</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2554,7 +2563,7 @@
 <td class="freq">1</td>
 <td class="jp">適当すぎるやろ。</td>
 <td>Tekitou sugiru yaro.</td>
-<td>That's way too half-baked.</td>
+<td>Eso está demasiado improvisado.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2565,7 +2574,7 @@
 <td class="freq">1</td>
 <td class="jp">天才か。</td>
 <td>Tensai ka.</td>
-<td>Are you a genius?</td>
+<td>¿Eres un genio o qué?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2576,7 +2585,7 @@
 <td class="freq">32</td>
 <td class="jp">なるほど、そういうことか。</td>
 <td>Naruhodo, sou iu koto ka.</td>
-<td>Ah, I see, that's what it means.</td>
+<td>Ah, ya entiendo, era eso.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2587,7 +2596,7 @@
 <td class="freq">1</td>
 <td class="jp">今の、聞き取れなかった。</td>
 <td>Ima no, kikitorenakatta.</td>
-<td>I couldn't catch that.</td>
+<td>No pude captar lo que dijiste.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2598,7 +2607,7 @@
 <td class="freq">1</td>
 <td class="jp">写真を撮りたい。</td>
 <td>Shashin o toritai.</td>
-<td>I want to take a picture.</td>
+<td>Quiero tomar una foto.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2609,7 +2618,7 @@
 <td class="freq">1</td>
 <td class="jp">心臓止まるわ。</td>
 <td>Shinzou tomaru wa.</td>
-<td>My heart almost stopped.</td>
+<td>Casi se me para el corazón.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Katakana">
@@ -2620,7 +2629,7 @@
 <td class="freq">4</td>
 <td class="jp">見た瞬間アウト。</td>
 <td>Mita shunkan auto.</td>
-<td>The moment I saw it, I was out.</td>
+<td>En cuanto lo vi, perdí.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2631,7 +2640,7 @@
 <td class="freq">1</td>
 <td class="jp">この場所、いいね。</td>
 <td>Kono basho, ii ne.</td>
-<td>This place is nice.</td>
+<td>Este lugar está lindo.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2642,7 +2651,7 @@
 <td class="freq">1</td>
 <td class="jp">納得いかん。</td>
 <td>Nattoku ikan.</td>
-<td>I don't accept that.</td>
+<td>No acepto eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2653,7 +2662,7 @@
 <td class="freq">7</td>
 <td class="jp">一個ずつやろう。</td>
 <td>Ikko zutsu yarou.</td>
-<td>Let's do it one at a time.</td>
+<td>Hagámoslo uno por uno.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2664,7 +2673,7 @@
 <td class="freq">1</td>
 <td class="jp">部屋を片付けよう。</td>
 <td>Heya o katazukeyou.</td>
-<td>Let's clean up the room.</td>
+<td>Vamos a recoger el cuarto.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2675,7 +2684,7 @@
 <td class="freq">1</td>
 <td class="jp">理不尽やわ。</td>
 <td>Rifujin ya wa.</td>
-<td>That's unreasonable.</td>
+<td>Eso no es justo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2686,7 +2695,7 @@
 <td class="freq">1</td>
 <td class="jp">次はどこに行く？</td>
 <td>Tsugi wa doko ni iku?</td>
-<td>Where do we go next?</td>
+<td>¿A dónde vamos después?</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2697,7 +2706,7 @@
 <td class="freq">2</td>
 <td class="jp">これ、どう使うの？</td>
 <td>Kore, dou tsukau no?</td>
-<td>How do I use this?</td>
+<td>¿Cómo uso esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2708,7 +2717,7 @@
 <td class="freq">3</td>
 <td class="jp">すごく疲れた。</td>
 <td>Sugoku tsukareta.</td>
-<td>I'm really tired.</td>
+<td>Estoy bien cansado.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2719,7 +2728,7 @@
 <td class="freq">96</td>
 <td class="jp">これは何て言うの？</td>
 <td>Kore wa nan te iu no?</td>
-<td>How do you say this?</td>
+<td>¿Cómo se dice esto?</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Katakana">
@@ -2730,7 +2739,7 @@
 <td class="freq">4</td>
 <td class="jp">見た瞬間アウト。</td>
 <td>Mita shunkan auto.</td>
-<td>The moment I saw it, I was out.</td>
+<td>En cuanto lo vi, perdí.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2741,7 +2750,7 @@
 <td class="freq">1</td>
 <td class="jp">やっと動いた。</td>
 <td>Yatto ugoita.</td>
-<td>It finally worked.</td>
+<td>Por fin funcionó.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2752,7 +2761,7 @@
 <td class="freq">1</td>
 <td class="jp">嬉しい。</td>
 <td>Ureshii.</td>
-<td>I'm happy.</td>
+<td>Estoy feliz.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2763,7 +2772,7 @@
 <td class="freq">21</td>
 <td class="jp">今わかった。</td>
 <td>Ima wakatta.</td>
-<td>I get it now.</td>
+<td>Ahora entendí.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2774,7 +2783,7 @@
 <td class="freq">3</td>
 <td class="jp">意味が分からない。</td>
 <td>Imi ga wakaranai.</td>
-<td>I don't understand what it means.</td>
+<td>No entiendo qué significa.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2785,7 +2794,7 @@
 <td class="freq">1</td>
 <td class="jp">これ罠やろ。</td>
 <td>Kore wana yaro.</td>
-<td>This is a trap, right?</td>
+<td>Esto es una trampa, ¿verdad?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2796,7 +2805,7 @@
 <td class="freq">6</td>
 <td class="jp">笑ってもうた。</td>
 <td>Waratte mouta.</td>
-<td>I ended up laughing.</td>
+<td>Terminé riéndome.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2807,7 +2816,7 @@
 <td class="freq">2</td>
 <td class="jp">忘れないようにしよう。</td>
 <td>Wasurenai you ni shiyou.</td>
-<td>Let me make sure I don't forget.</td>
+<td>Voy a asegurarme de no olvidarlo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2818,7 +2827,7 @@
 <td class="freq">13</td>
 <td class="jp">めっちゃうまい。</td>
 <td>Meccha umai.</td>
-<td>This is super good.</td>
+<td>Esto está buenísimo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2829,7 +2838,7 @@
 <td class="freq">54</td>
 <td class="jp">一個ずつやろう。</td>
 <td>Ikko zutsu yarou.</td>
-<td>Let's do it one at a time.</td>
+<td>Hagámoslo uno por uno.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2840,7 +2849,7 @@
 <td class="freq">1</td>
 <td class="jp">部屋を片付けよう。</td>
 <td>Heya o katazukeyou.</td>
-<td>Let's clean up the room.</td>
+<td>Vamos a recoger el cuarto.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2851,7 +2860,7 @@
 <td class="freq">3</td>
 <td class="jp">安っ。</td>
 <td>Yasuu.</td>
-<td>Whoa, cheap.</td>
+<td>¡Uff, barato!</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2862,7 +2871,7 @@
 <td class="freq">4</td>
 <td class="jp">ちょっと休憩しよう。</td>
 <td>Chotto kyuukei shiyou.</td>
-<td>Let's take a quick break.</td>
+<td>Tomemos un descansito.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2873,7 +2882,7 @@
 <td class="freq">15</td>
 <td class="jp">ちょっと考えよう。</td>
 <td>Chotto kangaeyou.</td>
-<td>Let me think for a second.</td>
+<td>Déjame pensar un segundo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2884,7 +2893,7 @@
 <td class="freq">26</td>
 <td class="jp">ちょっと考えよう。</td>
 <td>Chotto kangaeyou.</td>
-<td>Let me think for a second.</td>
+<td>Déjame pensar un segundo.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2895,7 +2904,7 @@
 <td class="freq">1</td>
 <td class="jp">嫌な予感する。</td>
 <td>Iya na yokan suru.</td>
-<td>I have a bad feeling.</td>
+<td>Tengo un mal presentimiento.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2906,7 +2915,7 @@
 <td class="freq">1</td>
 <td class="jp">コーヒーが必要。</td>
 <td>Koohii ga hitsuyou.</td>
-<td>I need coffee.</td>
+<td>Necesito café.</td>
 <td>Parte 1</td>
 </tr>
 <tr data-type="Kanji">
@@ -2917,7 +2926,7 @@
 <td class="freq">1</td>
 <td class="jp">オチ弱いな。</td>
 <td>Ochi yowai na.</td>
-<td>That punchline is weak.</td>
+<td>Ese remate está flojo.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2928,7 +2937,7 @@
 <td class="freq">1</td>
 <td class="jp">なんちゅう顔してんねん。</td>
 <td>Nanchuu kao shiten nen.</td>
-<td>What kind of face is that?</td>
+<td>¿Qué clase de cara es esa?</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -2939,7 +2948,7 @@
 <td class="freq">3</td>
 <td class="jp">ゆっくりでいい。</td>
 <td>Yukkuri de ii.</td>
-<td>Slow is fine.</td>
+<td>Despacio está bien.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2950,7 +2959,7 @@
 <td class="freq">1</td>
 <td class="jp">雑やな。</td>
 <td>Zatsu ya na.</td>
-<td>That's sloppy.</td>
+<td>Eso está hecho a lo loco.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2961,7 +2970,7 @@
 <td class="freq">1</td>
 <td class="jp">全然あかん。</td>
 <td>Zenzen akan.</td>
-<td>Totally not good.</td>
+<td>Totalmente mal.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2972,7 +2981,7 @@
 <td class="freq">2</td>
 <td class="jp">自然に言えるようになりたい。</td>
 <td>Shizen ni ieru you ni naritai.</td>
-<td>I want to be able to say it naturally.</td>
+<td>Quiero poder decirlo de forma natural.</td>
 <td>Parte 2</td>
 </tr>
 <tr data-type="Kanji">
@@ -2983,7 +2992,7 @@
 <td class="freq">2</td>
 <td class="jp">絶対そうやと思った。</td>
 <td>Zettai sou ya to omotta.</td>
-<td>I totally knew it.</td>
+<td>Yo sabía que iba a ser eso.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Kanji">
@@ -2994,7 +3003,7 @@
 <td class="freq">1</td>
 <td class="jp">心臓止まるわ。</td>
 <td>Shinzou tomaru wa.</td>
-<td>My heart almost stopped.</td>
+<td>Casi se me para el corazón.</td>
 <td>Parte 3</td>
 </tr>
 <tr data-type="Hiragana">
@@ -3005,14 +3014,13 @@
 <td class="freq">6</td>
 <td class="jp">まずはこれから。</td>
 <td>Mazu wa kore kara.</td>
-<td>First, let's start with this.</td>
+<td>Primero, empecemos por esto.</td>
 <td>Parte 2</td>
 </tr>
 </tbody>
 </table>
 </section>
 </main>
-<footer>Built as a personalized kana + kanji reading aid from Piensa en Japonés Partes 1–3.</footer>
 <script>
 const searchBox = document.getElementById('searchBox');
 const typeFilter = document.getElementById('typeFilter');
@@ -3031,7 +3039,7 @@ function applyFilters() {
 searchBox.addEventListener('input', applyFilters);
 typeFilter.addEventListener('change', applyFilters);
 </script>
-<footer class="pixel-footer"><span class="pixel-badge">Piensa en Japonés · 80s Pixel Pastel Theme</span></footer>
+<footer class="pixel-footer"><span class="pixel-badge">Another Tool from <a href="https://progretech.com" target="_blank" rel="noopener">ProgreTech</a></span></footer>
 <script>
 (function(){
   function applyTheme(theme){
