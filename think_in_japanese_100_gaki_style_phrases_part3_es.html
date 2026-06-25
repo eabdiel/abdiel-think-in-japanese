@@ -66,9 +66,45 @@
   margin: 0;
 }
 
+
+
+/* === Responsive card deck conversion: no horizontal table overflow === */
+.table-wrap, table.converted-source-table { display: none !important; }
+.responsive-card-section { width: 100%; max-width: 100%; box-sizing: border-box; }
+.deck-toolbar {
+  display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+  margin: 18px 0 14px; padding:14px 16px; border-radius:18px;
+  border:1px solid rgba(255,255,255,.10); background:rgba(31,41,55,.88);
+  box-shadow:0 8px 22px rgba(0,0,0,.18); color:#fff;
+}
+.deck-progress-block{flex:1 1 360px; min-width:min(100%,260px)}
+.deck-progress-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.deck-title{color:#fff;font-weight:900;letter-spacing:.01em}
+.deck-count{color:#fff;font-size:15px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.deck-count .deck-label{color:#ff7ac8;font-weight:900}.deck-count .deck-count-num{color:#fff;font-weight:900}
+.deck-track{margin-top:8px;height:10px;width:100%;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
+.deck-fill{width:0%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ff7ac8,#ffd166);transition:width 180ms ease}
+.deck-percent{color:#fff;font-size:13px;font-weight:900;opacity:.96}
+.deck-reset{border:1px solid rgba(251,191,36,.42);background:rgba(251,191,36,.12);color:#fef3c7;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:800}.deck-reset:hover{background:rgba(251,191,36,.22)}
+.responsive-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:14px;width:100%;max-width:100%;overflow:visible}
+.study-card{width:100%;max-width:100%;box-sizing:border-box;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(31,41,55,.92);box-shadow:0 10px 24px rgba(0,0,0,.20);padding:15px;display:flex;flex-direction:column;gap:10px;transition:transform .18s ease,opacity .18s ease,filter .18s ease,box-shadow .18s ease;overflow-wrap:anywhere;word-break:normal;color:#f9fafb}
+.study-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.study-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.study-id{flex:0 0 auto;min-width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(251,191,36,.14);border:1px solid rgba(251,191,36,.35);color:#fef3c7;font-weight:900;font-size:14px}.study-main{flex:1 1 auto;text-align:right;font-size:clamp(22px,7vw,32px);line-height:1.25;font-weight:900;color:#fff;overflow-wrap:anywhere}.study-main.char-main{font-size:clamp(34px,12vw,54px);text-align:center}.study-meta{display:grid;gap:8px}.study-field{display:grid;gap:2px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06)}.study-label{color:#9ca3af;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:900}.study-value{color:#f9fafb;font-size:15px}.study-value.romaji{color:#bfdbfe;font-style:italic}.study-card .tag{align-self:flex-start;white-space:normal}.study-toggle{margin-top:2px;display:flex;align-items:center;gap:9px;min-height:38px;border:1px solid rgba(96,165,250,.30);background:rgba(96,165,250,.10);color:#dbeafe;border-radius:13px;padding:8px 10px;cursor:pointer;font-weight:900;user-select:none}.study-toggle input{width:18px;height:18px;accent-color:#fbbf24}.study-card.is-memorized{opacity:.58;filter:grayscale(.55);background:rgba(17,24,39,.92);box-shadow:inset 0 0 0 2px rgba(0,0,0,.25),0 6px 18px rgba(0,0,0,.25)}.study-card.is-memorized .study-main{text-decoration:line-through;text-decoration-thickness:2px}.study-card.is-memorized .study-toggle{background:rgba(22,163,74,.14);border-color:rgba(74,222,128,.35);color:#bbf7d0}
+body.theme-pixel .deck-toolbar, body.theme-garden .deck-toolbar{background:rgba(31,41,55,.88)!important;color:#fff!important}body.theme-pixel .deck-title,body.theme-garden .deck-title,body.theme-night .deck-title{color:#fff!important}body.theme-pixel .deck-count .deck-label{color:#ff7ac8!important}body.theme-pixel .deck-fill{background:linear-gradient(90deg,#ff7ac8,#ffd166)!important}body.theme-garden .deck-count .deck-label{color:#b7e08c!important}body.theme-garden .deck-fill{background:linear-gradient(90deg,#7aa85b,#d7efb4)!important}body.theme-night .deck-count .deck-label{color:#7fdcff!important}body.theme-night .deck-fill{background:linear-gradient(90deg,#7fdcff,#ff74d4)!important}body.theme-pixel .deck-count,body.theme-garden .deck-count,body.theme-night .deck-count,body.theme-pixel .deck-percent,body.theme-garden .deck-percent,body.theme-night .deck-percent,body.theme-pixel .deck-count-num,body.theme-garden .deck-count-num,body.theme-night .deck-count-num{color:#fff!important}
+body.theme-pixel .study-card{background:rgba(255,250,255,.97)!important;border-color:rgba(132,102,202,.45)!important;color:#2d244f!important}body.theme-pixel .study-main{color:#3a2466!important;text-shadow:none!important}body.theme-pixel .study-field{background:rgba(255,255,255,.82)!important;border-color:rgba(132,102,202,.18)!important}body.theme-pixel .study-label{color:#625778!important}body.theme-pixel .study-value{color:#2d244f!important}body.theme-pixel .study-value.romaji{color:#315b9c!important}body.theme-pixel .study-card .tag{background:rgba(126,104,200,.14)!important;border-color:rgba(126,104,200,.36)!important;color:#2d3a66!important}body.theme-pixel .study-toggle{background:rgba(240,246,255,.75)!important;border-color:rgba(96,165,250,.35)!important;color:#3a376b!important}.body.theme-pixel .study-id{color:#3a2466!important}
+body.theme-garden .study-card{background:rgba(255,252,244,.97)!important;border-color:rgba(146,124,72,.45)!important;color:#203625!important}body.theme-garden .study-main{color:#214b2f!important;text-shadow:none!important}body.theme-garden .study-field{background:rgba(255,255,249,.85)!important;border-color:rgba(146,124,72,.20)!important}body.theme-garden .study-label{color:#63735e!important}body.theme-garden .study-value{color:#203625!important}body.theme-garden .study-value.romaji{color:#2e6f9f!important}body.theme-garden .study-card .tag{background:rgba(122,168,91,.18)!important;border-color:rgba(122,168,91,.42)!important;color:#244725!important}body.theme-garden .study-toggle{background:rgba(231,244,221,.72)!important;border-color:rgba(122,168,91,.42)!important;color:#2c3a63!important}.body.theme-garden .study-id{color:#214b2f!important}
+body.theme-night .study-card{background:rgba(6,12,31,.96)!important;border-color:rgba(127,220,255,.42)!important;color:#f7fbff!important}body.theme-night .study-main{color:#fff!important;text-shadow:0 1px 8px rgba(127,220,255,.18)!important}body.theme-night .study-field{background:rgba(255,255,255,.075)!important;border-color:rgba(127,220,255,.14)!important}body.theme-night .study-label{color:#cbd7ec!important}body.theme-night .study-value{color:#fff!important}body.theme-night .study-value.romaji{color:#b9dcff!important}body.theme-night .study-card .tag{background:rgba(82,145,255,.22)!important;border-color:rgba(127,220,255,.35)!important;color:#e6f7ff!important}body.theme-night .study-toggle{background:rgba(30,93,155,.32)!important;border-color:rgba(127,220,255,.35)!important;color:#e6f7ff!important}
+@media(max-width:520px){main,section{padding-left:12px!important;padding-right:12px!important}.responsive-card-grid{grid-template-columns:1fr;gap:12px}.study-card{padding:13px;border-radius:16px}.study-card-header{align-items:flex-start}.study-main{text-align:left}.study-main.char-main{text-align:center}.deck-toolbar{margin-left:0;margin-right:0}}
+@media print{.table-wrap, table.converted-source-table{display:none!important}.deck-reset,.study-toggle input{display:none}.responsive-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.study-card,.deck-toolbar,.study-field{background:white!important;color:black!important;border:1px solid #aaa!important;box-shadow:none!important}.study-main,.study-value,.study-value.romaji,.study-label{color:black!important}}
 </style>
-<link href="pixel-theme-v2.css" rel="stylesheet"/>
-</head>
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#ff7ac8" name="theme-color"/>
+<link href="pixel-theme-v2.css" rel="stylesheet">
+</link></head>
 <body>
 <header class="pixel-site-header">
 <div class="pixel-hero-inner">
@@ -117,824 +153,9 @@
 <p>Buenísimo para entender programas y pensar de forma casual. No uses las frases de vacilón más fuertes con desconocidos a menos que entiendas bien el ambiente.</p>
 </div>
 </section>
-<section class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>japonés</th>
-<th>Romaji</th>
-<th>Significado natural</th>
-<th>Traducción mental literal</th>
-<th>Categoría</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="num">1</td>
-<td class="jp">なんでやねん！</td>
-<td class="romaji">Nande yanen!</td>
-<td>¡¿Pero qué rayos?! / ¡No me fastidies!</td>
-<td>¿Por qué es así?</td>
-<td><span class="tag">Reacción Kansai</span></td>
-</tr>
-<tr>
-<td class="num">2</td>
-<td class="jp">何してんねん。</td>
-<td class="romaji">Nani shiten nen.</td>
-<td>¿Qué estás haciendo?</td>
-<td>¿Qué haciendo?</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">3</td>
-<td class="jp">ちゃうちゃう。</td>
-<td class="romaji">Chau chau.</td>
-<td>No, no, eso no es.</td>
-<td>Diferente, diferente.</td>
-<td><span class="tag">Corrección</span></td>
-</tr>
-<tr>
-<td class="num">4</td>
-<td class="jp">それちゃうやろ。</td>
-<td class="romaji">Sore chau yaro.</td>
-<td>Eso no es, ¿verdad?</td>
-<td>Eso diferente, seguro.</td>
-<td><span class="tag">Corrección</span></td>
-</tr>
-<tr>
-<td class="num">5</td>
-<td class="jp">ほんまか？</td>
-<td class="romaji">Honma ka?</td>
-<td>¿De verdad?</td>
-<td>¿Verdad?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">6</td>
-<td class="jp">ほんまに言うてる？</td>
-<td class="romaji">Honma ni yuuteru?</td>
-<td>¿Lo estás diciendo en serio?</td>
-<td>¿De verdad diciendo?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">7</td>
-<td class="jp">うそやろ。</td>
-<td class="romaji">Uso yaro.</td>
-<td>No puede ser.</td>
-<td>Mentira, seguro.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">8</td>
-<td class="jp">ありえへん。</td>
-<td class="romaji">Ariehen.</td>
-<td>Increíble. / Eso no puede ser.</td>
-<td>No puede existir.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">9</td>
-<td class="jp">あかんあかん。</td>
-<td class="romaji">Akan akan.</td>
-<td>No, no, ni loco.</td>
-<td>No sirve, no sirve.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">10</td>
-<td class="jp">全然あかん。</td>
-<td class="romaji">Zenzen akan.</td>
-<td>Totalmente mal.</td>
-<td>Completamente no sirve.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">11</td>
-<td class="jp">めっちゃおもろい。</td>
-<td class="romaji">Meccha omoroi.</td>
-<td>Eso está buenísimo. / Qué risa.</td>
-<td>Súper gracioso.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">12</td>
-<td class="jp">おもろいやん。</td>
-<td class="romaji">Omoroi yan.</td>
-<td>Está gracioso, ¿no?</td>
-<td>Gracioso, ¿verdad?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">13</td>
-<td class="jp">笑ってもうた。</td>
-<td class="romaji">Waratte mouta.</td>
-<td>Terminé riéndome.</td>
-<td>Reí completamente.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">14</td>
-<td class="jp">笑ったらあかん。</td>
-<td class="romaji">Warattara akan.</td>
-<td>No me puedo reír.</td>
-<td>Si me río, mal.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">15</td>
-<td class="jp">今のは無理やろ。</td>
-<td class="romaji">Ima no wa muri yaro.</td>
-<td>Eso de ahora fue imposible.</td>
-<td>Eso de ahora imposible, seguro.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">16</td>
-<td class="jp">こらえられへん。</td>
-<td class="romaji">Koraerarehen.</td>
-<td>No puedo aguantarme.</td>
-<td>No puedo resistir.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">17</td>
-<td class="jp">危なかった。</td>
-<td class="romaji">Abunakatta.</td>
-<td>Eso estuvo cerca.</td>
-<td>Fue peligroso.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">18</td>
-<td class="jp">ギリギリ耐えた。</td>
-<td class="romaji">Girigiri taeta.</td>
-<td>Apenas me aguanté.</td>
-<td>Apenas resistí.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">19</td>
-<td class="jp">今、笑いかけた。</td>
-<td class="romaji">Ima, waraikaketa.</td>
-<td>Casi me río ahora mismo.</td>
-<td>Ahora, empecé a reírme.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">20</td>
-<td class="jp">それは卑怯やわ。</td>
-<td class="romaji">Sore wa hikyou ya wa.</td>
-<td>Eso es trampa.</td>
-<td>Eso es injusto/cobarde.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">21</td>
-<td class="jp">ずるいやろ。</td>
-<td class="romaji">Zurui yaro.</td>
-<td>Eso es hacer trampa, ¿no?</td>
-<td>Tramposo, seguro.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">22</td>
-<td class="jp">反則やん。</td>
-<td class="romaji">Hansoku yan.</td>
-<td>Eso rompe las reglas.</td>
-<td>Violación de regla, ¿no?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">23</td>
-<td class="jp">これは笑うわ。</td>
-<td class="romaji">Kore wa warau wa.</td>
-<td>Con esto uno se ríe.</td>
-<td>Esto, me río.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">24</td>
-<td class="jp">そんなん笑うやん。</td>
-<td class="romaji">Sonnan warau yan.</td>
-<td>Claro que uno se ríe con eso.</td>
-<td>Esa cosa, uno se ríe, ¿no?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">25</td>
-<td class="jp">なんちゅう顔してんねん。</td>
-<td class="romaji">Nanchuu kao shiten nen.</td>
-<td>¿Qué clase de cara es esa?</td>
-<td>¿Qué tipo de cara estás haciendo?</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">26</td>
-<td class="jp">その顔やめて。</td>
-<td class="romaji">Sono kao yamete.</td>
-<td>Deja de poner esa cara.</td>
-<td>Esa cara, para.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">27</td>
-<td class="jp">顔がもうあかん。</td>
-<td class="romaji">Kao ga mou akan.</td>
-<td>Tu cara ya lo arruinó todo.</td>
-<td>Cara ya no sirve.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">28</td>
-<td class="jp">声でかいねん。</td>
-<td class="romaji">Koe dekai nen.</td>
-<td>Estás hablando demasiado alto.</td>
-<td>Voz grande, mano.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">29</td>
-<td class="jp">近い近い。</td>
-<td class="romaji">Chikai chikai.</td>
-<td>Muy cerca, muy cerca.</td>
-<td>Cerca, cerca.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">30</td>
-<td class="jp">怖い怖い。</td>
-<td class="romaji">Kowai kowai.</td>
-<td>Qué miedo, qué miedo.</td>
-<td>Miedo, miedo.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">31</td>
-<td class="jp">急に来るな。</td>
-<td class="romaji">Kyuu ni kuru na.</td>
-<td>No me salgas de repente.</td>
-<td>De repente venir, no.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">32</td>
-<td class="jp">びっくりした。</td>
-<td class="romaji">Bikkuri shita.</td>
-<td>Me asustaste.</td>
-<td>Sorpresa hice.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">33</td>
-<td class="jp">心臓止まるわ。</td>
-<td class="romaji">Shinzou tomaru wa.</td>
-<td>Casi se me para el corazón.</td>
-<td>El corazón se detiene.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">34</td>
-<td class="jp">何が起きたん？</td>
-<td class="romaji">Nani ga okitan?</td>
-<td>¿Qué pasó?</td>
-<td>¿Qué ocurrió?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">35</td>
-<td class="jp">どないなってんねん。</td>
-<td class="romaji">Donai natten nen.</td>
-<td>¿Qué está pasando aquí?</td>
-<td>¿Cómo se está volviendo?</td>
-<td><span class="tag">Reacción Kansai</span></td>
-</tr>
-<tr>
-<td class="num">36</td>
-<td class="jp">意味わからん。</td>
-<td class="romaji">Imi wakaran.</td>
-<td>No entiendo.</td>
-<td>Significado no entiendo.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">37</td>
-<td class="jp">意味わからんけどおもろい。</td>
-<td class="romaji">Imi wakaran kedo omoroi.</td>
-<td>No entiendo, pero da risa.</td>
-<td>Significado no entiendo, pero gracioso.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">38</td>
-<td class="jp">それ言うたらあかんやつ。</td>
-<td class="romaji">Sore yuutara akan yatsu.</td>
-<td>Eso es algo que no se debe decir.</td>
-<td>Si dices eso, cosa mala.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">39</td>
-<td class="jp">言い方きついわ。</td>
-<td class="romaji">Iikata kitsui wa.</td>
-<td>Esa forma de decirlo está fuerte.</td>
-<td>Forma de decir es fuerte.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">40</td>
-<td class="jp">やめたれや。</td>
-<td class="romaji">Yametare ya.</td>
-<td>Déjalo quieto.</td>
-<td>Para de hacerle eso.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">41</td>
-<td class="jp">かわいそうやろ。</td>
-<td class="romaji">Kawaisou yaro.</td>
-<td>Pobrecito, no seas así.</td>
-<td>Da pena, seguro.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">42</td>
-<td class="jp">もうええわ。</td>
-<td class="romaji">Mou ee wa.</td>
-<td>Ya, suficiente.</td>
-<td>Ya está bien.</td>
-<td><span class="tag">Remate</span></td>
-</tr>
-<tr>
-<td class="num">43</td>
-<td class="jp">もうええて。</td>
-<td class="romaji">Mou eete.</td>
-<td>Ya basta, mano.</td>
-<td>Ya está bien, te digo.</td>
-<td><span class="tag">Remate</span></td>
-</tr>
-<tr>
-<td class="num">44</td>
-<td class="jp">ええ加減にせえ。</td>
-<td class="romaji">Ee kagen ni see.</td>
-<td>Ya para con eso.</td>
-<td>Hazlo en buena medida.</td>
-<td><span class="tag">Regaño Kansai</span></td>
-</tr>
-<tr>
-<td class="num">45</td>
-<td class="jp">何回言うねん。</td>
-<td class="romaji">Nankai yuu nen.</td>
-<td>¿Cuántas veces vas a decir eso?</td>
-<td>¿Cuántas veces decir?</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">46</td>
-<td class="jp">しつこいねん。</td>
-<td class="romaji">Shitsukoi nen.</td>
-<td>Estás demasiado insistente.</td>
-<td>Insistente, mano.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">47</td>
-<td class="jp">またそれかい。</td>
-<td class="romaji">Mata sore kai.</td>
-<td>¿Otra vez con eso?</td>
-<td>¿Otra vez eso?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">48</td>
-<td class="jp">また出た。</td>
-<td class="romaji">Mata deta.</td>
-<td>Ahí salió otra vez.</td>
-<td>Otra vez salió.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">49</td>
-<td class="jp">来ると思った。</td>
-<td class="romaji">Kuru to omotta.</td>
-<td>Sabía que venía.</td>
-<td>Pensé que iba a venir.</td>
-<td><span class="tag">Predicción</span></td>
-</tr>
-<tr>
-<td class="num">50</td>
-<td class="jp">やっぱり来た。</td>
-<td class="romaji">Yappari kita.</td>
-<td>Sí, ahí está.</td>
-<td>Como esperaba, vino.</td>
-<td><span class="tag">Predicción</span></td>
-</tr>
-<tr>
-<td class="num">51</td>
-<td class="jp">絶対そうやと思った。</td>
-<td class="romaji">Zettai sou ya to omotta.</td>
-<td>Yo sabía que iba a ser eso.</td>
-<td>Absolutamente así, pensé.</td>
-<td><span class="tag">Predicción</span></td>
-</tr>
-<tr>
-<td class="num">52</td>
-<td class="jp">怪しいな。</td>
-<td class="romaji">Ayashii na.</td>
-<td>Eso está sospechoso.</td>
-<td>Sospechoso, ¿no?</td>
-<td><span class="tag">Sospecha</span></td>
-</tr>
-<tr>
-<td class="num">53</td>
-<td class="jp">なんか怪しい。</td>
-<td class="romaji">Nanka ayashii.</td>
-<td>Algo está raro.</td>
-<td>De alguna forma sospechoso.</td>
-<td><span class="tag">Sospecha</span></td>
-</tr>
-<tr>
-<td class="num">54</td>
-<td class="jp">絶対なんかある。</td>
-<td class="romaji">Zettai nanka aru.</td>
-<td>Aquí definitivamente hay algo.</td>
-<td>Definitivamente algo existe.</td>
-<td><span class="tag">Sospecha</span></td>
-</tr>
-<tr>
-<td class="num">55</td>
-<td class="jp">これ罠やろ。</td>
-<td class="romaji">Kore wana yaro.</td>
-<td>Esto es una trampa, ¿verdad?</td>
-<td>Esto trampa, seguro.</td>
-<td><span class="tag">Sospecha</span></td>
-</tr>
-<tr>
-<td class="num">56</td>
-<td class="jp">嫌な予感する。</td>
-<td class="romaji">Iya na yokan suru.</td>
-<td>Tengo un mal presentimiento.</td>
-<td>Mal presentimiento hace.</td>
-<td><span class="tag">Sospecha</span></td>
-</tr>
-<tr>
-<td class="num">57</td>
-<td class="jp">見た瞬間アウト。</td>
-<td class="romaji">Mita shunkan auto.</td>
-<td>En cuanto lo vi, perdí.</td>
-<td>Momento de ver, fuera.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">58</td>
-<td class="jp">アウトやん。</td>
-<td class="romaji">Auto yan.</td>
-<td>Eso cuenta como fuera.</td>
-<td>Fuera, ¿no?</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">59</td>
-<td class="jp">今のアウトやろ。</td>
-<td class="romaji">Ima no auto yaro.</td>
-<td>Eso de ahora fue fuera, ¿verdad?</td>
-<td>Eso de ahora fuera, seguro.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">60</td>
-<td class="jp">セーフやろ？</td>
-<td class="romaji">Seefu yaro?</td>
-<td>Estoy a salvo, ¿no?</td>
-<td>A salvo, seguro?</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">61</td>
-<td class="jp">いや、アウトや。</td>
-<td class="romaji">Iya, auto ya.</td>
-<td>No, quedaste fuera.</td>
-<td>No, fuera.</td>
-<td><span class="tag">No reírse</span></td>
-</tr>
-<tr>
-<td class="num">62</td>
-<td class="jp">なんで俺だけ？</td>
-<td class="romaji">Nande ore dake?</td>
-<td>¿Por qué solo yo?</td>
-<td>¿Por qué yo solamente?</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">63</td>
-<td class="jp">俺関係ないやん。</td>
-<td class="romaji">Ore kankei nai yan.</td>
-<td>Esto no tiene nada que ver conmigo.</td>
-<td>Yo relación ninguna, ¿no?</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">64</td>
-<td class="jp">巻き込まれた。</td>
-<td class="romaji">Makikomareta.</td>
-<td>Me arrastraron a esto.</td>
-<td>Fui arrastrado/involucrado.</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">65</td>
-<td class="jp">理不尽やわ。</td>
-<td class="romaji">Rifujin ya wa.</td>
-<td>Eso no es justo.</td>
-<td>Irracional es.</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">66</td>
-<td class="jp">納得いかん。</td>
-<td class="romaji">Nattoku ikan.</td>
-<td>No acepto eso.</td>
-<td>Aceptación no va.</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">67</td>
-<td class="jp">なんでそうなるん？</td>
-<td class="romaji">Nande sou narun?</td>
-<td>¿Cómo termina siendo así?</td>
-<td>¿Por qué así se vuelve?</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">68</td>
-<td class="jp">誰が決めたん？</td>
-<td class="romaji">Dare ga kimetan?</td>
-<td>¿Quién decidió eso?</td>
-<td>¿Quién decidió?</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">69</td>
-<td class="jp">説明して。</td>
-<td class="romaji">Setsumei shite.</td>
-<td>Explícalo.</td>
-<td>Explicación haz.</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">70</td>
-<td class="jp">説明になってへん。</td>
-<td class="romaji">Setsumei ni nattehen.</td>
-<td>Eso no explica nada.</td>
-<td>No se vuelve explicación.</td>
-<td><span class="tag">Queja</span></td>
-</tr>
-<tr>
-<td class="num">71</td>
-<td class="jp">雑やな。</td>
-<td class="romaji">Zatsu ya na.</td>
-<td>Eso está hecho a lo loco.</td>
-<td>Descuidado, ¿no?</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">72</td>
-<td class="jp">適当すぎるやろ。</td>
-<td class="romaji">Tekitou sugiru yaro.</td>
-<td>Eso está demasiado improvisado.</td>
-<td>Demasiado al azar, seguro.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">73</td>
-<td class="jp">ちゃんとやれや。</td>
-<td class="romaji">Chanto yare ya.</td>
-<td>Hazlo bien.</td>
-<td>Bien hazlo.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">74</td>
-<td class="jp">何を見せられてんねん。</td>
-<td class="romaji">Nani o miserareten nen.</td>
-<td>¿Qué rayos estoy viendo?</td>
-<td>¿Qué se me está mostrando?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">75</td>
-<td class="jp">地獄やん。</td>
-<td class="romaji">Jigoku yan.</td>
-<td>Esto es un desastre.</td>
-<td>Infierno, ¿no?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">76</td>
-<td class="jp">空気おかしいやろ。</td>
-<td class="romaji">Kuuki okashii yaro.</td>
-<td>El ambiente está raro, ¿verdad?</td>
-<td>Aire/ambiente raro, seguro.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">77</td>
-<td class="jp">変な空気なった。</td>
-<td class="romaji">Hen na kuuki natta.</td>
-<td>El ambiente se puso raro.</td>
-<td>Aire extraño se volvió.</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">78</td>
-<td class="jp">誰も助けてくれへん。</td>
-<td class="romaji">Dare mo tasukete kurehen.</td>
-<td>Nadie me está ayudando.</td>
-<td>Nadie ayuda-da.</td>
-<td><span class="tag">Queja cómica</span></td>
-</tr>
-<tr>
-<td class="num">79</td>
-<td class="jp">助けてくれや。</td>
-<td class="romaji">Tasukete kure ya.</td>
-<td>Ayúdame, mano.</td>
-<td>Ayuda dame.</td>
-<td><span class="tag">Queja cómica</span></td>
-</tr>
-<tr>
-<td class="num">80</td>
-<td class="jp">なんで黙ってんねん。</td>
-<td class="romaji">Nande damatten nen.</td>
-<td>¿Por qué te quedas callado?</td>
-<td>¿Por qué estando en silencio?</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">81</td>
-<td class="jp">何か言えや。</td>
-<td class="romaji">Nanika ie ya.</td>
-<td>Di algo.</td>
-<td>Algo di.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">82</td>
-<td class="jp">今言うタイミングちゃう。</td>
-<td class="romaji">Ima yuu taimingu chau.</td>
-<td>Ahora no es el momento de decir eso.</td>
-<td>Ahora decir momento es diferente.</td>
-<td><span class="tag">Corrección</span></td>
-</tr>
-<tr>
-<td class="num">83</td>
-<td class="jp">タイミング悪いわ。</td>
-<td class="romaji">Taimingu warui wa.</td>
-<td>Qué mal timing.</td>
-<td>Momento malo.</td>
-<td><span class="tag">Corrección</span></td>
-</tr>
-<tr>
-<td class="num">84</td>
-<td class="jp">そこ拾うんかい。</td>
-<td class="romaji">Soko hiroun kai.</td>
-<td>¿A eso es que vas a reaccionar?</td>
-<td>¿Ahí recoges?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">85</td>
-<td class="jp">そこ気になる？</td>
-<td class="romaji">Soko ki ni naru?</td>
-<td>¿Eso es lo que te preocupa?</td>
-<td>¿Ahí se vuelve preocupación?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">86</td>
-<td class="jp">細かいねん。</td>
-<td class="romaji">Komakai nen.</td>
-<td>Estás demasiado detallista.</td>
-<td>Pequeño/detalle, mano.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">87</td>
-<td class="jp">どうでもええわ。</td>
-<td class="romaji">Dou demo ee wa.</td>
-<td>¿Y a quién le importa?</td>
-<td>Cualquier forma está bien.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">88</td>
-<td class="jp">それは大事やろ。</td>
-<td class="romaji">Sore wa daiji yaro.</td>
-<td>Esa parte sí importa.</td>
-<td>Eso importante, seguro.</td>
-<td><span class="tag">Corrección</span></td>
-</tr>
-<tr>
-<td class="num">89</td>
-<td class="jp">急に真面目になるな。</td>
-<td class="romaji">Kyuu ni majime ni naru na.</td>
-<td>No te pongas serio de repente.</td>
-<td>De repente serio volverse, no.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">90</td>
-<td class="jp">真面目か。</td>
-<td class="romaji">Majime ka.</td>
-<td>¿Ahora te pones serio?</td>
-<td>Serio, ¿eh?</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">91</td>
-<td class="jp">顔だけ真剣やん。</td>
-<td class="romaji">Kao dake shinken yan.</td>
-<td>Solo tu cara se ve seria.</td>
-<td>Solo cara seria, ¿no?</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-<tr>
-<td class="num">92</td>
-<td class="jp">何の時間やねん。</td>
-<td class="romaji">Nan no jikan ya nen.</td>
-<td>¿Qué clase de segmento es este?</td>
-<td>¿Qué tiempo/segmento es este?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">93</td>
-<td class="jp">終わり方おかしい。</td>
-<td class="romaji">Owarikata okashii.</td>
-<td>Ese final estuvo raro.</td>
-<td>Forma de terminar extraña.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">94</td>
-<td class="jp">オチないんかい。</td>
-<td class="romaji">Ochi nain kai.</td>
-<td>¿No hay remate?</td>
-<td>¿Remate no existe?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">95</td>
-<td class="jp">オチ弱いな。</td>
-<td class="romaji">Ochi yowai na.</td>
-<td>Ese remate está flojo.</td>
-<td>Remate débil, ¿no?</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">96</td>
-<td class="jp">悔しいけど笑った。</td>
-<td class="romaji">Kuyashii kedo waratta.</td>
-<td>Me da coraje, pero me reí.</td>
-<td>Frustrante, pero reí.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">97</td>
-<td class="jp">これは負けたわ。</td>
-<td class="romaji">Kore wa maketa wa.</td>
-<td>Con esta perdí.</td>
-<td>Esto, perdí.</td>
-<td><span class="tag">Comedia</span></td>
-</tr>
-<tr>
-<td class="num">98</td>
-<td class="jp">さすがやな。</td>
-<td class="romaji">Sasuga ya na.</td>
-<td>Eso estuvo brutal.</td>
-<td>Como era de esperarse, ¿no?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">99</td>
-<td class="jp">天才か。</td>
-<td class="romaji">Tensai ka.</td>
-<td>¿Eres un genio o qué?</td>
-<td>Genio, ¿eh?</td>
-<td><span class="tag">Reacción</span></td>
-</tr>
-<tr>
-<td class="num">100</td>
-<td class="jp">アホやろ。</td>
-<td class="romaji">Aho yaro.</td>
-<td>Eres un caso. / Estás brutal.</td>
-<td>Tonto, seguro.</td>
-<td><span class="tag">Vacilón</span></td>
-</tr>
-</tbody>
-</table>
-</section>
+<section class="responsive-card-section" data-storage-key="thinkJapanese_part3_es"><div class="deck-toolbar"><div class="deck-progress-block"><div class="deck-progress-meta"><div class="deck-title">Tarjetas responsivas de frases</div><div class="deck-count"><span class="deck-label">Memorizadas: </span><span class="deck-count-num">0 / 0</span> <span class="deck-percent">0%</span></div></div><div class="deck-track"><div class="deck-fill"></div></div></div><button class="deck-reset" data-reset-deck="" type="button">Reiniciar memorizadas</button></div><div class="responsive-card-grid"><article class="study-card " data-id="1" data-order="1" data-search="1 なんでやねん！ Nande yanen! ¡¿Pero qué rayos?! / ¡No me fastidies! ¿Por qué es así? Reacción Kansai"><div class="study-card-header"><span class="study-id">1</span><div class="study-main">なんでやねん！</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande yanen!</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¡¿Pero qué rayos?! / ¡No me fastidies!</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Por qué es así?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción Kansai</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #1" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="2" data-order="2" data-search="2 何してんねん。 Nani shiten nen. ¿Qué estás haciendo? ¿Qué haciendo? Vacilón"><div class="study-card-header"><span class="study-id">2</span><div class="study-main">何してんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nani shiten nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Qué estás haciendo?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Qué haciendo?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #2" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="3" data-order="3" data-search="3 ちゃうちゃう。 Chau chau. No, no, eso no es. Diferente, diferente. Corrección"><div class="study-card-header"><span class="study-id">3</span><div class="study-main">ちゃうちゃう。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Chau chau.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No, no, eso no es.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Diferente, diferente.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Corrección</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #3" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="4" data-order="4" data-search="4 それちゃうやろ。 Sore chau yaro. Eso no es, ¿verdad? Eso diferente, seguro. Corrección"><div class="study-card-header"><span class="study-id">4</span><div class="study-main">それちゃうやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore chau yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso no es, ¿verdad?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Eso diferente, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Corrección</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #4" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="5" data-order="5" data-search="5 ほんまか？ Honma ka? ¿De verdad? ¿Verdad? Reacción"><div class="study-card-header"><span class="study-id">5</span><div class="study-main">ほんまか？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Honma ka?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿De verdad?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Verdad?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #5" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="6" data-order="6" data-search="6 ほんまに言うてる？ Honma ni yuuteru? ¿Lo estás diciendo en serio? ¿De verdad diciendo? Reacción"><div class="study-card-header"><span class="study-id">6</span><div class="study-main">ほんまに言うてる？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Honma ni yuuteru?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Lo estás diciendo en serio?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿De verdad diciendo?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #6" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="7" data-order="7" data-search="7 うそやろ。 Uso yaro. No puede ser. Mentira, seguro. Reacción"><div class="study-card-header"><span class="study-id">7</span><div class="study-main">うそやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Uso yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No puede ser.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Mentira, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #7" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="8" data-order="8" data-search="8 ありえへん。 Ariehen. Increíble. / Eso no puede ser. No puede existir. Reacción"><div class="study-card-header"><span class="study-id">8</span><div class="study-main">ありえへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ariehen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Increíble. / Eso no puede ser.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">No puede existir.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #8" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="9" data-order="9" data-search="9 あかんあかん。 Akan akan. No, no, ni loco. No sirve, no sirve. Reacción"><div class="study-card-header"><span class="study-id">9</span><div class="study-main">あかんあかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Akan akan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No, no, ni loco.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">No sirve, no sirve.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #9" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="10" data-order="10" data-search="10 全然あかん。 Zenzen akan. Totalmente mal. Completamente no sirve. Reacción"><div class="study-card-header"><span class="study-id">10</span><div class="study-main">全然あかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zenzen akan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Totalmente mal.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Completamente no sirve.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #10" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="11" data-order="11" data-search="11 めっちゃおもろい。 Meccha omoroi. Eso está buenísimo. / Qué risa. Súper gracioso. Comedia"><div class="study-card-header"><span class="study-id">11</span><div class="study-main">めっちゃおもろい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Meccha omoroi.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso está buenísimo. / Qué risa.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Súper gracioso.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #11" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="12" data-order="12" data-search="12 おもろいやん。 Omoroi yan. Está gracioso, ¿no? Gracioso, ¿verdad? Comedia"><div class="study-card-header"><span class="study-id">12</span><div class="study-main">おもろいやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Omoroi yan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Está gracioso, ¿no?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Gracioso, ¿verdad?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #12" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="13" data-order="13" data-search="13 笑ってもうた。 Waratte mouta. Terminé riéndome. Reí completamente. Comedia"><div class="study-card-header"><span class="study-id">13</span><div class="study-main">笑ってもうた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Waratte mouta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Terminé riéndome.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Reí completamente.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #13" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="14" data-order="14" data-search="14 笑ったらあかん。 Warattara akan. No me puedo reír. Si me río, mal. No reírse"><div class="study-card-header"><span class="study-id">14</span><div class="study-main">笑ったらあかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Warattara akan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No me puedo reír.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Si me río, mal.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #14" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="15" data-order="15" data-search="15 今のは無理やろ。 Ima no wa muri yaro. Eso de ahora fue imposible. Eso de ahora imposible, seguro. No reírse"><div class="study-card-header"><span class="study-id">15</span><div class="study-main">今のは無理やろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima no wa muri yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso de ahora fue imposible.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Eso de ahora imposible, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #15" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="16" data-order="16" data-search="16 こらえられへん。 Koraerarehen. No puedo aguantarme. No puedo resistir. No reírse"><div class="study-card-header"><span class="study-id">16</span><div class="study-main">こらえられへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Koraerarehen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No puedo aguantarme.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">No puedo resistir.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #16" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="17" data-order="17" data-search="17 危なかった。 Abunakatta. Eso estuvo cerca. Fue peligroso. No reírse"><div class="study-card-header"><span class="study-id">17</span><div class="study-main">危なかった。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Abunakatta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso estuvo cerca.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Fue peligroso.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #17" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="18" data-order="18" data-search="18 ギリギリ耐えた。 Girigiri taeta. Apenas me aguanté. Apenas resistí. No reírse"><div class="study-card-header"><span class="study-id">18</span><div class="study-main">ギリギリ耐えた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Girigiri taeta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Apenas me aguanté.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Apenas resistí.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #18" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="19" data-order="19" data-search="19 今、笑いかけた。 Ima, waraikaketa. Casi me río ahora mismo. Ahora, empecé a reírme. No reírse"><div class="study-card-header"><span class="study-id">19</span><div class="study-main">今、笑いかけた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima, waraikaketa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Casi me río ahora mismo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Ahora, empecé a reírme.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #19" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="20" data-order="20" data-search="20 それは卑怯やわ。 Sore wa hikyou ya wa. Eso es trampa. Eso es injusto/cobarde. Comedia"><div class="study-card-header"><span class="study-id">20</span><div class="study-main">それは卑怯やわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore wa hikyou ya wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso es trampa.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Eso es injusto/cobarde.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #20" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="21" data-order="21" data-search="21 ずるいやろ。 Zurui yaro. Eso es hacer trampa, ¿no? Tramposo, seguro. Comedia"><div class="study-card-header"><span class="study-id">21</span><div class="study-main">ずるいやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zurui yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso es hacer trampa, ¿no?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Tramposo, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #21" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="22" data-order="22" data-search="22 反則やん。 Hansoku yan. Eso rompe las reglas. Violación de regla, ¿no? Comedia"><div class="study-card-header"><span class="study-id">22</span><div class="study-main">反則やん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Hansoku yan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso rompe las reglas.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Violación de regla, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #22" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="23" data-order="23" data-search="23 これは笑うわ。 Kore wa warau wa. Con esto uno se ríe. Esto, me río. Comedia"><div class="study-card-header"><span class="study-id">23</span><div class="study-main">これは笑うわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kore wa warau wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Con esto uno se ríe.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Esto, me río.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #23" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="24" data-order="24" data-search="24 そんなん笑うやん。 Sonnan warau yan. Claro que uno se ríe con eso. Esa cosa, uno se ríe, ¿no? Comedia"><div class="study-card-header"><span class="study-id">24</span><div class="study-main">そんなん笑うやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sonnan warau yan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Claro que uno se ríe con eso.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Esa cosa, uno se ríe, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #24" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="25" data-order="25" data-search="25 なんちゅう顔してんねん。 Nanchuu kao shiten nen. ¿Qué clase de cara es esa? ¿Qué tipo de cara estás haciendo? Vacilón"><div class="study-card-header"><span class="study-id">25</span><div class="study-main">なんちゅう顔してんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nanchuu kao shiten nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Qué clase de cara es esa?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Qué tipo de cara estás haciendo?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #25" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="26" data-order="26" data-search="26 その顔やめて。 Sono kao yamete. Deja de poner esa cara. Esa cara, para. Vacilón"><div class="study-card-header"><span class="study-id">26</span><div class="study-main">その顔やめて。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sono kao yamete.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Deja de poner esa cara.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Esa cara, para.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #26" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="27" data-order="27" data-search="27 顔がもうあかん。 Kao ga mou akan. Tu cara ya lo arruinó todo. Cara ya no sirve. Vacilón"><div class="study-card-header"><span class="study-id">27</span><div class="study-main">顔がもうあかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kao ga mou akan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Tu cara ya lo arruinó todo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Cara ya no sirve.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #27" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="28" data-order="28" data-search="28 声でかいねん。 Koe dekai nen. Estás hablando demasiado alto. Voz grande, mano. Vacilón"><div class="study-card-header"><span class="study-id">28</span><div class="study-main">声でかいねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Koe dekai nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Estás hablando demasiado alto.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Voz grande, mano.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #28" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="29" data-order="29" data-search="29 近い近い。 Chikai chikai. Muy cerca, muy cerca. Cerca, cerca. Vacilón"><div class="study-card-header"><span class="study-id">29</span><div class="study-main">近い近い。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Chikai chikai.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Muy cerca, muy cerca.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Cerca, cerca.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #29" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="30" data-order="30" data-search="30 怖い怖い。 Kowai kowai. Qué miedo, qué miedo. Miedo, miedo. Reacción"><div class="study-card-header"><span class="study-id">30</span><div class="study-main">怖い怖い。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kowai kowai.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Qué miedo, qué miedo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Miedo, miedo.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #30" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="31" data-order="31" data-search="31 急に来るな。 Kyuu ni kuru na. No me salgas de repente. De repente venir, no. Reacción"><div class="study-card-header"><span class="study-id">31</span><div class="study-main">急に来るな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kyuu ni kuru na.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No me salgas de repente.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">De repente venir, no.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #31" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="32" data-order="32" data-search="32 びっくりした。 Bikkuri shita. Me asustaste. Sorpresa hice. Reacción"><div class="study-card-header"><span class="study-id">32</span><div class="study-main">びっくりした。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Bikkuri shita.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Me asustaste.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Sorpresa hice.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #32" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="33" data-order="33" data-search="33 心臓止まるわ。 Shinzou tomaru wa. Casi se me para el corazón. El corazón se detiene. Reacción"><div class="study-card-header"><span class="study-id">33</span><div class="study-main">心臓止まるわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Shinzou tomaru wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Casi se me para el corazón.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">El corazón se detiene.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #33" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="34" data-order="34" data-search="34 何が起きたん？ Nani ga okitan? ¿Qué pasó? ¿Qué ocurrió? Reacción"><div class="study-card-header"><span class="study-id">34</span><div class="study-main">何が起きたん？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nani ga okitan?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Qué pasó?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Qué ocurrió?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #34" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="35" data-order="35" data-search="35 どないなってんねん。 Donai natten nen. ¿Qué está pasando aquí? ¿Cómo se está volviendo? Reacción Kansai"><div class="study-card-header"><span class="study-id">35</span><div class="study-main">どないなってんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Donai natten nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Qué está pasando aquí?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Cómo se está volviendo?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción Kansai</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #35" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="36" data-order="36" data-search="36 意味わからん。 Imi wakaran. No entiendo. Significado no entiendo. Reacción"><div class="study-card-header"><span class="study-id">36</span><div class="study-main">意味わからん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Imi wakaran.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No entiendo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Significado no entiendo.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #36" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="37" data-order="37" data-search="37 意味わからんけどおもろい。 Imi wakaran kedo omoroi. No entiendo, pero da risa. Significado no entiendo, pero gracioso. Comedia"><div class="study-card-header"><span class="study-id">37</span><div class="study-main">意味わからんけどおもろい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Imi wakaran kedo omoroi.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No entiendo, pero da risa.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Significado no entiendo, pero gracioso.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #37" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="38" data-order="38" data-search="38 それ言うたらあかんやつ。 Sore yuutara akan yatsu. Eso es algo que no se debe decir. Si dices eso, cosa mala. Vacilón"><div class="study-card-header"><span class="study-id">38</span><div class="study-main">それ言うたらあかんやつ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore yuutara akan yatsu.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso es algo que no se debe decir.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Si dices eso, cosa mala.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #38" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="39" data-order="39" data-search="39 言い方きついわ。 Iikata kitsui wa. Esa forma de decirlo está fuerte. Forma de decir es fuerte. Vacilón"><div class="study-card-header"><span class="study-id">39</span><div class="study-main">言い方きついわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Iikata kitsui wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Esa forma de decirlo está fuerte.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Forma de decir es fuerte.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #39" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="40" data-order="40" data-search="40 やめたれや。 Yametare ya. Déjalo quieto. Para de hacerle eso. Vacilón"><div class="study-card-header"><span class="study-id">40</span><div class="study-main">やめたれや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Yametare ya.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Déjalo quieto.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Para de hacerle eso.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #40" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="41" data-order="41" data-search="41 かわいそうやろ。 Kawaisou yaro. Pobrecito, no seas así. Da pena, seguro. Vacilón"><div class="study-card-header"><span class="study-id">41</span><div class="study-main">かわいそうやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kawaisou yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Pobrecito, no seas así.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Da pena, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #41" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="42" data-order="42" data-search="42 もうええわ。 Mou ee wa. Ya, suficiente. Ya está bien. Remate"><div class="study-card-header"><span class="study-id">42</span><div class="study-main">もうええわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mou ee wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ya, suficiente.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Ya está bien.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Remate</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #42" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="43" data-order="43" data-search="43 もうええて。 Mou eete. Ya basta, mano. Ya está bien, te digo. Remate"><div class="study-card-header"><span class="study-id">43</span><div class="study-main">もうええて。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mou eete.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ya basta, mano.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Ya está bien, te digo.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Remate</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #43" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="44" data-order="44" data-search="44 ええ加減にせえ。 Ee kagen ni see. Ya para con eso. Hazlo en buena medida. Regaño Kansai"><div class="study-card-header"><span class="study-id">44</span><div class="study-main">ええ加減にせえ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ee kagen ni see.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ya para con eso.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Hazlo en buena medida.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Regaño Kansai</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #44" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="45" data-order="45" data-search="45 何回言うねん。 Nankai yuu nen. ¿Cuántas veces vas a decir eso? ¿Cuántas veces decir? Vacilón"><div class="study-card-header"><span class="study-id">45</span><div class="study-main">何回言うねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nankai yuu nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Cuántas veces vas a decir eso?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Cuántas veces decir?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #45" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="46" data-order="46" data-search="46 しつこいねん。 Shitsukoi nen. Estás demasiado insistente. Insistente, mano. Vacilón"><div class="study-card-header"><span class="study-id">46</span><div class="study-main">しつこいねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Shitsukoi nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Estás demasiado insistente.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Insistente, mano.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #46" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="47" data-order="47" data-search="47 またそれかい。 Mata sore kai. ¿Otra vez con eso? ¿Otra vez eso? Reacción"><div class="study-card-header"><span class="study-id">47</span><div class="study-main">またそれかい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mata sore kai.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Otra vez con eso?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Otra vez eso?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #47" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="48" data-order="48" data-search="48 また出た。 Mata deta. Ahí salió otra vez. Otra vez salió. Reacción"><div class="study-card-header"><span class="study-id">48</span><div class="study-main">また出た。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mata deta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ahí salió otra vez.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Otra vez salió.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #48" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="49" data-order="49" data-search="49 来ると思った。 Kuru to omotta. Sabía que venía. Pensé que iba a venir. Predicción"><div class="study-card-header"><span class="study-id">49</span><div class="study-main">来ると思った。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kuru to omotta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Sabía que venía.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Pensé que iba a venir.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Predicción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #49" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="50" data-order="50" data-search="50 やっぱり来た。 Yappari kita. Sí, ahí está. Como esperaba, vino. Predicción"><div class="study-card-header"><span class="study-id">50</span><div class="study-main">やっぱり来た。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Yappari kita.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Sí, ahí está.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Como esperaba, vino.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Predicción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #50" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="51" data-order="51" data-search="51 絶対そうやと思った。 Zettai sou ya to omotta. Yo sabía que iba a ser eso. Absolutamente así, pensé. Predicción"><div class="study-card-header"><span class="study-id">51</span><div class="study-main">絶対そうやと思った。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zettai sou ya to omotta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Yo sabía que iba a ser eso.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Absolutamente así, pensé.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Predicción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #51" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="52" data-order="52" data-search="52 怪しいな。 Ayashii na. Eso está sospechoso. Sospechoso, ¿no? Sospecha"><div class="study-card-header"><span class="study-id">52</span><div class="study-main">怪しいな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ayashii na.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso está sospechoso.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Sospechoso, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Sospecha</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #52" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="53" data-order="53" data-search="53 なんか怪しい。 Nanka ayashii. Algo está raro. De alguna forma sospechoso. Sospecha"><div class="study-card-header"><span class="study-id">53</span><div class="study-main">なんか怪しい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nanka ayashii.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Algo está raro.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">De alguna forma sospechoso.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Sospecha</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #53" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="54" data-order="54" data-search="54 絶対なんかある。 Zettai nanka aru. Aquí definitivamente hay algo. Definitivamente algo existe. Sospecha"><div class="study-card-header"><span class="study-id">54</span><div class="study-main">絶対なんかある。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zettai nanka aru.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Aquí definitivamente hay algo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Definitivamente algo existe.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Sospecha</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #54" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="55" data-order="55" data-search="55 これ罠やろ。 Kore wana yaro. Esto es una trampa, ¿verdad? Esto trampa, seguro. Sospecha"><div class="study-card-header"><span class="study-id">55</span><div class="study-main">これ罠やろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kore wana yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Esto es una trampa, ¿verdad?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Esto trampa, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Sospecha</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #55" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="56" data-order="56" data-search="56 嫌な予感する。 Iya na yokan suru. Tengo un mal presentimiento. Mal presentimiento hace. Sospecha"><div class="study-card-header"><span class="study-id">56</span><div class="study-main">嫌な予感する。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Iya na yokan suru.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Tengo un mal presentimiento.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Mal presentimiento hace.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Sospecha</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #56" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="57" data-order="57" data-search="57 見た瞬間アウト。 Mita shunkan auto. En cuanto lo vi, perdí. Momento de ver, fuera. No reírse"><div class="study-card-header"><span class="study-id">57</span><div class="study-main">見た瞬間アウト。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mita shunkan auto.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">En cuanto lo vi, perdí.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Momento de ver, fuera.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #57" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="58" data-order="58" data-search="58 アウトやん。 Auto yan. Eso cuenta como fuera. Fuera, ¿no? No reírse"><div class="study-card-header"><span class="study-id">58</span><div class="study-main">アウトやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Auto yan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso cuenta como fuera.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Fuera, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #58" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="59" data-order="59" data-search="59 今のアウトやろ。 Ima no auto yaro. Eso de ahora fue fuera, ¿verdad? Eso de ahora fuera, seguro. No reírse"><div class="study-card-header"><span class="study-id">59</span><div class="study-main">今のアウトやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima no auto yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso de ahora fue fuera, ¿verdad?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Eso de ahora fuera, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #59" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="60" data-order="60" data-search="60 セーフやろ？ Seefu yaro? Estoy a salvo, ¿no? A salvo, seguro? No reírse"><div class="study-card-header"><span class="study-id">60</span><div class="study-main">セーフやろ？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Seefu yaro?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Estoy a salvo, ¿no?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">A salvo, seguro?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #60" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="61" data-order="61" data-search="61 いや、アウトや。 Iya, auto ya. No, quedaste fuera. No, fuera. No reírse"><div class="study-card-header"><span class="study-id">61</span><div class="study-main">いや、アウトや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Iya, auto ya.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No, quedaste fuera.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">No, fuera.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">No reírse</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #61" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="62" data-order="62" data-search="62 なんで俺だけ？ Nande ore dake? ¿Por qué solo yo? ¿Por qué yo solamente? Queja"><div class="study-card-header"><span class="study-id">62</span><div class="study-main">なんで俺だけ？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande ore dake?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Por qué solo yo?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Por qué yo solamente?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #62" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="63" data-order="63" data-search="63 俺関係ないやん。 Ore kankei nai yan. Esto no tiene nada que ver conmigo. Yo relación ninguna, ¿no? Queja"><div class="study-card-header"><span class="study-id">63</span><div class="study-main">俺関係ないやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ore kankei nai yan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Esto no tiene nada que ver conmigo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Yo relación ninguna, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #63" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="64" data-order="64" data-search="64 巻き込まれた。 Makikomareta. Me arrastraron a esto. Fui arrastrado/involucrado. Queja"><div class="study-card-header"><span class="study-id">64</span><div class="study-main">巻き込まれた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Makikomareta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Me arrastraron a esto.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Fui arrastrado/involucrado.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #64" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="65" data-order="65" data-search="65 理不尽やわ。 Rifujin ya wa. Eso no es justo. Irracional es. Queja"><div class="study-card-header"><span class="study-id">65</span><div class="study-main">理不尽やわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Rifujin ya wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso no es justo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Irracional es.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #65" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="66" data-order="66" data-search="66 納得いかん。 Nattoku ikan. No acepto eso. Aceptación no va. Queja"><div class="study-card-header"><span class="study-id">66</span><div class="study-main">納得いかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nattoku ikan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No acepto eso.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Aceptación no va.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #66" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="67" data-order="67" data-search="67 なんでそうなるん？ Nande sou narun? ¿Cómo termina siendo así? ¿Por qué así se vuelve? Queja"><div class="study-card-header"><span class="study-id">67</span><div class="study-main">なんでそうなるん？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande sou narun?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Cómo termina siendo así?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Por qué así se vuelve?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #67" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="68" data-order="68" data-search="68 誰が決めたん？ Dare ga kimetan? ¿Quién decidió eso? ¿Quién decidió? Queja"><div class="study-card-header"><span class="study-id">68</span><div class="study-main">誰が決めたん？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Dare ga kimetan?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Quién decidió eso?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Quién decidió?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #68" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="69" data-order="69" data-search="69 説明して。 Setsumei shite. Explícalo. Explicación haz. Queja"><div class="study-card-header"><span class="study-id">69</span><div class="study-main">説明して。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Setsumei shite.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Explícalo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Explicación haz.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #69" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="70" data-order="70" data-search="70 説明になってへん。 Setsumei ni nattehen. Eso no explica nada. No se vuelve explicación. Queja"><div class="study-card-header"><span class="study-id">70</span><div class="study-main">説明になってへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Setsumei ni nattehen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso no explica nada.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">No se vuelve explicación.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #70" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="71" data-order="71" data-search="71 雑やな。 Zatsu ya na. Eso está hecho a lo loco. Descuidado, ¿no? Vacilón"><div class="study-card-header"><span class="study-id">71</span><div class="study-main">雑やな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zatsu ya na.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso está hecho a lo loco.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Descuidado, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #71" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="72" data-order="72" data-search="72 適当すぎるやろ。 Tekitou sugiru yaro. Eso está demasiado improvisado. Demasiado al azar, seguro. Vacilón"><div class="study-card-header"><span class="study-id">72</span><div class="study-main">適当すぎるやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Tekitou sugiru yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso está demasiado improvisado.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Demasiado al azar, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #72" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="73" data-order="73" data-search="73 ちゃんとやれや。 Chanto yare ya. Hazlo bien. Bien hazlo. Vacilón"><div class="study-card-header"><span class="study-id">73</span><div class="study-main">ちゃんとやれや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Chanto yare ya.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Hazlo bien.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Bien hazlo.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #73" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="74" data-order="74" data-search="74 何を見せられてんねん。 Nani o miserareten nen. ¿Qué rayos estoy viendo? ¿Qué se me está mostrando? Reacción"><div class="study-card-header"><span class="study-id">74</span><div class="study-main">何を見せられてんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nani o miserareten nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Qué rayos estoy viendo?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Qué se me está mostrando?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #74" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="75" data-order="75" data-search="75 地獄やん。 Jigoku yan. Esto es un desastre. Infierno, ¿no? Reacción"><div class="study-card-header"><span class="study-id">75</span><div class="study-main">地獄やん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Jigoku yan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Esto es un desastre.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Infierno, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #75" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="76" data-order="76" data-search="76 空気おかしいやろ。 Kuuki okashii yaro. El ambiente está raro, ¿verdad? Aire/ambiente raro, seguro. Reacción"><div class="study-card-header"><span class="study-id">76</span><div class="study-main">空気おかしいやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kuuki okashii yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">El ambiente está raro, ¿verdad?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Aire/ambiente raro, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #76" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="77" data-order="77" data-search="77 変な空気なった。 Hen na kuuki natta. El ambiente se puso raro. Aire extraño se volvió. Reacción"><div class="study-card-header"><span class="study-id">77</span><div class="study-main">変な空気なった。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Hen na kuuki natta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">El ambiente se puso raro.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Aire extraño se volvió.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #77" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="78" data-order="78" data-search="78 誰も助けてくれへん。 Dare mo tasukete kurehen. Nadie me está ayudando. Nadie ayuda-da. Queja cómica"><div class="study-card-header"><span class="study-id">78</span><div class="study-main">誰も助けてくれへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Dare mo tasukete kurehen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Nadie me está ayudando.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Nadie ayuda-da.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja cómica</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #78" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="79" data-order="79" data-search="79 助けてくれや。 Tasukete kure ya. Ayúdame, mano. Ayuda dame. Queja cómica"><div class="study-card-header"><span class="study-id">79</span><div class="study-main">助けてくれや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Tasukete kure ya.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ayúdame, mano.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Ayuda dame.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Queja cómica</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #79" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="80" data-order="80" data-search="80 なんで黙ってんねん。 Nande damatten nen. ¿Por qué te quedas callado? ¿Por qué estando en silencio? Vacilón"><div class="study-card-header"><span class="study-id">80</span><div class="study-main">なんで黙ってんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande damatten nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Por qué te quedas callado?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Por qué estando en silencio?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #80" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="81" data-order="81" data-search="81 何か言えや。 Nanika ie ya. Di algo. Algo di. Vacilón"><div class="study-card-header"><span class="study-id">81</span><div class="study-main">何か言えや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nanika ie ya.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Di algo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Algo di.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #81" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="82" data-order="82" data-search="82 今言うタイミングちゃう。 Ima yuu taimingu chau. Ahora no es el momento de decir eso. Ahora decir momento es diferente. Corrección"><div class="study-card-header"><span class="study-id">82</span><div class="study-main">今言うタイミングちゃう。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima yuu taimingu chau.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ahora no es el momento de decir eso.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Ahora decir momento es diferente.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Corrección</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #82" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="83" data-order="83" data-search="83 タイミング悪いわ。 Taimingu warui wa. Qué mal timing. Momento malo. Corrección"><div class="study-card-header"><span class="study-id">83</span><div class="study-main">タイミング悪いわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Taimingu warui wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Qué mal timing.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Momento malo.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Corrección</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #83" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="84" data-order="84" data-search="84 そこ拾うんかい。 Soko hiroun kai. ¿A eso es que vas a reaccionar? ¿Ahí recoges? Comedia"><div class="study-card-header"><span class="study-id">84</span><div class="study-main">そこ拾うんかい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Soko hiroun kai.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿A eso es que vas a reaccionar?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Ahí recoges?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #84" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="85" data-order="85" data-search="85 そこ気になる？ Soko ki ni naru? ¿Eso es lo que te preocupa? ¿Ahí se vuelve preocupación? Comedia"><div class="study-card-header"><span class="study-id">85</span><div class="study-main">そこ気になる？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Soko ki ni naru?</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Eso es lo que te preocupa?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Ahí se vuelve preocupación?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #85" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="86" data-order="86" data-search="86 細かいねん。 Komakai nen. Estás demasiado detallista. Pequeño/detalle, mano. Vacilón"><div class="study-card-header"><span class="study-id">86</span><div class="study-main">細かいねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Komakai nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Estás demasiado detallista.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Pequeño/detalle, mano.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #86" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="87" data-order="87" data-search="87 どうでもええわ。 Dou demo ee wa. ¿Y a quién le importa? Cualquier forma está bien. Vacilón"><div class="study-card-header"><span class="study-id">87</span><div class="study-main">どうでもええわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Dou demo ee wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Y a quién le importa?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Cualquier forma está bien.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #87" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="88" data-order="88" data-search="88 それは大事やろ。 Sore wa daiji yaro. Esa parte sí importa. Eso importante, seguro. Corrección"><div class="study-card-header"><span class="study-id">88</span><div class="study-main">それは大事やろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore wa daiji yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Esa parte sí importa.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Eso importante, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Corrección</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #88" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="89" data-order="89" data-search="89 急に真面目になるな。 Kyuu ni majime ni naru na. No te pongas serio de repente. De repente serio volverse, no. Vacilón"><div class="study-card-header"><span class="study-id">89</span><div class="study-main">急に真面目になるな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kyuu ni majime ni naru na.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">No te pongas serio de repente.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">De repente serio volverse, no.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #89" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="90" data-order="90" data-search="90 真面目か。 Majime ka. ¿Ahora te pones serio? Serio, ¿eh? Vacilón"><div class="study-card-header"><span class="study-id">90</span><div class="study-main">真面目か。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Majime ka.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Ahora te pones serio?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Serio, ¿eh?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #90" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="91" data-order="91" data-search="91 顔だけ真剣やん。 Kao dake shinken yan. Solo tu cara se ve seria. Solo cara seria, ¿no? Vacilón"><div class="study-card-header"><span class="study-id">91</span><div class="study-main">顔だけ真剣やん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kao dake shinken yan.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Solo tu cara se ve seria.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Solo cara seria, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #91" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="92" data-order="92" data-search="92 何の時間やねん。 Nan no jikan ya nen. ¿Qué clase de segmento es este? ¿Qué tiempo/segmento es este? Comedia"><div class="study-card-header"><span class="study-id">92</span><div class="study-main">何の時間やねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nan no jikan ya nen.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Qué clase de segmento es este?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Qué tiempo/segmento es este?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #92" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="93" data-order="93" data-search="93 終わり方おかしい。 Owarikata okashii. Ese final estuvo raro. Forma de terminar extraña. Comedia"><div class="study-card-header"><span class="study-id">93</span><div class="study-main">終わり方おかしい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Owarikata okashii.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ese final estuvo raro.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Forma de terminar extraña.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #93" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="94" data-order="94" data-search="94 オチないんかい。 Ochi nain kai. ¿No hay remate? ¿Remate no existe? Comedia"><div class="study-card-header"><span class="study-id">94</span><div class="study-main">オチないんかい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ochi nain kai.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿No hay remate?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">¿Remate no existe?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #94" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="95" data-order="95" data-search="95 オチ弱いな。 Ochi yowai na. Ese remate está flojo. Remate débil, ¿no? Comedia"><div class="study-card-header"><span class="study-id">95</span><div class="study-main">オチ弱いな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ochi yowai na.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Ese remate está flojo.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Remate débil, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #95" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="96" data-order="96" data-search="96 悔しいけど笑った。 Kuyashii kedo waratta. Me da coraje, pero me reí. Frustrante, pero reí. Comedia"><div class="study-card-header"><span class="study-id">96</span><div class="study-main">悔しいけど笑った。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kuyashii kedo waratta.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Me da coraje, pero me reí.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Frustrante, pero reí.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #96" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="97" data-order="97" data-search="97 これは負けたわ。 Kore wa maketa wa. Con esta perdí. Esto, perdí. Comedia"><div class="study-card-header"><span class="study-id">97</span><div class="study-main">これは負けたわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kore wa maketa wa.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Con esta perdí.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Esto, perdí.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Comedia</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #97" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="98" data-order="98" data-search="98 さすがやな。 Sasuga ya na. Eso estuvo brutal. Como era de esperarse, ¿no? Reacción"><div class="study-card-header"><span class="study-id">98</span><div class="study-main">さすがやな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sasuga ya na.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eso estuvo brutal.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Como era de esperarse, ¿no?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #98" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="99" data-order="99" data-search="99 天才か。 Tensai ka. ¿Eres un genio o qué? Genio, ¿eh? Reacción"><div class="study-card-header"><span class="study-id">99</span><div class="study-main">天才か。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Tensai ka.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">¿Eres un genio o qué?</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Genio, ¿eh?</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Reacción</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #99" type="checkbox"/><span>Memorizada</span></label></article><article class="study-card " data-id="100" data-order="100" data-search="100 アホやろ。 Aho yaro. Eres un caso. / Estás brutal. Tonto, seguro. Vacilón"><div class="study-card-header"><span class="study-id">100</span><div class="study-main">アホやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Aho yaro.</div></div><div class="study-field"><div class="study-label">Significado natural</div><div class="study-value ">Eres un caso. / Estás brutal.</div></div><div class="study-field"><div class="study-label">Traducción mental literal</div><div class="study-value ">Tonto, seguro.</div></div><div class="study-field"><div class="study-label">Categoría</div><div class="study-value "><span class="tag">Vacilón</span></div></div></div><label class="study-toggle"><input aria-label="Memorizada #100" type="checkbox"/><span>Memorizada</span></label></article></div></section>
 </main>
-<footer class="pixel-footer"><span class="pixel-badge">Another Tool from <a href="https://progretech.com" target="_blank" rel="noopener">ProgreTech</a></span></footer>
+<footer class="pixel-footer"><span class="pixel-badge">Another Tool from <a href="https://progretech.com" rel="noopener" target="_blank">ProgreTech</a></span></footer>
 <script>
 (function(){
   function applyTheme(theme){
@@ -959,5 +180,76 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
 })();
 </script>
+<script data-bot-id="59258" src="https://app.aminos.ai/js/chat_plugin.js"></script>
+
+<script>
+(function(){
+  document.querySelectorAll('.responsive-card-section').forEach(function(section){
+    const grid = section.querySelector('.responsive-card-grid'); if(!grid) return;
+    const storageKey = section.dataset.storageKey || ('studyDeck_' + location.pathname + '_' + (document.documentElement.lang || 'en'));
+    const countEl = section.querySelector('.deck-count-num');
+    const fillEl = section.querySelector('.deck-fill');
+    const percentEl = section.querySelector('.deck-percent');
+    const resetBtn = section.querySelector('[data-reset-deck]');
+    let memorized = new Set();
+    try { memorized = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]').map(String)); } catch(e) { memorized = new Set(); }
+    function save(){ localStorage.setItem(storageKey, JSON.stringify(Array.from(memorized))); }
+    function apply(){
+      const cards = Array.from(grid.querySelectorAll('.study-card'));
+      cards.forEach(function(card){
+        const id = String(card.dataset.id || ''); const done = memorized.has(id);
+        card.classList.toggle('is-memorized', done);
+        const input = card.querySelector('input[type="checkbox"]'); if(input) input.checked = done;
+        const ord = Number(card.dataset.order || id.replace(/\D/g,'') || 0);
+        card.style.order = done ? (100000 + ord) : ord;
+      });
+      const total = cards.length; const doneCount = memorized.size; const pct = total ? Math.round(doneCount/total*100) : 0;
+      if(countEl) countEl.textContent = doneCount + ' / ' + total;
+      if(fillEl) fillEl.style.width = pct + '%';
+      if(percentEl) percentEl.textContent = pct + '%';
+    }
+    grid.addEventListener('change', function(evt){
+      const input = evt.target.closest('input[type="checkbox"]'); if(!input) return;
+      const card = input.closest('.study-card'); if(!card) return; const id = String(card.dataset.id || '');
+      if(input.checked) memorized.add(id); else memorized.delete(id); save(); apply();
+    });
+    if(resetBtn) resetBtn.addEventListener('click', function(){ memorized.clear(); save(); apply(); });
+    apply();
+  });
+
+  // Preserve Reading Aid search/type filter behavior for cards.
+  const searchBox = document.getElementById('searchBox');
+  const typeFilter = document.getElementById('typeFilter');
+  const charGrid = document.querySelector('.char-card-grid');
+  function filterCards(){
+    if(!charGrid) return;
+    const q = (searchBox && searchBox.value || '').toLowerCase();
+    const type = (typeFilter && typeFilter.value || 'All');
+    charGrid.querySelectorAll('.study-card').forEach(function(card){
+      const matchText = !q || (card.dataset.search || '').toLowerCase().includes(q);
+      const matchType = type === 'All' || (card.dataset.type || '') === type;
+      card.style.display = (matchText && matchType) ? '' : 'none';
+    });
+  }
+  if(searchBox) searchBox.addEventListener('input', filterCards);
+  if(typeFilter) typeFilter.addEventListener('change', filterCards);
+  filterCards();
+})();
+</script>
+
+<!--
+============================================================
+ THINK IN JAPANESE / PIENSA EN JAPONÉS
+============================================================
+ Author: Edwin A. Rodriguez (Abdiel)
+ GitHub: https://github.com/eabdiel
+ Project: Think in Japanese learning portal
+ Intent: A free, offline-friendly Japanese study hub for kana,
+         kanji, phrase practice, internal monologue training,
+         and a structured 90-day learning path.
+ Notes: This comment is intentionally kept in source only and
+        does not display on the website.
+============================================================
+-->
 </body>
 </html>

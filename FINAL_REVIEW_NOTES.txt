@@ -1,0 +1,7 @@
+Final review notes
+==================
+HTML files reviewed: 21
+Banner references updated in pixel-theme-v2.css to use JPG files.
+Source-only flowerbox comments added to HTML files.
+Night theme JPG replaced with updated banner containing: 一緒に日本語を学ぼう!
+Missing local references: None found.

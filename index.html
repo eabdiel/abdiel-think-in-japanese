@@ -198,6 +198,74 @@ strong { color: var(--text); }
   padding: 30px 20px;
   border-top: 1px solid var(--line);
 }
+
+.study-flow-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+.study-flow-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.study-flow-card .icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(251,191,36,.14);
+  border: 1px solid rgba(251,191,36,.35);
+  font-size: 24px;
+}
+.study-flow-card h3 {
+  margin: 0;
+  color: var(--blue);
+  font-size: 22px;
+}
+.study-flow-card p {
+  margin: 0;
+  color: var(--muted);
+}
+.study-flow-card .mini-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+}
+.study-flow-card .mini-chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(125,211,252,.35);
+  background: rgba(125,211,252,.10);
+  color: #bae6fd;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.study-flow-note {
+  margin-top: 18px;
+  border: 1px solid rgba(134,239,172,.35);
+  background: rgba(134,239,172,.10);
+  border-radius: 16px;
+  padding: 16px 18px;
+  color: var(--muted);
+}
+.study-flow-note strong { color: var(--text); }
+@media (max-width: 520px) {
+  .study-flow-card { padding: 16px; }
+  .study-flow-card h3 { font-size: 20px; }
+}
+
 @media print {
   body { background: white; color: black; }
   header, .resource-card, .panel, .phase-card, .callout { background: white; border: 1px solid #aaa; box-shadow: none; }
@@ -237,8 +305,206 @@ strong { color: var(--text); }
   margin: 0;
 }
 
+
+
+/* === Mobile AI chat widget containment fix ===
+   Keeps the Aminos avatar/chat launcher inside the visible phone viewport on index pages. */
+@media (max-width: 640px) {
+  #aminos-chat-widget,
+  #aminos-chat-widget *,
+  [id*="aminos"],
+  [class*="aminos"],
+  iframe[src*="aminos"],
+  div[style*="z-index"][style*="fixed"] {
+    max-width: calc(100vw - 18px) !important;
+  }
+
+  iframe[src*="aminos"],
+  [id*="aminos"],
+  [class*="aminos"] {
+    right: max(10px, env(safe-area-inset-right)) !important;
+    left: auto !important;
+    bottom: max(10px, env(safe-area-inset-bottom)) !important;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
 </style>
+
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#ff7ac8">
 <link href="pixel-theme-v2.css" rel="stylesheet"/>
+
+<!-- v10.2 study-flow readability polish -->
+<style>
+.study-flow-grid {
+  align-items: stretch;
+}
+.study-flow-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 255px;
+  border-left-width: 6px !important;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.study-flow-card .icon {
+  width: 52px !important;
+  height: 52px !important;
+  font-size: 28px !important;
+  flex: 0 0 auto;
+}
+.study-flow-card h3 {
+  font-size: 24px !important;
+  line-height: 1.25 !important;
+  letter-spacing: .01em;
+}
+.study-flow-card p {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  font-weight: 650 !important;
+}
+.study-flow-card strong {
+  font-weight: 800 !important;
+}
+.study-flow-card .mini-chip {
+  font-size: 13px !important;
+  font-weight: 800 !important;
+  padding: 6px 12px !important;
+}
+.study-flow-note {
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  font-weight: 650 !important;
+}
+@media (hover:hover) and (pointer:fine) {
+  .study-flow-card:hover {
+    transform: translateY(-4px);
+  }
+}
+body.theme-pixel .study-flow-card,
+body:not(.theme-garden):not(.theme-night) .study-flow-card {
+  background: rgba(255, 250, 255, .94) !important;
+  color: #27305a !important;
+  border-color: rgba(113, 103, 224, .55) !important;
+  border-left-color: #ff7ac8 !important;
+  box-shadow: 0 16px 34px rgba(91, 65, 180, .20) !important;
+}
+body.theme-pixel .study-flow-card h3,
+body:not(.theme-garden):not(.theme-night) .study-flow-card h3 {
+  color: #4f54d8 !important;
+  text-shadow: none !important;
+}
+body.theme-pixel .study-flow-card p,
+body.theme-pixel .study-flow-card strong,
+body:not(.theme-garden):not(.theme-night) .study-flow-card p,
+body:not(.theme-garden):not(.theme-night) .study-flow-card strong {
+  color: #27305a !important;
+  text-shadow: none !important;
+}
+body.theme-pixel .study-flow-card .icon,
+body:not(.theme-garden):not(.theme-night) .study-flow-card .icon {
+  background: linear-gradient(180deg, #fff2fb, #eeeaff) !important;
+  border-color: rgba(255, 122, 200, .55) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.55) !important;
+}
+body.theme-pixel .study-flow-card .mini-chip,
+body:not(.theme-garden):not(.theme-night) .study-flow-card .mini-chip {
+  background: rgba(236, 230, 255, .96) !important;
+  border-color: rgba(117, 105, 226, .45) !important;
+  color: #384099 !important;
+}
+body.theme-pixel .study-flow-note,
+body:not(.theme-garden):not(.theme-night) .study-flow-note {
+  background: rgba(255, 250, 255, .94) !important;
+  border-color: rgba(255, 122, 200, .45) !important;
+  color: #27305a !important;
+}
+body.theme-pixel .study-flow-note strong,
+body:not(.theme-garden):not(.theme-night) .study-flow-note strong { color: #4f54d8 !important; }
+
+body.theme-garden .study-flow-card {
+  background: #243141 !important;
+  color: #f7f8f3 !important;
+  border-color: rgba(188, 204, 161, .58) !important;
+  border-left-color: #9fc07b !important;
+  box-shadow: 0 16px 34px rgba(48, 67, 44, .22) !important;
+}
+body.theme-garden .study-flow-card h3 {
+  color: #d8f0c5 !important;
+  text-shadow: 0 1px 0 rgba(0,0,0,.45) !important;
+}
+body.theme-garden .study-flow-card p,
+body.theme-garden .study-flow-card strong {
+  color: #f7f8f3 !important;
+  text-shadow: none !important;
+}
+body.theme-garden .study-flow-card .icon {
+  background: linear-gradient(180deg, rgba(227, 243, 199, .26), rgba(159, 192, 123, .18)) !important;
+  border-color: rgba(216, 240, 197, .55) !important;
+}
+body.theme-garden .study-flow-card .mini-chip {
+  background: #e5f0d4 !important;
+  border-color: #a4bd82 !important;
+  color: #213d2b !important;
+}
+body.theme-garden .study-flow-note {
+  background: #243141 !important;
+  border-color: rgba(188, 204, 161, .58) !important;
+  color: #f7f8f3 !important;
+}
+body.theme-garden .study-flow-note strong { color: #d8f0c5 !important; }
+
+body.theme-night .study-flow-card {
+  background: rgba(24, 34, 55, .95) !important;
+  color: #f3f5ff !important;
+  border-color: rgba(127, 220, 255, .38) !important;
+  border-left-color: #ff7bd4 !important;
+  box-shadow: 0 0 24px rgba(127, 220, 255, .08), 0 16px 34px rgba(0,0,0,.28) !important;
+}
+body.theme-night .study-flow-card h3 {
+  color: #ff7bd4 !important;
+  text-shadow: 0 0 10px rgba(255, 123, 212, .38) !important;
+}
+body.theme-night .study-flow-card p,
+body.theme-night .study-flow-card strong {
+  color: #f3f5ff !important;
+  text-shadow: none !important;
+}
+body.theme-night .study-flow-card .icon {
+  background: linear-gradient(180deg, rgba(255, 123, 212, .20), rgba(127, 220, 255, .10)) !important;
+  border-color: rgba(255, 123, 212, .55) !important;
+  box-shadow: 0 0 12px rgba(255, 123, 212, .15) !important;
+}
+body.theme-night .study-flow-card .mini-chip {
+  background: rgba(127, 220, 255, .13) !important;
+  border-color: rgba(127, 220, 255, .55) !important;
+  color: #9de8ff !important;
+}
+body.theme-night .study-flow-note {
+  background: rgba(24, 34, 55, .95) !important;
+  border-color: rgba(127, 220, 255, .38) !important;
+  color: #f3f5ff !important;
+}
+body.theme-night .study-flow-note strong { color: #ff7bd4 !important; }
+
+.study-flow-card:nth-child(2n) { border-left-color: #7fdcff !important; }
+body.theme-garden .study-flow-card:nth-child(2n) { border-left-color: #d8f0c5 !important; }
+body.theme-pixel .study-flow-card:nth-child(2n),
+body:not(.theme-garden):not(.theme-night) .study-flow-card:nth-child(2n) { border-left-color: #7c72ff !important; }
+@media (max-width: 520px) {
+  .study-flow-card { min-height: auto; }
+  .study-flow-card h3 { font-size: 21px !important; }
+  .study-flow-card p, .study-flow-note { font-size: 16px !important; }
+}
+</style>
+
 </head>
 <body>
 <header class="pixel-site-header">
@@ -409,47 +675,61 @@ strong { color: var(--text); }
 </div>
 </section>
 <section class="section" id="supplements">
-<h2>How to use Michel Thomas, Genki 1, and Mondly</h2>
-<p class="lead">These tools should support the phrase system instead of replacing it. Use them for structure, grammar, vocabulary, and repetition.</p>
-<div class="panel">
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Best role</th>
-<th>How to pair it with this site</th>
-<th>Suggested pace</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Michel Thomas Total Japanese</strong></td>
-<td>Audio thinking and sentence-building</td>
-<td>Use it during commute, walks, chores, or low-pressure time. After a lesson, pick 3–5 phrases from Parts 1–3 and say them out loud without looking.</td>
-<td>15–30 minutes, 3–5 days/week</td>
-</tr>
-<tr>
-<td><strong>Genki 1</strong></td>
-<td>Grammar foundation and structured learning</td>
-<td>Use Genki to understand why phrases work. Do not let it slow down your speaking. Treat grammar as explanation after exposure, not a gate before using the language.</td>
-<td>2–3 textbook sessions/week</td>
-</tr>
-<tr>
-<td><strong>Mondly</strong></td>
-<td>Vocabulary reps and gamified consistency</td>
-<td>Use Mondly as the daily streak/repetition tool. When Mondly teaches a word, connect it back to one of your 300 phrases when possible.</td>
-<td>5–10 minutes/day</td>
-</tr>
-<tr>
-<td><strong>Parts 1–6 on this site</strong></td>
-<td>Personal phrase activation and reading recognition</td>
-<td>This remains the main system. The goal is to make Japanese appear in your real thoughts, not just in lessons.</td>
-<td>20 minutes/day</td>
-</tr>
-</tbody>
-</table>
+<h2>Study stack and recommended order</h2>
+<p class="lead">This replaces the old study tables with one mobile-friendly flow. Use the site as the main system, then bring in Michel Thomas, Genki, and Mondly when they support the current phase.</p>
+<div class="study-flow-grid">
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">🗺️</span>
+<h3>1. Start with the roadmap</h3>
+<p><strong>Part 6</strong> tells you which phase you are in and keeps the whole 90-day plan from turning into random studying.</p>
+<div class="mini-meta"><span class="mini-chip">Main guide</span><span class="mini-chip">Check weekly</span></div>
+</article>
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">💭</span>
+<h3>2. Activate real thoughts</h3>
+<p><strong>Part 1</strong> is the highest-value starting point: morning, work, tired moments, food, travel, emotions, decisions, and night thoughts.</p>
+<div class="mini-meta"><span class="mini-chip">Days 1–30</span><span class="mini-chip">20 min/day</span></div>
+</article>
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">🎧</span>
+<h3>3. Build audio instincts</h3>
+<p>Use <strong>Michel Thomas</strong> during walks, chores, or driving. After a lesson, say 3–5 phrases from Parts 1–3 aloud without looking.</p>
+<div class="mini-meta"><span class="mini-chip">15–30 min</span><span class="mini-chip">3–5x/week</span></div>
+</article>
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">📘</span>
+<h3>4. Add structure with Genki</h3>
+<p>Use <strong>Genki 1</strong> to understand why the phrases work. Treat grammar as an explanation after exposure, not a gate before speaking.</p>
+<div class="mini-meta"><span class="mini-chip">Grammar support</span><span class="mini-chip">2–3x/week</span></div>
+</article>
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">🔤</span>
+<h3>5. Read by frequency</h3>
+<p><strong>Part 5</strong> shows the characters you see most often. Learn those first, then use <strong>Part 4</strong> as your reference when a character keeps appearing.</p>
+<div class="mini-meta"><span class="mini-chip">Parts 4–5</span><span class="mini-chip">Days 1–90</span></div>
+</article>
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">💬</span>
+<h3>6. Expand into casual speech</h3>
+<p><strong>Part 2</strong> adds natural self-talk and real-world phrasing. <strong>Part 3</strong> adds Gaki/Kansai-style reactions for listening and comedy rhythm.</p>
+<div class="mini-meta"><span class="mini-chip">Days 31–75</span><span class="mini-chip">Listening boost</span></div>
+</article>
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">📱</span>
+<h3>7. Keep momentum with Mondly</h3>
+<p>Use <strong>Mondly</strong> as the light daily streak tool for vocabulary and listening. When it teaches a word, connect it back to one of your 300 phrases.</p>
+<div class="mini-meta"><span class="mini-chip">5–10 min/day</span><span class="mini-chip">Streak builder</span></div>
+</article>
+<article class="study-flow-card">
+<span class="icon" aria-hidden="true">🎯</span>
+<h3>8. Remove romaji gradually</h3>
+<p>The final target is direct meaning: 疲れた → tired, not 疲れた → tsukareta → tired. Hide romaji once a phrase feels familiar.</p>
+<div class="mini-meta"><span class="mini-chip">Final goal</span><span class="mini-chip">Reading unlock</span></div>
+</article>
 </div>
+<div class="study-flow-note"><strong>Simple rule:</strong> this site is the main system. Michel Thomas builds audio instincts, Genki explains the structure, and Mondly keeps the daily habit alive.</div>
 </section>
+
 <section class="section" id="routine">
 <h2>Suggested weekly routine</h2>
 <div class="grid">
@@ -478,52 +758,6 @@ strong { color: var(--text); }
 <li>Watch one short Japanese clip and listen for phrases from Parts 2–3</li>
 </ul>
 </div>
-</div>
-</section>
-<section class="section">
-<h2>Recommended study order</h2>
-<div class="panel">
-<table>
-<thead>
-<tr>
-<th>Priority</th>
-<th>Do this first</th>
-<th>Why</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>1</strong></td>
-<td>Part 6 roadmap</td>
-<td>Use it to know what phase you are in.</td>
-</tr>
-<tr>
-<td><strong>2</strong></td>
-<td>Part 1 phrases</td>
-<td>These are the highest-value internal thoughts.</td>
-</tr>
-<tr>
-<td><strong>3</strong></td>
-<td>Part 5 frequency deck</td>
-<td>Learn the characters you will see most often.</td>
-</tr>
-<tr>
-<td><strong>4</strong></td>
-<td>Part 2 casual phrases</td>
-<td>Build natural self-talk and real-world phrasing.</td>
-</tr>
-<tr>
-<td><strong>5</strong></td>
-<td>Part 3 Gaki/Kansai reactions</td>
-<td>Improve listening recognition and comedy/casual reaction speed.</td>
-</tr>
-<tr>
-<td><strong>6</strong></td>
-<td>Part 4 character aid</td>
-<td>Use as the reference when a character keeps showing up.</td>
-</tr>
-</tbody>
-</table>
 </div>
 </section>
 <section class="sensei-recommends" id="sensei-recommends">
@@ -582,5 +816,52 @@ strong { color: var(--text); }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
 })();
 </script>
+
+<script>
+(function(){
+  function keepAminosWidgetInView(){
+    var vw = window.innerWidth || document.documentElement.clientWidth;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var nodes = Array.prototype.slice.call(document.querySelectorAll('iframe, div, button'));
+    nodes.forEach(function(el){
+      var txt = ((el.id || '') + ' ' + (el.className || '') + ' ' + (el.getAttribute('src') || '')).toLowerCase();
+      var style = window.getComputedStyle(el);
+      if(!(txt.indexOf('aminos') >= 0 || txt.indexOf('chat') >= 0 || txt.indexOf('bot') >= 0)) return;
+      if(style.position !== 'fixed') return;
+      var r = el.getBoundingClientRect();
+      if(r.right > vw || r.left < 0 || r.bottom > vh){
+        el.style.setProperty('right', '10px', 'important');
+        el.style.setProperty('left', 'auto', 'important');
+        el.style.setProperty('bottom', '10px', 'important');
+        el.style.setProperty('max-width', 'calc(100vw - 20px)', 'important');
+        el.style.setProperty('transform', 'none', 'important');
+      }
+    });
+  }
+  window.addEventListener('load', function(){
+    keepAminosWidgetInView();
+    setTimeout(keepAminosWidgetInView, 700);
+    setTimeout(keepAminosWidgetInView, 1800);
+  });
+  window.addEventListener('resize', keepAminosWidgetInView);
+  try{ new MutationObserver(keepAminosWidgetInView).observe(document.body, {childList:true, subtree:true, attributes:true}); }catch(e){}
+})();
+</script>
+<script src="https://app.aminos.ai/js/chat_plugin.js" data-bot-id="59258"></script>
+
+<!--
+============================================================
+ THINK IN JAPANESE / PIENSA EN JAPONÉS
+============================================================
+ Author: Edwin A. Rodriguez (Abdiel)
+ GitHub: https://github.com/eabdiel
+ Project: Think in Japanese learning portal
+ Intent: A free, offline-friendly Japanese study hub for kana,
+         kanji, phrase practice, internal monologue training,
+         and a structured 90-day learning path.
+ Notes: This comment is intentionally kept in source only and
+        does not display on the website.
+============================================================
+-->
 </body>
 </html>

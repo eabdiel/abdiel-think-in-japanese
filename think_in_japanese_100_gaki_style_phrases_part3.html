@@ -66,14 +66,50 @@
   margin: 0;
 }
 
+
+
+/* === Responsive card deck conversion: no horizontal table overflow === */
+.table-wrap, table.converted-source-table { display: none !important; }
+.responsive-card-section { width: 100%; max-width: 100%; box-sizing: border-box; }
+.deck-toolbar {
+  display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+  margin: 18px 0 14px; padding:14px 16px; border-radius:18px;
+  border:1px solid rgba(255,255,255,.10); background:rgba(31,41,55,.88);
+  box-shadow:0 8px 22px rgba(0,0,0,.18); color:#fff;
+}
+.deck-progress-block{flex:1 1 360px; min-width:min(100%,260px)}
+.deck-progress-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.deck-title{color:#fff;font-weight:900;letter-spacing:.01em}
+.deck-count{color:#fff;font-size:15px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.deck-count .deck-label{color:#ff7ac8;font-weight:900}.deck-count .deck-count-num{color:#fff;font-weight:900}
+.deck-track{margin-top:8px;height:10px;width:100%;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
+.deck-fill{width:0%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ff7ac8,#ffd166);transition:width 180ms ease}
+.deck-percent{color:#fff;font-size:13px;font-weight:900;opacity:.96}
+.deck-reset{border:1px solid rgba(251,191,36,.42);background:rgba(251,191,36,.12);color:#fef3c7;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:800}.deck-reset:hover{background:rgba(251,191,36,.22)}
+.responsive-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:14px;width:100%;max-width:100%;overflow:visible}
+.study-card{width:100%;max-width:100%;box-sizing:border-box;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(31,41,55,.92);box-shadow:0 10px 24px rgba(0,0,0,.20);padding:15px;display:flex;flex-direction:column;gap:10px;transition:transform .18s ease,opacity .18s ease,filter .18s ease,box-shadow .18s ease;overflow-wrap:anywhere;word-break:normal;color:#f9fafb}
+.study-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.study-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.study-id{flex:0 0 auto;min-width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(251,191,36,.14);border:1px solid rgba(251,191,36,.35);color:#fef3c7;font-weight:900;font-size:14px}.study-main{flex:1 1 auto;text-align:right;font-size:clamp(22px,7vw,32px);line-height:1.25;font-weight:900;color:#fff;overflow-wrap:anywhere}.study-main.char-main{font-size:clamp(34px,12vw,54px);text-align:center}.study-meta{display:grid;gap:8px}.study-field{display:grid;gap:2px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06)}.study-label{color:#9ca3af;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:900}.study-value{color:#f9fafb;font-size:15px}.study-value.romaji{color:#bfdbfe;font-style:italic}.study-card .tag{align-self:flex-start;white-space:normal}.study-toggle{margin-top:2px;display:flex;align-items:center;gap:9px;min-height:38px;border:1px solid rgba(96,165,250,.30);background:rgba(96,165,250,.10);color:#dbeafe;border-radius:13px;padding:8px 10px;cursor:pointer;font-weight:900;user-select:none}.study-toggle input{width:18px;height:18px;accent-color:#fbbf24}.study-card.is-memorized{opacity:.58;filter:grayscale(.55);background:rgba(17,24,39,.92);box-shadow:inset 0 0 0 2px rgba(0,0,0,.25),0 6px 18px rgba(0,0,0,.25)}.study-card.is-memorized .study-main{text-decoration:line-through;text-decoration-thickness:2px}.study-card.is-memorized .study-toggle{background:rgba(22,163,74,.14);border-color:rgba(74,222,128,.35);color:#bbf7d0}
+body.theme-pixel .deck-toolbar, body.theme-garden .deck-toolbar{background:rgba(31,41,55,.88)!important;color:#fff!important}body.theme-pixel .deck-title,body.theme-garden .deck-title,body.theme-night .deck-title{color:#fff!important}body.theme-pixel .deck-count .deck-label{color:#ff7ac8!important}body.theme-pixel .deck-fill{background:linear-gradient(90deg,#ff7ac8,#ffd166)!important}body.theme-garden .deck-count .deck-label{color:#b7e08c!important}body.theme-garden .deck-fill{background:linear-gradient(90deg,#7aa85b,#d7efb4)!important}body.theme-night .deck-count .deck-label{color:#7fdcff!important}body.theme-night .deck-fill{background:linear-gradient(90deg,#7fdcff,#ff74d4)!important}body.theme-pixel .deck-count,body.theme-garden .deck-count,body.theme-night .deck-count,body.theme-pixel .deck-percent,body.theme-garden .deck-percent,body.theme-night .deck-percent,body.theme-pixel .deck-count-num,body.theme-garden .deck-count-num,body.theme-night .deck-count-num{color:#fff!important}
+body.theme-pixel .study-card{background:rgba(255,250,255,.97)!important;border-color:rgba(132,102,202,.45)!important;color:#2d244f!important}body.theme-pixel .study-main{color:#3a2466!important;text-shadow:none!important}body.theme-pixel .study-field{background:rgba(255,255,255,.82)!important;border-color:rgba(132,102,202,.18)!important}body.theme-pixel .study-label{color:#625778!important}body.theme-pixel .study-value{color:#2d244f!important}body.theme-pixel .study-value.romaji{color:#315b9c!important}body.theme-pixel .study-card .tag{background:rgba(126,104,200,.14)!important;border-color:rgba(126,104,200,.36)!important;color:#2d3a66!important}body.theme-pixel .study-toggle{background:rgba(240,246,255,.75)!important;border-color:rgba(96,165,250,.35)!important;color:#3a376b!important}.body.theme-pixel .study-id{color:#3a2466!important}
+body.theme-garden .study-card{background:rgba(255,252,244,.97)!important;border-color:rgba(146,124,72,.45)!important;color:#203625!important}body.theme-garden .study-main{color:#214b2f!important;text-shadow:none!important}body.theme-garden .study-field{background:rgba(255,255,249,.85)!important;border-color:rgba(146,124,72,.20)!important}body.theme-garden .study-label{color:#63735e!important}body.theme-garden .study-value{color:#203625!important}body.theme-garden .study-value.romaji{color:#2e6f9f!important}body.theme-garden .study-card .tag{background:rgba(122,168,91,.18)!important;border-color:rgba(122,168,91,.42)!important;color:#244725!important}body.theme-garden .study-toggle{background:rgba(231,244,221,.72)!important;border-color:rgba(122,168,91,.42)!important;color:#2c3a63!important}.body.theme-garden .study-id{color:#214b2f!important}
+body.theme-night .study-card{background:rgba(6,12,31,.96)!important;border-color:rgba(127,220,255,.42)!important;color:#f7fbff!important}body.theme-night .study-main{color:#fff!important;text-shadow:0 1px 8px rgba(127,220,255,.18)!important}body.theme-night .study-field{background:rgba(255,255,255,.075)!important;border-color:rgba(127,220,255,.14)!important}body.theme-night .study-label{color:#cbd7ec!important}body.theme-night .study-value{color:#fff!important}body.theme-night .study-value.romaji{color:#b9dcff!important}body.theme-night .study-card .tag{background:rgba(82,145,255,.22)!important;border-color:rgba(127,220,255,.35)!important;color:#e6f7ff!important}body.theme-night .study-toggle{background:rgba(30,93,155,.32)!important;border-color:rgba(127,220,255,.35)!important;color:#e6f7ff!important}
+@media(max-width:520px){main,section{padding-left:12px!important;padding-right:12px!important}.responsive-card-grid{grid-template-columns:1fr;gap:12px}.study-card{padding:13px;border-radius:16px}.study-card-header{align-items:flex-start}.study-main{text-align:left}.study-main.char-main{text-align:center}.deck-toolbar{margin-left:0;margin-right:0}}
+@media print{.table-wrap, table.converted-source-table{display:none!important}.deck-reset,.study-toggle input{display:none}.responsive-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.study-card,.deck-toolbar,.study-field{background:white!important;color:black!important;border:1px solid #aaa!important;box-shadow:none!important}.study-main,.study-value,.study-value.romaji,.study-label{color:black!important}}
 </style>
-<link href="pixel-theme-v2.css" rel="stylesheet"/>
-</head>
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#ff7ac8" name="theme-color"/>
+<link href="pixel-theme-v2.css" rel="stylesheet">
+</link></head>
 <body>
 <header class="pixel-site-header">
 <div class="pixel-hero-inner">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+<div aria-label="Theme selector" class="theme-switcher title-theme-switcher"><button class="theme-btn active" data-theme="pixel" type="button">Pixel Pastel v2</button><button class="theme-btn" data-theme="garden" type="button">Garden Cream</button><button class="theme-btn" data-theme="night" type="button">Tokyo Night</button></div>
 <h1>Think in Japanese</h1>
 <p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
 </div>
@@ -83,15 +119,11 @@
 <nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index.html">Home</a><a data-file="kana_dojo.html" href="kana_dojo.html">Kana Dojo</a><a data-file="kanji_hub.html" href="kanji_hub.html">Kanji Hub</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a></div></nav><div aria-label="Language selector" class="lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="think_in_japanese_100_gaki_style_phrases_part3_es.html">Español</a></div>
 <section class="moved-hero-title">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+<div aria-label="Theme selector" class="theme-switcher title-theme-switcher"><button class="theme-btn active" data-theme="pixel" type="button">Pixel Pastel v2</button><button class="theme-btn" data-theme="garden" type="button">Garden Cream</button><button class="theme-btn" data-theme="night" type="button">Tokyo Night</button></div>
 <h1>Think in Japanese</h1>
 <p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
 </div>
-
 </section>
-
-
-
 <div class="pixel-page-shell">
 <section class="pixel-welcome">
 <div class="pixel-card"><div class="pixel-mini-title">Getting Started</div><strong>Use the portal as a guided study path:</strong> • Learn phrases in Parts 1–3 • Study characters in Reading Aid and Frequency Deck • Practice in Kana Dojo and Kanji Hub • Follow the 90-Day Tracker and Study Plan • Reduce romaji over time. Small daily practice is more effective than occasional marathon sessions.</div>
@@ -121,824 +153,9 @@
 <p>Great for understanding shows and thinking casually. Don’t use the harsher teasing lines with strangers unless you know the vibe.</p>
 </div>
 </section>
-<section class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Japanese</th>
-<th>Romaji</th>
-<th>Natural English</th>
-<th>Literal Brain Translation</th>
-<th>Category</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="num">1</td>
-<td class="jp">なんでやねん！</td>
-<td class="romaji">Nande yanen!</td>
-<td>What the heck?! / Come on!</td>
-<td>Why is-it-like-that?!</td>
-<td><span class="tag">Kansai reaction</span></td>
-</tr>
-<tr>
-<td class="num">2</td>
-<td class="jp">何してんねん。</td>
-<td class="romaji">Nani shiten nen.</td>
-<td>What are you doing?</td>
-<td>What doing is-it?</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">3</td>
-<td class="jp">ちゃうちゃう。</td>
-<td class="romaji">Chau chau.</td>
-<td>No, no, that's not it.</td>
-<td>Different, different.</td>
-<td><span class="tag">Correction</span></td>
-</tr>
-<tr>
-<td class="num">4</td>
-<td class="jp">それちゃうやろ。</td>
-<td class="romaji">Sore chau yaro.</td>
-<td>That's not it, right?</td>
-<td>That different, surely.</td>
-<td><span class="tag">Correction</span></td>
-</tr>
-<tr>
-<td class="num">5</td>
-<td class="jp">ほんまか？</td>
-<td class="romaji">Honma ka?</td>
-<td>For real?</td>
-<td>Truth?</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">6</td>
-<td class="jp">ほんまに言うてる？</td>
-<td class="romaji">Honma ni yuuteru?</td>
-<td>Are you seriously saying that?</td>
-<td>Really saying?</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">7</td>
-<td class="jp">うそやろ。</td>
-<td class="romaji">Uso yaro.</td>
-<td>No way.</td>
-<td>Lie, surely.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">8</td>
-<td class="jp">ありえへん。</td>
-<td class="romaji">Ariehen.</td>
-<td>Unbelievable.</td>
-<td>Cannot exist.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">9</td>
-<td class="jp">あかんあかん。</td>
-<td class="romaji">Akan akan.</td>
-<td>Nope, nope.</td>
-<td>No good, no good.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">10</td>
-<td class="jp">全然あかん。</td>
-<td class="romaji">Zenzen akan.</td>
-<td>Totally not good.</td>
-<td>Completely no good.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">11</td>
-<td class="jp">めっちゃおもろい。</td>
-<td class="romaji">Meccha omoroi.</td>
-<td>That's hilarious.</td>
-<td>Super funny.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">12</td>
-<td class="jp">おもろいやん。</td>
-<td class="romaji">Omoroi yan.</td>
-<td>That's funny, isn't it?</td>
-<td>Funny, isn't it.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">13</td>
-<td class="jp">笑ってもうた。</td>
-<td class="romaji">Waratte mouta.</td>
-<td>I ended up laughing.</td>
-<td>Laughed completely.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">14</td>
-<td class="jp">笑ったらあかん。</td>
-<td class="romaji">Warattara akan.</td>
-<td>I can't laugh.</td>
-<td>If laugh, no good.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">15</td>
-<td class="jp">今のは無理やろ。</td>
-<td class="romaji">Ima no wa muri yaro.</td>
-<td>That one was impossible.</td>
-<td>That just now impossible, surely.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">16</td>
-<td class="jp">こらえられへん。</td>
-<td class="romaji">Koraerarehen.</td>
-<td>I can't hold it in.</td>
-<td>Cannot endure.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">17</td>
-<td class="jp">危なかった。</td>
-<td class="romaji">Abunakatta.</td>
-<td>That was close.</td>
-<td>Was dangerous.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">18</td>
-<td class="jp">ギリギリ耐えた。</td>
-<td class="romaji">Girigiri taeta.</td>
-<td>I barely held it in.</td>
-<td>Barely endured.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">19</td>
-<td class="jp">今、笑いかけた。</td>
-<td class="romaji">Ima, waraikaketa.</td>
-<td>I almost laughed just now.</td>
-<td>Now, began-to-laugh.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">20</td>
-<td class="jp">それは卑怯やわ。</td>
-<td class="romaji">Sore wa hikyou ya wa.</td>
-<td>That's unfair.</td>
-<td>That is cowardly/unfair.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">21</td>
-<td class="jp">ずるいやろ。</td>
-<td class="romaji">Zurui yaro.</td>
-<td>That's cheating, right?</td>
-<td>Sneaky, surely.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">22</td>
-<td class="jp">反則やん。</td>
-<td class="romaji">Hansoku yan.</td>
-<td>That's against the rules.</td>
-<td>Rule violation, isn't it.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">23</td>
-<td class="jp">これは笑うわ。</td>
-<td class="romaji">Kore wa warau wa.</td>
-<td>This is laugh-worthy.</td>
-<td>This, I laugh.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">24</td>
-<td class="jp">そんなん笑うやん。</td>
-<td class="romaji">Sonnan warau yan.</td>
-<td>Of course I'd laugh at that.</td>
-<td>Such thing, laugh, right.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">25</td>
-<td class="jp">なんちゅう顔してんねん。</td>
-<td class="romaji">Nanchuu kao shiten nen.</td>
-<td>What kind of face is that?</td>
-<td>What kind face doing?</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">26</td>
-<td class="jp">その顔やめて。</td>
-<td class="romaji">Sono kao yamete.</td>
-<td>Stop making that face.</td>
-<td>That face, stop.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">27</td>
-<td class="jp">顔がもうあかん。</td>
-<td class="romaji">Kao ga mou akan.</td>
-<td>Your face is already too much.</td>
-<td>Face already no good.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">28</td>
-<td class="jp">声でかいねん。</td>
-<td class="romaji">Koe dekai nen.</td>
-<td>You're too loud.</td>
-<td>Voice big, man.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">29</td>
-<td class="jp">近い近い。</td>
-<td class="romaji">Chikai chikai.</td>
-<td>Too close, too close.</td>
-<td>Close, close.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">30</td>
-<td class="jp">怖い怖い。</td>
-<td class="romaji">Kowai kowai.</td>
-<td>Scary, scary.</td>
-<td>Scary, scary.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">31</td>
-<td class="jp">急に来るな。</td>
-<td class="romaji">Kyuu ni kuru na.</td>
-<td>Don't come at me suddenly.</td>
-<td>Suddenly come, don't.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">32</td>
-<td class="jp">びっくりした。</td>
-<td class="romaji">Bikkuri shita.</td>
-<td>That surprised me.</td>
-<td>Surprise did.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">33</td>
-<td class="jp">心臓止まるわ。</td>
-<td class="romaji">Shinzou tomaru wa.</td>
-<td>My heart almost stopped.</td>
-<td>Heart stops.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">34</td>
-<td class="jp">何が起きたん？</td>
-<td class="romaji">Nani ga okitan?</td>
-<td>What happened?</td>
-<td>What occurred?</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">35</td>
-<td class="jp">どないなってんねん。</td>
-<td class="romaji">Donai natten nen.</td>
-<td>What is going on?</td>
-<td>How is it becoming?</td>
-<td><span class="tag">Kansai reaction</span></td>
-</tr>
-<tr>
-<td class="num">36</td>
-<td class="jp">意味わからん。</td>
-<td class="romaji">Imi wakaran.</td>
-<td>I don't get it.</td>
-<td>Meaning not understand.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">37</td>
-<td class="jp">意味わからんけどおもろい。</td>
-<td class="romaji">Imi wakaran kedo omoroi.</td>
-<td>I don't get it, but it's funny.</td>
-<td>Meaning don't understand, but funny.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">38</td>
-<td class="jp">それ言うたらあかんやつ。</td>
-<td class="romaji">Sore yuutara akan yatsu.</td>
-<td>That's something you shouldn't say.</td>
-<td>If say that, no-good thing.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">39</td>
-<td class="jp">言い方きついわ。</td>
-<td class="romaji">Iikata kitsui wa.</td>
-<td>That way of saying it is harsh.</td>
-<td>Way of saying is strong.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">40</td>
-<td class="jp">やめたれや。</td>
-<td class="romaji">Yametare ya.</td>
-<td>Leave him alone.</td>
-<td>Stop doing that to him.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">41</td>
-<td class="jp">かわいそうやろ。</td>
-<td class="romaji">Kawaisou yaro.</td>
-<td>Poor guy, come on.</td>
-<td>Pitiful, surely.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">42</td>
-<td class="jp">もうええわ。</td>
-<td class="romaji">Mou ee wa.</td>
-<td>Enough already.</td>
-<td>Already good.</td>
-<td><span class="tag">Ending joke</span></td>
-</tr>
-<tr>
-<td class="num">43</td>
-<td class="jp">もうええて。</td>
-<td class="romaji">Mou eete.</td>
-<td>That's enough, man.</td>
-<td>Already good, I said.</td>
-<td><span class="tag">Ending joke</span></td>
-</tr>
-<tr>
-<td class="num">44</td>
-<td class="jp">ええ加減にせえ。</td>
-<td class="romaji">Ee kagen ni see.</td>
-<td>Cut it out already.</td>
-<td>Do good amount.</td>
-<td><span class="tag">Kansai scold</span></td>
-</tr>
-<tr>
-<td class="num">45</td>
-<td class="jp">何回言うねん。</td>
-<td class="romaji">Nankai yuu nen.</td>
-<td>How many times are you going to say that?</td>
-<td>How many times say?</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">46</td>
-<td class="jp">しつこいねん。</td>
-<td class="romaji">Shitsukoi nen.</td>
-<td>You're being too persistent.</td>
-<td>Persistent, man.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">47</td>
-<td class="jp">またそれかい。</td>
-<td class="romaji">Mata sore kai.</td>
-<td>That again?</td>
-<td>Again that?</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">48</td>
-<td class="jp">また出た。</td>
-<td class="romaji">Mata deta.</td>
-<td>There it is again.</td>
-<td>Again came out.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">49</td>
-<td class="jp">来ると思った。</td>
-<td class="romaji">Kuru to omotta.</td>
-<td>I knew it was coming.</td>
-<td>Thought it would come.</td>
-<td><span class="tag">Prediction</span></td>
-</tr>
-<tr>
-<td class="num">50</td>
-<td class="jp">やっぱり来た。</td>
-<td class="romaji">Yappari kita.</td>
-<td>Yep, there it is.</td>
-<td>As expected, came.</td>
-<td><span class="tag">Prediction</span></td>
-</tr>
-<tr>
-<td class="num">51</td>
-<td class="jp">絶対そうやと思った。</td>
-<td class="romaji">Zettai sou ya to omotta.</td>
-<td>I totally knew it.</td>
-<td>Absolutely so, I thought.</td>
-<td><span class="tag">Prediction</span></td>
-</tr>
-<tr>
-<td class="num">52</td>
-<td class="jp">怪しいな。</td>
-<td class="romaji">Ayashii na.</td>
-<td>That's suspicious.</td>
-<td>Suspicious, huh.</td>
-<td><span class="tag">Suspicion</span></td>
-</tr>
-<tr>
-<td class="num">53</td>
-<td class="jp">なんか怪しい。</td>
-<td class="romaji">Nanka ayashii.</td>
-<td>Something's suspicious.</td>
-<td>Somehow suspicious.</td>
-<td><span class="tag">Suspicion</span></td>
-</tr>
-<tr>
-<td class="num">54</td>
-<td class="jp">絶対なんかある。</td>
-<td class="romaji">Zettai nanka aru.</td>
-<td>There's definitely something going on.</td>
-<td>Absolutely something exists.</td>
-<td><span class="tag">Suspicion</span></td>
-</tr>
-<tr>
-<td class="num">55</td>
-<td class="jp">これ罠やろ。</td>
-<td class="romaji">Kore wana yaro.</td>
-<td>This is a trap, right?</td>
-<td>This trap, surely.</td>
-<td><span class="tag">Suspicion</span></td>
-</tr>
-<tr>
-<td class="num">56</td>
-<td class="jp">嫌な予感する。</td>
-<td class="romaji">Iya na yokan suru.</td>
-<td>I have a bad feeling.</td>
-<td>Bad premonition does.</td>
-<td><span class="tag">Suspicion</span></td>
-</tr>
-<tr>
-<td class="num">57</td>
-<td class="jp">見た瞬間アウト。</td>
-<td class="romaji">Mita shunkan auto.</td>
-<td>The moment I saw it, I was out.</td>
-<td>Saw moment, out.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">58</td>
-<td class="jp">アウトやん。</td>
-<td class="romaji">Auto yan.</td>
-<td>That's an out.</td>
-<td>Out, isn't it.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">59</td>
-<td class="jp">今のアウトやろ。</td>
-<td class="romaji">Ima no auto yaro.</td>
-<td>That was an out, right?</td>
-<td>That just now out, surely.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">60</td>
-<td class="jp">セーフやろ？</td>
-<td class="romaji">Seefu yaro?</td>
-<td>I'm safe, right?</td>
-<td>Safe, surely?</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">61</td>
-<td class="jp">いや、アウトや。</td>
-<td class="romaji">Iya, auto ya.</td>
-<td>Nope, you're out.</td>
-<td>No, out.</td>
-<td><span class="tag">No-laugh vibe</span></td>
-</tr>
-<tr>
-<td class="num">62</td>
-<td class="jp">なんで俺だけ？</td>
-<td class="romaji">Nande ore dake?</td>
-<td>Why only me?</td>
-<td>Why me only?</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">63</td>
-<td class="jp">俺関係ないやん。</td>
-<td class="romaji">Ore kankei nai yan.</td>
-<td>This has nothing to do with me.</td>
-<td>I relation none, right.</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">64</td>
-<td class="jp">巻き込まれた。</td>
-<td class="romaji">Makikomareta.</td>
-<td>I got dragged into this.</td>
-<td>Got dragged/involved.</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">65</td>
-<td class="jp">理不尽やわ。</td>
-<td class="romaji">Rifujin ya wa.</td>
-<td>That's unreasonable.</td>
-<td>Unreasonable it is.</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">66</td>
-<td class="jp">納得いかん。</td>
-<td class="romaji">Nattoku ikan.</td>
-<td>I don't accept that.</td>
-<td>Understanding/acceptance doesn't go.</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">67</td>
-<td class="jp">なんでそうなるん？</td>
-<td class="romaji">Nande sou narun?</td>
-<td>How does it end up like that?</td>
-<td>Why so becomes?</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">68</td>
-<td class="jp">誰が決めたん？</td>
-<td class="romaji">Dare ga kimetan?</td>
-<td>Who decided that?</td>
-<td>Who decided?</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">69</td>
-<td class="jp">説明して。</td>
-<td class="romaji">Setsumei shite.</td>
-<td>Explain it.</td>
-<td>Explanation do.</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">70</td>
-<td class="jp">説明になってへん。</td>
-<td class="romaji">Setsumei ni nattehen.</td>
-<td>That doesn't explain anything.</td>
-<td>Not becoming explanation.</td>
-<td><span class="tag">Complaint</span></td>
-</tr>
-<tr>
-<td class="num">71</td>
-<td class="jp">雑やな。</td>
-<td class="romaji">Zatsu ya na.</td>
-<td>That's sloppy.</td>
-<td>Sloppy, huh.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">72</td>
-<td class="jp">適当すぎるやろ。</td>
-<td class="romaji">Tekitou sugiru yaro.</td>
-<td>That's way too half-baked.</td>
-<td>Too random, surely.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">73</td>
-<td class="jp">ちゃんとやれや。</td>
-<td class="romaji">Chanto yare ya.</td>
-<td>Do it properly.</td>
-<td>Properly do it.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">74</td>
-<td class="jp">何を見せられてんねん。</td>
-<td class="romaji">Nani o miserareten nen.</td>
-<td>What am I even watching?</td>
-<td>What am I being shown?</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">75</td>
-<td class="jp">地獄やん。</td>
-<td class="romaji">Jigoku yan.</td>
-<td>This is hell.</td>
-<td>Hell, isn't it.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">76</td>
-<td class="jp">空気おかしいやろ。</td>
-<td class="romaji">Kuuki okashii yaro.</td>
-<td>The vibe is weird, right?</td>
-<td>Air/vibe strange, surely.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">77</td>
-<td class="jp">変な空気なった。</td>
-<td class="romaji">Hen na kuuki natta.</td>
-<td>The vibe got weird.</td>
-<td>Strange air became.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">78</td>
-<td class="jp">誰も助けてくれへん。</td>
-<td class="romaji">Dare mo tasukete kurehen.</td>
-<td>Nobody is helping me.</td>
-<td>Nobody helps-gives.</td>
-<td><span class="tag">Comedy complaint</span></td>
-</tr>
-<tr>
-<td class="num">79</td>
-<td class="jp">助けてくれや。</td>
-<td class="romaji">Tasukete kure ya.</td>
-<td>Help me out, man.</td>
-<td>Help give me.</td>
-<td><span class="tag">Comedy complaint</span></td>
-</tr>
-<tr>
-<td class="num">80</td>
-<td class="jp">なんで黙ってんねん。</td>
-<td class="romaji">Nande damatten nen.</td>
-<td>Why are you quiet?</td>
-<td>Why being silent?</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">81</td>
-<td class="jp">何か言えや。</td>
-<td class="romaji">Nanika ie ya.</td>
-<td>Say something.</td>
-<td>Something say.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">82</td>
-<td class="jp">今言うタイミングちゃう。</td>
-<td class="romaji">Ima yuu taimingu chau.</td>
-<td>This is not the time to say that.</td>
-<td>Now saying timing is different.</td>
-<td><span class="tag">Correction</span></td>
-</tr>
-<tr>
-<td class="num">83</td>
-<td class="jp">タイミング悪いわ。</td>
-<td class="romaji">Taimingu warui wa.</td>
-<td>Bad timing.</td>
-<td>Timing bad.</td>
-<td><span class="tag">Correction</span></td>
-</tr>
-<tr>
-<td class="num">84</td>
-<td class="jp">そこ拾うんかい。</td>
-<td class="romaji">Soko hiroun kai.</td>
-<td>That's what you're reacting to?</td>
-<td>There pick up?</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">85</td>
-<td class="jp">そこ気になる？</td>
-<td class="romaji">Soko ki ni naru?</td>
-<td>That's what bothers you?</td>
-<td>There becomes concern?</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">86</td>
-<td class="jp">細かいねん。</td>
-<td class="romaji">Komakai nen.</td>
-<td>You're too picky/detail-focused.</td>
-<td>Small/detail, man.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">87</td>
-<td class="jp">どうでもええわ。</td>
-<td class="romaji">Dou demo ee wa.</td>
-<td>Who cares?</td>
-<td>Any way is good.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">88</td>
-<td class="jp">それは大事やろ。</td>
-<td class="romaji">Sore wa daiji yaro.</td>
-<td>That part matters, though.</td>
-<td>That important, surely.</td>
-<td><span class="tag">Correction</span></td>
-</tr>
-<tr>
-<td class="num">89</td>
-<td class="jp">急に真面目になるな。</td>
-<td class="romaji">Kyuu ni majime ni naru na.</td>
-<td>Don't suddenly get serious.</td>
-<td>Suddenly serious become, don't.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">90</td>
-<td class="jp">真面目か。</td>
-<td class="romaji">Majime ka.</td>
-<td>Why so serious?</td>
-<td>Serious, huh?</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">91</td>
-<td class="jp">顔だけ真剣やん。</td>
-<td class="romaji">Kao dake shinken yan.</td>
-<td>Only your face looks serious.</td>
-<td>Face only serious, isn't it.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-<tr>
-<td class="num">92</td>
-<td class="jp">何の時間やねん。</td>
-<td class="romaji">Nan no jikan ya nen.</td>
-<td>What kind of segment is this?</td>
-<td>What time/segment is this?</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">93</td>
-<td class="jp">終わり方おかしい。</td>
-<td class="romaji">Owarikata okashii.</td>
-<td>That ending was weird.</td>
-<td>Ending method strange.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">94</td>
-<td class="jp">オチないんかい。</td>
-<td class="romaji">Ochi nain kai.</td>
-<td>There's no punchline?</td>
-<td>Punchline doesn't exist?</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">95</td>
-<td class="jp">オチ弱いな。</td>
-<td class="romaji">Ochi yowai na.</td>
-<td>That punchline is weak.</td>
-<td>Punchline weak, huh.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">96</td>
-<td class="jp">悔しいけど笑った。</td>
-<td class="romaji">Kuyashii kedo waratta.</td>
-<td>I'm annoyed, but I laughed.</td>
-<td>Frustrating but laughed.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">97</td>
-<td class="jp">これは負けたわ。</td>
-<td class="romaji">Kore wa maketa wa.</td>
-<td>This one beat me.</td>
-<td>This, lost.</td>
-<td><span class="tag">Comedy</span></td>
-</tr>
-<tr>
-<td class="num">98</td>
-<td class="jp">さすがやな。</td>
-<td class="romaji">Sasuga ya na.</td>
-<td>That's impressive.</td>
-<td>As expected, huh.</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">99</td>
-<td class="jp">天才か。</td>
-<td class="romaji">Tensai ka.</td>
-<td>Are you a genius?</td>
-<td>Genius, huh?</td>
-<td><span class="tag">Reaction</span></td>
-</tr>
-<tr>
-<td class="num">100</td>
-<td class="jp">アホやろ。</td>
-<td class="romaji">Aho yaro.</td>
-<td>You're ridiculous.</td>
-<td>Fool, surely.</td>
-<td><span class="tag">Teasing</span></td>
-</tr>
-</tbody>
-</table>
-</section>
+<section class="responsive-card-section" data-storage-key="thinkJapanese_part3_en"><div class="deck-toolbar"><div class="deck-progress-block"><div class="deck-progress-meta"><div class="deck-title">Responsive phrase cards</div><div class="deck-count"><span class="deck-label">Memorized: </span><span class="deck-count-num">0 / 0</span> <span class="deck-percent">0%</span></div></div><div class="deck-track"><div class="deck-fill"></div></div></div><button class="deck-reset" data-reset-deck="" type="button">Reset memorized</button></div><div class="responsive-card-grid"><article class="study-card " data-id="1" data-order="1" data-search="1 なんでやねん！ Nande yanen! What the heck?! / Come on! Why is-it-like-that?! Kansai reaction"><div class="study-card-header"><span class="study-id">1</span><div class="study-main">なんでやねん！</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande yanen!</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">What the heck?! / Come on!</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Why is-it-like-that?!</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Kansai reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #1" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="2" data-order="2" data-search="2 何してんねん。 Nani shiten nen. What are you doing? What doing is-it? Teasing"><div class="study-card-header"><span class="study-id">2</span><div class="study-main">何してんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nani shiten nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">What are you doing?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">What doing is-it?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #2" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="3" data-order="3" data-search="3 ちゃうちゃう。 Chau chau. No, no, that's not it. Different, different. Correction"><div class="study-card-header"><span class="study-id">3</span><div class="study-main">ちゃうちゃう。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Chau chau.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">No, no, that's not it.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Different, different.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Correction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #3" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="4" data-order="4" data-search="4 それちゃうやろ。 Sore chau yaro. That's not it, right? That different, surely. Correction"><div class="study-card-header"><span class="study-id">4</span><div class="study-main">それちゃうやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore chau yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's not it, right?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">That different, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Correction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #4" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="5" data-order="5" data-search="5 ほんまか？ Honma ka? For real? Truth? Reaction"><div class="study-card-header"><span class="study-id">5</span><div class="study-main">ほんまか？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Honma ka?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">For real?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Truth?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #5" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="6" data-order="6" data-search="6 ほんまに言うてる？ Honma ni yuuteru? Are you seriously saying that? Really saying? Reaction"><div class="study-card-header"><span class="study-id">6</span><div class="study-main">ほんまに言うてる？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Honma ni yuuteru?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Are you seriously saying that?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Really saying?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #6" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="7" data-order="7" data-search="7 うそやろ。 Uso yaro. No way. Lie, surely. Reaction"><div class="study-card-header"><span class="study-id">7</span><div class="study-main">うそやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Uso yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">No way.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Lie, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #7" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="8" data-order="8" data-search="8 ありえへん。 Ariehen. Unbelievable. Cannot exist. Reaction"><div class="study-card-header"><span class="study-id">8</span><div class="study-main">ありえへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ariehen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Unbelievable.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Cannot exist.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #8" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="9" data-order="9" data-search="9 あかんあかん。 Akan akan. Nope, nope. No good, no good. Reaction"><div class="study-card-header"><span class="study-id">9</span><div class="study-main">あかんあかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Akan akan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Nope, nope.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">No good, no good.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #9" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="10" data-order="10" data-search="10 全然あかん。 Zenzen akan. Totally not good. Completely no good. Reaction"><div class="study-card-header"><span class="study-id">10</span><div class="study-main">全然あかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zenzen akan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Totally not good.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Completely no good.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #10" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="11" data-order="11" data-search="11 めっちゃおもろい。 Meccha omoroi. That's hilarious. Super funny. Comedy"><div class="study-card-header"><span class="study-id">11</span><div class="study-main">めっちゃおもろい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Meccha omoroi.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's hilarious.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Super funny.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #11" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="12" data-order="12" data-search="12 おもろいやん。 Omoroi yan. That's funny, isn't it? Funny, isn't it. Comedy"><div class="study-card-header"><span class="study-id">12</span><div class="study-main">おもろいやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Omoroi yan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's funny, isn't it?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Funny, isn't it.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #12" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="13" data-order="13" data-search="13 笑ってもうた。 Waratte mouta. I ended up laughing. Laughed completely. Comedy"><div class="study-card-header"><span class="study-id">13</span><div class="study-main">笑ってもうた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Waratte mouta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I ended up laughing.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Laughed completely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #13" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="14" data-order="14" data-search="14 笑ったらあかん。 Warattara akan. I can't laugh. If laugh, no good. No-laugh vibe"><div class="study-card-header"><span class="study-id">14</span><div class="study-main">笑ったらあかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Warattara akan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I can't laugh.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">If laugh, no good.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #14" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="15" data-order="15" data-search="15 今のは無理やろ。 Ima no wa muri yaro. That one was impossible. That just now impossible, surely. No-laugh vibe"><div class="study-card-header"><span class="study-id">15</span><div class="study-main">今のは無理やろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima no wa muri yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That one was impossible.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">That just now impossible, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #15" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="16" data-order="16" data-search="16 こらえられへん。 Koraerarehen. I can't hold it in. Cannot endure. No-laugh vibe"><div class="study-card-header"><span class="study-id">16</span><div class="study-main">こらえられへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Koraerarehen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I can't hold it in.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Cannot endure.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #16" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="17" data-order="17" data-search="17 危なかった。 Abunakatta. That was close. Was dangerous. No-laugh vibe"><div class="study-card-header"><span class="study-id">17</span><div class="study-main">危なかった。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Abunakatta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That was close.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Was dangerous.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #17" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="18" data-order="18" data-search="18 ギリギリ耐えた。 Girigiri taeta. I barely held it in. Barely endured. No-laugh vibe"><div class="study-card-header"><span class="study-id">18</span><div class="study-main">ギリギリ耐えた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Girigiri taeta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I barely held it in.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Barely endured.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #18" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="19" data-order="19" data-search="19 今、笑いかけた。 Ima, waraikaketa. I almost laughed just now. Now, began-to-laugh. No-laugh vibe"><div class="study-card-header"><span class="study-id">19</span><div class="study-main">今、笑いかけた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima, waraikaketa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I almost laughed just now.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Now, began-to-laugh.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #19" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="20" data-order="20" data-search="20 それは卑怯やわ。 Sore wa hikyou ya wa. That's unfair. That is cowardly/unfair. Comedy"><div class="study-card-header"><span class="study-id">20</span><div class="study-main">それは卑怯やわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore wa hikyou ya wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's unfair.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">That is cowardly/unfair.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #20" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="21" data-order="21" data-search="21 ずるいやろ。 Zurui yaro. That's cheating, right? Sneaky, surely. Comedy"><div class="study-card-header"><span class="study-id">21</span><div class="study-main">ずるいやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zurui yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's cheating, right?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Sneaky, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #21" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="22" data-order="22" data-search="22 反則やん。 Hansoku yan. That's against the rules. Rule violation, isn't it. Comedy"><div class="study-card-header"><span class="study-id">22</span><div class="study-main">反則やん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Hansoku yan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's against the rules.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Rule violation, isn't it.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #22" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="23" data-order="23" data-search="23 これは笑うわ。 Kore wa warau wa. This is laugh-worthy. This, I laugh. Comedy"><div class="study-card-header"><span class="study-id">23</span><div class="study-main">これは笑うわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kore wa warau wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">This is laugh-worthy.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">This, I laugh.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #23" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="24" data-order="24" data-search="24 そんなん笑うやん。 Sonnan warau yan. Of course I'd laugh at that. Such thing, laugh, right. Comedy"><div class="study-card-header"><span class="study-id">24</span><div class="study-main">そんなん笑うやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sonnan warau yan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Of course I'd laugh at that.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Such thing, laugh, right.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #24" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="25" data-order="25" data-search="25 なんちゅう顔してんねん。 Nanchuu kao shiten nen. What kind of face is that? What kind face doing? Teasing"><div class="study-card-header"><span class="study-id">25</span><div class="study-main">なんちゅう顔してんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nanchuu kao shiten nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">What kind of face is that?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">What kind face doing?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #25" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="26" data-order="26" data-search="26 その顔やめて。 Sono kao yamete. Stop making that face. That face, stop. Teasing"><div class="study-card-header"><span class="study-id">26</span><div class="study-main">その顔やめて。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sono kao yamete.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Stop making that face.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">That face, stop.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #26" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="27" data-order="27" data-search="27 顔がもうあかん。 Kao ga mou akan. Your face is already too much. Face already no good. Teasing"><div class="study-card-header"><span class="study-id">27</span><div class="study-main">顔がもうあかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kao ga mou akan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Your face is already too much.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Face already no good.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #27" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="28" data-order="28" data-search="28 声でかいねん。 Koe dekai nen. You're too loud. Voice big, man. Teasing"><div class="study-card-header"><span class="study-id">28</span><div class="study-main">声でかいねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Koe dekai nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">You're too loud.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Voice big, man.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #28" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="29" data-order="29" data-search="29 近い近い。 Chikai chikai. Too close, too close. Close, close. Teasing"><div class="study-card-header"><span class="study-id">29</span><div class="study-main">近い近い。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Chikai chikai.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Too close, too close.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Close, close.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #29" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="30" data-order="30" data-search="30 怖い怖い。 Kowai kowai. Scary, scary. Scary, scary. Reaction"><div class="study-card-header"><span class="study-id">30</span><div class="study-main">怖い怖い。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kowai kowai.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Scary, scary.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Scary, scary.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #30" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="31" data-order="31" data-search="31 急に来るな。 Kyuu ni kuru na. Don't come at me suddenly. Suddenly come, don't. Reaction"><div class="study-card-header"><span class="study-id">31</span><div class="study-main">急に来るな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kyuu ni kuru na.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Don't come at me suddenly.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Suddenly come, don't.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #31" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="32" data-order="32" data-search="32 びっくりした。 Bikkuri shita. That surprised me. Surprise did. Reaction"><div class="study-card-header"><span class="study-id">32</span><div class="study-main">びっくりした。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Bikkuri shita.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That surprised me.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Surprise did.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #32" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="33" data-order="33" data-search="33 心臓止まるわ。 Shinzou tomaru wa. My heart almost stopped. Heart stops. Reaction"><div class="study-card-header"><span class="study-id">33</span><div class="study-main">心臓止まるわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Shinzou tomaru wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">My heart almost stopped.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Heart stops.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #33" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="34" data-order="34" data-search="34 何が起きたん？ Nani ga okitan? What happened? What occurred? Reaction"><div class="study-card-header"><span class="study-id">34</span><div class="study-main">何が起きたん？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nani ga okitan?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">What happened?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">What occurred?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #34" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="35" data-order="35" data-search="35 どないなってんねん。 Donai natten nen. What is going on? How is it becoming? Kansai reaction"><div class="study-card-header"><span class="study-id">35</span><div class="study-main">どないなってんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Donai natten nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">What is going on?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">How is it becoming?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Kansai reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #35" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="36" data-order="36" data-search="36 意味わからん。 Imi wakaran. I don't get it. Meaning not understand. Reaction"><div class="study-card-header"><span class="study-id">36</span><div class="study-main">意味わからん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Imi wakaran.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I don't get it.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Meaning not understand.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #36" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="37" data-order="37" data-search="37 意味わからんけどおもろい。 Imi wakaran kedo omoroi. I don't get it, but it's funny. Meaning don't understand, but funny. Comedy"><div class="study-card-header"><span class="study-id">37</span><div class="study-main">意味わからんけどおもろい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Imi wakaran kedo omoroi.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I don't get it, but it's funny.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Meaning don't understand, but funny.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #37" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="38" data-order="38" data-search="38 それ言うたらあかんやつ。 Sore yuutara akan yatsu. That's something you shouldn't say. If say that, no-good thing. Teasing"><div class="study-card-header"><span class="study-id">38</span><div class="study-main">それ言うたらあかんやつ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore yuutara akan yatsu.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's something you shouldn't say.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">If say that, no-good thing.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #38" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="39" data-order="39" data-search="39 言い方きついわ。 Iikata kitsui wa. That way of saying it is harsh. Way of saying is strong. Teasing"><div class="study-card-header"><span class="study-id">39</span><div class="study-main">言い方きついわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Iikata kitsui wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That way of saying it is harsh.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Way of saying is strong.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #39" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="40" data-order="40" data-search="40 やめたれや。 Yametare ya. Leave him alone. Stop doing that to him. Teasing"><div class="study-card-header"><span class="study-id">40</span><div class="study-main">やめたれや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Yametare ya.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Leave him alone.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Stop doing that to him.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #40" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="41" data-order="41" data-search="41 かわいそうやろ。 Kawaisou yaro. Poor guy, come on. Pitiful, surely. Teasing"><div class="study-card-header"><span class="study-id">41</span><div class="study-main">かわいそうやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kawaisou yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Poor guy, come on.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Pitiful, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #41" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="42" data-order="42" data-search="42 もうええわ。 Mou ee wa. Enough already. Already good. Ending joke"><div class="study-card-header"><span class="study-id">42</span><div class="study-main">もうええわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mou ee wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Enough already.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Already good.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Ending joke</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #42" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="43" data-order="43" data-search="43 もうええて。 Mou eete. That's enough, man. Already good, I said. Ending joke"><div class="study-card-header"><span class="study-id">43</span><div class="study-main">もうええて。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mou eete.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's enough, man.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Already good, I said.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Ending joke</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #43" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="44" data-order="44" data-search="44 ええ加減にせえ。 Ee kagen ni see. Cut it out already. Do good amount. Kansai scold"><div class="study-card-header"><span class="study-id">44</span><div class="study-main">ええ加減にせえ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ee kagen ni see.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Cut it out already.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Do good amount.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Kansai scold</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #44" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="45" data-order="45" data-search="45 何回言うねん。 Nankai yuu nen. How many times are you going to say that? How many times say? Teasing"><div class="study-card-header"><span class="study-id">45</span><div class="study-main">何回言うねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nankai yuu nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">How many times are you going to say that?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">How many times say?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #45" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="46" data-order="46" data-search="46 しつこいねん。 Shitsukoi nen. You're being too persistent. Persistent, man. Teasing"><div class="study-card-header"><span class="study-id">46</span><div class="study-main">しつこいねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Shitsukoi nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">You're being too persistent.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Persistent, man.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #46" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="47" data-order="47" data-search="47 またそれかい。 Mata sore kai. That again? Again that? Reaction"><div class="study-card-header"><span class="study-id">47</span><div class="study-main">またそれかい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mata sore kai.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That again?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Again that?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #47" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="48" data-order="48" data-search="48 また出た。 Mata deta. There it is again. Again came out. Reaction"><div class="study-card-header"><span class="study-id">48</span><div class="study-main">また出た。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mata deta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">There it is again.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Again came out.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #48" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="49" data-order="49" data-search="49 来ると思った。 Kuru to omotta. I knew it was coming. Thought it would come. Prediction"><div class="study-card-header"><span class="study-id">49</span><div class="study-main">来ると思った。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kuru to omotta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I knew it was coming.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Thought it would come.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Prediction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #49" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="50" data-order="50" data-search="50 やっぱり来た。 Yappari kita. Yep, there it is. As expected, came. Prediction"><div class="study-card-header"><span class="study-id">50</span><div class="study-main">やっぱり来た。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Yappari kita.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Yep, there it is.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">As expected, came.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Prediction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #50" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="51" data-order="51" data-search="51 絶対そうやと思った。 Zettai sou ya to omotta. I totally knew it. Absolutely so, I thought. Prediction"><div class="study-card-header"><span class="study-id">51</span><div class="study-main">絶対そうやと思った。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zettai sou ya to omotta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I totally knew it.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Absolutely so, I thought.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Prediction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #51" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="52" data-order="52" data-search="52 怪しいな。 Ayashii na. That's suspicious. Suspicious, huh. Suspicion"><div class="study-card-header"><span class="study-id">52</span><div class="study-main">怪しいな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ayashii na.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's suspicious.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Suspicious, huh.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Suspicion</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #52" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="53" data-order="53" data-search="53 なんか怪しい。 Nanka ayashii. Something's suspicious. Somehow suspicious. Suspicion"><div class="study-card-header"><span class="study-id">53</span><div class="study-main">なんか怪しい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nanka ayashii.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Something's suspicious.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Somehow suspicious.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Suspicion</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #53" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="54" data-order="54" data-search="54 絶対なんかある。 Zettai nanka aru. There's definitely something going on. Absolutely something exists. Suspicion"><div class="study-card-header"><span class="study-id">54</span><div class="study-main">絶対なんかある。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zettai nanka aru.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">There's definitely something going on.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Absolutely something exists.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Suspicion</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #54" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="55" data-order="55" data-search="55 これ罠やろ。 Kore wana yaro. This is a trap, right? This trap, surely. Suspicion"><div class="study-card-header"><span class="study-id">55</span><div class="study-main">これ罠やろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kore wana yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">This is a trap, right?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">This trap, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Suspicion</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #55" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="56" data-order="56" data-search="56 嫌な予感する。 Iya na yokan suru. I have a bad feeling. Bad premonition does. Suspicion"><div class="study-card-header"><span class="study-id">56</span><div class="study-main">嫌な予感する。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Iya na yokan suru.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I have a bad feeling.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Bad premonition does.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Suspicion</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #56" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="57" data-order="57" data-search="57 見た瞬間アウト。 Mita shunkan auto. The moment I saw it, I was out. Saw moment, out. No-laugh vibe"><div class="study-card-header"><span class="study-id">57</span><div class="study-main">見た瞬間アウト。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Mita shunkan auto.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">The moment I saw it, I was out.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Saw moment, out.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #57" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="58" data-order="58" data-search="58 アウトやん。 Auto yan. That's an out. Out, isn't it. No-laugh vibe"><div class="study-card-header"><span class="study-id">58</span><div class="study-main">アウトやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Auto yan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's an out.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Out, isn't it.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #58" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="59" data-order="59" data-search="59 今のアウトやろ。 Ima no auto yaro. That was an out, right? That just now out, surely. No-laugh vibe"><div class="study-card-header"><span class="study-id">59</span><div class="study-main">今のアウトやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima no auto yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That was an out, right?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">That just now out, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #59" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="60" data-order="60" data-search="60 セーフやろ？ Seefu yaro? I'm safe, right? Safe, surely? No-laugh vibe"><div class="study-card-header"><span class="study-id">60</span><div class="study-main">セーフやろ？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Seefu yaro?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I'm safe, right?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Safe, surely?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #60" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="61" data-order="61" data-search="61 いや、アウトや。 Iya, auto ya. Nope, you're out. No, out. No-laugh vibe"><div class="study-card-header"><span class="study-id">61</span><div class="study-main">いや、アウトや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Iya, auto ya.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Nope, you're out.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">No, out.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">No-laugh vibe</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #61" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="62" data-order="62" data-search="62 なんで俺だけ？ Nande ore dake? Why only me? Why me only? Complaint"><div class="study-card-header"><span class="study-id">62</span><div class="study-main">なんで俺だけ？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande ore dake?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Why only me?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Why me only?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #62" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="63" data-order="63" data-search="63 俺関係ないやん。 Ore kankei nai yan. This has nothing to do with me. I relation none, right. Complaint"><div class="study-card-header"><span class="study-id">63</span><div class="study-main">俺関係ないやん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ore kankei nai yan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">This has nothing to do with me.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">I relation none, right.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #63" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="64" data-order="64" data-search="64 巻き込まれた。 Makikomareta. I got dragged into this. Got dragged/involved. Complaint"><div class="study-card-header"><span class="study-id">64</span><div class="study-main">巻き込まれた。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Makikomareta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I got dragged into this.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Got dragged/involved.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #64" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="65" data-order="65" data-search="65 理不尽やわ。 Rifujin ya wa. That's unreasonable. Unreasonable it is. Complaint"><div class="study-card-header"><span class="study-id">65</span><div class="study-main">理不尽やわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Rifujin ya wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's unreasonable.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Unreasonable it is.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #65" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="66" data-order="66" data-search="66 納得いかん。 Nattoku ikan. I don't accept that. Understanding/acceptance doesn't go. Complaint"><div class="study-card-header"><span class="study-id">66</span><div class="study-main">納得いかん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nattoku ikan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I don't accept that.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Understanding/acceptance doesn't go.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #66" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="67" data-order="67" data-search="67 なんでそうなるん？ Nande sou narun? How does it end up like that? Why so becomes? Complaint"><div class="study-card-header"><span class="study-id">67</span><div class="study-main">なんでそうなるん？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande sou narun?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">How does it end up like that?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Why so becomes?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #67" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="68" data-order="68" data-search="68 誰が決めたん？ Dare ga kimetan? Who decided that? Who decided? Complaint"><div class="study-card-header"><span class="study-id">68</span><div class="study-main">誰が決めたん？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Dare ga kimetan?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Who decided that?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Who decided?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #68" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="69" data-order="69" data-search="69 説明して。 Setsumei shite. Explain it. Explanation do. Complaint"><div class="study-card-header"><span class="study-id">69</span><div class="study-main">説明して。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Setsumei shite.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Explain it.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Explanation do.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #69" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="70" data-order="70" data-search="70 説明になってへん。 Setsumei ni nattehen. That doesn't explain anything. Not becoming explanation. Complaint"><div class="study-card-header"><span class="study-id">70</span><div class="study-main">説明になってへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Setsumei ni nattehen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That doesn't explain anything.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Not becoming explanation.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #70" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="71" data-order="71" data-search="71 雑やな。 Zatsu ya na. That's sloppy. Sloppy, huh. Teasing"><div class="study-card-header"><span class="study-id">71</span><div class="study-main">雑やな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Zatsu ya na.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's sloppy.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Sloppy, huh.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #71" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="72" data-order="72" data-search="72 適当すぎるやろ。 Tekitou sugiru yaro. That's way too half-baked. Too random, surely. Teasing"><div class="study-card-header"><span class="study-id">72</span><div class="study-main">適当すぎるやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Tekitou sugiru yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's way too half-baked.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Too random, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #72" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="73" data-order="73" data-search="73 ちゃんとやれや。 Chanto yare ya. Do it properly. Properly do it. Teasing"><div class="study-card-header"><span class="study-id">73</span><div class="study-main">ちゃんとやれや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Chanto yare ya.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Do it properly.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Properly do it.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #73" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="74" data-order="74" data-search="74 何を見せられてんねん。 Nani o miserareten nen. What am I even watching? What am I being shown? Reaction"><div class="study-card-header"><span class="study-id">74</span><div class="study-main">何を見せられてんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nani o miserareten nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">What am I even watching?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">What am I being shown?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #74" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="75" data-order="75" data-search="75 地獄やん。 Jigoku yan. This is hell. Hell, isn't it. Reaction"><div class="study-card-header"><span class="study-id">75</span><div class="study-main">地獄やん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Jigoku yan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">This is hell.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Hell, isn't it.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #75" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="76" data-order="76" data-search="76 空気おかしいやろ。 Kuuki okashii yaro. The vibe is weird, right? Air/vibe strange, surely. Reaction"><div class="study-card-header"><span class="study-id">76</span><div class="study-main">空気おかしいやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kuuki okashii yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">The vibe is weird, right?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Air/vibe strange, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #76" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="77" data-order="77" data-search="77 変な空気なった。 Hen na kuuki natta. The vibe got weird. Strange air became. Reaction"><div class="study-card-header"><span class="study-id">77</span><div class="study-main">変な空気なった。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Hen na kuuki natta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">The vibe got weird.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Strange air became.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #77" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="78" data-order="78" data-search="78 誰も助けてくれへん。 Dare mo tasukete kurehen. Nobody is helping me. Nobody helps-gives. Comedy complaint"><div class="study-card-header"><span class="study-id">78</span><div class="study-main">誰も助けてくれへん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Dare mo tasukete kurehen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Nobody is helping me.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Nobody helps-gives.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #78" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="79" data-order="79" data-search="79 助けてくれや。 Tasukete kure ya. Help me out, man. Help give me. Comedy complaint"><div class="study-card-header"><span class="study-id">79</span><div class="study-main">助けてくれや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Tasukete kure ya.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Help me out, man.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Help give me.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy complaint</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #79" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="80" data-order="80" data-search="80 なんで黙ってんねん。 Nande damatten nen. Why are you quiet? Why being silent? Teasing"><div class="study-card-header"><span class="study-id">80</span><div class="study-main">なんで黙ってんねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nande damatten nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Why are you quiet?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Why being silent?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #80" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="81" data-order="81" data-search="81 何か言えや。 Nanika ie ya. Say something. Something say. Teasing"><div class="study-card-header"><span class="study-id">81</span><div class="study-main">何か言えや。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nanika ie ya.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Say something.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Something say.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #81" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="82" data-order="82" data-search="82 今言うタイミングちゃう。 Ima yuu taimingu chau. This is not the time to say that. Now saying timing is different. Correction"><div class="study-card-header"><span class="study-id">82</span><div class="study-main">今言うタイミングちゃう。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ima yuu taimingu chau.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">This is not the time to say that.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Now saying timing is different.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Correction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #82" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="83" data-order="83" data-search="83 タイミング悪いわ。 Taimingu warui wa. Bad timing. Timing bad. Correction"><div class="study-card-header"><span class="study-id">83</span><div class="study-main">タイミング悪いわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Taimingu warui wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Bad timing.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Timing bad.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Correction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #83" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="84" data-order="84" data-search="84 そこ拾うんかい。 Soko hiroun kai. That's what you're reacting to? There pick up? Comedy"><div class="study-card-header"><span class="study-id">84</span><div class="study-main">そこ拾うんかい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Soko hiroun kai.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's what you're reacting to?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">There pick up?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #84" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="85" data-order="85" data-search="85 そこ気になる？ Soko ki ni naru? That's what bothers you? There becomes concern? Comedy"><div class="study-card-header"><span class="study-id">85</span><div class="study-main">そこ気になる？</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Soko ki ni naru?</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's what bothers you?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">There becomes concern?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #85" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="86" data-order="86" data-search="86 細かいねん。 Komakai nen. You're too picky/detail-focused. Small/detail, man. Teasing"><div class="study-card-header"><span class="study-id">86</span><div class="study-main">細かいねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Komakai nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">You're too picky/detail-focused.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Small/detail, man.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #86" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="87" data-order="87" data-search="87 どうでもええわ。 Dou demo ee wa. Who cares? Any way is good. Teasing"><div class="study-card-header"><span class="study-id">87</span><div class="study-main">どうでもええわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Dou demo ee wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Who cares?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Any way is good.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #87" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="88" data-order="88" data-search="88 それは大事やろ。 Sore wa daiji yaro. That part matters, though. That important, surely. Correction"><div class="study-card-header"><span class="study-id">88</span><div class="study-main">それは大事やろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sore wa daiji yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That part matters, though.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">That important, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Correction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #88" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="89" data-order="89" data-search="89 急に真面目になるな。 Kyuu ni majime ni naru na. Don't suddenly get serious. Suddenly serious become, don't. Teasing"><div class="study-card-header"><span class="study-id">89</span><div class="study-main">急に真面目になるな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kyuu ni majime ni naru na.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Don't suddenly get serious.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Suddenly serious become, don't.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #89" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="90" data-order="90" data-search="90 真面目か。 Majime ka. Why so serious? Serious, huh? Teasing"><div class="study-card-header"><span class="study-id">90</span><div class="study-main">真面目か。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Majime ka.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Why so serious?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Serious, huh?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #90" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="91" data-order="91" data-search="91 顔だけ真剣やん。 Kao dake shinken yan. Only your face looks serious. Face only serious, isn't it. Teasing"><div class="study-card-header"><span class="study-id">91</span><div class="study-main">顔だけ真剣やん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kao dake shinken yan.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Only your face looks serious.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Face only serious, isn't it.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #91" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="92" data-order="92" data-search="92 何の時間やねん。 Nan no jikan ya nen. What kind of segment is this? What time/segment is this? Comedy"><div class="study-card-header"><span class="study-id">92</span><div class="study-main">何の時間やねん。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Nan no jikan ya nen.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">What kind of segment is this?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">What time/segment is this?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #92" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="93" data-order="93" data-search="93 終わり方おかしい。 Owarikata okashii. That ending was weird. Ending method strange. Comedy"><div class="study-card-header"><span class="study-id">93</span><div class="study-main">終わり方おかしい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Owarikata okashii.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That ending was weird.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Ending method strange.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #93" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="94" data-order="94" data-search="94 オチないんかい。 Ochi nain kai. There's no punchline? Punchline doesn't exist? Comedy"><div class="study-card-header"><span class="study-id">94</span><div class="study-main">オチないんかい。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ochi nain kai.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">There's no punchline?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Punchline doesn't exist?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #94" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="95" data-order="95" data-search="95 オチ弱いな。 Ochi yowai na. That punchline is weak. Punchline weak, huh. Comedy"><div class="study-card-header"><span class="study-id">95</span><div class="study-main">オチ弱いな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Ochi yowai na.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That punchline is weak.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Punchline weak, huh.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #95" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="96" data-order="96" data-search="96 悔しいけど笑った。 Kuyashii kedo waratta. I'm annoyed, but I laughed. Frustrating but laughed. Comedy"><div class="study-card-header"><span class="study-id">96</span><div class="study-main">悔しいけど笑った。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kuyashii kedo waratta.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">I'm annoyed, but I laughed.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Frustrating but laughed.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #96" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="97" data-order="97" data-search="97 これは負けたわ。 Kore wa maketa wa. This one beat me. This, lost. Comedy"><div class="study-card-header"><span class="study-id">97</span><div class="study-main">これは負けたわ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Kore wa maketa wa.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">This one beat me.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">This, lost.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Comedy</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #97" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="98" data-order="98" data-search="98 さすがやな。 Sasuga ya na. That's impressive. As expected, huh. Reaction"><div class="study-card-header"><span class="study-id">98</span><div class="study-main">さすがやな。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Sasuga ya na.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">That's impressive.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">As expected, huh.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #98" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="99" data-order="99" data-search="99 天才か。 Tensai ka. Are you a genius? Genius, huh? Reaction"><div class="study-card-header"><span class="study-id">99</span><div class="study-main">天才か。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Tensai ka.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">Are you a genius?</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Genius, huh?</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Reaction</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #99" type="checkbox"/><span>Memorized</span></label></article><article class="study-card " data-id="100" data-order="100" data-search="100 アホやろ。 Aho yaro. You're ridiculous. Fool, surely. Teasing"><div class="study-card-header"><span class="study-id">100</span><div class="study-main">アホやろ。</div></div><div class="study-meta"><div class="study-field"><div class="study-label">Romaji</div><div class="study-value romaji">Aho yaro.</div></div><div class="study-field"><div class="study-label">Natural English</div><div class="study-value ">You're ridiculous.</div></div><div class="study-field"><div class="study-label">Literal Brain Translation</div><div class="study-value ">Fool, surely.</div></div><div class="study-field"><div class="study-label">Category</div><div class="study-value "><span class="tag">Teasing</span></div></div></div><label class="study-toggle"><input aria-label="Memorized #100" type="checkbox"/><span>Memorized</span></label></article></div></section>
 </main>
-<footer class="pixel-footer"><span class="pixel-badge">Another Tool from <a href="https://progretech.com" target="_blank" rel="noopener">ProgreTech</a></span></footer>
+<footer class="pixel-footer"><span class="pixel-badge">Another Tool from <a href="https://progretech.com" rel="noopener" target="_blank">ProgreTech</a></span></footer>
 <script>
 (function(){
   function applyTheme(theme){
@@ -963,5 +180,76 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
 })();
 </script>
+<script data-bot-id="59258" src="https://app.aminos.ai/js/chat_plugin.js"></script>
+
+<script>
+(function(){
+  document.querySelectorAll('.responsive-card-section').forEach(function(section){
+    const grid = section.querySelector('.responsive-card-grid'); if(!grid) return;
+    const storageKey = section.dataset.storageKey || ('studyDeck_' + location.pathname + '_' + (document.documentElement.lang || 'en'));
+    const countEl = section.querySelector('.deck-count-num');
+    const fillEl = section.querySelector('.deck-fill');
+    const percentEl = section.querySelector('.deck-percent');
+    const resetBtn = section.querySelector('[data-reset-deck]');
+    let memorized = new Set();
+    try { memorized = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]').map(String)); } catch(e) { memorized = new Set(); }
+    function save(){ localStorage.setItem(storageKey, JSON.stringify(Array.from(memorized))); }
+    function apply(){
+      const cards = Array.from(grid.querySelectorAll('.study-card'));
+      cards.forEach(function(card){
+        const id = String(card.dataset.id || ''); const done = memorized.has(id);
+        card.classList.toggle('is-memorized', done);
+        const input = card.querySelector('input[type="checkbox"]'); if(input) input.checked = done;
+        const ord = Number(card.dataset.order || id.replace(/\D/g,'') || 0);
+        card.style.order = done ? (100000 + ord) : ord;
+      });
+      const total = cards.length; const doneCount = memorized.size; const pct = total ? Math.round(doneCount/total*100) : 0;
+      if(countEl) countEl.textContent = doneCount + ' / ' + total;
+      if(fillEl) fillEl.style.width = pct + '%';
+      if(percentEl) percentEl.textContent = pct + '%';
+    }
+    grid.addEventListener('change', function(evt){
+      const input = evt.target.closest('input[type="checkbox"]'); if(!input) return;
+      const card = input.closest('.study-card'); if(!card) return; const id = String(card.dataset.id || '');
+      if(input.checked) memorized.add(id); else memorized.delete(id); save(); apply();
+    });
+    if(resetBtn) resetBtn.addEventListener('click', function(){ memorized.clear(); save(); apply(); });
+    apply();
+  });
+
+  // Preserve Reading Aid search/type filter behavior for cards.
+  const searchBox = document.getElementById('searchBox');
+  const typeFilter = document.getElementById('typeFilter');
+  const charGrid = document.querySelector('.char-card-grid');
+  function filterCards(){
+    if(!charGrid) return;
+    const q = (searchBox && searchBox.value || '').toLowerCase();
+    const type = (typeFilter && typeFilter.value || 'All');
+    charGrid.querySelectorAll('.study-card').forEach(function(card){
+      const matchText = !q || (card.dataset.search || '').toLowerCase().includes(q);
+      const matchType = type === 'All' || (card.dataset.type || '') === type;
+      card.style.display = (matchText && matchType) ? '' : 'none';
+    });
+  }
+  if(searchBox) searchBox.addEventListener('input', filterCards);
+  if(typeFilter) typeFilter.addEventListener('change', filterCards);
+  filterCards();
+})();
+</script>
+
+<!--
+============================================================
+ THINK IN JAPANESE / PIENSA EN JAPONÉS
+============================================================
+ Author: Edwin A. Rodriguez (Abdiel)
+ GitHub: https://github.com/eabdiel
+ Project: Think in Japanese learning portal
+ Intent: A free, offline-friendly Japanese study hub for kana,
+         kanji, phrase practice, internal monologue training,
+         and a structured 90-day learning path.
+ Notes: This comment is intentionally kept in source only and
+        does not display on the website.
+============================================================
+-->
 </body>
 </html>

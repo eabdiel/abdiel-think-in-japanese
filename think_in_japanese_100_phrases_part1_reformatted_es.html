@@ -66,7 +66,348 @@
   margin: 0;
 }
 
+
+
+/* === Responsive phrase cards: replaces wide phrase table on mobile/desktop === */
+.table-wrap { display: none !important; }
+.phrase-card-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 18px 0 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(31,41,55,0.82);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+}
+.phrase-card-toolbar strong,
+.phrase-card-toolbar .tracker-title {
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+.phrase-progress-block {
+  flex: 1 1 360px;
+  min-width: min(100%, 260px);
+}
+.phrase-progress-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.phrase-progress-count {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35);
+}
+.phrase-progress-count .memorized-label {
+  color: #ff7ac8;
+  font-weight: 900;
+}
+.phrase-progress-count .memorized-count {
+  color: #ffffff;
+  font-weight: 900;
+}
+.phrase-progress-track {
+  margin-top: 8px;
+  height: 10px;
+  width: 100%;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.25);
+}
+.phrase-progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ff7ac8, #ffd166);
+  transition: width 180ms ease;
+}
+.phrase-progress-percent {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+  opacity: 0.95;
+}
+.phrase-card-toolbar button {
+  border: 1px solid rgba(251,191,36,0.42);
+  background: rgba(251,191,36,0.12);
+  color: #fef3c7;
+  border-radius: 999px;
+  padding: 9px 13px;
+  cursor: pointer;
+  font-weight: 700;
+}
+.phrase-card-toolbar button:hover { background: rgba(251,191,36,0.2); }
+.phrase-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  overflow: visible;
+}
+.phrase-card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(31,41,55,0.92);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.20);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform .18s ease, opacity .18s ease, filter .18s ease, box-shadow .18s ease;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+.phrase-card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }
+.phrase-card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.phrase-id {
+  flex: 0 0 auto;
+  min-width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(251,191,36,0.14);
+  border: 1px solid rgba(251,191,36,0.35);
+  color: #fef3c7;
+  font-weight: 800;
+  font-size: 14px;
+}
+.phrase-jp {
+  flex: 1 1 auto;
+  text-align: right;
+  font-size: clamp(22px, 7vw, 32px);
+  line-height: 1.25;
+  font-weight: 800;
+  color: #ffffff;
+  overflow-wrap: anywhere;
+}
+.phrase-meta { display: grid; gap: 8px; }
+.phrase-field {
+  display: grid;
+  gap: 2px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.phrase-label {
+  color: #9ca3af;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 800;
+}
+.phrase-value { color: #f9fafb; font-size: 15px; }
+.phrase-value.romaji { color: #bfdbfe; font-style: italic; }
+.phrase-card .tag { align-self: flex-start; white-space: normal; }
+.memorized-toggle {
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 38px;
+  border: 1px solid rgba(96,165,250,0.30);
+  background: rgba(96,165,250,0.10);
+  color: #dbeafe;
+  border-radius: 13px;
+  padding: 8px 10px;
+  cursor: pointer;
+  font-weight: 800;
+  user-select: none;
+}
+.memorized-toggle input { width: 18px; height: 18px; accent-color: #fbbf24; }
+.phrase-card.is-memorized {
+  opacity: .58;
+  filter: grayscale(.55);
+  background: rgba(17,24,39,0.92);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.25), 0 6px 18px rgba(0,0,0,0.25);
+}
+.phrase-card.is-memorized .phrase-jp { text-decoration: line-through; text-decoration-thickness: 2px; }
+.phrase-card.is-memorized .memorized-toggle { background: rgba(22,163,74,0.14); border-color: rgba(74,222,128,0.35); color: #bbf7d0; }
+
+
+/* === Theme readability overrides for responsive phrase cards === */
+.phrase-card-section { color: inherit; }
+body.theme-pixel .phrase-card-toolbar,
+body.theme-garden .phrase-card-toolbar {
+  background: rgba(31, 41, 55, 0.88) !important;
+  color: #ffffff !important;
+}
+body.theme-pixel .phrase-card-toolbar strong,
+body.theme-garden .phrase-card-toolbar strong,
+body.theme-night .phrase-card-toolbar strong { color: #ffffff !important; }
+body.theme-pixel .phrase-card-toolbar .memorized-count,
+body.theme-garden .phrase-card-toolbar .memorized-count,
+body.theme-night .phrase-card-toolbar .memorized-count { color: #dbeafe !important; }
+
+body.theme-pixel .phrase-progress-count .memorized-label { color: #ff7ac8 !important; }
+body.theme-pixel .phrase-progress-fill { background: linear-gradient(90deg, #ff7ac8, #ffd166) !important; }
+body.theme-garden .phrase-progress-count .memorized-label { color: #b7e08c !important; }
+body.theme-garden .phrase-progress-fill { background: linear-gradient(90deg, #7aa85b, #d7efb4) !important; }
+body.theme-night .phrase-progress-count .memorized-label { color: #7fdcff !important; }
+body.theme-night .phrase-progress-fill { background: linear-gradient(90deg, #7fdcff, #ff74d4) !important; }
+body.theme-pixel .phrase-progress-count,
+body.theme-garden .phrase-progress-count,
+body.theme-night .phrase-progress-count,
+body.theme-pixel .phrase-progress-percent,
+body.theme-garden .phrase-progress-percent,
+body.theme-night .phrase-progress-percent,
+body.theme-pixel .phrase-progress-count .memorized-count,
+body.theme-garden .phrase-progress-count .memorized-count,
+body.theme-night .phrase-progress-count .memorized-count { color: #ffffff !important; }
+
+
+body.theme-pixel .phrase-card {
+  background: rgba(255, 250, 255, 0.97) !important;
+  border-color: rgba(132, 102, 202, 0.45) !important;
+  color: #2d244f !important;
+}
+body.theme-pixel .phrase-jp { color: #3a2466 !important; text-shadow: none !important; }
+body.theme-pixel .phrase-field {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-color: rgba(132, 102, 202, 0.18) !important;
+}
+body.theme-pixel .phrase-label { color: #625778 !important; }
+body.theme-pixel .phrase-value { color: #2d244f !important; }
+body.theme-pixel .phrase-value.romaji { color: #315b9c !important; }
+body.theme-pixel .phrase-card .tag {
+  background: rgba(126, 104, 200, 0.14) !important;
+  border-color: rgba(126, 104, 200, 0.36) !important;
+  color: #34285f !important;
+}
+body.theme-pixel .phrase-id {
+  background: rgba(255, 205, 99, 0.30) !important;
+  border-color: rgba(205, 143, 28, 0.45) !important;
+  color: #3a2466 !important;
+}
+body.theme-pixel .memorized-toggle {
+  background: rgba(235, 241, 255, 0.95) !important;
+  border-color: rgba(126, 104, 200, 0.32) !important;
+  color: #2d244f !important;
+}
+
+body.theme-garden .phrase-card {
+  background: rgba(255, 252, 240, 0.98) !important;
+  border-color: rgba(151, 132, 82, 0.50) !important;
+  color: #283a26 !important;
+}
+body.theme-garden .phrase-jp { color: #213b24 !important; text-shadow: none !important; }
+body.theme-garden .phrase-field {
+  background: rgba(255, 255, 248, 0.88) !important;
+  border-color: rgba(132, 121, 78, 0.20) !important;
+}
+body.theme-garden .phrase-label { color: #66715f !important; }
+body.theme-garden .phrase-value { color: #263b28 !important; }
+body.theme-garden .phrase-value.romaji { color: #3d6b8f !important; }
+body.theme-garden .phrase-card .tag {
+  background: rgba(134, 168, 93, 0.18) !important;
+  border-color: rgba(95, 130, 61, 0.36) !important;
+  color: #294423 !important;
+}
+body.theme-garden .phrase-id {
+  background: rgba(255, 223, 142, 0.34) !important;
+  border-color: rgba(180, 140, 43, 0.50) !important;
+  color: #294423 !important;
+}
+body.theme-garden .memorized-toggle {
+  background: rgba(240, 247, 230, 0.98) !important;
+  border-color: rgba(95, 130, 61, 0.34) !important;
+  color: #294423 !important;
+}
+
+body.theme-night .phrase-card-toolbar { background: rgba(20, 29, 45, 0.92) !important; color: #ffffff !important; }
+body.theme-night .phrase-card { background: rgba(9, 14, 31, 0.95) !important; border-color: rgba(96, 165, 250, 0.40) !important; color: #f8fafc !important; }
+body.theme-night .phrase-jp { color: #ffffff !important; text-shadow: none !important; }
+body.theme-night .phrase-field { background: rgba(255, 255, 255, 0.07) !important; border-color: rgba(255, 255, 255, 0.10) !important; }
+body.theme-night .phrase-label { color: #cbd5e1 !important; }
+body.theme-night .phrase-value { color: #ffffff !important; }
+body.theme-night .phrase-value.romaji { color: #bfdbfe !important; }
+body.theme-night .phrase-card .tag { background: rgba(96,165,250,0.22) !important; border-color: rgba(147,197,253,0.42) !important; color: #e0f2fe !important; }
+body.theme-night .phrase-id { color: #fde68a !important; }
+body.theme-night .memorized-toggle { background: rgba(59,130,246,0.18) !important; color: #eaf2ff !important; border-color: rgba(147,197,253,0.36) !important; }
+
+body.theme-pixel .phrase-card.is-memorized,
+body.theme-garden .phrase-card.is-memorized,
+body.theme-night .phrase-card.is-memorized {
+  opacity: 0.76 !important;
+  filter: grayscale(0.35) brightness(0.88) !important;
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.18), 0 8px 20px rgba(0,0,0,0.25) !important;
+}
+body.theme-pixel .phrase-card.is-memorized .memorized-toggle,
+body.theme-garden .phrase-card.is-memorized .memorized-toggle,
+body.theme-night .phrase-card.is-memorized .memorized-toggle {
+  background: rgba(22, 101, 52, 0.18) !important;
+  border-color: rgba(22, 101, 52, 0.36) !important;
+  color: inherit !important;
+}
+
+@media (max-width: 520px) {
+  main { padding-left: 12px; padding-right: 12px; }
+  .phrase-card-grid { grid-template-columns: 1fr; gap: 12px; }
+  .phrase-card { padding: 13px; border-radius: 16px; }
+  .phrase-card-header { align-items: flex-start; }
+  .phrase-jp { text-align: left; }
+  .phrase-card-toolbar { margin-left: 0; margin-right: 0; }
+}
+@media print {
+  .table-wrap { display: none !important; }
+  .phrase-card-toolbar button, .memorized-toggle input { display: none; }
+  .phrase-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .phrase-card, .phrase-card-toolbar, .phrase-field { background: white; color: black; border: 1px solid #aaa; box-shadow: none; }
+  .phrase-jp, .phrase-value, .phrase-value.romaji, .phrase-label { color: black; }
+}
+
+
+/* === Responsive card deck conversion: no horizontal table overflow === */
+.table-wrap, table.converted-source-table { display: none !important; }
+.responsive-card-section { width: 100%; max-width: 100%; box-sizing: border-box; }
+.deck-toolbar {
+  display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap;
+  margin: 18px 0 14px; padding:14px 16px; border-radius:18px;
+  border:1px solid rgba(255,255,255,.10); background:rgba(31,41,55,.88);
+  box-shadow:0 8px 22px rgba(0,0,0,.18); color:#fff;
+}
+.deck-progress-block{flex:1 1 360px; min-width:min(100%,260px)}
+.deck-progress-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.deck-title{color:#fff;font-weight:900;letter-spacing:.01em}
+.deck-count{color:#fff;font-size:15px;font-weight:900;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.deck-count .deck-label{color:#ff7ac8;font-weight:900}.deck-count .deck-count-num{color:#fff;font-weight:900}
+.deck-track{margin-top:8px;height:10px;width:100%;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 3px rgba(0,0,0,.25)}
+.deck-fill{width:0%;height:100%;border-radius:inherit;background:linear-gradient(90deg,#ff7ac8,#ffd166);transition:width 180ms ease}
+.deck-percent{color:#fff;font-size:13px;font-weight:900;opacity:.96}
+.deck-reset{border:1px solid rgba(251,191,36,.42);background:rgba(251,191,36,.12);color:#fef3c7;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:800}.deck-reset:hover{background:rgba(251,191,36,.22)}
+.responsive-card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:14px;width:100%;max-width:100%;overflow:visible}
+.study-card{width:100%;max-width:100%;box-sizing:border-box;border-radius:18px;border:1px solid rgba(255,255,255,.10);background:rgba(31,41,55,.92);box-shadow:0 10px 24px rgba(0,0,0,.20);padding:15px;display:flex;flex-direction:column;gap:10px;transition:transform .18s ease,opacity .18s ease,filter .18s ease,box-shadow .18s ease;overflow-wrap:anywhere;word-break:normal;color:#f9fafb}
+.study-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.28)}
+.study-card-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.study-id{flex:0 0 auto;min-width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:rgba(251,191,36,.14);border:1px solid rgba(251,191,36,.35);color:#fef3c7;font-weight:900;font-size:14px}.study-main{flex:1 1 auto;text-align:right;font-size:clamp(22px,7vw,32px);line-height:1.25;font-weight:900;color:#fff;overflow-wrap:anywhere}.study-main.char-main{font-size:clamp(34px,12vw,54px);text-align:center}.study-meta{display:grid;gap:8px}.study-field{display:grid;gap:2px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.06)}.study-label{color:#9ca3af;font-size:11px;text-transform:uppercase;letter-spacing:.06em;font-weight:900}.study-value{color:#f9fafb;font-size:15px}.study-value.romaji{color:#bfdbfe;font-style:italic}.study-card .tag{align-self:flex-start;white-space:normal}.study-toggle{margin-top:2px;display:flex;align-items:center;gap:9px;min-height:38px;border:1px solid rgba(96,165,250,.30);background:rgba(96,165,250,.10);color:#dbeafe;border-radius:13px;padding:8px 10px;cursor:pointer;font-weight:900;user-select:none}.study-toggle input{width:18px;height:18px;accent-color:#fbbf24}.study-card.is-memorized{opacity:.58;filter:grayscale(.55);background:rgba(17,24,39,.92);box-shadow:inset 0 0 0 2px rgba(0,0,0,.25),0 6px 18px rgba(0,0,0,.25)}.study-card.is-memorized .study-main{text-decoration:line-through;text-decoration-thickness:2px}.study-card.is-memorized .study-toggle{background:rgba(22,163,74,.14);border-color:rgba(74,222,128,.35);color:#bbf7d0}
+body.theme-pixel .deck-toolbar, body.theme-garden .deck-toolbar{background:rgba(31,41,55,.88)!important;color:#fff!important}body.theme-pixel .deck-title,body.theme-garden .deck-title,body.theme-night .deck-title{color:#fff!important}body.theme-pixel .deck-count .deck-label{color:#ff7ac8!important}body.theme-pixel .deck-fill{background:linear-gradient(90deg,#ff7ac8,#ffd166)!important}body.theme-garden .deck-count .deck-label{color:#b7e08c!important}body.theme-garden .deck-fill{background:linear-gradient(90deg,#7aa85b,#d7efb4)!important}body.theme-night .deck-count .deck-label{color:#7fdcff!important}body.theme-night .deck-fill{background:linear-gradient(90deg,#7fdcff,#ff74d4)!important}body.theme-pixel .deck-count,body.theme-garden .deck-count,body.theme-night .deck-count,body.theme-pixel .deck-percent,body.theme-garden .deck-percent,body.theme-night .deck-percent,body.theme-pixel .deck-count-num,body.theme-garden .deck-count-num,body.theme-night .deck-count-num{color:#fff!important}
+body.theme-pixel .study-card{background:rgba(255,250,255,.97)!important;border-color:rgba(132,102,202,.45)!important;color:#2d244f!important}body.theme-pixel .study-main{color:#3a2466!important;text-shadow:none!important}body.theme-pixel .study-field{background:rgba(255,255,255,.82)!important;border-color:rgba(132,102,202,.18)!important}body.theme-pixel .study-label{color:#625778!important}body.theme-pixel .study-value{color:#2d244f!important}body.theme-pixel .study-value.romaji{color:#315b9c!important}body.theme-pixel .study-card .tag{background:rgba(126,104,200,.14)!important;border-color:rgba(126,104,200,.36)!important;color:#2d3a66!important}body.theme-pixel .study-toggle{background:rgba(240,246,255,.75)!important;border-color:rgba(96,165,250,.35)!important;color:#3a376b!important}.body.theme-pixel .study-id{color:#3a2466!important}
+body.theme-garden .study-card{background:rgba(255,252,244,.97)!important;border-color:rgba(146,124,72,.45)!important;color:#203625!important}body.theme-garden .study-main{color:#214b2f!important;text-shadow:none!important}body.theme-garden .study-field{background:rgba(255,255,249,.85)!important;border-color:rgba(146,124,72,.20)!important}body.theme-garden .study-label{color:#63735e!important}body.theme-garden .study-value{color:#203625!important}body.theme-garden .study-value.romaji{color:#2e6f9f!important}body.theme-garden .study-card .tag{background:rgba(122,168,91,.18)!important;border-color:rgba(122,168,91,.42)!important;color:#244725!important}body.theme-garden .study-toggle{background:rgba(231,244,221,.72)!important;border-color:rgba(122,168,91,.42)!important;color:#2c3a63!important}.body.theme-garden .study-id{color:#214b2f!important}
+body.theme-night .study-card{background:rgba(6,12,31,.96)!important;border-color:rgba(127,220,255,.42)!important;color:#f7fbff!important}body.theme-night .study-main{color:#fff!important;text-shadow:0 1px 8px rgba(127,220,255,.18)!important}body.theme-night .study-field{background:rgba(255,255,255,.075)!important;border-color:rgba(127,220,255,.14)!important}body.theme-night .study-label{color:#cbd7ec!important}body.theme-night .study-value{color:#fff!important}body.theme-night .study-value.romaji{color:#b9dcff!important}body.theme-night .study-card .tag{background:rgba(82,145,255,.22)!important;border-color:rgba(127,220,255,.35)!important;color:#e6f7ff!important}body.theme-night .study-toggle{background:rgba(30,93,155,.32)!important;border-color:rgba(127,220,255,.35)!important;color:#e6f7ff!important}
+@media(max-width:520px){main,section{padding-left:12px!important;padding-right:12px!important}.responsive-card-grid{grid-template-columns:1fr;gap:12px}.study-card{padding:13px;border-radius:16px}.study-card-header{align-items:flex-start}.study-main{text-align:left}.study-main.char-main{text-align:center}.deck-toolbar{margin-left:0;margin-right:0}}
+@media print{.table-wrap, table.converted-source-table{display:none!important}.deck-reset,.study-toggle input{display:none}.responsive-card-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.study-card,.deck-toolbar,.study-field{background:white!important;color:black!important;border:1px solid #aaa!important;box-shadow:none!important}.study-main,.study-value,.study-value.romaji,.study-label{color:black!important}}
 </style>
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="#ff7ac8" name="theme-color"/>
 <link href="pixel-theme-v2.css" rel="stylesheet"/>
 </head>
 <body>
@@ -117,824 +458,9 @@
 <p>La “traducción mental literal” suena rara a propósito para que el orden y la lógica del japonés sean más fáciles de recordar.</p>
 </div>
 </section>
-<section class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>#</th>
-<th>Japonés</th>
-<th>Romaji</th>
-<th>Significado natural</th>
-<th>Traducción mental literal</th>
-<th>Categoría</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="num">1</td>
-<td class="jp">眠い…</td>
-<td class="romaji">Nemui...</td>
-<td>Tengo sueño…</td>
-<td>Sueño…</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">2</td>
-<td class="jp">まだ起きたくない。</td>
-<td class="romaji">Mada okitakunai.</td>
-<td>Todavía no me quiero levantar.</td>
-<td>Todavía levantarme-querer-no.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">3</td>
-<td class="jp">今日は忙しそう。</td>
-<td class="romaji">Kyou wa isogashisou.</td>
-<td>Parece que hoy va a ser un día ocupado.</td>
-<td>Hoy, ocupado-parece.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">4</td>
-<td class="jp">コーヒーが必要。</td>
-<td class="romaji">Koohii ga hitsuyou.</td>
-<td>Necesito café.</td>
-<td>Café es necesario.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">5</td>
-<td class="jp">よし、始めよう。</td>
-<td class="romaji">Yoshi, hajimeyou.</td>
-<td>Bueno, vamos a empezar.</td>
-<td>Bien, empezar-vamos.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">6</td>
-<td class="jp">今日はゆっくり行こう。</td>
-<td class="romaji">Kyou wa yukkuri ikou.</td>
-<td>Vamos con calma hoy.</td>
-<td>Hoy, despacio ir-vamos.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">7</td>
-<td class="jp">時間がない。</td>
-<td class="romaji">Jikan ga nai.</td>
-<td>No tengo tiempo.</td>
-<td>Tiempo no existe.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">8</td>
-<td class="jp">準備できた。</td>
-<td class="romaji">Junbi dekita.</td>
-<td>Ya estoy listo.</td>
-<td>Preparación hecha / fue posible.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">9</td>
-<td class="jp">忘れ物ないかな。</td>
-<td class="romaji">Wasuremono nai kana.</td>
-<td>Me pregunto si se me olvidó algo.</td>
-<td>Cosa olvidada, no hay, me pregunto.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">10</td>
-<td class="jp">今日も頑張ろう。</td>
-<td class="romaji">Kyou mo ganbarou.</td>
-<td>Vamos a dar lo mejor hoy también.</td>
-<td>Hoy también, esforzarnos-vamos.</td>
-<td><span class="tag">Mañana / Empezar el día</span></td>
-</tr>
-<tr>
-<td class="num">11</td>
-<td class="jp">まず何をする？</td>
-<td class="romaji">Mazu nani o suru?</td>
-<td>¿Qué hago primero?</td>
-<td>Primero, ¿qué hacer?</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">12</td>
-<td class="jp">これを先に終わらせよう。</td>
-<td class="romaji">Kore o saki ni owaraseyou.</td>
-<td>Voy a terminar esto primero.</td>
-<td>Esto, primero, terminar-hacer-vamos.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">13</td>
-<td class="jp">ちょっと集中しよう。</td>
-<td class="romaji">Chotto shuuchuu shiyou.</td>
-<td>Déjame concentrarme un rato.</td>
-<td>Un poco concentración hacer-vamos.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">14</td>
-<td class="jp">これは大事。</td>
-<td class="romaji">Kore wa daiji.</td>
-<td>Esto es importante.</td>
-<td>Esto, importante.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">15</td>
-<td class="jp">あとで確認しよう。</td>
-<td class="romaji">Ato de kakunin shiyou.</td>
-<td>Lo reviso después.</td>
-<td>Después, confirmación hacer-vamos.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">16</td>
-<td class="jp">ちょっと待って。</td>
-<td class="romaji">Chotto matte.</td>
-<td>Espera un segundo.</td>
-<td>Un poco espera.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">17</td>
-<td class="jp">意味が分からない。</td>
-<td class="romaji">Imi ga wakaranai.</td>
-<td>No entiendo qué significa.</td>
-<td>Significado no se entiende.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">18</td>
-<td class="jp">これは後回しでいい。</td>
-<td class="romaji">Kore wa atomawashi de ii.</td>
-<td>Esto puede esperar.</td>
-<td>Esto, para después está bien.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">19</td>
-<td class="jp">一つずつやろう。</td>
-<td class="romaji">Hitotsu zutsu yarou.</td>
-<td>Vamos uno por uno.</td>
-<td>Uno cada vez hacer-vamos.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">20</td>
-<td class="jp">やっと終わった。</td>
-<td class="romaji">Yatto owatta.</td>
-<td>Por fin terminé.</td>
-<td>Por fin, terminó.</td>
-<td><span class="tag">Trabajo / Modo enfoque</span></td>
-</tr>
-<tr>
-<td class="num">21</td>
-<td class="jp">すごく疲れた。</td>
-<td class="romaji">Sugoku tsukareta.</td>
-<td>Estoy bien cansado.</td>
-<td>Increíblemente cansado.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">22</td>
-<td class="jp">もう無理。</td>
-<td class="romaji">Mou muri.</td>
-<td>Ya no puedo más.</td>
-<td>Ya imposible.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">23</td>
-<td class="jp">休みたい。</td>
-<td class="romaji">Yasumitai.</td>
-<td>Quiero descansar.</td>
-<td>Descansar-quiero.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">24</td>
-<td class="jp">頭がいっぱい。</td>
-<td class="romaji">Atama ga ippai.</td>
-<td>Tengo la cabeza llena.</td>
-<td>Cabeza está llena.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">25</td>
-<td class="jp">ちょっと休憩しよう。</td>
-<td class="romaji">Chotto kyuukei shiyou.</td>
-<td>Tomemos un descansito.</td>
-<td>Un poco descanso hacer-vamos.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">26</td>
-<td class="jp">今日は長い日だ。</td>
-<td class="romaji">Kyou wa nagai hi da.</td>
-<td>Hoy ha sido un día largo.</td>
-<td>Hoy, día largo es.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">27</td>
-<td class="jp">体が重い。</td>
-<td class="romaji">Karada ga omoi.</td>
-<td>Siento el cuerpo pesado.</td>
-<td>Cuerpo es pesado.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">28</td>
-<td class="jp">眠くなってきた。</td>
-<td class="romaji">Nemuku natte kita.</td>
-<td>Me está dando sueño.</td>
-<td>Sueño convirtiéndose vino.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">29</td>
-<td class="jp">もう少しだけ。</td>
-<td class="romaji">Mou sukoshi dake.</td>
-<td>Solo un poquito más.</td>
-<td>Ya/ahora poquito solamente.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">30</td>
-<td class="jp">今日は早く寝よう。</td>
-<td class="romaji">Kyou wa hayaku neyou.</td>
-<td>Hoy me voy a dormir temprano.</td>
-<td>Hoy, temprano dormir-vamos.</td>
-<td><span class="tag">Cansancio / Abrumado</span></td>
-</tr>
-<tr>
-<td class="num">31</td>
-<td class="jp">なんでだろう。</td>
-<td class="romaji">Nande darou.</td>
-<td>Me pregunto por qué.</td>
-<td>Por qué, me pregunto.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">32</td>
-<td class="jp">どうすればいい？</td>
-<td class="romaji">Dou sureba ii?</td>
-<td>¿Qué debería hacer?</td>
-<td>Cómo si-hago bueno?</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">33</td>
-<td class="jp">ちょっと変だな。</td>
-<td class="romaji">Chotto hen da na.</td>
-<td>Eso está medio raro.</td>
-<td>Un poco raro, ¿no?</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">34</td>
-<td class="jp">何か違う。</td>
-<td class="romaji">Nanika chigau.</td>
-<td>Algo no cuadra.</td>
-<td>Algo diferente.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">35</td>
-<td class="jp">もう一回考えよう。</td>
-<td class="romaji">Mou ikkai kangaeyou.</td>
-<td>Vamos a pensarlo otra vez.</td>
-<td>Una vez más pensar-vamos.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">36</td>
-<td class="jp">たぶんこれだ。</td>
-<td class="romaji">Tabun kore da.</td>
-<td>Probablemente es esto.</td>
-<td>Probablemente esto es.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">37</td>
-<td class="jp">違った。</td>
-<td class="romaji">Chigatta.</td>
-<td>Me equivoqué.</td>
-<td>Fue diferente.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">38</td>
-<td class="jp">なるほど。</td>
-<td class="romaji">Naruhodo.</td>
-<td>Ah, ya veo.</td>
-<td>Así se vuelve / tiene sentido.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">39</td>
-<td class="jp">分かってきた。</td>
-<td class="romaji">Wakatte kita.</td>
-<td>Estoy empezando a entender.</td>
-<td>Entendimiento vino.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">40</td>
-<td class="jp">まだ分からない。</td>
-<td class="romaji">Mada wakaranai.</td>
-<td>Todavía no entiendo.</td>
-<td>Todavía no entendido.</td>
-<td><span class="tag">Confusión / Pensar problemas</span></td>
-</tr>
-<tr>
-<td class="num">41</td>
-<td class="jp">お腹すいた。</td>
-<td class="romaji">Onaka suita.</td>
-<td>Tengo hambre.</td>
-<td>Estómago se vació.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">42</td>
-<td class="jp">何を食べよう？</td>
-<td class="romaji">Nani o tabeyou?</td>
-<td>¿Qué debería comer?</td>
-<td>Qué comer-vamos?</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">43</td>
-<td class="jp">これ美味しそう。</td>
-<td class="romaji">Kore oishisou.</td>
-<td>Esto se ve rico.</td>
-<td>Esto delicioso-parece.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">44</td>
-<td class="jp">いただきます。</td>
-<td class="romaji">Itadakimasu.</td>
-<td>Buen provecho / gracias por la comida.</td>
-<td>Humildemente recibo.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">45</td>
-<td class="jp">ごちそうさま。</td>
-<td class="romaji">Gochisousama.</td>
-<td>Gracias por la comida.</td>
-<td>Banquete estado-honorable.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">46</td>
-<td class="jp">水が飲みたい。</td>
-<td class="romaji">Mizu ga nomitai.</td>
-<td>Quiero tomar agua.</td>
-<td>Agua beber-quiero.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">47</td>
-<td class="jp">部屋を片付けよう。</td>
-<td class="romaji">Heya o katazukeyou.</td>
-<td>Vamos a recoger el cuarto.</td>
-<td>Cuarto ordenar-vamos.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">48</td>
-<td class="jp">洗濯しなきゃ。</td>
-<td class="romaji">Sentaku shinakya.</td>
-<td>Tengo que lavar ropa.</td>
-<td>Lavandería debe-hacer.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">49</td>
-<td class="jp">これはあとでやる。</td>
-<td class="romaji">Kore wa ato de yaru.</td>
-<td>Esto lo hago después.</td>
-<td>Esto, después hacer.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">50</td>
-<td class="jp">家に帰りたい。</td>
-<td class="romaji">Ie ni kaeritai.</td>
-<td>Quiero volver a casa.</td>
-<td>Casa a regresar-quiero.</td>
-<td><span class="tag">Comida / Casa / Vida diaria</span></td>
-</tr>
-<tr>
-<td class="num">51</td>
-<td class="jp">ここはどこ？</td>
-<td class="romaji">Koko wa doko?</td>
-<td>¿Dónde estoy?</td>
-<td>Aquí es dónde?</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">52</td>
-<td class="jp">駅はどっち？</td>
-<td class="romaji">Eki wa dotchi?</td>
-<td>¿Por dónde queda la estación?</td>
-<td>Estación es cuál?</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">53</td>
-<td class="jp">道に迷った。</td>
-<td class="romaji">Michi ni mayotta.</td>
-<td>Me perdí.</td>
-<td>En camino me confundí.</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">54</td>
-<td class="jp">この場所、いいね。</td>
-<td class="romaji">Kono basho, ii ne.</td>
-<td>Este lugar está lindo.</td>
-<td>Este lugar, bueno, ¿verdad?</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">55</td>
-<td class="jp">写真を撮りたい。</td>
-<td class="romaji">Shashin o toritai.</td>
-<td>Quiero tomar una foto.</td>
-<td>Foto tomar-quiero.</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">56</td>
-<td class="jp">人が多い。</td>
-<td class="romaji">Hito ga ooi.</td>
-<td>Hay mucha gente.</td>
-<td>Personas son muchas.</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">57</td>
-<td class="jp">静かでいい。</td>
-<td class="romaji">Shizuka de ii.</td>
-<td>Está tranquilo y agradable.</td>
-<td>Tranquilo y bueno.</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">58</td>
-<td class="jp">次はどこに行く？</td>
-<td class="romaji">Tsugi wa doko ni iku?</td>
-<td>¿A dónde vamos después?</td>
-<td>Siguiente, a dónde ir?</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">59</td>
-<td class="jp">ちょっと歩こう。</td>
-<td class="romaji">Chotto arukou.</td>
-<td>Vamos a caminar un poco.</td>
-<td>Un poco caminar-vamos.</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">60</td>
-<td class="jp">ここで休もう。</td>
-<td class="romaji">Koko de yasumou.</td>
-<td>Descansemos aquí.</td>
-<td>Aquí en descansar-vamos.</td>
-<td><span class="tag">Viaje / Afuera</span></td>
-</tr>
-<tr>
-<td class="num">61</td>
-<td class="jp">嬉しい。</td>
-<td class="romaji">Ureshii.</td>
-<td>Estoy feliz.</td>
-<td>Feliz.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">62</td>
-<td class="jp">楽しい。</td>
-<td class="romaji">Tanoshii.</td>
-<td>Esto está divertido.</td>
-<td>Divertido.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">63</td>
-<td class="jp">ちょっと不安。</td>
-<td class="romaji">Chotto fuan.</td>
-<td>Estoy un poco nervioso.</td>
-<td>Un poco inquieto.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">64</td>
-<td class="jp">イライラする。</td>
-<td class="romaji">Iraira suru.</td>
-<td>Estoy irritado.</td>
-<td>Irritación hacer.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">65</td>
-<td class="jp">びっくりした。</td>
-<td class="romaji">Bikkuri shita.</td>
-<td>Eso me sorprendió.</td>
-<td>Sorpresa hizo.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">66</td>
-<td class="jp">ちょっと怖い。</td>
-<td class="romaji">Chotto kowai.</td>
-<td>Eso da un poco de miedo.</td>
-<td>Un poco miedo.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">67</td>
-<td class="jp">安心した。</td>
-<td class="romaji">Anshin shita.</td>
-<td>Qué alivio.</td>
-<td>Tranquilidad hizo.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">68</td>
-<td class="jp">まあ、いいか。</td>
-<td class="romaji">Maa, ii ka.</td>
-<td>Bueno, está bien supongo.</td>
-<td>Bueno, bien quizás.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">69</td>
-<td class="jp">最高。</td>
-<td class="romaji">Saikou.</td>
-<td>Brutal / lo máximo.</td>
-<td>Lo más alto.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">70</td>
-<td class="jp">最悪。</td>
-<td class="romaji">Saiaku.</td>
-<td>Qué mal / lo peor.</td>
-<td>Lo más malo.</td>
-<td><span class="tag">Emociones / Reacciones</span></td>
-</tr>
-<tr>
-<td class="num">71</td>
-<td class="jp">おはよう。</td>
-<td class="romaji">Ohayou.</td>
-<td>Buenos días.</td>
-<td>Temprano.</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">72</td>
-<td class="jp">お疲れさま。</td>
-<td class="romaji">Otsukaresama.</td>
-<td>Buen trabajo / gracias por el esfuerzo.</td>
-<td>Honorable estado-cansado.</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">73</td>
-<td class="jp">大丈夫？</td>
-<td class="romaji">Daijoubu?</td>
-<td>¿Estás bien?</td>
-<td>Todo bien?</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">74</td>
-<td class="jp">大丈夫。</td>
-<td class="romaji">Daijoubu.</td>
-<td>Estoy bien.</td>
-<td>Todo bien.</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">75</td>
-<td class="jp">ありがとう。</td>
-<td class="romaji">Arigatou.</td>
-<td>Gracias.</td>
-<td>Difícil de existir / apreciado.</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">76</td>
-<td class="jp">ごめん。</td>
-<td class="romaji">Gomen.</td>
-<td>Perdón.</td>
-<td>Perdón.</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">77</td>
-<td class="jp">いいよ。</td>
-<td class="romaji">Ii yo.</td>
-<td>Está bien / claro.</td>
-<td>Bueno, ¿sabes?</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">78</td>
-<td class="jp">またね。</td>
-<td class="romaji">Mata ne.</td>
-<td>Nos vemos.</td>
-<td>Otra vez, ¿sí?</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">79</td>
-<td class="jp">久しぶり。</td>
-<td class="romaji">Hisashiburi.</td>
-<td>Tanto tiempo.</td>
-<td>Después de mucho tiempo.</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">80</td>
-<td class="jp">元気？</td>
-<td class="romaji">Genki?</td>
-<td>¿Cómo estás?</td>
-<td>Energía?</td>
-<td><span class="tag">Social / Conversación ligera</span></td>
-</tr>
-<tr>
-<td class="num">81</td>
-<td class="jp">やってみよう。</td>
-<td class="romaji">Yatte miyou.</td>
-<td>Vamos a intentarlo.</td>
-<td>Hacer y ver-vamos.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">82</td>
-<td class="jp">無理しないで。</td>
-<td class="romaji">Muri shinaide.</td>
-<td>No te excedas.</td>
-<td>Imposible no hagas.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">83</td>
-<td class="jp">少しずつでいい。</td>
-<td class="romaji">Sukoshi zutsu de ii.</td>
-<td>Poco a poco está bien.</td>
-<td>Poquito cada vez está bien.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">84</td>
-<td class="jp">今やろう。</td>
-<td class="romaji">Ima yarou.</td>
-<td>Vamos a hacerlo ahora.</td>
-<td>Ahora hacer-vamos.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">85</td>
-<td class="jp">あとでいい。</td>
-<td class="romaji">Ato de ii.</td>
-<td>Después está bien.</td>
-<td>Después está bien.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">86</td>
-<td class="jp">これはやめよう。</td>
-<td class="romaji">Kore wa yameyou.</td>
-<td>Vamos a dejar esto.</td>
-<td>Esto parar-vamos.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">87</td>
-<td class="jp">もう決めた。</td>
-<td class="romaji">Mou kimeta.</td>
-<td>Ya decidí.</td>
-<td>Ya decidido.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">88</td>
-<td class="jp">まだ迷ってる。</td>
-<td class="romaji">Mada mayotteru.</td>
-<td>Todavía estoy dudando.</td>
-<td>Todavía perdido/dudando.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">89</td>
-<td class="jp">できるかも。</td>
-<td class="romaji">Dekiru kamo.</td>
-<td>Quizás puedo hacerlo.</td>
-<td>Poder quizás.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">90</td>
-<td class="jp">なんとかなる。</td>
-<td class="romaji">Nantoka naru.</td>
-<td>De alguna manera se resuelve.</td>
-<td>De alguna forma se vuelve.</td>
-<td><span class="tag">Decisión / Motivación</span></td>
-</tr>
-<tr>
-<td class="num">91</td>
-<td class="jp">今日はもう終わり。</td>
-<td class="romaji">Kyou wa mou owari.</td>
-<td>Por hoy ya es suficiente.</td>
-<td>Hoy, ya final.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">92</td>
-<td class="jp">いい一日だった。</td>
-<td class="romaji">Ii ichinichi datta.</td>
-<td>Fue un buen día.</td>
-<td>Buen un-día fue.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">93</td>
-<td class="jp">疲れたけど楽しかった。</td>
-<td class="romaji">Tsukareta kedo tanoshikatta.</td>
-<td>Estaba cansado, pero fue divertido.</td>
-<td>Cansado pero divertido-fue.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">94</td>
-<td class="jp">明日またやろう。</td>
-<td class="romaji">Ashita mata yarou.</td>
-<td>Mañana lo hacemos otra vez.</td>
-<td>Mañana otra vez hacer-vamos.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">95</td>
-<td class="jp">早く寝なきゃ。</td>
-<td class="romaji">Hayaku nenakya.</td>
-<td>Tengo que dormir temprano.</td>
-<td>Temprano dormir-debo.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">96</td>
-<td class="jp">もう寝る。</td>
-<td class="romaji">Mou neru.</td>
-<td>Ya me voy a dormir.</td>
-<td>Ya/ahora dormir.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">97</td>
-<td class="jp">電気を消そう。</td>
-<td class="romaji">Denki o kesou.</td>
-<td>Apaguemos la luz.</td>
-<td>Electricidad/luz borrar-vamos.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">98</td>
-<td class="jp">明日は忙しい。</td>
-<td class="romaji">Ashita wa isogashii.</td>
-<td>Mañana va a ser ocupado.</td>
-<td>Mañana ocupado.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">99</td>
-<td class="jp">ちょっとだけ見よう。</td>
-<td class="romaji">Chotto dake miyou.</td>
-<td>Voy a ver solo un poquito.</td>
-<td>Un poco solamente ver-vamos.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-<tr>
-<td class="num">100</td>
-<td class="jp">おやすみ。</td>
-<td class="romaji">Oyasumi.</td>
-<td>Buenas noches.</td>
-<td>Descanso.</td>
-<td><span class="tag">Noche / Cerrar el día</span></td>
-</tr>
-</tbody>
-</table>
-</section>
+<section class="phrase-card-section"><div class="phrase-card-toolbar"><div class="phrase-progress-block"><div class="phrase-progress-meta"><strong class="tracker-title">Tarjetas Responsivas de Frases</strong><span class="phrase-progress-count"><span class="memorized-count">0 / 0</span> <span class="memorized-label">Memorizadas</span> <span class="phrase-progress-percent">0%</span></span></div><div aria-hidden="true" class="phrase-progress-track"><div class="phrase-progress-fill"></div></div></div><button data-reset-memorized="" type="button">Reiniciar memorizadas</button></div><div class="phrase-card-grid"><article class="phrase-card" data-id="1"><div class="phrase-card-header"><span class="phrase-id">1</span><div class="phrase-jp">眠い…</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Nemui...</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Tengo sueño…</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Sueño…</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #1" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="2"><div class="phrase-card-header"><span class="phrase-id">2</span><div class="phrase-jp">まだ起きたくない。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mada okitakunai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Todavía no me quiero levantar.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Todavía levantarme-querer-no.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #2" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="3"><div class="phrase-card-header"><span class="phrase-id">3</span><div class="phrase-jp">今日は忙しそう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kyou wa isogashisou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Parece que hoy va a ser un día ocupado.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Hoy, ocupado-parece.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #3" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="4"><div class="phrase-card-header"><span class="phrase-id">4</span><div class="phrase-jp">コーヒーが必要。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Koohii ga hitsuyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Necesito café.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Café es necesario.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #4" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="5"><div class="phrase-card-header"><span class="phrase-id">5</span><div class="phrase-jp">よし、始めよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Yoshi, hajimeyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Bueno, vamos a empezar.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Bien, empezar-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #5" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="6"><div class="phrase-card-header"><span class="phrase-id">6</span><div class="phrase-jp">今日はゆっくり行こう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kyou wa yukkuri ikou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos con calma hoy.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Hoy, despacio ir-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #6" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="7"><div class="phrase-card-header"><span class="phrase-id">7</span><div class="phrase-jp">時間がない。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Jikan ga nai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">No tengo tiempo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Tiempo no existe.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #7" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="8"><div class="phrase-card-header"><span class="phrase-id">8</span><div class="phrase-jp">準備できた。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Junbi dekita.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Ya estoy listo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Preparación hecha / fue posible.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #8" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="9"><div class="phrase-card-header"><span class="phrase-id">9</span><div class="phrase-jp">忘れ物ないかな。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Wasuremono nai kana.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Me pregunto si se me olvidó algo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Cosa olvidada, no hay, me pregunto.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #9" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="10"><div class="phrase-card-header"><span class="phrase-id">10</span><div class="phrase-jp">今日も頑張ろう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kyou mo ganbarou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos a dar lo mejor hoy también.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Hoy también, esforzarnos-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Mañana / Empezar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #10" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="11"><div class="phrase-card-header"><span class="phrase-id">11</span><div class="phrase-jp">まず何をする？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mazu nani o suru?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿Qué hago primero?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Primero, ¿qué hacer?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #11" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="12"><div class="phrase-card-header"><span class="phrase-id">12</span><div class="phrase-jp">これを先に終わらせよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kore o saki ni owaraseyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Voy a terminar esto primero.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Esto, primero, terminar-hacer-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #12" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="13"><div class="phrase-card-header"><span class="phrase-id">13</span><div class="phrase-jp">ちょっと集中しよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto shuuchuu shiyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Déjame concentrarme un rato.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco concentración hacer-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #13" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="14"><div class="phrase-card-header"><span class="phrase-id">14</span><div class="phrase-jp">これは大事。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kore wa daiji.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Esto es importante.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Esto, importante.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #14" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="15"><div class="phrase-card-header"><span class="phrase-id">15</span><div class="phrase-jp">あとで確認しよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ato de kakunin shiyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Lo reviso después.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Después, confirmación hacer-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #15" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="16"><div class="phrase-card-header"><span class="phrase-id">16</span><div class="phrase-jp">ちょっと待って。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto matte.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Espera un segundo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco espera.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #16" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="17"><div class="phrase-card-header"><span class="phrase-id">17</span><div class="phrase-jp">意味が分からない。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Imi ga wakaranai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">No entiendo qué significa.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Significado no se entiende.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #17" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="18"><div class="phrase-card-header"><span class="phrase-id">18</span><div class="phrase-jp">これは後回しでいい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kore wa atomawashi de ii.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Esto puede esperar.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Esto, para después está bien.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #18" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="19"><div class="phrase-card-header"><span class="phrase-id">19</span><div class="phrase-jp">一つずつやろう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Hitotsu zutsu yarou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos uno por uno.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Uno cada vez hacer-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #19" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="20"><div class="phrase-card-header"><span class="phrase-id">20</span><div class="phrase-jp">やっと終わった。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Yatto owatta.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Por fin terminé.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Por fin, terminó.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Trabajo / Modo enfoque</span></div><label class="memorized-toggle"><input aria-label="Memorizada #20" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="21"><div class="phrase-card-header"><span class="phrase-id">21</span><div class="phrase-jp">すごく疲れた。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Sugoku tsukareta.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Estoy bien cansado.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Increíblemente cansado.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #21" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="22"><div class="phrase-card-header"><span class="phrase-id">22</span><div class="phrase-jp">もう無理。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mou muri.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Ya no puedo más.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Ya imposible.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #22" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="23"><div class="phrase-card-header"><span class="phrase-id">23</span><div class="phrase-jp">休みたい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Yasumitai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Quiero descansar.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Descansar-quiero.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #23" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="24"><div class="phrase-card-header"><span class="phrase-id">24</span><div class="phrase-jp">頭がいっぱい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Atama ga ippai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Tengo la cabeza llena.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Cabeza está llena.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #24" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="25"><div class="phrase-card-header"><span class="phrase-id">25</span><div class="phrase-jp">ちょっと休憩しよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto kyuukei shiyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Tomemos un descansito.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco descanso hacer-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #25" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="26"><div class="phrase-card-header"><span class="phrase-id">26</span><div class="phrase-jp">今日は長い日だ。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kyou wa nagai hi da.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Hoy ha sido un día largo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Hoy, día largo es.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #26" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="27"><div class="phrase-card-header"><span class="phrase-id">27</span><div class="phrase-jp">体が重い。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Karada ga omoi.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Siento el cuerpo pesado.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Cuerpo es pesado.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #27" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="28"><div class="phrase-card-header"><span class="phrase-id">28</span><div class="phrase-jp">眠くなってきた。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Nemuku natte kita.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Me está dando sueño.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Sueño convirtiéndose vino.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #28" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="29"><div class="phrase-card-header"><span class="phrase-id">29</span><div class="phrase-jp">もう少しだけ。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mou sukoshi dake.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Solo un poquito más.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Ya/ahora poquito solamente.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #29" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="30"><div class="phrase-card-header"><span class="phrase-id">30</span><div class="phrase-jp">今日は早く寝よう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kyou wa hayaku neyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Hoy me voy a dormir temprano.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Hoy, temprano dormir-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Cansancio / Abrumado</span></div><label class="memorized-toggle"><input aria-label="Memorizada #30" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="31"><div class="phrase-card-header"><span class="phrase-id">31</span><div class="phrase-jp">なんでだろう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Nande darou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Me pregunto por qué.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Por qué, me pregunto.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #31" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="32"><div class="phrase-card-header"><span class="phrase-id">32</span><div class="phrase-jp">どうすればいい？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Dou sureba ii?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿Qué debería hacer?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Cómo si-hago bueno?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #32" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="33"><div class="phrase-card-header"><span class="phrase-id">33</span><div class="phrase-jp">ちょっと変だな。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto hen da na.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Eso está medio raro.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco raro, ¿no?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #33" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="34"><div class="phrase-card-header"><span class="phrase-id">34</span><div class="phrase-jp">何か違う。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Nanika chigau.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Algo no cuadra.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Algo diferente.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #34" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="35"><div class="phrase-card-header"><span class="phrase-id">35</span><div class="phrase-jp">もう一回考えよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mou ikkai kangaeyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos a pensarlo otra vez.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Una vez más pensar-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #35" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="36"><div class="phrase-card-header"><span class="phrase-id">36</span><div class="phrase-jp">たぶんこれだ。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Tabun kore da.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Probablemente es esto.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Probablemente esto es.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #36" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="37"><div class="phrase-card-header"><span class="phrase-id">37</span><div class="phrase-jp">違った。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chigatta.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Me equivoqué.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Fue diferente.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #37" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="38"><div class="phrase-card-header"><span class="phrase-id">38</span><div class="phrase-jp">なるほど。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Naruhodo.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Ah, ya veo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Así se vuelve / tiene sentido.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #38" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="39"><div class="phrase-card-header"><span class="phrase-id">39</span><div class="phrase-jp">分かってきた。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Wakatte kita.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Estoy empezando a entender.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Entendimiento vino.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #39" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="40"><div class="phrase-card-header"><span class="phrase-id">40</span><div class="phrase-jp">まだ分からない。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mada wakaranai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Todavía no entiendo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Todavía no entendido.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Confusión / Pensar problemas</span></div><label class="memorized-toggle"><input aria-label="Memorizada #40" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="41"><div class="phrase-card-header"><span class="phrase-id">41</span><div class="phrase-jp">お腹すいた。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Onaka suita.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Tengo hambre.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Estómago se vació.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #41" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="42"><div class="phrase-card-header"><span class="phrase-id">42</span><div class="phrase-jp">何を食べよう？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Nani o tabeyou?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿Qué debería comer?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Qué comer-vamos?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #42" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="43"><div class="phrase-card-header"><span class="phrase-id">43</span><div class="phrase-jp">これ美味しそう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kore oishisou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Esto se ve rico.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Esto delicioso-parece.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #43" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="44"><div class="phrase-card-header"><span class="phrase-id">44</span><div class="phrase-jp">いただきます。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Itadakimasu.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Buen provecho / gracias por la comida.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Humildemente recibo.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #44" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="45"><div class="phrase-card-header"><span class="phrase-id">45</span><div class="phrase-jp">ごちそうさま。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Gochisousama.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Gracias por la comida.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Banquete estado-honorable.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #45" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="46"><div class="phrase-card-header"><span class="phrase-id">46</span><div class="phrase-jp">水が飲みたい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mizu ga nomitai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Quiero tomar agua.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Agua beber-quiero.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #46" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="47"><div class="phrase-card-header"><span class="phrase-id">47</span><div class="phrase-jp">部屋を片付けよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Heya o katazukeyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos a recoger el cuarto.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Cuarto ordenar-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #47" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="48"><div class="phrase-card-header"><span class="phrase-id">48</span><div class="phrase-jp">洗濯しなきゃ。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Sentaku shinakya.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Tengo que lavar ropa.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Lavandería debe-hacer.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #48" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="49"><div class="phrase-card-header"><span class="phrase-id">49</span><div class="phrase-jp">これはあとでやる。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kore wa ato de yaru.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Esto lo hago después.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Esto, después hacer.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #49" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="50"><div class="phrase-card-header"><span class="phrase-id">50</span><div class="phrase-jp">家に帰りたい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ie ni kaeritai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Quiero volver a casa.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Casa a regresar-quiero.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Comida / Casa / Vida diaria</span></div><label class="memorized-toggle"><input aria-label="Memorizada #50" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="51"><div class="phrase-card-header"><span class="phrase-id">51</span><div class="phrase-jp">ここはどこ？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Koko wa doko?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿Dónde estoy?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Aquí es dónde?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #51" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="52"><div class="phrase-card-header"><span class="phrase-id">52</span><div class="phrase-jp">駅はどっち？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Eki wa dotchi?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿Por dónde queda la estación?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Estación es cuál?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #52" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="53"><div class="phrase-card-header"><span class="phrase-id">53</span><div class="phrase-jp">道に迷った。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Michi ni mayotta.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Me perdí.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">En camino me confundí.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #53" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="54"><div class="phrase-card-header"><span class="phrase-id">54</span><div class="phrase-jp">この場所、いいね。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kono basho, ii ne.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Este lugar está lindo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Este lugar, bueno, ¿verdad?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #54" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="55"><div class="phrase-card-header"><span class="phrase-id">55</span><div class="phrase-jp">写真を撮りたい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Shashin o toritai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Quiero tomar una foto.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Foto tomar-quiero.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #55" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="56"><div class="phrase-card-header"><span class="phrase-id">56</span><div class="phrase-jp">人が多い。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Hito ga ooi.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Hay mucha gente.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Personas son muchas.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #56" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="57"><div class="phrase-card-header"><span class="phrase-id">57</span><div class="phrase-jp">静かでいい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Shizuka de ii.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Está tranquilo y agradable.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Tranquilo y bueno.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #57" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="58"><div class="phrase-card-header"><span class="phrase-id">58</span><div class="phrase-jp">次はどこに行く？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Tsugi wa doko ni iku?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿A dónde vamos después?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Siguiente, a dónde ir?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #58" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="59"><div class="phrase-card-header"><span class="phrase-id">59</span><div class="phrase-jp">ちょっと歩こう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto arukou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos a caminar un poco.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco caminar-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #59" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="60"><div class="phrase-card-header"><span class="phrase-id">60</span><div class="phrase-jp">ここで休もう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Koko de yasumou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Descansemos aquí.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Aquí en descansar-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Viaje / Afuera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #60" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="61"><div class="phrase-card-header"><span class="phrase-id">61</span><div class="phrase-jp">嬉しい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ureshii.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Estoy feliz.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Feliz.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #61" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="62"><div class="phrase-card-header"><span class="phrase-id">62</span><div class="phrase-jp">楽しい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Tanoshii.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Esto está divertido.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Divertido.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #62" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="63"><div class="phrase-card-header"><span class="phrase-id">63</span><div class="phrase-jp">ちょっと不安。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto fuan.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Estoy un poco nervioso.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco inquieto.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #63" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="64"><div class="phrase-card-header"><span class="phrase-id">64</span><div class="phrase-jp">イライラする。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Iraira suru.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Estoy irritado.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Irritación hacer.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #64" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="65"><div class="phrase-card-header"><span class="phrase-id">65</span><div class="phrase-jp">びっくりした。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Bikkuri shita.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Eso me sorprendió.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Sorpresa hizo.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #65" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="66"><div class="phrase-card-header"><span class="phrase-id">66</span><div class="phrase-jp">ちょっと怖い。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto kowai.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Eso da un poco de miedo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco miedo.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #66" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="67"><div class="phrase-card-header"><span class="phrase-id">67</span><div class="phrase-jp">安心した。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Anshin shita.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Qué alivio.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Tranquilidad hizo.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #67" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="68"><div class="phrase-card-header"><span class="phrase-id">68</span><div class="phrase-jp">まあ、いいか。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Maa, ii ka.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Bueno, está bien supongo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Bueno, bien quizás.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #68" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="69"><div class="phrase-card-header"><span class="phrase-id">69</span><div class="phrase-jp">最高。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Saikou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Brutal / lo máximo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Lo más alto.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #69" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="70"><div class="phrase-card-header"><span class="phrase-id">70</span><div class="phrase-jp">最悪。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Saiaku.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Qué mal / lo peor.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Lo más malo.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Emociones / Reacciones</span></div><label class="memorized-toggle"><input aria-label="Memorizada #70" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="71"><div class="phrase-card-header"><span class="phrase-id">71</span><div class="phrase-jp">おはよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ohayou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Buenos días.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Temprano.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #71" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="72"><div class="phrase-card-header"><span class="phrase-id">72</span><div class="phrase-jp">お疲れさま。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Otsukaresama.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Buen trabajo / gracias por el esfuerzo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Honorable estado-cansado.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #72" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="73"><div class="phrase-card-header"><span class="phrase-id">73</span><div class="phrase-jp">大丈夫？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Daijoubu?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿Estás bien?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Todo bien?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #73" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="74"><div class="phrase-card-header"><span class="phrase-id">74</span><div class="phrase-jp">大丈夫。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Daijoubu.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Estoy bien.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Todo bien.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #74" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="75"><div class="phrase-card-header"><span class="phrase-id">75</span><div class="phrase-jp">ありがとう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Arigatou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Gracias.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Difícil de existir / apreciado.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #75" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="76"><div class="phrase-card-header"><span class="phrase-id">76</span><div class="phrase-jp">ごめん。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Gomen.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Perdón.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Perdón.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #76" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="77"><div class="phrase-card-header"><span class="phrase-id">77</span><div class="phrase-jp">いいよ。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ii yo.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Está bien / claro.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Bueno, ¿sabes?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #77" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="78"><div class="phrase-card-header"><span class="phrase-id">78</span><div class="phrase-jp">またね。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mata ne.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Nos vemos.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Otra vez, ¿sí?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #78" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="79"><div class="phrase-card-header"><span class="phrase-id">79</span><div class="phrase-jp">久しぶり。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Hisashiburi.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Tanto tiempo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Después de mucho tiempo.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #79" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="80"><div class="phrase-card-header"><span class="phrase-id">80</span><div class="phrase-jp">元気？</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Genki?</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">¿Cómo estás?</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Energía?</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Social / Conversación ligera</span></div><label class="memorized-toggle"><input aria-label="Memorizada #80" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="81"><div class="phrase-card-header"><span class="phrase-id">81</span><div class="phrase-jp">やってみよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Yatte miyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos a intentarlo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Hacer y ver-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #81" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="82"><div class="phrase-card-header"><span class="phrase-id">82</span><div class="phrase-jp">無理しないで。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Muri shinaide.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">No te excedas.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Imposible no hagas.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #82" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="83"><div class="phrase-card-header"><span class="phrase-id">83</span><div class="phrase-jp">少しずつでいい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Sukoshi zutsu de ii.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Poco a poco está bien.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Poquito cada vez está bien.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #83" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="84"><div class="phrase-card-header"><span class="phrase-id">84</span><div class="phrase-jp">今やろう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ima yarou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos a hacerlo ahora.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Ahora hacer-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #84" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="85"><div class="phrase-card-header"><span class="phrase-id">85</span><div class="phrase-jp">あとでいい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ato de ii.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Después está bien.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Después está bien.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #85" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="86"><div class="phrase-card-header"><span class="phrase-id">86</span><div class="phrase-jp">これはやめよう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kore wa yameyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Vamos a dejar esto.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Esto parar-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #86" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="87"><div class="phrase-card-header"><span class="phrase-id">87</span><div class="phrase-jp">もう決めた。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mou kimeta.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Ya decidí.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Ya decidido.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #87" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="88"><div class="phrase-card-header"><span class="phrase-id">88</span><div class="phrase-jp">まだ迷ってる。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mada mayotteru.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Todavía estoy dudando.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Todavía perdido/dudando.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #88" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="89"><div class="phrase-card-header"><span class="phrase-id">89</span><div class="phrase-jp">できるかも。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Dekiru kamo.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Quizás puedo hacerlo.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Poder quizás.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #89" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="90"><div class="phrase-card-header"><span class="phrase-id">90</span><div class="phrase-jp">なんとかなる。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Nantoka naru.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">De alguna manera se resuelve.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">De alguna forma se vuelve.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Decisión / Motivación</span></div><label class="memorized-toggle"><input aria-label="Memorizada #90" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="91"><div class="phrase-card-header"><span class="phrase-id">91</span><div class="phrase-jp">今日はもう終わり。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Kyou wa mou owari.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Por hoy ya es suficiente.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Hoy, ya final.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #91" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="92"><div class="phrase-card-header"><span class="phrase-id">92</span><div class="phrase-jp">いい一日だった。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ii ichinichi datta.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Fue un buen día.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Buen un-día fue.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #92" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="93"><div class="phrase-card-header"><span class="phrase-id">93</span><div class="phrase-jp">疲れたけど楽しかった。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Tsukareta kedo tanoshikatta.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Estaba cansado, pero fue divertido.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Cansado pero divertido-fue.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #93" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="94"><div class="phrase-card-header"><span class="phrase-id">94</span><div class="phrase-jp">明日またやろう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ashita mata yarou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Mañana lo hacemos otra vez.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Mañana otra vez hacer-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #94" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="95"><div class="phrase-card-header"><span class="phrase-id">95</span><div class="phrase-jp">早く寝なきゃ。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Hayaku nenakya.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Tengo que dormir temprano.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Temprano dormir-debo.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #95" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="96"><div class="phrase-card-header"><span class="phrase-id">96</span><div class="phrase-jp">もう寝る。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Mou neru.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Ya me voy a dormir.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Ya/ahora dormir.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #96" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="97"><div class="phrase-card-header"><span class="phrase-id">97</span><div class="phrase-jp">電気を消そう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Denki o kesou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Apaguemos la luz.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Electricidad/luz borrar-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #97" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="98"><div class="phrase-card-header"><span class="phrase-id">98</span><div class="phrase-jp">明日は忙しい。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Ashita wa isogashii.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Mañana va a ser ocupado.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Mañana ocupado.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #98" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="99"><div class="phrase-card-header"><span class="phrase-id">99</span><div class="phrase-jp">ちょっとだけ見よう。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Chotto dake miyou.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Voy a ver solo un poquito.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Un poco solamente ver-vamos.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #99" type="checkbox"/><span>Memorizada</span></label></article><article class="phrase-card" data-id="100"><div class="phrase-card-header"><span class="phrase-id">100</span><div class="phrase-jp">おやすみ。</div></div><div class="phrase-meta"><div class="phrase-field"><div class="phrase-label">Romaji</div><div class="phrase-value romaji">Oyasumi.</div></div><div class="phrase-field"><div class="phrase-label">Significado natural</div><div class="phrase-value">Buenas noches.</div></div><div class="phrase-field"><div class="phrase-label">Traducción mental literal</div><div class="phrase-value">Descanso.</div></div></div><div class="phrase-category"><div class="phrase-label">Categoría</div><span class="tag">Noche / Cerrar el día</span></div><label class="memorized-toggle"><input aria-label="Memorizada #100" type="checkbox"/><span>Memorizada</span></label></article></div></section>
 </main>
-<footer class="pixel-footer"><span class="pixel-badge">Another Tool from <a href="https://progretech.com" target="_blank" rel="noopener">ProgreTech</a></span></footer>
+<footer class="pixel-footer"><span class="pixel-badge">Another Tool from <a href="https://progretech.com" rel="noopener" target="_blank">ProgreTech</a></span></footer>
 <script>
 (function(){
   function applyTheme(theme){
@@ -959,5 +485,127 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
 })();
 </script>
+<script data-bot-id="59258" src="https://app.aminos.ai/js/chat_plugin.js"></script>
+<script>
+(function(){
+  const grid = document.querySelector('.phrase-card-grid');
+  if (!grid) return;
+  const storageKey = 'thinkJapanesePart1Memorized_' + (document.documentElement.lang || 'en');
+  const countEl = document.querySelector('.memorized-count');
+  const percentEl = document.querySelector('.phrase-progress-percent');
+  const progressFill = document.querySelector('.phrase-progress-fill');
+  const resetBtn = document.querySelector('[data-reset-memorized]');
+  let memorized = new Set();
+  try { memorized = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]').map(String)); } catch(e) { memorized = new Set(); }
+
+  function save(){ localStorage.setItem(storageKey, JSON.stringify([...memorized])); }
+  function applyState(){
+    const cards = [...grid.querySelectorAll('.phrase-card')];
+    cards.forEach(card => {
+      const id = card.dataset.id;
+      const isDone = memorized.has(id);
+      card.classList.toggle('is-memorized', isDone);
+      const input = card.querySelector('input[type="checkbox"]');
+      if (input) input.checked = isDone;
+      card.style.order = isDone ? (10000 + Number(id)) : Number(id);
+    });
+    if (countEl) countEl.textContent = memorized.size + ' / ' + cards.length;
+    const percent = cards.length ? Math.round((memorized.size / cards.length) * 100) : 0;
+    if (percentEl) percentEl.textContent = percent + '%';
+    if (progressFill) progressFill.style.width = percent + '%';
+  }
+
+  grid.addEventListener('change', function(evt){
+    const input = evt.target.closest('input[type="checkbox"]');
+    if (!input) return;
+    const card = input.closest('.phrase-card');
+    if (!card) return;
+    const id = card.dataset.id;
+    if (input.checked) memorized.add(id); else memorized.delete(id);
+    save();
+    applyState();
+  });
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', function(){
+      memorized.clear();
+      save();
+      applyState();
+    });
+  }
+
+  applyState();
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.responsive-card-section').forEach(function(section){
+    const grid = section.querySelector('.responsive-card-grid'); if(!grid) return;
+    const storageKey = section.dataset.storageKey || ('studyDeck_' + location.pathname + '_' + (document.documentElement.lang || 'en'));
+    const countEl = section.querySelector('.deck-count-num');
+    const fillEl = section.querySelector('.deck-fill');
+    const percentEl = section.querySelector('.deck-percent');
+    const resetBtn = section.querySelector('[data-reset-deck]');
+    let memorized = new Set();
+    try { memorized = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]').map(String)); } catch(e) { memorized = new Set(); }
+    function save(){ localStorage.setItem(storageKey, JSON.stringify(Array.from(memorized))); }
+    function apply(){
+      const cards = Array.from(grid.querySelectorAll('.study-card'));
+      cards.forEach(function(card){
+        const id = String(card.dataset.id || ''); const done = memorized.has(id);
+        card.classList.toggle('is-memorized', done);
+        const input = card.querySelector('input[type="checkbox"]'); if(input) input.checked = done;
+        const ord = Number(card.dataset.order || id.replace(/\D/g,'') || 0);
+        card.style.order = done ? (100000 + ord) : ord;
+      });
+      const total = cards.length; const doneCount = memorized.size; const pct = total ? Math.round(doneCount/total*100) : 0;
+      if(countEl) countEl.textContent = doneCount + ' / ' + total;
+      if(fillEl) fillEl.style.width = pct + '%';
+      if(percentEl) percentEl.textContent = pct + '%';
+    }
+    grid.addEventListener('change', function(evt){
+      const input = evt.target.closest('input[type="checkbox"]'); if(!input) return;
+      const card = input.closest('.study-card'); if(!card) return; const id = String(card.dataset.id || '');
+      if(input.checked) memorized.add(id); else memorized.delete(id); save(); apply();
+    });
+    if(resetBtn) resetBtn.addEventListener('click', function(){ memorized.clear(); save(); apply(); });
+    apply();
+  });
+
+  // Preserve Reading Aid search/type filter behavior for cards.
+  const searchBox = document.getElementById('searchBox');
+  const typeFilter = document.getElementById('typeFilter');
+  const charGrid = document.querySelector('.char-card-grid');
+  function filterCards(){
+    if(!charGrid) return;
+    const q = (searchBox && searchBox.value || '').toLowerCase();
+    const type = (typeFilter && typeFilter.value || 'All');
+    charGrid.querySelectorAll('.study-card').forEach(function(card){
+      const matchText = !q || (card.dataset.search || '').toLowerCase().includes(q);
+      const matchType = type === 'All' || (card.dataset.type || '') === type;
+      card.style.display = (matchText && matchType) ? '' : 'none';
+    });
+  }
+  if(searchBox) searchBox.addEventListener('input', filterCards);
+  if(typeFilter) typeFilter.addEventListener('change', filterCards);
+  filterCards();
+})();
+</script>
+
+<!--
+============================================================
+ THINK IN JAPANESE / PIENSA EN JAPONÉS
+============================================================
+ Author: Edwin A. Rodriguez (Abdiel)
+ GitHub: https://github.com/eabdiel
+ Project: Think in Japanese learning portal
+ Intent: A free, offline-friendly Japanese study hub for kana,
+         kanji, phrase practice, internal monologue training,
+         and a structured 90-day learning path.
+ Notes: This comment is intentionally kept in source only and
+        does not display on the website.
+============================================================
+-->
 </body>
 </html>
