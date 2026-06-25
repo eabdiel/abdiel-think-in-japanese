@@ -540,13 +540,9 @@ Please keep the project offline-friendly and avoid adding server requirements.
 
 ## License
 
-Suggested licensing:
-
 - Code: MIT License
 - Learning content: CC BY-NC 4.0
-
-You may adjust licensing before publishing depending on how you want others to reuse or modify the learning material.
-
+  
 ---
 
 ## Credits
