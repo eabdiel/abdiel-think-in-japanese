@@ -364,24 +364,29 @@ main {
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#ff7ac8">
+<meta name="theme-color" content="#9fbe82">
 <link href="pixel-theme-v2.css" rel="stylesheet"/>
 </head>
-<body>
+<body class="theme-garden">
 <header class="pixel-site-header">
 <div class="pixel-hero-inner">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn active" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
 <h1>Think in Japanese</h1>
 <p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
 </div>
 <div class="pixel-teacher"><img alt="Chibi teacher mascot" src="assets/chibi_teacher.png"/><div class="pixel-mini-title">Sensei Mode</div></div>
 </div>
 </header>
-<nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index.html">Home</a><a data-file="kana_dojo.html" href="kana_dojo.html">Kana Dojo</a><a data-file="kanji_hub.html" href="kanji_hub.html">Kanji Hub</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a></div></nav><div aria-label="Language selector" class="lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="japanese_90_day_calendar_tracker_es.html">Español</a></div>
+<nav class="pixel-nav"><div class="pixel-nav-inner grouped-nav">
+<a href="index.html">Home</a>
+<details class="nav-group"><summary>Practice</summary><div class="nav-menu"><a href="kana_dojo.html">Kana Dojo</a><a href="kanji_hub.html">Kanji Hub</a><a href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a href="sentence_structure_trainer.html">Sentence Structure</a></div></details>
+<details class="nav-group"><summary>Phrase Decks</summary><div class="nav-menu"><a href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a></div></details>
+<details class="nav-group"><summary>Plans</summary><div class="nav-menu"><a href="japanese_90_day_calendar_tracker.html" class="active">90-Day Tracker</a><a href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a><a href="michel_thomas_japanese_supplement.html">MT Supplement</a></div></details>
+<div class="nav-spacer"></div><div aria-label="Language selector" class="lang-toggle nav-lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="japanese_90_day_calendar_tracker_es.html">Español</a></div></div></nav>
 <section class="moved-hero-title">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn active" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
 <h1>Think in Japanese</h1>
 <p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
 </div>
@@ -396,7 +401,6 @@ main {
 <div class="pixel-side-art pixel-flag-pair"><img alt="Japanese flag" class="flag-art" src="assets/flag_japan.svg"/><img alt="Puerto Rican flag" class="flag-art" src="assets/flag_puerto_rico.svg"/></div>
 </section>
 </div>
-<script>document.querySelectorAll('.pixel-nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('active')});</script>
 <header>
 <div class="topbar">
 <div>
@@ -723,8 +727,8 @@ main {
     });
   }
   function initTheme(){
-    var saved = 'pixel';
-    try{ saved = localStorage.getItem('tij-theme') || 'pixel'; }catch(e){}
+    var saved = 'garden';
+    try{ saved = localStorage.getItem('tij-theme') || 'garden'; }catch(e){}
     applyTheme(saved);
     document.querySelectorAll('.theme-btn').forEach(function(btn){
       btn.addEventListener('click', function(){ applyTheme(btn.getAttribute('data-theme')); });
@@ -749,5 +753,13 @@ main {
         does not display on the website.
 ============================================================
 -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.pixel-nav details[open]').forEach(function(d){ if(!d.contains(e.target)) d.removeAttribute('open'); });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ document.querySelectorAll('.pixel-nav details[open]').forEach(function(d){d.removeAttribute('open');}); }});
+})();
+</script>
 </body>
 </html>

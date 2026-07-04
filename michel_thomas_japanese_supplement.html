@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Michel Thomas Japanese Supplement - Think in Japanese</title>
+<meta name="description" content="Unofficial Michel Thomas Japanese supplement with kana reading practice, writing drills, memorization reinforcement, and a 6- or 12-week Total Japanese tracker."/>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="pixel-theme-v2.css"/>
+<style>
+:root{--mt-pink:#ff7abf;--mt-blue:#5a64df;--mt-yellow:#ffd166;--mt-green:#75ddc2;--mt-ink:#17235c;--mt-panel:#fff8fb;--mt-border:#bca9e8;--mt-soft:#f2edff;}
+body{font-family:"Trebuchet MS",Verdana,system-ui,sans-serif!important;}
+.mt-shell{width:min(1180px,94vw);margin:22px auto 70px;}
+.mt-hero{display:grid;grid-template-columns:1.4fr .65fr;gap:18px;align-items:stretch;margin:20px auto;}
+.mt-card{background:rgba(255,248,251,.96);border:2px solid var(--mt-border);border-radius:22px;box-shadow:var(--shadow);padding:20px;color:var(--mt-ink);}
+.mt-card h1,.mt-card h2,.mt-card h3{margin-top:0;color:var(--mt-blue)!important;}
+.mt-card p,.mt-card li,.mt-card td,.mt-card small{color:#384276!important;}
+.mt-kicker{display:inline-flex;gap:8px;flex-wrap:wrap;align-items:center;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:#6d5fa9;font-size:.82rem;margin-bottom:10px;}
+.mt-chip{display:inline-block;background:#fff;border:2px solid var(--mt-border);border-radius:999px;padding:5px 9px;font-weight:900;color:#24305f!important;}
+.mt-note{border:2px dashed #d59bc7;background:#fff1f8;border-radius:18px;padding:14px;margin:14px 0;}
+.mt-nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.mt-nav a,.mt-action{display:inline-block;text-decoration:none;border:2px solid #b89bdf;border-radius:999px;padding:9px 12px;background:linear-gradient(180deg,#fff,#f2edff);font-weight:900;color:#1e2b64!important;box-shadow:0 3px 0 rgba(103,92,165,.18);cursor:pointer;}
+.mt-action.primary{background:linear-gradient(180deg,#ffd1e9,#f9a8d4)!important;}
+.mt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;}
+.mt-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.mt-course-map{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px;}
+.mt-unit{background:#fff;border:2px solid var(--mt-border);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px;}
+.mt-unit.done{background:linear-gradient(180deg,#edfff9,#fff);border-color:#72d7bf;}
+.mt-unit h3{font-size:1.05rem!important;margin:0;}
+.mt-unit .meta{display:flex;gap:6px;flex-wrap:wrap;font-size:.8rem;}
+.mt-unit label{display:flex;align-items:center;gap:8px;font-weight:900;color:#24305f!important;margin-top:auto;}
+.mt-unit input[type=checkbox]{width:20px;height:20px;accent-color:#f48cc9;}
+.progress-wrap{background:#fff;border:2px solid var(--mt-border);border-radius:999px;overflow:hidden;height:20px;}
+.progress-fill{height:100%;width:0%;background:linear-gradient(90deg,#8fe7d6,#f48cc9);transition:width .25s ease;}
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px;}
+.stat{background:#fff;border:2px solid var(--mt-border);border-radius:16px;padding:12px;text-align:center;}
+.stat strong{display:block;font-size:1.6rem;color:#17235c!important;}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0;}
+.controls select,.controls input{padding:9px 10px;border-radius:12px;border:2px solid var(--mt-border);background:#fff;color:#17235c;font-weight:800;}
+.mt-table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border-radius:18px;background:#fff;border:2px solid var(--mt-border);}
+.mt-table th,.mt-table td{padding:11px;border-bottom:1px solid #eadbf4;text-align:left;vertical-align:top;}
+.mt-table th{background:linear-gradient(180deg,#ebe7ff,#d7d1ff);color:#1f2f72!important;}
+.practice-card{background:#fff;border:2px solid var(--mt-border);border-radius:18px;padding:14px;display:grid;gap:8px;}
+.jp{font-size:1.4rem;font-weight:900;color:#17235c!important;line-height:1.35;}
+.romaji{font-weight:900;color:#5b5bd6!important;}
+.writer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+.writer-box{background:linear-gradient(180deg,#fff,#fff7fc);border:2px solid var(--mt-border);border-radius:18px;padding:12px;}
+.stroke-lines{height:86px;background:repeating-linear-gradient(to bottom,#fff 0,#fff 20px,#f0dff0 21px,#fff 22px);border:1px dashed #d8bfeb;border-radius:10px;margin-top:8px;}
+.flashcard{min-height:220px;display:grid;place-items:center;text-align:center;background:linear-gradient(180deg,#fff,#f8f3ff);border:2px solid var(--mt-border);border-radius:24px;padding:22px;cursor:pointer;user-select:none;}
+.flashcard .front{font-size:1.2rem;font-weight:900;color:#17235c!important;}
+.flashcard .back{display:none;}
+.flashcard.show .front{display:none;}
+.flashcard.show .back{display:block;}
+.hidden{display:none!important;}
+.footer-note{text-align:center;color:#55527b;margin:28px auto;}
+@media(max-width:840px){.mt-hero,.mt-two{grid-template-columns:1fr}.mt-card{padding:16px}.jp{font-size:1.2rem}.mt-table{font-size:.92rem}.pixel-teacher{display:none!important}}
+@media print{.pixel-site-header,.pixel-nav,.theme-switcher,.mt-nav,.controls,.mt-action{display:none!important}.mt-shell{width:100%;margin:0}.mt-card,.mt-unit,.practice-card{box-shadow:none!important;break-inside:avoid}}
+</style>
+</head>
+<body class="theme-garden">
+<header class="pixel-site-header">
+  <div class="pixel-hero-inner">
+    <div class="pixel-brand">
+      <div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn active" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+      <h1>Think in Japanese</h1>
+      <p>Michel Thomas Japanese Companion • 聞く・読む・書く</p>
+    </div>
+    <div class="pixel-teacher"><img alt="Chibi teacher mascot" src="assets/chibi_teacher.png"/><div class="pixel-mini-title">Supplement Mode</div></div>
+  </div>
+</header>
+<nav class="pixel-nav"><div class="pixel-nav-inner grouped-nav">
+<a href="index.html">Home</a>
+<details class="nav-group"><summary>Practice</summary><div class="nav-menu"><a href="kana_dojo.html">Kana Dojo</a><a href="kanji_hub.html">Kanji Hub</a><a href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a href="sentence_structure_trainer.html">Sentence Structure</a></div></details>
+<details class="nav-group"><summary>Phrase Decks</summary><div class="nav-menu"><a href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a></div></details>
+<details class="nav-group"><summary>Plans</summary><div class="nav-menu"><a href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a><a href="michel_thomas_japanese_supplement.html" class="active">MT Supplement</a></div></details>
+</div></nav>
+
+<main class="mt-shell">
+<section class="mt-hero" id="top">
+  <div class="mt-card">
+    <div class="mt-kicker"><span class="mt-chip">Unofficial companion</span><span class="mt-chip">Foundation + Advanced</span><span class="mt-chip">Local progress saved</span></div>
+    <h1>Michel Thomas Japanese Supplement</h1>
+    <p>This page does the “extra” things the original method intentionally avoids: memorization reinforcement, kana reading, handwriting practice, phrase recall, and a calendar/syllabus tracker. Use the audio as the main lesson, then use this page after listening so the material survives contact with real reading and writing.</p>
+    <div class="mt-note"><strong>Important:</strong> This is a fan-made study companion for people who already have access to the Michel Thomas Japanese audio/booklets. It does not include audio and is not a replacement for the course.</div>
+    <div class="mt-nav"><a href="#tracker">Tracker</a><a href="#syllabus">Syllabus</a><a href="#practice">Practice</a><a href="#writing">Kana writing</a><a href="#flashcards">Recall cards</a><a href="#routine">Routine</a></div>
+  </div>
+  <aside class="mt-card">
+    <h2>Progress</h2>
+    <div class="progress-wrap"><div class="progress-fill" id="overallProgress"></div></div>
+    <div class="stat-row">
+      <div class="stat"><strong id="doneCount">0</strong><small>CDs complete</small></div>
+      <div class="stat"><strong id="pctCount">0%</strong><small>Total progress</small></div>
+    </div>
+    <p><small>Progress is stored in this browser with localStorage. No server/database needed.</small></p>
+    <button class="mt-action" id="resetProgress" type="button">Reset progress</button>
+  </aside>
+</section>
+
+<section class="mt-card" id="tracker">
+  <h2>Calendar tracker: Total Japanese in 6 or 12 weeks</h2>
+  <p>Choose 1 CD per week for a relaxed 12-week route, or 2 CDs per week for a faster 6-week route. Each week includes one audio pass, one recall pass, kana reading, and light handwriting.</p>
+  <div class="controls">
+    <label>Start date <input id="startDate" type="date"></label>
+    <label>Pace <select id="pace"><option value="1">1 CD per week - 12 weeks</option><option value="2">2 CDs per week - 6 weeks</option></select></label>
+    <button class="mt-action primary" id="buildCalendar" type="button">Build calendar</button>
+    <button class="mt-action" onclick="window.print()" type="button">Print / Save PDF</button>
+  </div>
+  <div id="calendarTable"></div>
+</section>
+
+<section class="mt-card" id="syllabus">
+  <h2>CD-by-CD syllabus</h2>
+  <p>The Foundation course gives the basic sentence engine; the Advanced course expands into connected actions, permission, experience, advice, conditional forms, and sample-listing with たり. Use the checkboxes as your master completion list.</p>
+  <div class="mt-course-map" id="courseMap"></div>
+</section>
+
+<section class="mt-card" id="practice">
+  <h2>Reading and phrase reinforcement</h2>
+  <p>These are short practice cards based on the course grammar and vocabulary themes. Read the Japanese first, then check the romaji only if you get stuck. Keep your answer flexible; the goal is active sentence building, not parroting one exact line.</p>
+  <div class="controls"><button class="mt-action primary" id="shufflePractice" type="button">Shuffle cards</button><button class="mt-action" id="hideRomaji" type="button">Toggle romaji</button></div>
+  <div class="mt-grid" id="practiceGrid"></div>
+</section>
+
+<section class="mt-card" id="writing">
+  <h2>Kana writing lab</h2>
+  <p>Pick 4–8 phrases from your current CD. Copy them in kana three times, then cover the model and write from English. Do not worry about kanji yet; this page intentionally keeps the focus on kana recognition and muscle memory.</p>
+  <div class="writer-grid" id="writerGrid"></div>
+</section>
+
+<section class="mt-card" id="flashcards">
+  <h2>Recall cards</h2>
+  <p>Click a card to reveal one possible answer. Say your answer out loud before clicking. Good enough is better than frozen silence.</p>
+  <div class="controls"><button class="mt-action primary" id="nextFlash" type="button">Next card</button></div>
+  <div class="flashcard" id="flashcard" tabindex="0" role="button" aria-label="Flashcard. Click to reveal answer."><div class="front"></div><div class="back"></div></div>
+</section>
+
+<section class="mt-card" id="routine">
+  <h2>Suggested weekly routine</h2>
+  <div class="mt-two">
+    <div>
+      <h3>Audio day</h3>
+      <ol><li>Listen with full pause-button participation.</li><li>Do not write during the lesson.</li><li>After the lesson, mark the CD “started” mentally, not complete.</li></ol>
+    </div>
+    <div>
+      <h3>Supplement days</h3>
+      <ol><li>Do 10 minutes of phrase recall.</li><li>Read 6–10 kana phrase cards.</li><li>Write 4 phrases from memory.</li><li>At the end of the week, mark the CD complete.</li></ol>
+    </div>
+  </div>
+  <div class="mt-note"><strong>Rule of thumb:</strong> If you cannot say it, read it, and write the kana slowly, repeat that CD’s supplement week before moving on.</div>
+</section>
+
+<p class="footer-note">Made for Think in Japanese. Theme, progress, cards, and calendar work offline once the page is downloaded with the site files.</p>
+</main>
+<script>
+(function(){
+  function applyTheme(theme){
+    theme = (theme === 'garden' || theme === 'night') ? theme : 'pixel';
+    document.body.classList.remove('theme-pixel','theme-garden','theme-night');
+    document.body.classList.add('theme-' + theme);
+    try{ localStorage.setItem('tij-theme', theme); }catch(e){}
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      var on = btn.getAttribute('data-theme') === theme;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function initTheme(){
+    var saved = 'garden';
+    try{ saved = localStorage.getItem('tij-theme') || 'garden'; }catch(e){}
+    applyTheme(saved);
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ applyTheme(btn.getAttribute('data-theme')); });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
+})();
+</script>
+<script>
+const units = [
+ {id:'f1', course:'Foundation', cd:'CD 1', title:'Pronunciation, simple actions, questions, negatives', focus:'kudasai, o, tabemasu, nomimasu, mimasu, yomimasu, ka, -masen, suggestions'},
+ {id:'f2', course:'Foundation', cd:'CD 2', title:'Desu, reasons, adjectives, invitations, shimasu', focus:'desu, suki, kara, omoshiroi, oishii, -mashō, -masen ka, to'},
+ {id:'f3', course:'Foundation', cd:'CD 3', title:'Going places, destinations, want-to form, phone calls', focus:'ikimasu, ni, doko, -tai desu, denwa o shimasu, flexible word order'},
+ {id:'f4', course:'Foundation', cd:'CD 4', title:'Possession, no, politeness, past tense begins', focus:'no, watashi no, go-ryōshin, doko desu ka, arigatō, -mashita'},
+ {id:'f5', course:'Foundation', cd:'CD 5', title:'Past tense, time words, place of action', focus:'kinō, kyō, senshū, raishū, deshita, -masen deshita, de'},
+ {id:'f6', course:'Foundation', cd:'CD 6', title:'Nothing/nowhere, tools, transport, speaking, while', focus:'nanimo, dokonimo, de as means, hashi, densha, hanashimasu, -nagara'},
+ {id:'f7', course:'Foundation', cd:'CD 7', title:'Likes/dislikes, skill, existence/having', focus:'ga with suki, kirai, jōzu, heta, imasu, arimasu, reservation'},
+ {id:'f8', course:'Foundation', cd:'CD 8', title:'People, nationalities, location, final integration', focus:'-jin, languages, doko ni arimasu/imasu, dare, long mixed sentences'},
+ {id:'a1', course:'Advanced', cd:'CD 1', title:'Desu review, negatives, skill, writing, wanting-not-to', focus:'ja arimasen, ja arimasen deshita, tokui, kakimasu, -takunai, scripts'},
+ {id:'a2', course:'Advanced', cd:'CD 2', title:'Te-form sequences, requests, after doing, progressive', focus:'-te/-de, kudasai, -te kara, -te imasu, enter/leave'},
+ {id:'a3', course:'Advanced', cd:'CD 3', title:'Was doing, try-to, even if, permission starts', focus:'-te imashita, -te mimasu, -temo, dare/doko/nani + mo, -temo ii'},
+ {id:'a4', course:'Advanced', cd:'CD 4', title:'Permission, casual past, experience, advice, if, sample lists', focus:'-temo ii desu ka, -ta toki, koto ga arimasu, hō ga ii, -tara, -tari shimasu'}
+];
+const phrases = [
+ {en:'Please may I have this?', jp:'すみません、これをください。', romaji:'sumimasen, kore o kudasai'},
+ {en:'I will eat sushi tomorrow.', jp:'あした、すしをたべます。', romaji:'ashita, sushi o tabemasu'},
+ {en:'Do you watch TV every day?', jp:'まいにち、テレビをみますか。', romaji:'mainichi, terebi o mimasu ka'},
+ {en:'I will not read manga tonight.', jp:'こんばん、まんがをよみません。', romaji:'konban, manga o yomimasen'},
+ {en:'Because it is interesting, I will watch it.', jp:'おもしろいですから、みます。', romaji:'omoshiroi desu kara, mimasu'},
+ {en:'Would you like to play tennis tonight?', jp:'こんばん、テニスをしませんか。', romaji:'konban, tenisu o shimasen ka'},
+ {en:'Shall we go to Tokyo tomorrow?', jp:'あした、とうきょうにいきましょうか。', romaji:'ashita, Tōkyō ni ikimashō ka'},
+ {en:'I want to buy a camera.', jp:'カメラをかいたいです。', romaji:'kamera o kaitai desu'},
+ {en:'Where is my mobile phone?', jp:'わたしのけいたいはどこですか。', romaji:'watashi no keitai wa doko desu ka'},
+ {en:'Yesterday I went to the restaurant over there.', jp:'きのう、あそこのレストランにいきました。', romaji:'kinō, asoko no resutoran ni ikimashita'},
+ {en:'I did not eat anything yesterday.', jp:'きのう、なにもたべませんでした。', romaji:'kinō, nanimo tabemasen deshita'},
+ {en:'I go to London by train.', jp:'でんしゃでロンドンにいきます。', romaji:'densha de Rondon ni ikimasu'},
+ {en:'I speak Japanese on the phone.', jp:'でんわでにほんごをはなします。', romaji:'denwa de Nihongo o hanashimasu'},
+ {en:'I read while I eat.', jp:'よみながらたべます。', romaji:'yominagara tabemasu'},
+ {en:'I like Japanese.', jp:'にほんごがすきです。', romaji:'Nihongo ga suki desu'},
+ {en:'She is good at Japanese.', jp:'かのじょはにほんごがじょうずです。', romaji:'kanojo wa Nihongo ga jōzu desu'},
+ {en:'There is a phone here.', jp:'ここにでんわがあります。', romaji:'koko ni denwa ga arimasu'},
+ {en:'Mr. Tanaka is here.', jp:'たなかさんはいます。', romaji:'Tanaka-san wa imasu'},
+ {en:'This is my money.', jp:'これはわたしのおかねです。', romaji:'kore wa watashi no okane desu'},
+ {en:'It was not wine.', jp:'ワインじゃありませんでした。', romaji:'wain ja arimasen deshita'},
+ {en:'I do not want to eat.', jp:'たべたくないです。', romaji:'tabetakunai desu'},
+ {en:'Please buy flowers at the department store.', jp:'デパートではなをかってください。', romaji:'depāto de hana o katte kudasai'},
+ {en:'I am eating now.', jp:'いま、たべています。', romaji:'ima, tabete imasu'},
+ {en:'I tried to speak Japanese.', jp:'にほんごではなしてみました。', romaji:'Nihongo de hanashite mimashita'},
+ {en:'You may go.', jp:'いってもいいです。', romaji:'ittemo ii desu'},
+ {en:'May I eat this?', jp:'これをたべてもいいですか。', romaji:'kore o tabetemo ii desu ka'},
+ {en:'When I went to Japan, I saw Mount Fuji.', jp:'にほんにいったとき、ふじさんをみました。', romaji:'Nihon ni itta toki, Fujisan o mimashita'},
+ {en:'I have been to Tokyo.', jp:'とうきょうにいったことがあります。', romaji:'Tōkyō ni itta koto ga arimasu'},
+ {en:'You should take medicine every day.', jp:'まいにち、くすりをのんだほうがいいです。', romaji:'mainichi, kusuri o nonda hō ga ii desu'},
+ {en:'If I go to Japan, I want to try chopsticks.', jp:'にほんにいったら、おはしでたべてみたいです。', romaji:'Nihon ni ittara, ohashi de tabete mitai desu'},
+ {en:'I do things like watch movies and go shopping.', jp:'えいがをみたり、かいものをしたりします。', romaji:'eiga o mitari, kaimono o shitari shimasu'}
+];
+const writing = ['これをください','すしをたべます','テレビをみます','まんがをよみます','あしたいきます','にほんごをはなします','でんしゃでいきます','なにもたべません','どこですか','じかんがあります','かってください','たべています','はなしてみます','いってもいいです','いったことがあります','たべたほうがいいです'];
+const flash = [
+ ['How do you say “I want to eat sushi”?','すしをたべたいです。<br><span class="romaji">sushi o tabetai desu</span>'],
+ ['What marker marks destination with 行きます?', '<span class="jp">に</span><br>とうきょう<span class="jp">に</span>いきます。'],
+ ['How do you turn 食べます into “do not eat”?','たべません。<br><span class="romaji">tabemasen</span>'],
+ ['How do you say “because it is delicious”?','おいしいですから。<br><span class="romaji">oishii desu kara</span>'],
+ ['How do you say “while reading”?','よみながら。<br><span class="romaji">yominagara</span>'],
+ ['How do you say “please drink”?','のんでください。<br><span class="romaji">nonde kudasai</span>'],
+ ['How do you ask “May I go?”','いってもいいですか。<br><span class="romaji">ittemo ii desu ka</span>'],
+ ['How do you say “I have done / experienced it”?','したことがあります。<br><span class="romaji">shita koto ga arimasu</span>'],
+ ['How do you say “you should speak Japanese”?','にほんごをはなしたほうがいいです。<br><span class="romaji">Nihongo o hanashita hō ga ii desu</span>'],
+ ['How do you say “if I go to Japan”?','にほんにいったら。<br><span class="romaji">Nihon ni ittara</span>']
+];
+const stateKey='mtJapaneseSupplementProgress';
+const dateKey='mtJapaneseSupplementStart';
+const paceKey='mtJapaneseSupplementPace';
+let progress = JSON.parse(localStorage.getItem(stateKey)||'{}');
+function save(){localStorage.setItem(stateKey,JSON.stringify(progress));updateProgress();}
+function updateProgress(){const done=units.filter(u=>progress[u.id]).length;const pct=Math.round(done/units.length*100);document.getElementById('doneCount').textContent=done;document.getElementById('pctCount').textContent=pct+'%';document.getElementById('overallProgress').style.width=pct+'%';document.querySelectorAll('.mt-unit').forEach(el=>el.classList.toggle('done',!!progress[el.dataset.id]));}
+function renderCourse(){const box=document.getElementById('courseMap');box.innerHTML=units.map(u=>`<article class="mt-unit" data-id="${u.id}"><div class="meta"><span class="mt-chip">${u.course}</span><span class="mt-chip">${u.cd}</span></div><h3>${u.title}</h3><p>${u.focus}</p><label><input type="checkbox" ${progress[u.id]?'checked':''} data-id="${u.id}"> Complete after audio + supplement review</label></article>`).join('');box.querySelectorAll('input').forEach(cb=>cb.addEventListener('change',e=>{progress[e.target.dataset.id]=e.target.checked;save();}));updateProgress();}
+function renderPractice(){const grid=document.getElementById('practiceGrid');grid.innerHTML=phrases.map(p=>`<article class="practice-card"><div><strong>Prompt:</strong> ${p.en}</div><div class="jp">${p.jp}</div><div class="romaji romajiLine">${p.romaji}</div></article>`).join('');}
+function renderWriting(){document.getElementById('writerGrid').innerHTML=writing.map(w=>`<div class="writer-box"><strong class="jp">${w}</strong><div class="stroke-lines" aria-hidden="true"></div></div>`).join('');}
+function buildCalendar(){const startVal=document.getElementById('startDate').value || new Date().toISOString().slice(0,10);const pace=parseInt(document.getElementById('pace').value,10);localStorage.setItem(dateKey,startVal);localStorage.setItem(paceKey,String(pace));const start=new Date(startVal+'T00:00:00');let rows=[];for(let i=0;i<units.length;i+=pace){const week=Math.floor(i/pace)+1;const s=new Date(start);s.setDate(start.getDate()+(week-1)*7);const e=new Date(s);e.setDate(s.getDate()+6);const group=units.slice(i,i+pace);rows.push(`<tr><td><strong>Week ${week}</strong><br>${s.toLocaleDateString()} - ${e.toLocaleDateString()}</td><td>${group.map(u=>`${u.course} ${u.cd}: ${u.title}`).join('<br>')}</td><td>Audio pass with pause button<br>10 phrase recalls<br>Kana read-through<br>4 handwritten phrases<br>One self-made sentence</td><td>${group.map(u=>`<label><input type="checkbox" data-id="${u.id}" ${progress[u.id]?'checked':''}> ${u.cd} done</label>`).join('<br>')}</td></tr>`)}document.getElementById('calendarTable').innerHTML=`<table class="mt-table"><thead><tr><th>Week</th><th>Material</th><th>Supplement checklist</th><th>Mark complete</th></tr></thead><tbody>${rows.join('')}</tbody></table>`;document.querySelectorAll('#calendarTable input').forEach(cb=>cb.addEventListener('change',e=>{progress[e.target.dataset.id]=e.target.checked;document.querySelectorAll('input[data-id="'+e.target.dataset.id+'"]').forEach(x=>x.checked=e.target.checked);save();}));}
+let flashIndex=0;function showFlash(){const card=document.getElementById('flashcard');card.classList.remove('show');card.querySelector('.front').innerHTML=flash[flashIndex][0];card.querySelector('.back').innerHTML=flash[flashIndex][1];}
+function init(){renderCourse();renderPractice();renderWriting();const savedDate=localStorage.getItem(dateKey);document.getElementById('startDate').value=savedDate||new Date().toISOString().slice(0,10);document.getElementById('pace').value=localStorage.getItem(paceKey)||'1';buildCalendar();showFlash();document.getElementById('buildCalendar').addEventListener('click',buildCalendar);document.getElementById('shufflePractice').addEventListener('click',()=>{phrases.sort(()=>Math.random()-.5);renderPractice();});document.getElementById('hideRomaji').addEventListener('click',()=>document.querySelectorAll('.romajiLine').forEach(x=>x.classList.toggle('hidden')));document.getElementById('resetProgress').addEventListener('click',()=>{if(confirm('Reset all supplement progress?')){progress={};save();renderCourse();buildCalendar();}});document.getElementById('flashcard').addEventListener('click',e=>e.currentTarget.classList.toggle('show'));document.getElementById('flashcard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();e.currentTarget.classList.toggle('show')}});document.getElementById('nextFlash').addEventListener('click',()=>{flashIndex=(flashIndex+1)%flash.length;showFlash();});}
+init();
+</script>
+<script src="https://app.aminos.ai/js/chat_plugin.js" data-bot-id="59258"></script>
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.pixel-nav details[open]').forEach(function(d){ if(!d.contains(e.target)) d.removeAttribute('open'); });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ document.querySelectorAll('.pixel-nav details[open]').forEach(function(d){d.removeAttribute('open');}); }});
+})();
+</script>
+</body>
+</html>

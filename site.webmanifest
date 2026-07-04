@@ -1,0 +1,21 @@
+{
+  "name": "Think in Japanese",
+  "short_name": "ThinkJP",
+  "description": "Offline-friendly Japanese learning portal with Kana Dojo, Kanji Hub, phrase decks, and a 90-day study tracker.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#ff7ac8",
+  "icons": [
+    {
+      "src": "android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

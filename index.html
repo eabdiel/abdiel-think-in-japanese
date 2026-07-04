@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>Think in Japanese - Learn Japanese Through Immersion, Kana Practice and Daily Thinking</title>
-<meta name="description" content="Free Japanese learning tools including Kana Dojo, Hiragana and Katakana practice, 90-day study plans, Genki study support, and immersion-based Japanese learning.">
+<meta name="description" content="Free Japanese learning tools including Kana Dojo, sentence structure practice, Hiragana and Katakana practice, 90-day study plans, Genki study support, and immersion-based Japanese learning.">
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <style>
 :root {
@@ -332,6 +332,73 @@ strong { color: var(--text); }
   }
 }
 
+
+/* v14 readability: Pixel Pastel homepage cards use high-contrast text */
+body.theme-pixel .home-card,
+body.theme-pixel .path-step,
+body.theme-pixel .tool-tile,
+body.theme-pixel .plan-tile,
+body:not(.theme-garden):not(.theme-night) .home-card,
+body:not(.theme-garden):not(.theme-night) .path-step,
+body:not(.theme-garden):not(.theme-night) .tool-tile,
+body:not(.theme-garden):not(.theme-night) .plan-tile{
+  background:rgba(22,31,55,.96)!important;
+  color:#f8fbff!important;
+  border-color:rgba(255,255,255,.22)!important;
+}
+body.theme-pixel .home-card p,
+body.theme-pixel .home-card li,
+body.theme-pixel .path-step p,
+body.theme-pixel .tool-tile p,
+body.theme-pixel .plan-tile p,
+body.theme-pixel .lead2,
+body:not(.theme-garden):not(.theme-night) .home-card p,
+body:not(.theme-garden):not(.theme-night) .home-card li,
+body:not(.theme-garden):not(.theme-night) .path-step p,
+body:not(.theme-garden):not(.theme-night) .tool-tile p,
+body:not(.theme-garden):not(.theme-night) .plan-tile p,
+body:not(.theme-garden):not(.theme-night) .lead2{
+  color:#eef4ff!important;
+  text-shadow:none!important;
+}
+body.theme-pixel .tool-tile h3,
+body.theme-pixel .path-step h3,
+body.theme-pixel .plan-tile h3,
+body:not(.theme-garden):not(.theme-night) .tool-tile h3,
+body:not(.theme-garden):not(.theme-night) .path-step h3,
+body:not(.theme-garden):not(.theme-night) .plan-tile h3{
+  color:#ffffff!important;
+  text-shadow:0 2px 0 rgba(79,84,216,.65)!important;
+}
+body.theme-pixel .section-title,
+body:not(.theme-garden):not(.theme-night) .section-title{
+  color:#3456d1!important;
+  text-shadow:0 2px 0 rgba(255,255,255,.75)!important;
+}
+.phrase-link-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.phrase-link-row a{margin-top:0!important}
+
+/* v15 readability: make the top dashboard and quick links readable in Pixel Pastel */
+body.theme-pixel .quick-list a,
+body:not(.theme-garden):not(.theme-night) .quick-list a{
+  background:rgba(255,255,255,.10)!important;
+  color:#ffffff!important;
+  border-color:rgba(255,255,255,.24)!important;
+}
+body.theme-pixel .quick-list a strong,
+body:not(.theme-garden):not(.theme-night) .quick-list a strong{
+  color:#ffffff!important;
+  text-shadow:0 1px 0 rgba(79,84,216,.5)!important;
+}
+body.theme-pixel .tiny-note,
+body:not(.theme-garden):not(.theme-night) .tiny-note{
+  color:#eaf0ff!important;
+  opacity:1!important;
+}
+body.theme-pixel .home-card .pixel-mini-title,
+body:not(.theme-garden):not(.theme-night) .home-card .pixel-mini-title{
+  color:#cfd8ff!important;
+}
+
 </style>
 
 <link rel="icon" href="favicon.ico" sizes="any">
@@ -339,7 +406,7 @@ strong { color: var(--text); }
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<meta name="theme-color" content="#ff7ac8">
+<meta name="theme-color" content="#9fbe82">
 <link href="pixel-theme-v2.css" rel="stylesheet"/>
 
 <!-- v10.2 study-flow readability polish -->
@@ -505,260 +572,129 @@ body:not(.theme-garden):not(.theme-night) .study-flow-card:nth-child(2n) { borde
 }
 </style>
 
+
+<style>
+.flag-return-shell{max-width:1180px;margin:0 auto;padding:22px 18px 0;}
+.restored-flags{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(220px,.8fr);gap:18px;align-items:center;}
+.restored-flags .pixel-card{min-height:auto;}
+.restored-flags .pixel-flag-pair{display:flex;gap:18px;justify-content:center;align-items:center;}
+.restored-flags .flag-art{width:150px;max-width:42vw;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.16);}
+body.theme-garden .restored-flags .pixel-card{background:#fffaf0!important;color:#284431!important;border-color:#c7b98e!important;}
+body.theme-garden .restored-flags .pixel-card strong{color:#172a1d!important;}
+body.theme-garden .restored-flags .pixel-mini-title{color:#6b5b2d!important;}
+body.theme-pixel .restored-flags .pixel-card{background:rgba(255,255,255,.94)!important;color:#1e2650!important;}
+body.theme-pixel .restored-flags .pixel-card strong{color:#142156!important;}
+@media(max-width:820px){.restored-flags{grid-template-columns:1fr}.restored-flags .flag-art{width:130px}}
+</style>
+
 </head>
-<body>
+<body class="theme-garden">
 <header class="pixel-site-header">
 <div class="pixel-hero-inner">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn active" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
 <h1>Think in Japanese</h1>
 <p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
 </div>
 <div class="pixel-teacher"><img alt="Chibi teacher mascot" src="assets/chibi_teacher.png"/><div class="pixel-mini-title">Sensei Mode</div></div>
 </div>
 </header>
-<nav class="pixel-nav"><div class="pixel-nav-inner"><a data-file="index.html" href="index.html">Home</a><a data-file="kana_dojo.html" href="kana_dojo.html">Kana Dojo</a><a data-file="kanji_hub.html" href="kanji_hub.html">Kanji Hub</a><a data-file="japanese_90_day_calendar_tracker.html" href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a data-file="think_in_japanese_100_phrases_part1_reformatted.html" href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a data-file="think_in_japanese_100_casual_phrases_part2.html" href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a data-file="think_in_japanese_100_gaki_style_phrases_part3.html" href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a><a data-file="think_in_japanese_character_reading_aid_part4.html" href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a data-file="think_in_japanese_part5_frequency_deck.html" href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a data-file="think_in_japanese_part6_90_day_plan.html" href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a></div></nav><div aria-label="Language selector" class="lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="index_es.html">Español</a></div>
+<nav class="pixel-nav"><div class="pixel-nav-inner grouped-nav">
+<a href="index.html" class="active">Home</a>
+<details class="nav-group"><summary>Practice</summary><div class="nav-menu"><a href="kana_dojo.html">Kana Dojo</a><a href="kanji_hub.html">Kanji Hub</a><a href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a href="sentence_structure_trainer.html">Sentence Structure</a></div></details>
+<details class="nav-group"><summary>Phrase Decks</summary><div class="nav-menu"><a href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a></div></details>
+<details class="nav-group"><summary>Plans</summary><div class="nav-menu"><a href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a><a href="michel_thomas_japanese_supplement.html">MT Supplement</a></div></details>
+<div class="nav-spacer"></div><div aria-label="Language selector" class="lang-toggle nav-lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="index_es.html">Español</a></div></div></nav>
 <section class="moved-hero-title">
 <div class="pixel-brand">
-<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn active" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
+<div class="theme-switcher title-theme-switcher" aria-label="Theme selector"><button class="theme-btn" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn active" type="button" data-theme="garden">Garden Cream</button><button class="theme-btn" type="button" data-theme="night">Tokyo Night</button></div>
 <h1>Think in Japanese</h1>
 <p>Learn naturally. Speak confidently. 一緒に日本語を学ぼう!</p>
 </div>
 
 </section>
 
-
-
-<div class="pixel-page-shell">
-<section class="pixel-welcome">
+<div class="pixel-page-shell flag-return-shell">
+<section class="pixel-welcome restored-flags">
 <div class="pixel-card"><div class="pixel-mini-title">Getting Started</div><strong>Use the portal as a guided study path:</strong> • Learn phrases in Parts 1–3 • Study characters in Reading Aid and Frequency Deck • Practice in Kana Dojo and Kanji Hub • Follow the 90-Day Tracker and Study Plan • Reduce romaji over time. Small daily practice is more effective than occasional marathon sessions.</div>
 <div class="pixel-side-art pixel-flag-pair"><img alt="Japanese flag" class="flag-art" src="assets/flag_japan.svg"/><img alt="Puerto Rican flag" class="flag-art" src="assets/flag_puerto_rico.svg"/></div>
 </section>
 </div>
-<script>document.querySelectorAll('.pixel-nav a').forEach(a=>{if(location.pathname.endsWith(a.getAttribute('href')))a.classList.add('active')});</script>
-<header>
-<h1>Think in Japanese</h1>
-<p class="subtitle">A personal 90-day Japanese study hub built around internal monologue, casual reactions, reading recognition, and supplemental study with Michel Thomas, Genki 1, and Mondly.</p>
-<nav>
-<a href="#start">Start Here</a>
-<a href="#resources">Files</a>
-<a href="#timeline">90-Day Timeline</a>
-<a href="#supplements">Supplemental Materials</a>
-<a href="#routine">Daily Routine</a>
-<a href="#practice-tools">Practice Tools</a>
-</nav>
-</header>
-<main>
-<section class="section" id="start">
-<h2>What this is</h2>
-<p class="lead">
-      This is not a traditional Japanese course. It is a practical “think in Japanese” system designed to help you replace common English or Spanish thoughts with Japanese phrases you can actually use. The first three files give you 300 reusable phrases. The next two files help you read the characters inside those phrases. The final plan turns everything into a 90-day schedule.
-    </p>
-<div class="callout">
-<strong>Main idea:</strong> learn useful thoughts first, then learn the characters that appear inside those thoughts, then gradually remove romaji so Japanese starts connecting directly to meaning.
+
+
+<style>
+.home-dashboard{max-width:1180px;margin:0 auto;padding:20px 18px 70px;}
+.home-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:stretch;margin:18px 0 24px;}
+.home-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 18px 40px rgba(0,0,0,.16);}
+.home-card h2,.home-card h3{margin-top:0}.home-card p,.home-card li{color:var(--muted)}
+.home-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.home-actions a{display:inline-block;text-decoration:none;font-weight:800;border-radius:999px;padding:10px 14px;border:1px solid var(--line);background:rgba(255,255,255,.08);color:var(--text)}.home-actions a.primary{background:var(--gold);color:#111827}
+.path-grid,.tool-grid,.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:14px}.path-step,.tool-tile,.plan-tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}.path-step{border-left:6px solid var(--gold)}.step-num{font-size:28px;font-weight:900;color:var(--gold)}.tool-tile h3,.path-step h3,.plan-tile h3{margin:8px 0;color:var(--blue)}.tool-tile a,.path-step a{display:inline-block;margin-top:8px;color:var(--gold);font-weight:800;text-decoration:none}.quick-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}.quick-list a{display:block;background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:12px;text-decoration:none;color:var(--text)}.ai-box{border:1px solid rgba(134,239,172,.35);background:rgba(134,239,172,.10);border-radius:18px;padding:18px}.offline-box{border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.10);border-radius:18px;padding:18px}.section-title{font-size:clamp(26px,4vw,38px);margin:34px 0 8px}.lead2{font-size:18px;color:var(--muted);max-width:980px}.tiny-note{color:var(--soft);font-size:14px}
+body.theme-garden .home-card,body.theme-garden .path-step,body.theme-garden .tool-tile,body.theme-garden .plan-tile{background:#fffaf0!important;color:#284431!important;border-color:#c7b98e!important}body.theme-garden .home-card p,body.theme-garden .home-card li,body.theme-garden .path-step p,body.theme-garden .tool-tile p,body.theme-garden .plan-tile p,body.theme-garden .lead2{color:#41573f!important}body.theme-garden .home-actions a:not(.primary),body.theme-garden .quick-list a{background:#fffaf0!important;color:#284431!important;border-color:#c7b98e!important}body.theme-garden .tool-tile h3,body.theme-garden .path-step h3,body.theme-garden .plan-tile h3{color:#2d6b3d!important}
+body.theme-night .home-card,body.theme-night .path-step,body.theme-night .tool-tile,body.theme-night .plan-tile{background:rgba(18,25,45,.94)!important;color:#f3f5ff!important;border-color:rgba(127,220,255,.38)!important}body.theme-night .home-card p,body.theme-night .home-card li,body.theme-night .path-step p,body.theme-night .tool-tile p,body.theme-night .plan-tile p,body.theme-night .lead2{color:#dce3ff!important}body.theme-night .tool-tile h3,body.theme-night .path-step h3,body.theme-night .plan-tile h3{color:#ff7bd4!important}body.theme-night .home-actions a:not(.primary),body.theme-night .quick-list a{background:rgba(255,255,255,.08)!important;color:#f3f5ff!important;border-color:rgba(127,220,255,.38)!important}
+@media(max-width:820px){.home-hero{grid-template-columns:1fr}.home-dashboard{padding:14px 12px 60px}}
+</style>
+
+<main class="home-dashboard">
+<section class="home-hero" id="start">
+  <div class="home-card">
+    <div class="pixel-mini-title">Start here</div>
+    <h2>Learn Japanese with a guided, offline-friendly toolkit.</h2>
+    <p class="lead2">Think in Japanese is a free study hub for English and Spanish speakers. Use it to learn kana, build phrase recall, practice sentence structure, reinforce Michel Thomas audio lessons, read beginner Japanese, study high-frequency kanji, and keep a realistic 90-day routine.</p>
+    <div class="home-actions"><a class="primary" href="kana_dojo.html">Start with Kana Dojo</a><a href="#roadmap">See the roadmap</a><a href="#ai-sensei">Use the AI tutor</a></div>
+  </div>
+  <div class="home-card">
+    <h3>Continue today</h3>
+    <div class="quick-list">
+      <a href="japanese_90_day_calendar_tracker.html"><strong>90-Day Tracker</strong><br><span class="tiny-note">Mark today complete and keep momentum.</span></a>
+      <a href="michel_thomas_japanese_supplement.html"><strong>MT Supplement</strong><br><span class="tiny-note">Practice reading, recall, and kana after each CD.</span></a>
+      <a href="think_in_japanese_100_phrases_part1_reformatted.html"><strong>Phrase Deck 1</strong><br><span class="tiny-note">Build useful internal monologue first.</span></a>
+      <a href="sentence_structure_trainer.html"><strong>Sentence Structure</strong><br><span class="tiny-note">Practice particles, verbs, adjectives, and word order.</span></a>
     </div>
-<div class="panel" id="practice-tools" style="margin-top:18px;">
-<h3>Practice tools</h3>
-<p>Use Kana Dojo for fast kana recognition, then use the 90-day calendar to stay on track with Michel Thomas, Think in Japanese, and Genki 1.</p>
-<div class="button-row">
-<a class="button" href="kana_dojo.html">Open Kana Dojo</a>
-<a class="button blue" href="japanese_90_day_calendar_tracker.html">Open 90-Day Calendar</a>
-</div>
-</div>
-</section>
-<section class="section" id="resources">
-<h2>Study files</h2>
-<p class="lead">Each card below opens one part of the study system.</p>
-<div class="grid">
-<article class="resource-card">
-<div class="card-top">
-<span class="part">Part 1</span>
-<span class="pill">Foundation</span>
-</div>
-<h3>Core Internal Thoughts</h3>
-<p>Daily internal monologue: morning, work, tired moments, food, travel, emotions, decisions, and nighttime.</p>
-<div class="meta"><strong>When:</strong> Days 1–30</div>
-<div class="meta"><strong>How to use:</strong> Start here. These are the first thoughts to replace in your head.</div>
-<a class="button" href="think_in_japanese_100_phrases_part1_reformatted.html">Open Part 1</a>
-</article>
-<article class="resource-card">
-<div class="card-top">
-<span class="part">Part 2</span>
-<span class="pill">Casual</span>
-</div>
-<h3>Casual Native-Style Thoughts</h3>
-<p>Casual self-talk, clarification phrases, travel thoughts, work/debug thoughts, and Osaka/Kansai-style flavor.</p>
-<div class="meta"><strong>When:</strong> Days 31–60</div>
-<div class="meta"><strong>How to use:</strong> Use after Part 1 starts feeling familiar. Great for turning textbook Japanese into actual thoughts.</div>
-<a class="button" href="think_in_japanese_100_casual_phrases_part2.html">Open Part 2</a>
-</article>
-<article class="resource-card">
-<div class="card-top">
-<span class="part">Part 3</span>
-<span class="pill">Listening</span>
-</div>
-<h3>Gaki / Kansai Comedy Reactions</h3>
-<p>Reaction-heavy phrases inspired by Japanese variety-show rhythm: teasing, correction, disbelief, complaints, and punchline energy.</p>
-<div class="meta"><strong>When:</strong> Days 46–75</div>
-<div class="meta"><strong>How to use:</strong> Use for listening recognition and fast reaction practice. Especially useful if watching Gaki no Tsukai-style clips.</div>
-<a class="button" href="think_in_japanese_100_gaki_style_phrases_part3.html">Open Part 3</a>
-</article>
-<article class="resource-card">
-<div class="card-top">
-<span class="part">Part 4</span>
-<span class="pill">Reference</span>
-</div>
-<h3>Character Reading Aid</h3>
-<p>A deduped list of hiragana, katakana, and kanji that appear only in the 300 phrases.</p>
-<div class="meta"><strong>When:</strong> Days 1–90</div>
-<div class="meta"><strong>How to use:</strong> Use as a reference while learning to read the phrases without romaji.</div>
-<a class="button" href="think_in_japanese_character_reading_aid_part4.html">Open Part 4</a>
-</article>
-<article class="resource-card">
-<div class="card-top">
-<span class="part">Part 5</span>
-<span class="pill">Reading</span>
-</div>
-<h3>Character Frequency Deck</h3>
-<p>The highest-value characters sorted by how often they appear in the 300 phrases.</p>
-<div class="meta"><strong>When:</strong> Days 1–90</div>
-<div class="meta"><strong>How to use:</strong> Use this to decide which characters to recognize first. Frequency-first beats textbook order for this specific project.</div>
-<a class="button" href="think_in_japanese_part5_frequency_deck.html">Open Part 5</a>
-</article>
-<article class="resource-card">
-<div class="card-top">
-<span class="part">Part 6</span>
-<span class="pill">Plan</span>
-</div>
-<h3>90-Day Brain Rewiring Plan</h3>
-<p>The roadmap tying everything together into a 90-day practice schedule.</p>
-<div class="meta"><strong>When:</strong> Main Roadmap</div>
-<div class="meta"><strong>How to use:</strong> Use this as the main schedule. The other files are the practice material.</div>
-<a class="button" href="think_in_japanese_part6_90_day_plan.html">Open Part 6</a>
-</article>
-</div>
-</section>
-<section class="section" id="timeline">
-<h2>90-day timeframe</h2>
-<p class="lead">The goal is not to memorize all 300 phrases at once. The goal is to activate the most useful phrases first, then expand into casual speech, listening recognition, and reading.</p>
-<div class="timeline">
-<div class="phase-card">
-<h3>Phase 1: Survival Brain</h3>
-<div class="days">Days 1–14</div>
-<p>Use Part 1 and Part 5. Focus on tired, hungry, confused, basic needs, and quick reactions. Aim for 25 phrases and the top 25 characters.</p>
-</div>
-<div class="phase-card">
-<h3>Phase 2: Daily Narration</h3>
-<div class="days">Days 15–30</div>
-<p>Use Part 1 heavily. Narrate work, home, travel, decisions, and end-of-day thoughts. Aim for 50 active phrases and the top 50 characters.</p>
-</div>
-<div class="phase-card">
-<h3>Phase 3: Social Survival</h3>
-<div class="days">Days 31–45</div>
-<p>Bring in Part 2. Add questions, clarifications, “how do you say…” patterns, and reactions you could use with another person.</p>
-</div>
-<div class="phase-card">
-<h3>Phase 4: Osaka / PR Mode</h3>
-<div class="days">Days 46–60</div>
-<p>Use the Kansai-flavored phrases in Part 2. Build recognition for casual rhythm, playful reactions, and warmer informal phrasing.</p>
-</div>
-<div class="phase-card">
-<h3>Phase 5: Gaki Mode</h3>
-<div class="days">Days 61–75</div>
-<p>Use Part 3 for comedy reactions, disbelief, teasing, correction, and variety-show listening recognition.</p>
-</div>
-<div class="phase-card">
-<h3>Phase 6: Reading Unlock</h3>
-<div class="days">Days 76–90</div>
-<p>Use Parts 4 and 5. Start hiding romaji. Read Japanese directly to meaning: 疲れた → tired, not 疲れた → tsukareta → tired.</p>
-</div>
-</div>
-</section>
-<section class="section" id="supplements">
-<h2>Study stack and recommended order</h2>
-<p class="lead">This replaces the old study tables with one mobile-friendly flow. Use the site as the main system, then bring in Michel Thomas, Genki, and Mondly when they support the current phase.</p>
-<div class="study-flow-grid">
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">🗺️</span>
-<h3>1. Start with the roadmap</h3>
-<p><strong>Part 6</strong> tells you which phase you are in and keeps the whole 90-day plan from turning into random studying.</p>
-<div class="mini-meta"><span class="mini-chip">Main guide</span><span class="mini-chip">Check weekly</span></div>
-</article>
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">💭</span>
-<h3>2. Activate real thoughts</h3>
-<p><strong>Part 1</strong> is the highest-value starting point: morning, work, tired moments, food, travel, emotions, decisions, and night thoughts.</p>
-<div class="mini-meta"><span class="mini-chip">Days 1–30</span><span class="mini-chip">20 min/day</span></div>
-</article>
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">🎧</span>
-<h3>3. Build audio instincts</h3>
-<p>Use <strong>Michel Thomas</strong> during walks, chores, or driving. After a lesson, say 3–5 phrases from Parts 1–3 aloud without looking.</p>
-<div class="mini-meta"><span class="mini-chip">15–30 min</span><span class="mini-chip">3–5x/week</span></div>
-</article>
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">📘</span>
-<h3>4. Add structure with Genki</h3>
-<p>Use <strong>Genki 1</strong> to understand why the phrases work. Treat grammar as an explanation after exposure, not a gate before speaking.</p>
-<div class="mini-meta"><span class="mini-chip">Grammar support</span><span class="mini-chip">2–3x/week</span></div>
-</article>
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">🔤</span>
-<h3>5. Read by frequency</h3>
-<p><strong>Part 5</strong> shows the characters you see most often. Learn those first, then use <strong>Part 4</strong> as your reference when a character keeps appearing.</p>
-<div class="mini-meta"><span class="mini-chip">Parts 4–5</span><span class="mini-chip">Days 1–90</span></div>
-</article>
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">💬</span>
-<h3>6. Expand into casual speech</h3>
-<p><strong>Part 2</strong> adds natural self-talk and real-world phrasing. <strong>Part 3</strong> adds Gaki/Kansai-style reactions for listening and comedy rhythm.</p>
-<div class="mini-meta"><span class="mini-chip">Days 31–75</span><span class="mini-chip">Listening boost</span></div>
-</article>
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">📱</span>
-<h3>7. Keep momentum with Mondly</h3>
-<p>Use <strong>Mondly</strong> as the light daily streak tool for vocabulary and listening. When it teaches a word, connect it back to one of your 300 phrases.</p>
-<div class="mini-meta"><span class="mini-chip">5–10 min/day</span><span class="mini-chip">Streak builder</span></div>
-</article>
-<article class="study-flow-card">
-<span class="icon" aria-hidden="true">🎯</span>
-<h3>8. Remove romaji gradually</h3>
-<p>The final target is direct meaning: 疲れた → tired, not 疲れた → tsukareta → tired. Hide romaji once a phrase feels familiar.</p>
-<div class="mini-meta"><span class="mini-chip">Final goal</span><span class="mini-chip">Reading unlock</span></div>
-</article>
-</div>
-<div class="study-flow-note"><strong>Simple rule:</strong> this site is the main system. Michel Thomas builds audio instincts, Genki explains the structure, and Mondly keeps the daily habit alive.</div>
+  </div>
 </section>
 
-<section class="section" id="routine">
-<h2>Suggested weekly routine</h2>
-<div class="grid">
-<div class="panel">
-<h3>Daily minimum</h3>
-<ul>
-<li>5 minutes: review yesterday's phrases</li>
-<li>5 minutes: learn 3–5 new phrases</li>
-<li>5 minutes: shadow aloud</li>
-<li>5 minutes: force internal monologue in Japanese</li>
-</ul>
-</div>
-<div class="panel">
-<h3>3 times per week</h3>
-<ul>
-<li>Use Michel Thomas for audio sentence-building</li>
-<li>Use Genki 1 for grammar context</li>
-<li>Update your focus list: phrases you actually used or thought that week</li>
-</ul>
-</div>
-<div class="panel">
-<h3>Weekend reset</h3>
-<ul>
-<li>Review Part 6 to confirm your current phase</li>
-<li>Use Part 5 to review high-frequency characters</li>
-<li>Watch one short Japanese clip and listen for phrases from Parts 2–3</li>
-</ul>
-</div>
-</div>
+<section id="roadmap">
+  <h2 class="section-title">Recommended path for new students</h2>
+  <p class="lead2">Do not open everything at once. Follow this path and add tools only when they solve the next problem.</p>
+  <div class="path-grid">
+    <article class="path-step"><div class="step-num">①</div><h3>Kana Dojo</h3><p>Learn hiragana and katakana first so Japanese stops looking like decoration.</p><a href="kana_dojo.html">Open Kana Dojo</a></article>
+    <article class="path-step"><div class="step-num">②</div><h3>Phrase Decks</h3><p>Replace common thoughts with Japanese phrases you can actually use every day.</p><div class="phrase-link-row"><a href="think_in_japanese_100_phrases_part1_reformatted.html">Open Phrases 1</a><a href="think_in_japanese_100_casual_phrases_part2.html">Open Phrases 2</a><a href="think_in_japanese_100_gaki_style_phrases_part3.html">Open Gaki Style</a></div></article>
+    <article class="path-step"><div class="step-num">③</div><h3>Sentence Structure</h3><p>Learn the patterns behind the phrases: particles, verbs, adjectives, and Japanese word order.</p><a href="sentence_structure_trainer.html">Open Sentence Structure</a></article>
+    <article class="path-step"><div class="step-num">④</div><h3>Michel Thomas Companion</h3><p>After each audio lesson, reinforce it with recall cards, reading, and kana writing.</p><a href="michel_thomas_japanese_supplement.html">Open MT Supplement</a></article>
+    <article class="path-step"><div class="step-num">⑤</div><h3>Reading Aid + Kanji Hub</h3><p>Start reading the same words you already know instead of memorizing random lists.</p><a href="think_in_japanese_character_reading_aid_part4.html">Open Reading Aid</a></article>
+    <article class="path-step"><div class="step-num">⑥</div><h3>Frequency Deck</h3><p>Study the characters and words that appear most often in this project.</p><a href="think_in_japanese_part5_frequency_deck.html">Open Frequency Deck</a></article>
+    <article class="path-step"><div class="step-num">⑦</div><h3>90-Day Tracker</h3><p>Turn all of the tools into a simple weekly plan with progress tracking.</p><a href="japanese_90_day_calendar_tracker.html">Open Tracker</a></article>
+  </div>
+</section>
+
+<section id="choose">
+  <h2 class="section-title">Which page should I use?</h2>
+  <div class="tool-grid">
+    <article class="tool-tile"><h3>I am brand new</h3><p>Start with Kana Dojo, then Phrase Deck 1. Keep it simple for the first week.</p><a href="kana_dojo.html">Go</a></article>
+    <article class="tool-tile"><h3>I know kana already</h3><p>Start with the phrase decks and choose the style that matches your mood: core daily phrases, more everyday thoughts, or casual Gaki-style practice.</p><div class="phrase-link-row"><a href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a></div></article>
+    <article class="tool-tile"><h3>I am using Michel Thomas</h3><p>Use the MT Supplement after listening. The audio remains the main lesson.</p><a href="michel_thomas_japanese_supplement.html">Go</a></article>
+    <article class="tool-tile"><h3>I am using Genki</h3><p>Use Reading Aid, Kanji Hub, and the AI tutor to explain grammar and create examples.</p><a href="kanji_hub.html">Go</a></article>
+    <article class="tool-tile"><h3>I want grammar structure practice</h3><p>Use the Sentence Structure trainer for color-coded particles, core patterns, flashcards, and drag-and-drop validation.</p><a href="sentence_structure_trainer.html">Go</a></article>
+    <article class="tool-tile"><h3>I only have 10 minutes</h3><p>Do Frequency Deck or one short Kana Dojo session. Small reps count.</p><a href="think_in_japanese_part5_frequency_deck.html">Go</a></article>
+    <article class="tool-tile"><h3>I want conversation practice</h3><p>Open the AI agent and ask for roleplay in Japanese, English, or Spanish.</p><a href="#ai-sensei">How to use it</a></article>
+  </div>
+</section>
+
+<section id="ai-sensei">
+  <h2 class="section-title">AI Japanese tutor</h2>
+  <div class="home-hero">
+    <div class="ai-box"><h3>Ask the site’s AI agent</h3><p>The built-in AI tutor can explain grammar, quiz you, create example sentences, roleplay travel or restaurant situations, and answer in English, Spanish, or Japanese.</p><p>Try: “Quiz me on today’s kana,” “Explain ます vs ません,” or “Roleplay ordering coffee in Japanese.”</p></div>
+    <div class="offline-box"><h3>Offline-friendly by design</h3><p>Most tools work locally after downloading the site: Kana Dojo, sentence structure trainer, phrase decks, reading aid, kanji hub, frequency deck, theme switching, and trackers. Only the AI tutor needs internet access.</p></div>
+  </div>
+</section>
+
+<section id="plans">
+  <h2 class="section-title">Simple study plans</h2>
+  <div class="plan-grid">
+    <article class="plan-tile"><h3>15 minutes</h3><p>5 min Kana Dojo, 5 min Phrase Deck, 5 min speaking aloud.</p></article>
+    <article class="plan-tile"><h3>30 minutes</h3><p>10 min audio or kana, 10 min phrase recall, 10 min reading/writing.</p></article>
+    <article class="plan-tile"><h3>60 minutes</h3><p>Michel Thomas lesson, MT Supplement review, Reading Aid, and one AI conversation drill.</p></article>
+  </div>
 </section>
 <section class="sensei-recommends" id="sensei-recommends">
 <div class="sensei-note">
@@ -806,8 +742,8 @@ body:not(.theme-garden):not(.theme-night) .study-flow-card:nth-child(2n) { borde
     });
   }
   function initTheme(){
-    var saved = 'pixel';
-    try{ saved = localStorage.getItem('tij-theme') || 'pixel'; }catch(e){}
+    var saved = 'garden';
+    try{ saved = localStorage.getItem('tij-theme') || 'garden'; }catch(e){}
     applyTheme(saved);
     document.querySelectorAll('.theme-btn').forEach(function(btn){
       btn.addEventListener('click', function(){ applyTheme(btn.getAttribute('data-theme')); });
@@ -863,5 +799,13 @@ body:not(.theme-garden):not(.theme-night) .study-flow-card:nth-child(2n) { borde
         does not display on the website.
 ============================================================
 -->
+<script>
+(function(){
+  document.addEventListener('click', function(e){
+    document.querySelectorAll('.pixel-nav details[open]').forEach(function(d){ if(!d.contains(e.target)) d.removeAttribute('open'); });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ document.querySelectorAll('.pixel-nav details[open]').forEach(function(d){d.removeAttribute('open');}); }});
+})();
+</script>
 </body>
 </html>

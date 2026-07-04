@@ -100,4 +100,14 @@
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
+  <url>
+    <loc>https://thinkinjapanese.com/michel_thomas_japanese_supplement.html</loc>
+  </url>
+
+  <url>
+    <loc>https://progretech.com/abdiel-think-in-japanese/sentence_structure_trainer.html</loc>
+    <lastmod>2026-07-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
 </urlset>

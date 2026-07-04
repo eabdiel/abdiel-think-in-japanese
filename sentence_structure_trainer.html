@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Interactive Japanese sentence structure trainer with color-coded grammar, core patterns, flashcards, and drag-and-drop sentence validation." />
+<title>Sentence Structure Trainer - Think in Japanese</title>
+<link href="pixel-theme-v2.css" rel="stylesheet"/>
+<style>
+/*
+============================================================
+ Japanese Sentence Structure Trainer — Expanded Edition
+ Author: Edwin / Abdiel Rodriguez
+ Intent: Single-page offline study tool for Japanese sentence
+ structure using color-coded grammar, a structured syllabus,
+ flashcards, and drag-and-drop sentence validation.
+============================================================
+*/
+:root{
+  --bg:#fff8ef;--ink:#2d2a26;--muted:#6d6258;--card:#ffffff;--line:#ead9c5;
+  --particle:#ff8787;--verb:#74c0fc;--adjective:#ffe066;--noun:#8ce99a;
+  --time:#b197fc;--place:#ffa94d;--topic:#faa2c1;--object:#63e6be;
+  --grammar:#c0eb75;--shadow:0 10px 24px rgba(91,61,30,.12);--accent:#7c5cff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(135deg,#fff8ef,#f3f0ff);color:var(--ink);line-height:1.5}
+header{padding:26px 18px;text-align:center;background:#2d2a26;color:white;border-bottom:5px solid #ffd43b}
+header h1{margin:0;font-size:clamp(1.7rem,4vw,3rem)} header p{margin:8px auto 0;max-width:930px;color:#f7eadb}
+.tool-nav{position:sticky;top:48px;z-index:5;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px}
+.tool-nav a{padding:8px 12px;border-radius:999px;color:#2d2a26;text-decoration:none;font-weight:800;border:1px solid var(--line);background:#fff}
+.tool-nav a:hover{background:#fff1c2}
+main{max-width:1220px;margin:0 auto;padding:20px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow)}
+h2{margin-top:0;font-size:1.45rem} h3{margin-bottom:8px}.muted,.note{color:var(--muted);font-size:.95rem}.tiny{font-size:.84rem;color:var(--muted)}
+.pill{display:inline-block;padding:4px 8px;border-radius:8px;font-weight:900;margin:2px;color:#111}.particle{background:var(--particle)}.verb{background:var(--verb)}.adjective{background:var(--adjective)}.noun{background:var(--noun)}.time{background:var(--time)}.place{background:var(--place)}.topic{background:var(--topic)}.object{background:var(--object)}.grammar{background:var(--grammar)}
+.example{font-size:1.12rem;background:#fffaf4;border-left:6px solid #ffd43b;padding:12px;border-radius:12px;margin:10px 0}.lesson{border-left:5px solid var(--accent);padding-left:12px;margin:14px 0}.btn{border:0;background:#2d2a26;color:white;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer}.btn.secondary{background:#7c5cff}.btn.ghost{background:#fff;color:#2d2a26;border:1px solid var(--line)}.btn:active{transform:translateY(1px)}
+.flashcard{min-height:190px;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed var(--line);border-radius:20px;background:#fffdf8;font-size:1.25rem;font-weight:900;padding:20px;cursor:pointer;user-select:none;white-space:pre-line}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.bank,.dropzone{display:flex;flex-wrap:wrap;gap:8px;min-height:76px;padding:12px;border-radius:16px;border:2px dashed var(--line);background:#fffdf8}.token{padding:10px 12px;border-radius:12px;background:#f1f3f5;border:1px solid #d0d7de;cursor:grab;font-weight:900;user-select:none}.token.dragging{opacity:.45}.dropzone{background:#f8f9ff}.feedback{padding:12px;border-radius:14px;margin-top:12px;font-weight:850}.ok{background:#d3f9d8;color:#1b5e20}.bad{background:#ffe3e3;color:#8a1c1c}.warn{background:#fff3bf;color:#6b4f00}.legend{display:flex;flex-wrap:wrap;gap:6px}.footer{text-align:center;color:#6d6258;padding:30px}.structure{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f6f1ff;border-radius:12px;padding:10px;overflow:auto;font-weight:800}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}.select{padding:10px;border-radius:12px;border:1px solid var(--line);font-weight:800;background:white}.pattern-card{display:flex;flex-direction:column}.pattern-card .example{margin-top:auto}.tag{display:inline-block;font-size:.76rem;border:1px solid var(--line);border-radius:999px;padding:2px 7px;background:#fff;margin:2px;font-weight:800}
+@media(max-width:640px){main{padding:12px}.card{padding:14px}.token{padding:9px}.example{font-size:1.03rem}.tool-nav{position:static}}
+</style>
+</head>
+<body class="theme-garden">
+<header>
+  <h1>Japanese Sentence Structure Trainer</h1>
+  <p>Expanded core-pattern edition: color-coded grammar, a structured syllabus, flashcards, and drag-and-drop sentence building.</p>
+</header>
+<nav class="pixel-nav"><div class="pixel-nav-inner grouped-nav">
+<a href="index.html">Home</a>
+<details class="nav-group"><summary>Practice</summary><div class="nav-menu"><a href="kana_dojo.html">Kana Dojo</a><a href="kanji_hub.html">Kanji Hub</a><a href="think_in_japanese_character_reading_aid_part4.html">Reading Aid</a><a href="think_in_japanese_part5_frequency_deck.html">Frequency Deck</a><a href="sentence_structure_trainer.html" class="active">Sentence Structure</a></div></details>
+<details class="nav-group"><summary>Phrase Decks</summary><div class="nav-menu"><a href="think_in_japanese_100_phrases_part1_reformatted.html">Phrases 1</a><a href="think_in_japanese_100_casual_phrases_part2.html">Phrases 2</a><a href="think_in_japanese_100_gaki_style_phrases_part3.html">Gaki Style</a></div></details>
+<details class="nav-group"><summary>Plans</summary><div class="nav-menu"><a href="japanese_90_day_calendar_tracker.html">90-Day Tracker</a><a href="think_in_japanese_part6_90_day_plan.html">90-Day Plan</a><a href="michel_thomas_japanese_supplement.html">MT Supplement</a></div></details>
+<div class="nav-spacer"></div><div aria-label="Language selector" class="lang-toggle nav-lang-toggle"><span class="lang-pill active">English</span><a class="lang-pill" href="index_es.html">Español</a></div></div></nav>
+<nav class="tool-nav">
+  <a href="#legend">Color Key</a><a href="#syllabus">Syllabus</a><a href="#patterns">Core Patterns</a><a href="#flashcards">Flashcards</a><a href="#builder">Sentence Builder</a><a href="#cheatsheet">Cheat Sheet</a>
+</nav>
+<main>
+<section id="legend" class="card">
+  <h2>Color Key</h2>
+  <div class="legend">
+    <span class="pill topic">Topic / は</span><span class="pill particle">Particle</span><span class="pill object">Object / を</span><span class="pill verb">Verb / Ending</span><span class="pill adjective">Adjective</span><span class="pill noun">Noun</span><span class="pill time">Time</span><span class="pill place">Place</span><span class="pill grammar">Grammar Pattern</span>
+  </div>
+  <p class="note">Core idea: Japanese usually places context first and the main verb/ending last. Think: <b>time/context → topic → place/details → object → verb/ending</b>.</p>
+</section>
+
+<section id="syllabus" class="card">
+  <h2>Structured Syllabus</h2>
+  <p class="note">Work through these in order. Each stage unlocks a major group of everyday sentences.</p>
+  <div class="grid" id="lessonGrid"></div>
+</section>
+
+<section id="patterns" class="card">
+  <h2>Most-Used Core Sentence Patterns</h2>
+  <div class="toolbar">
+    <label><b>Filter:</b></label>
+    <select id="categoryFilter" class="select" onchange="renderPatterns()"><option value="all">All categories</option></select>
+    <button class="btn ghost" onclick="expandAllPatterns()">Show all</button>
+  </div>
+  <div class="grid" id="patternGrid"></div>
+</section>
+
+<section id="flashcards" class="card">
+  <h2>Flashcards</h2>
+  <p class="note">Tap the card to flip. Cards are generated from the expanded pattern list.</p>
+  <div class="flashcard" id="flashcard">Loading...</div>
+  <div class="controls"><button class="btn secondary" onclick="prevCard()">Previous</button><button class="btn" onclick="nextCard()">Next</button><button class="btn ghost" onclick="shuffleCards()">Shuffle</button></div>
+</section>
+
+<section id="builder" class="card">
+  <h2>Drag-and-Drop Sentence Builder</h2>
+  <div class="toolbar"><button class="btn secondary" onclick="setLevel('easy')">Easy</button><button class="btn secondary" onclick="setLevel('normal')">Normal</button><button class="btn secondary" onclick="setLevel('hard')">Hard</button><span class="tag" id="levelTag">Level: normal</span></div>
+  <p><b>English prompt:</b> <span id="englishPrompt"></span></p>
+  <p class="note">Drag or tap the Japanese pieces into the answer box. The validator checks beginner-friendly word order.</p>
+  <h3>Word Bank</h3><div class="bank" id="wordBank"></div>
+  <h3>Your Sentence</h3><div class="dropzone" id="dropzone"></div>
+  <div class="controls"><button class="btn" onclick="checkAnswer()">Validate</button><button class="btn secondary" onclick="newChallenge()">New Sentence</button><button class="btn ghost" onclick="resetChallenge()">Reset</button><button class="btn ghost" onclick="revealAnswer()">Reveal</button></div>
+  <div id="feedback"></div>
+</section>
+
+<section id="cheatsheet" class="card">
+  <h2>Mini Grammar Cheat Sheet</h2>
+  <div class="grid">
+    <div><h3>は wa</h3><p>Topic marker: “as for...” Written は, pronounced <b>wa</b> as a particle.</p></div>
+    <div><h3>が ga</h3><p>Marks subject/new information, often used with existence, ability, likes, and who/what did something.</p></div>
+    <div><h3>を o</h3><p>Marks the direct object of an action: 水を飲みます = drink water.</p></div>
+    <div><h3>に / へ</h3><p>Destination, time point, target, indirect object. へ emphasizes direction.</p></div>
+    <div><h3>で</h3><p>Where an action happens, or the tool/method used: 学校で, 電車で.</p></div>
+    <div><h3>と / や</h3><p>と = and/with/quote marker. や = and things like...</p></div>
+    <div><h3>から / まで</h3><p>From / until: 9時から5時まで.</p></div>
+    <div><h3>です / ます</h3><p>Polite endings. です for noun/adjective sentences; ます for verbs.</p></div>
+    <div><h3>Plain forms</h3><p>Dictionary form, ない, た, なかった become the base for many patterns.</p></div>
+  </div>
+</section>
+</main>
+<div class="footer">Built as a single-file offline Japanese learning aid. Save this HTML anywhere and open it in a browser.</div>
+<script>
+const lessons=[
+ {t:'1. Word Order Foundation',d:'Context first, main verb or ending last. Practice Topic → Details → Ending.'},
+ {t:'2. Core Particles',d:'は, が, を, に, へ, で, と, も, の, から, まで.'},
+ {t:'3. Noun Sentences',d:'A は B です, A は B じゃありません, A は B ですか.'},
+ {t:'4. Verb Sentences',d:'ます, ません, ました, ませんでした with objects and places.'},
+ {t:'5. Adjectives',d:'い-adjectives and な-adjectives in present, negative, and past.'},
+ {t:'6. Existence and Location',d:'あります / います, location に thing が あります.'},
+ {t:'7. Wants, Likes, Ability',d:'ほしい, たい, 好き, できる, potential forms.'},
+ {t:'8. Requests and Permission',d:'てください, てもいいです, てはいけません, ないでください.'},
+ {t:'9. Connecting Ideas',d:'て-form, から, けど, たり, ながら, 前に, 後で.'},
+ {t:'10. Reasons and Explanations',d:'んです, ので, から, と思います, と言いました.'},
+ {t:'11. Comparisons and Plans',d:'より, のほうが, いちばん, つもり, 予定.'},
+ {t:'12. Conditionals and Advanced Core',d:'たら, と, ば, なら, そう, よう, passive/causative basics.'}
+];
+const patterns=[
+ {cat:'Noun / Identity',name:'A is B',structure:'A は B です。',jp:'私は学生です。',en:'I am a student.',tags:['です','は']},
+ {cat:'Noun / Identity',name:'A is not B',structure:'A は B じゃありません。',jp:'私は先生じゃありません。',en:'I am not a teacher.',tags:['negative']},
+ {cat:'Noun / Identity',name:'Was B',structure:'A は B でした。',jp:'昨日は休みでした。',en:'Yesterday was a day off.',tags:['past']},
+ {cat:'Noun / Identity',name:'Was not B',structure:'A は B じゃありませんでした。',jp:'昨日は休みじゃありませんでした。',en:'Yesterday was not a day off.',tags:['past negative']},
+ {cat:'Noun / Identity',name:'Question',structure:'A は B ですか。',jp:'これは本ですか。',en:'Is this a book?',tags:['か']},
+ {cat:'Particles',name:'Also / too',structure:'A も B です。',jp:'私も学生です。',en:'I am also a student.',tags:['も']},
+ {cat:'Particles',name:'Possession / description',structure:'A の B',jp:'私の本です。',en:'It is my book.',tags:['の']},
+ {cat:'Particles',name:'And / with',structure:'A と B / A と Verb',jp:'友だちと行きます。',en:'I go with a friend.',tags:['と']},
+ {cat:'Particles',name:'And things like',structure:'A や B など',jp:'本やノートを買います。',en:'I buy books, notebooks, and things like that.',tags:['や']},
+ {cat:'Particles',name:'From / until',structure:'A から B まで',jp:'9時から5時まで働きます。',en:'I work from 9 to 5.',tags:['から','まで']},
+ {cat:'Verb Basics',name:'Do an action',structure:'Topic は Object を Verbます。',jp:'私は水を飲みます。',en:'I drink water.',tags:['を','ます']},
+ {cat:'Verb Basics',name:'Do not do',structure:'Topic は Object を Verbません。',jp:'私は肉を食べません。',en:'I do not eat meat.',tags:['ません']},
+ {cat:'Verb Basics',name:'Did an action',structure:'Topic は Object を Verbました。',jp:'昨日、映画を見ました。',en:'I watched a movie yesterday.',tags:['ました']},
+ {cat:'Verb Basics',name:'Did not do',structure:'Topic は Object を Verbませんでした。',jp:'昨日、勉強しませんでした。',en:'I did not study yesterday.',tags:['past negative']},
+ {cat:'Verb Basics',name:'Habit / frequency',structure:'Frequency + Verbます。',jp:'毎日、日本語を勉強します。',en:'I study Japanese every day.',tags:['frequency']},
+ {cat:'Movement / Place',name:'Go to a place',structure:'Place に / へ 行きます。',jp:'学校に行きます。',en:'I go to school.',tags:['に','へ']},
+ {cat:'Movement / Place',name:'Come from a place',structure:'Place から 来ました。',jp:'プエルトリコから来ました。',en:'I came from Puerto Rico.',tags:['から']},
+ {cat:'Movement / Place',name:'Action location',structure:'Place で Verbます。',jp:'学校で勉強します。',en:'I study at school.',tags:['で']},
+ {cat:'Movement / Place',name:'Means / tool',structure:'Tool / Method で Verbます。',jp:'電車で行きます。',en:'I go by train.',tags:['で']},
+ {cat:'Movement / Place',name:'Target / recipient',structure:'Person に Verbます。',jp:'友だちにメールを送ります。',en:'I send an email to a friend.',tags:['に']},
+ {cat:'Time',name:'Specific time',structure:'Time に Verbます。',jp:'7時に起きます。',en:'I wake up at 7.',tags:['に']},
+ {cat:'Time',name:'Relative time without に',structure:'今日 / 明日 / 昨日 + Verb',jp:'明日、学校に行きます。',en:'Tomorrow I go to school.',tags:['time']},
+ {cat:'Time',name:'Before doing',structure:'Verb dictionary + 前に',jp:'寝る前に本を読みます。',en:'I read a book before sleeping.',tags:['前に']},
+ {cat:'Time',name:'After doing',structure:'Verbた + 後で',jp:'仕事の後で勉強します。',en:'I study after work.',tags:['後で']},
+ {cat:'Adjectives',name:'い-adjective present',structure:'Noun は い-adj です。',jp:'この本はおもしろいです。',en:'This book is interesting.',tags:['い-adj']},
+ {cat:'Adjectives',name:'い-adjective negative',structure:'い-adj stem + くないです。',jp:'今日は寒くないです。',en:'Today is not cold.',tags:['negative']},
+ {cat:'Adjectives',name:'い-adjective past',structure:'い-adj stem + かったです。',jp:'昨日は暑かったです。',en:'Yesterday was hot.',tags:['past']},
+ {cat:'Adjectives',name:'な-adjective present',structure:'Noun は な-adj です。',jp:'この町は静かです。',en:'This town is quiet.',tags:['な-adj']},
+ {cat:'Adjectives',name:'な-adjective before noun',structure:'な-adj な Noun',jp:'静かな町です。',en:'It is a quiet town.',tags:['な']},
+ {cat:'Adjectives',name:'Adjective + noun',structure:'い-adj + Noun',jp:'新しい車です。',en:'It is a new car.',tags:['noun modifier']},
+ {cat:'Existence',name:'Thing exists',structure:'Place に Thing が あります。',jp:'机の上に本があります。',en:'There is a book on the desk.',tags:['あります']},
+ {cat:'Existence',name:'Living thing exists',structure:'Place に Person/Animal が います。',jp:'部屋に猫がいます。',en:'There is a cat in the room.',tags:['います']},
+ {cat:'Existence',name:'Have thing',structure:'Topic は Thing が あります。',jp:'私は時間があります。',en:'I have time.',tags:['あります']},
+ {cat:'Existence',name:'Have person/animal',structure:'Topic は Person/Animal が います。',jp:'私は犬がいます。',en:'I have a dog.',tags:['います']},
+ {cat:'Likes / Wants / Ability',name:'Like',structure:'Topic は Noun が 好きです。',jp:'私は日本語が好きです。',en:'I like Japanese.',tags:['が','好き']},
+ {cat:'Likes / Wants / Ability',name:'Dislike',structure:'Topic は Noun が 嫌いです。',jp:'私は雨が嫌いです。',en:'I dislike rain.',tags:['嫌い']},
+ {cat:'Likes / Wants / Ability',name:'Want a thing',structure:'Topic は Noun が ほしいです。',jp:'私は新しい本がほしいです。',en:'I want a new book.',tags:['ほしい']},
+ {cat:'Likes / Wants / Ability',name:'Want to do',structure:'Verb stem + たいです。',jp:'日本に行きたいです。',en:'I want to go to Japan.',tags:['たい']},
+ {cat:'Likes / Wants / Ability',name:'Can do',structure:'Noun が できます。',jp:'日本語ができます。',en:'I can do/speak Japanese.',tags:['できる']},
+ {cat:'Likes / Wants / Ability',name:'Potential form',structure:'Potential verb + ます。',jp:'漢字が読めます。',en:'I can read kanji.',tags:['potential']},
+ {cat:'Requests / Commands',name:'Please do',structure:'て-form + ください。',jp:'ここに書いてください。',en:'Please write here.',tags:['てください']},
+ {cat:'Requests / Commands',name:'Please do not',structure:'ない-form + でください。',jp:'ここで食べないでください。',en:'Please do not eat here.',tags:['ないでください']},
+ {cat:'Requests / Commands',name:'May I / allowed',structure:'て-form + もいいです。',jp:'写真を撮ってもいいです。',en:'It is okay to take a photo.',tags:['てもいい']},
+ {cat:'Requests / Commands',name:'Must not',structure:'て-form + はいけません。',jp:'ここで走ってはいけません。',en:'You must not run here.',tags:['てはいけません']},
+ {cat:'Requests / Commands',name:'Must do',structure:'ない-form stem + なければなりません。',jp:'宿題をしなければなりません。',en:'I must do homework.',tags:['must']},
+ {cat:'Requests / Commands',name:'Do not have to',structure:'ない-form + くてもいいです。',jp:'今日は来なくてもいいです。',en:'You do not have to come today.',tags:['なくてもいい']},
+ {cat:'Connecting',name:'And then / linking actions',structure:'て-form, て-form, Verb。',jp:'朝ごはんを食べて、学校に行きます。',en:'I eat breakfast and go to school.',tags:['て-form']},
+ {cat:'Connecting',name:'Because',structure:'Reason から Result。',jp:'寒いから、家にいます。',en:'Because it is cold, I stay home.',tags:['から']},
+ {cat:'Connecting',name:'But / though',structure:'Sentence けど Sentence。',jp:'高いけど、買いたいです。',en:'It is expensive, but I want to buy it.',tags:['けど']},
+ {cat:'Connecting',name:'Do things like',structure:'Verbたり Verbたり します。',jp:'週末は映画を見たり、ゲームをしたりします。',en:'On weekends, I do things like watch movies and play games.',tags:['たり']},
+ {cat:'Connecting',name:'While doing',structure:'Verb stem + ながら',jp:'音楽を聞きながら勉強します。',en:'I study while listening to music.',tags:['ながら']},
+ {cat:'Connecting',name:'Try doing',structure:'て-form + みます。',jp:'日本語で話してみます。',en:'I will try speaking in Japanese.',tags:['てみる']},
+ {cat:'State / Aspect',name:'Doing now',structure:'て-form + います。',jp:'今、日本語を勉強しています。',en:'I am studying Japanese now.',tags:['ている']},
+ {cat:'State / Aspect',name:'Already done',structure:'もう Verbました。',jp:'もう宿題をしました。',en:'I already did homework.',tags:['もう']},
+ {cat:'State / Aspect',name:'Not yet',structure:'まだ Verbていません。',jp:'まだ昼ごはんを食べていません。',en:'I have not eaten lunch yet.',tags:['まだ']},
+ {cat:'State / Aspect',name:'Experience',structure:'Verbたことがあります。',jp:'日本に行ったことがあります。',en:'I have been to Japan.',tags:['ことがある']},
+ {cat:'State / Aspect',name:'Change / become',structure:'Noun / adj + になります。',jp:'日本語が上手になりました。',en:'My Japanese became good.',tags:['になる']},
+ {cat:'Explanations / Thoughts',name:'Explanation',structure:'Plain form + んです。',jp:'明日、試験があるんです。',en:'It is that I have a test tomorrow.',tags:['んです']},
+ {cat:'Explanations / Thoughts',name:'I think',structure:'Plain form + と思います。',jp:'明日は雨だと思います。',en:'I think it will rain tomorrow.',tags:['と思う']},
+ {cat:'Explanations / Thoughts',name:'Quote / said',structure:'Sentence と言いました。',jp:'先生は「静かに」と言いました。',en:'The teacher said, “Quietly.”',tags:['と言う']},
+ {cat:'Explanations / Thoughts',name:'Plan / intend',structure:'Dictionary form + つもりです。',jp:'来年、日本に行くつもりです。',en:'I intend to go to Japan next year.',tags:['つもり']},
+ {cat:'Explanations / Thoughts',name:'Schedule / plan',structure:'Noun の / Verb dictionary + 予定です。',jp:'明日、会議の予定です。',en:'I have a meeting scheduled tomorrow.',tags:['予定']},
+ {cat:'Comparison',name:'A is more than B',structure:'A は B より Adj です。',jp:'東京は大阪より大きいです。',en:'Tokyo is bigger than Osaka.',tags:['より']},
+ {cat:'Comparison',name:'A is better/more',structure:'A のほうが B より Adj です。',jp:'猫のほうが犬より好きです。',en:'I like cats more than dogs.',tags:['のほうが']},
+ {cat:'Comparison',name:'Most',structure:'A が いちばん Adj です。',jp:'日本語がいちばん楽しいです。',en:'Japanese is the most fun.',tags:['いちばん']},
+ {cat:'Comparison',name:'Which is more?',structure:'A と B と どちらが Adj ですか。',jp:'日本語と英語とどちらが難しいですか。',en:'Which is harder, Japanese or English?',tags:['どちら']},
+ {cat:'Conditionals',name:'If / when',structure:'Verbたら / Adjかったら',jp:'時間があったら、行きます。',en:'If I have time, I will go.',tags:['たら']},
+ {cat:'Conditionals',name:'Natural consequence',structure:'Verb dictionary + と',jp:'このボタンを押すと、ドアが開きます。',en:'When you press this button, the door opens.',tags:['と']},
+ {cat:'Conditionals',name:'If topic/context',structure:'Noun なら',jp:'日本語なら、少し分かります。',en:'If it is Japanese, I understand a little.',tags:['なら']},
+ {cat:'Conditionals',name:'If possible form',structure:'ば-form',jp:'安ければ、買います。',en:'If it is cheap, I will buy it.',tags:['ば']},
+ {cat:'Casual / Plain',name:'Plain present',structure:'Dictionary form。',jp:'水を飲む。',en:'I drink water.',tags:['plain']},
+ {cat:'Casual / Plain',name:'Plain negative',structure:'ない-form。',jp:'今日は行かない。',en:'I am not going today.',tags:['plain negative']},
+ {cat:'Casual / Plain',name:'Plain past',structure:'た-form。',jp:'昨日、映画を見た。',en:'I watched a movie yesterday.',tags:['plain past']},
+ {cat:'Casual / Plain',name:'Plain question',structure:'Rising tone / の？',jp:'もう食べた？',en:'Did you eat already?',tags:['casual question']},
+ {cat:'Helpful Advanced Core',name:'Looks like',structure:'Verb stem / adj stem + そうです。',jp:'このケーキはおいしそうです。',en:'This cake looks delicious.',tags:['そう']},
+ {cat:'Helpful Advanced Core',name:'Seems / heard',structure:'Plain form + そうです。',jp:'明日は雨が降るそうです。',en:'I heard it will rain tomorrow.',tags:['hearsay']},
+ {cat:'Helpful Advanced Core',name:'Become able to',structure:'Potential/dictionary + ようになります。',jp:'漢字が読めるようになりました。',en:'I became able to read kanji.',tags:['ようになる']},
+ {cat:'Helpful Advanced Core',name:'Try to / make effort',structure:'Dictionary + ようにします。',jp:'毎日勉強するようにします。',en:'I try to study every day.',tags:['ようにする']},
+ {cat:'Helpful Advanced Core',name:'Passive basic',structure:'Passive verb。',jp:'私は先生にほめられました。',en:'I was praised by the teacher.',tags:['passive']},
+ {cat:'Helpful Advanced Core',name:'Causative basic',structure:'Causative verb。',jp:'母は子どもに野菜を食べさせました。',en:'The mother made/let the child eat vegetables.',tags:['causative']}
+];
+function spanify(jp){
+ let s=jp;
+ const reps=[
+  [/私|僕|彼|彼女|先生|友だち|母|子ども|これ|この本|この町|このケーキ|東京|大阪|日本語|英語|猫|犬/g,'noun'],
+  [/今日|明日|昨日|毎日|週末|今|来年|朝ごはん|昼ごはん|9時|5時/g,'time'],
+  [/学校|家|部屋|机の上|ここ|日本|プエルトリコ/g,'place'],
+  [/は|が|を|に|へ|で|と|も|の|から|まで|より|なら|けど|か/g,'particle'],
+  [/おもしろい|寒くない|暑かった|静か|新しい|上手|大きい|好き|嫌い|高い|難しい|楽しい|安ければ|おいしそう/g,'adjective'],
+  [/です|でした|じゃありません|じゃありませんでした|飲みます|食べません|見ました|勉強しませんでした|勉強します|行きます|来ました|働きます|起きます|読みます|あります|います|ほしいです|行きたいです|できます|読めます|書いてください|食べないでください|撮ってもいいです|走ってはいけません|しなければなりません|来なくてもいいです|聞きながら|話してみます|勉強しています|しました|食べていません|なりました|思います|言いました|つもりです|予定です|買います|飲む|行かない|見た|食べた|降るそうです|なりました|します|ほめられました|食べさせました|開きます/g,'verb'],
+  [/前に|後で|たり|ながら|てみます|ています|ことがあります|んです|と思います|と言いました|つもり|予定|いちばん|どちら|たら|そうです|ように/g,'grammar']
+ ];
+ reps.forEach(([re,cls])=>{s=s.replace(re,m=>`<span class="pill ${cls}">${m}</span>`)});
+ return s;
+}
+const lessonGrid=document.getElementById('lessonGrid'); lessons.forEach(x=>{lessonGrid.innerHTML+=`<div class="lesson"><h3>${x.t}</h3><p>${x.d}</p></div>`});
+const categoryFilter=document.getElementById('categoryFilter'); [...new Set(patterns.map(p=>p.cat))].forEach(c=>categoryFilter.innerHTML+=`<option value="${c}">${c}</option>`);
+let patternLimit=18;
+function renderPatterns(){const grid=document.getElementById('patternGrid'); const cat=categoryFilter.value; let list=patterns.filter(p=>cat==='all'||p.cat===cat); grid.innerHTML=''; list.slice(0,patternLimit).forEach(p=>{grid.innerHTML+=`<div class="card pattern-card"><h3>${p.name}</h3><div>${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><div class="structure">${p.structure}</div><div class="example">${spanify(p.jp)}<br><span class="note">${p.en}</span></div></div>`}); if(list.length>patternLimit) grid.innerHTML+=`<div class="card"><h3>${list.length-patternLimit} more patterns hidden</h3><p class="note">Use “Show all” to display the full expanded list.</p><button class="btn" onclick="expandAllPatterns()">Show all patterns</button></div>`;}
+function expandAllPatterns(){patternLimit=999;renderPatterns()} renderPatterns();
+const cards=patterns.map(p=>[`Pattern: ${p.name}\n${p.structure}`,`${p.jp}\n${p.en}\nCategory: ${p.cat}`]);
+let cardIndex=0,flipped=false; const fc=document.getElementById('flashcard');
+function showCard(){fc.textContent=flipped?cards[cardIndex][1]:cards[cardIndex][0]} fc.onclick=()=>{flipped=!flipped;showCard()};
+function nextCard(){cardIndex=(cardIndex+1)%cards.length;flipped=false;showCard()} function prevCard(){cardIndex=(cardIndex-1+cards.length)%cards.length;flipped=false;showCard()} function shuffleCards(){cards.sort(()=>Math.random()-.5);cardIndex=0;flipped=false;showCard()} showCard();
+const challenges=[
+ {lvl:'easy',en:'I drink water.',ans:['私','は','水','を','飲みます'],extra:['学校','に','行きます','今日']},
+ {lvl:'easy',en:'I go to school tomorrow.',ans:['明日','私','は','学校','に','行きます'],extra:['水','を','飲みます','で']},
+ {lvl:'easy',en:'This book is interesting.',ans:['この本','は','おもしろい','です'],extra:['水','を','飲みます','学校']},
+ {lvl:'easy',en:'Is this a cat?',ans:['これ','は','猫','です','か'],extra:['犬','を','飲みます','学校']},
+ {lvl:'easy',en:'I do not eat meat.',ans:['私','は','肉','を','食べません'],extra:['水','学校','に','行きます']},
+ {lvl:'normal',en:'I study Japanese at school.',ans:['私','は','学校','で','日本語','を','勉強します'],extra:['明日','行きます','おもしろい']},
+ {lvl:'normal',en:'There is a book on the desk.',ans:['机の上','に','本','が','あります'],extra:['猫','います','は','飲みます']},
+ {lvl:'normal',en:'I like Japanese.',ans:['私','は','日本語','が','好き','です'],extra:['を','飲みます','学校','に']},
+ {lvl:'normal',en:'Please write here.',ans:['ここ','に','書いて','ください'],extra:['水','を','飲みます','学校']},
+ {lvl:'normal',en:'It is okay to take a photo.',ans:['写真','を','撮って','も','いい','です'],extra:['学校','に','行きます','は']},
+ {lvl:'normal',en:'Because it is cold, I stay home.',ans:['寒い','から','家','に','います'],extra:['水','を','飲みます','です']},
+ {lvl:'normal',en:'I am studying Japanese now.',ans:['今','日本語','を','勉強して','います'],extra:['学校','に','行きます','昨日']},
+ {lvl:'hard',en:'I read a book before sleeping.',ans:['寝る','前に','本','を','読みます'],extra:['後で','学校','に','行きます']},
+ {lvl:'hard',en:'I have been to Japan.',ans:['日本','に','行った','こと','が','あります'],extra:['水','を','飲みます','好き']},
+ {lvl:'hard',en:'I think it will rain tomorrow.',ans:['明日','は','雨','が','降る','と','思います'],extra:['水','を','飲みます','学校']},
+ {lvl:'hard',en:'If I have time, I will go.',ans:['時間','が','あったら','行きます'],extra:['水','を','飲みます','です']},
+ {lvl:'hard',en:'Japanese is more fun than English.',ans:['日本語','は','英語','より','楽しい','です'],extra:['を','飲みます','学校','に']},
+ {lvl:'hard',en:'I became able to read kanji.',ans:['漢字','が','読める','ように','なりました'],extra:['水','を','飲みます','学校']}
+];
+let current,bankWords,level='normal'; const bank=document.getElementById('wordBank'), drop=document.getElementById('dropzone'), promptEl=document.getElementById('englishPrompt'), feedback=document.getElementById('feedback');
+function classify(w){if(['は','を','に','へ','で','か','が','と','も','の','から','まで','より'].includes(w))return 'particle'; if(['飲みます','行きます','勉強します','食べません','書いて','ください','撮って','います','読みます','降る','思います','なりました','あります','好き','あったら','行った','読める'].includes(w))return 'verb'; if(['おもしろい','寒い','楽しい','いい'].includes(w))return 'adjective'; if(['明日','今日','昨日','今'].includes(w))return 'time'; if(['学校','ここ','家','机の上','日本'].includes(w))return 'place'; if(['水','日本語','本','写真','肉','漢字'].includes(w))return 'object'; if(['前に','こと','ように'].includes(w))return 'grammar'; return 'noun'}
+function makeToken(w){const el=document.createElement('div');el.className='token '+classify(w);el.textContent=w;el.draggable=true;el.addEventListener('dragstart',()=>el.classList.add('dragging'));el.addEventListener('dragend',()=>el.classList.remove('dragging'));el.addEventListener('click',()=>{ if(el.parentElement===bank) drop.appendChild(el); else bank.appendChild(el);});return el}
+[bank,drop].forEach(zone=>{zone.addEventListener('dragover',e=>e.preventDefault());zone.addEventListener('drop',e=>{e.preventDefault();const drag=document.querySelector('.dragging'); if(drag) zone.appendChild(drag);});});
+function setLevel(l){level=l;document.getElementById('levelTag').textContent='Level: '+l;newChallenge()}
+function renderChallenge(){promptEl.textContent=current.en; bank.innerHTML=''; drop.innerHTML=''; feedback.innerHTML=''; bankWords=[...current.ans,...current.extra].sort(()=>Math.random()-.5); bankWords.forEach(w=>bank.appendChild(makeToken(w)))}
+function newChallenge(){let pool=challenges.filter(c=>level==='hard'?true:(level==='normal'?c.lvl!=='hard':c.lvl==='easy')); current=pool[Math.floor(Math.random()*pool.length)]; renderChallenge()} function resetChallenge(){renderChallenge()}
+function checkAnswer(){const user=[...drop.children].map(x=>x.textContent); const correct=current.ans; const exact=JSON.stringify(user)===JSON.stringify(correct); if(exact){feedback.innerHTML='<div class="feedback ok">Correct! Great structure.</div>';return} const missing=correct.filter((w,i)=>!user.includes(w)); const extras=user.filter(w=>!correct.includes(w)); let msg='Not quite yet. '; if(user.length===0) msg='Drag the sentence pieces into the answer box first.'; else msg+=`Expected: ${correct.join(' ')}。`; if(missing.length) msg+=` Missing: ${missing.join(', ')}.`; if(extras.length) msg+=` Extra/wrong: ${extras.join(', ')}.`; feedback.innerHTML=`<div class="feedback bad">${msg}</div>`}
+function revealAnswer(){drop.innerHTML=''; current.ans.forEach(w=>drop.appendChild(makeToken(w))); feedback.innerHTML='<div class="feedback warn">Answer revealed. Read it out loud, then try a new sentence.</div>'}
+newChallenge();
+</script>
+</body>
+</html>
