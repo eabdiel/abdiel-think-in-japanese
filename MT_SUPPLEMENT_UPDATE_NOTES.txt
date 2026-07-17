@@ -1,0 +1,7 @@
+Michel Thomas Japanese Supplement update
+
+- Added detailed collapsible reference for all 87 Foundation tracks and 47 Advanced tracks found in the supplied course booklets.
+- Added nested Course > CD > Track navigation.
+- Added track search, Expand All, and Collapse All controls.
+- Converted the main supplement sections into collapsible panels.
+- Retained existing progress tracking, calendar, practice, writing, flashcards, themes, and localStorage behavior.

@@ -1,0 +1,8 @@
+Think in Japanese v18.5 banner update
+
+The supplied three-panel artwork was split into these standalone website assets:
+- assets/banner_pixel_pastel.png
+- assets/banner_garden_cream.png
+- assets/banner_tokyo_night.png
+
+pixel-theme-v2.css now assigns these images to the Pixel Pastel, Garden Cream, and Tokyo Night themes respectively. The existing centered title/theme badge overlay remains enabled.

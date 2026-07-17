@@ -1,0 +1,8 @@
+Think in Japanese v18.6 – Responsive Banner Update
+
+- Updated all pages using the shared three-theme hero.
+- Pixel Pastel, Garden Cream, and Tokyo Night banners now remain full-bleed on smaller browser windows.
+- Removed the narrow contained-image behavior that left patterned empty space above and below the artwork.
+- Added tablet and phone-specific hero heights.
+- Reduced title badge, title, subtitle, and theme-button sizing on phones.
+- Michel Thomas supplement page receives the same responsive behavior.

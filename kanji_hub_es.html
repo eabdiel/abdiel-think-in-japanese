@@ -141,6 +141,267 @@ body.theme-pixel .kanji-card .source-core{
 }
 
 </style>
+
+<style id="hero-badge-overlay-fix">
+/* Place the title/theme badge inside the illustrated hero for all three themes. */
+.pixel-site-header {
+  min-height: clamp(210px, 27vw, 360px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.pixel-site-header .pixel-hero-inner {
+  position: relative !important;
+  z-index: 3 !important;
+  width: min(1180px, 94vw) !important;
+  margin: 0 auto !important;
+  padding: 24px 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.pixel-site-header .pixel-brand {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: min(690px, 88vw) !important;
+  max-width: 690px !important;
+  margin: 0 auto !important;
+  padding: 16px 24px 18px !important;
+  text-align: center !important;
+  border: 3px solid rgba(171, 142, 226, 0.85) !important;
+  border-radius: 22px !important;
+  background: rgba(255, 250, 255, 0.90) !important;
+  box-shadow: 0 8px 0 rgba(101, 83, 168, 0.16), 0 20px 45px rgba(35, 28, 90, 0.22) !important;
+  backdrop-filter: blur(6px) !important;
+}
+.pixel-site-header .pixel-brand h1 {
+  margin: 5px 0 8px !important;
+}
+.pixel-site-header .pixel-brand p {
+  margin: 0 !important;
+}
+.pixel-site-header .pixel-teacher,
+.moved-hero-title {
+  display: none !important;
+}
+body.theme-garden .pixel-site-header .pixel-brand {
+  background: rgba(255, 250, 240, 0.91) !important;
+  border-color: rgba(158, 145, 91, 0.82) !important;
+}
+body.theme-night .pixel-site-header .pixel-brand {
+  background: rgba(9, 14, 42, 0.91) !important;
+  border-color: rgba(113, 89, 191, 0.88) !important;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.28), 0 20px 48px rgba(0, 0, 0, 0.40), 0 0 24px rgba(103, 85, 210, 0.20) !important;
+}
+@media (max-width: 700px) {
+  .pixel-site-header {
+    min-height: 190px !important;
+    background-size: cover !important;
+  }
+  .pixel-site-header .pixel-hero-inner {
+    width: 94vw !important;
+    padding: 16px 0 !important;
+  }
+  .pixel-site-header .pixel-brand {
+    width: min(620px, 92vw) !important;
+    padding: 13px 14px 15px !important;
+    border-radius: 17px !important;
+  }
+  .pixel-site-header .pixel-brand h1 {
+    font-size: clamp(1.8rem, 9vw, 2.6rem) !important;
+  }
+  .pixel-site-header .pixel-brand p {
+    font-size: .88rem !important;
+  }
+}
+</style>
+
+
+<style id="responsive-theme-banner-fill-v18-6">
+/* Keep all three illustrated theme banners full-bleed at narrow browser widths. */
+.pixel-site-header,
+body.theme-garden .pixel-site-header,
+body.theme-night .pixel-site-header {
+  width: 100% !important;
+  height: clamp(220px, 24vw, 390px) !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: hidden !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+}
+@media (max-width: 900px) {
+  .pixel-site-header,
+  body.theme-garden .pixel-site-header,
+  body.theme-night .pixel-site-header {
+    height: clamp(190px, 38vw, 280px) !important;
+    min-height: 190px !important;
+    max-height: 280px !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  .pixel-site-header .pixel-hero-inner {
+    width: min(94vw, 720px) !important;
+    padding: 14px 0 !important;
+  }
+  .pixel-site-header .pixel-brand {
+    width: min(88vw, 650px) !important;
+    padding: 12px 16px 14px !important;
+  }
+}
+@media (max-width: 520px) {
+  .pixel-site-header,
+  body.theme-garden .pixel-site-header,
+  body.theme-night .pixel-site-header {
+    height: clamp(180px, 52vw, 230px) !important;
+    min-height: 180px !important;
+    max-height: 230px !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+  .pixel-site-header .pixel-hero-inner {
+    width: 96vw !important;
+    padding: 10px 0 !important;
+  }
+  .pixel-site-header .pixel-brand {
+    width: 92vw !important;
+    padding: 10px 11px 12px !important;
+    border-width: 2px !important;
+    border-radius: 15px !important;
+  }
+  .pixel-site-header .pixel-brand h1 {
+    margin: 3px 0 6px !important;
+    font-size: clamp(1.55rem, 8vw, 2.15rem) !important;
+    line-height: 1.05 !important;
+  }
+  .pixel-site-header .pixel-brand p {
+    font-size: clamp(.72rem, 3.3vw, .86rem) !important;
+    line-height: 1.25 !important;
+  }
+  .pixel-site-header .title-theme-switcher,
+  .pixel-site-header .theme-switcher {
+    gap: 4px !important;
+  }
+  .pixel-site-header .theme-btn {
+    padding: 5px 7px !important;
+    font-size: .68rem !important;
+  }
+}
+</style>
+
+<style id="think-in-japanese-v2-header-polish">
+/* Think in Japanese v2.0 — unified, gap-free responsive hero/header */
+html, body { margin-top: 0 !important; }
+
+.pixel-site-header,
+body.theme-garden .pixel-site-header,
+body.theme-night .pixel-site-header {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  height: clamp(205px, 21vw, 340px) !important;
+  min-height: 205px !important;
+  max-height: 340px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-bottom: 0 !important;
+  border-radius: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  line-height: normal !important;
+}
+
+.pixel-site-header::before,
+.pixel-site-header::after {
+  bottom: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+}
+
+.pixel-site-header .pixel-hero-inner {
+  box-sizing: border-box !important;
+  width: min(1180px, 94vw) !important;
+  height: 100% !important;
+  margin: 0 auto !important;
+  padding: clamp(12px, 1.7vw, 22px) 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.pixel-site-header .pixel-brand {
+  transform: none !important;
+  margin: 0 auto !important;
+}
+
+.pixel-nav {
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-top: 0 !important;
+  top: 0 !important;
+}
+
+.pixel-site-header + .pixel-nav {
+  margin-top: 0 !important;
+}
+
+.pixel-nav-inner {
+  margin-top: 0 !important;
+}
+
+@media (max-width: 1100px) {
+  .pixel-site-header,
+  body.theme-garden .pixel-site-header,
+  body.theme-night .pixel-site-header {
+    height: clamp(200px, 27vw, 285px) !important;
+    min-height: 200px !important;
+    max-height: 285px !important;
+  }
+}
+
+@media (max-width: 760px) {
+  .pixel-site-header,
+  body.theme-garden .pixel-site-header,
+  body.theme-night .pixel-site-header {
+    height: clamp(185px, 42vw, 245px) !important;
+    min-height: 185px !important;
+    max-height: 245px !important;
+    background-position: center center !important;
+  }
+
+  .pixel-site-header .pixel-hero-inner {
+    width: 96vw !important;
+    padding: 10px 0 !important;
+  }
+
+  .pixel-site-header .pixel-brand {
+    width: min(90vw, 620px) !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .pixel-site-header,
+  body.theme-garden .pixel-site-header,
+  body.theme-night .pixel-site-header {
+    height: clamp(178px, 54vw, 225px) !important;
+    min-height: 178px !important;
+    max-height: 225px !important;
+  }
+
+  .pixel-site-header .pixel-brand {
+    width: 92vw !important;
+    padding: 9px 10px 11px !important;
+  }
+}
+</style>
+
 </head><body class="theme-garden">
 <header class="pixel-site-header"><div class="pixel-hero-inner"><div class="pixel-brand"><div class="theme-switcher title-theme-switcher" aria-label="Selector de tema"><button class="theme-btn" type="button" data-theme="pixel">Pixel Pastel v2</button><button class="theme-btn active" type="button" data-theme="garden">Jardín Crema</button><button class="theme-btn" type="button" data-theme="night">Tokio Noche</button></div><h1>Piensa en Japonés</h1><p>Aprende de forma natural. Habla con confianza. 一緒に日本語を学ぼう!</p></div></div></header>
 <nav class="pixel-nav"><div class="pixel-nav-inner grouped-nav">

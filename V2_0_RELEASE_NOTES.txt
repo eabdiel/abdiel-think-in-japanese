@@ -1,0 +1,8 @@
+Think in Japanese v2.0
+
+Header and banner refinements:
+- Removed the visible gap between the illustrated hero banner and top navigation.
+- Shortened the desktop hero area to show more page content above the fold.
+- Kept the title/theme badge vertically and horizontally centered.
+- Smoothed responsive hero sizing across desktop, tablet, narrow browser windows, and phones.
+- Applied the same rules to all three themes and the Michel Thomas supplement page.

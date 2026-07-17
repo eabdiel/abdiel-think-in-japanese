@@ -36,12 +36,39 @@ h2{margin-top:0;font-size:1.45rem} h3{margin-bottom:8px}.muted,.note{color:var(-
 .example{font-size:1.12rem;background:#fffaf4;border-left:6px solid #ffd43b;padding:12px;border-radius:12px;margin:10px 0}.lesson{border-left:5px solid var(--accent);padding-left:12px;margin:14px 0}.btn{border:0;background:#2d2a26;color:white;border-radius:12px;padding:10px 14px;font-weight:900;cursor:pointer}.btn.secondary{background:#7c5cff}.btn.ghost{background:#fff;color:#2d2a26;border:1px solid var(--line)}.btn:active{transform:translateY(1px)}
 .flashcard{min-height:190px;display:flex;align-items:center;justify-content:center;text-align:center;border:2px dashed var(--line);border-radius:20px;background:#fffdf8;font-size:1.25rem;font-weight:900;padding:20px;cursor:pointer;user-select:none;white-space:pre-line}.controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.bank,.dropzone{display:flex;flex-wrap:wrap;gap:8px;min-height:76px;padding:12px;border-radius:16px;border:2px dashed var(--line);background:#fffdf8}.token{padding:10px 12px;border-radius:12px;background:#f1f3f5;border:1px solid #d0d7de;cursor:grab;font-weight:900;user-select:none}.token.dragging{opacity:.45}.dropzone{background:#f8f9ff}.feedback{padding:12px;border-radius:14px;margin-top:12px;font-weight:850}.ok{background:#d3f9d8;color:#1b5e20}.bad{background:#ffe3e3;color:#8a1c1c}.warn{background:#fff3bf;color:#6b4f00}.legend{display:flex;flex-wrap:wrap;gap:6px}.footer{text-align:center;color:#6d6258;padding:30px}.structure{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f6f1ff;border-radius:12px;padding:10px;overflow:auto;font-weight:800}.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}.select{padding:10px;border-radius:12px;border:1px solid var(--line);font-weight:800;background:white}.pattern-card{display:flex;flex-direction:column}.pattern-card .example{margin-top:auto}.tag{display:inline-block;font-size:.76rem;border:1px solid var(--line);border-radius:999px;padding:2px 7px;background:#fff;margin:2px;font-weight:800}
 @media(max-width:640px){main{padding:12px}.card{padding:14px}.token{padding:9px}.example{font-size:1.03rem}.tool-nav{position:static}}
+
+/* Site theme support for this standalone trainer page */
+body.theme-pixel{background:linear-gradient(135deg,#fff8ff,#edf4ff)!important;color:#27305a!important;}
+body.theme-pixel > header{background:linear-gradient(135deg,#6f6ee8,#ff8dcc)!important;color:#fff!important;border-bottom-color:#ffd166!important;}
+body.theme-pixel .card, body.theme-pixel .flashcard, body.theme-pixel .bank, body.theme-pixel .dropzone, body.theme-pixel .tool-nav a, body.theme-pixel .structure{background:rgba(255,250,255,.96)!important;color:#27305a!important;border-color:rgba(113,103,224,.45)!important;}
+body.theme-pixel .tool-nav{background:rgba(255,250,255,.94)!important;border-bottom-color:rgba(113,103,224,.35)!important;}
+body.theme-garden{background:linear-gradient(135deg,#fffaf0,#edf4df)!important;color:#284431!important;}
+body.theme-garden > header{background:linear-gradient(135deg,#315c39,#9fbe82)!important;color:#fffdf4!important;border-bottom-color:#d8f0c5!important;}
+body.theme-garden .card, body.theme-garden .flashcard, body.theme-garden .bank, body.theme-garden .dropzone, body.theme-garden .tool-nav a, body.theme-garden .structure{background:#fffaf0!important;color:#284431!important;border-color:#c7b98e!important;}
+body.theme-garden .tool-nav{background:rgba(250,246,235,.95)!important;border-bottom-color:#c2b58f!important;}
+body.theme-garden .note, body.theme-garden .muted, body.theme-garden .footer{color:#41573f!important;}
+body.theme-night{background:linear-gradient(135deg,#060817,#151a3a)!important;color:#eef3ff!important;}
+body.theme-night > header{background:linear-gradient(135deg,#070b1f,#261433 55%,#111831)!important;color:#fff!important;border-bottom-color:#ff70b7!important;}
+body.theme-night .card, body.theme-night .flashcard, body.theme-night .bank, body.theme-night .dropzone, body.theme-night .tool-nav a, body.theme-night .structure{background:#0b1024!important;color:#eef3ff!important;border-color:#465579!important;}
+body.theme-night .tool-nav{background:rgba(8,12,28,.94)!important;border-bottom-color:#394467!important;}
+body.theme-night .tool-nav a:hover, body.theme-night .pixel-nav a.active{background:linear-gradient(180deg,#271833,#171329)!important;color:#ff8dca!important;border-color:#ff70b7!important;}
+body.theme-night .note, body.theme-night .muted, body.theme-night .footer, body.theme-night label{color:#dbe5ff!important;}
+body.theme-night .tag, body.theme-night .token{background:#11182f!important;color:#eef3ff!important;border-color:#56658a!important;}
+body.theme-night .select{background:#0b1024!important;color:#eef3ff!important;border-color:#465579!important;}
+body.theme-night .example{background:#11182f!important;color:#eef3ff!important;border-left-color:#ff70b7!important;}
+.theme-switcher.sentence-theme-switcher{margin:12px auto 0;}
+
 </style>
 </head>
 <body class="theme-garden">
 <header>
   <h1>Japanese Sentence Structure Trainer</h1>
   <p>Expanded core-pattern edition: color-coded grammar, a structured syllabus, flashcards, and drag-and-drop sentence building.</p>
+  <div class="theme-switcher sentence-theme-switcher" aria-label="Theme selector">
+    <button class="theme-btn" type="button" data-theme="pixel">Pixel Pastel v2</button>
+    <button class="theme-btn active" type="button" data-theme="garden">Garden Cream</button>
+    <button class="theme-btn" type="button" data-theme="night">Tokyo Night</button>
+  </div>
 </header>
 <nav class="pixel-nav"><div class="pixel-nav-inner grouped-nav">
 <a href="index.html">Home</a>
@@ -111,6 +138,31 @@ h2{margin-top:0;font-size:1.45rem} h3{margin-bottom:8px}.muted,.note{color:var(-
 </section>
 </main>
 <div class="footer">Built as a single-file offline Japanese learning aid. Save this HTML anywhere and open it in a browser.</div>
+
+<script>
+(function(){
+  function applyTheme(theme){
+    theme = (theme === 'garden' || theme === 'night') ? theme : 'pixel';
+    document.body.classList.remove('theme-pixel','theme-garden','theme-night');
+    document.body.classList.add('theme-' + theme);
+    try{ localStorage.setItem('tij-theme', theme); }catch(e){}
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      var on = btn.getAttribute('data-theme') === theme;
+      btn.classList.toggle('active', on);
+      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function initTheme(){
+    var saved = 'garden';
+    try{ saved = localStorage.getItem('tij-theme') || 'garden'; }catch(e){}
+    applyTheme(saved);
+    document.querySelectorAll('.theme-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){ applyTheme(btn.getAttribute('data-theme')); });
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initTheme); else initTheme();
+})();
+</script>
 <script>
 const lessons=[
  {t:'1. Word Order Foundation',d:'Context first, main verb or ending last. Practice Topic → Details → Ending.'},
