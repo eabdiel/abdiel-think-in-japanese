@@ -1,5 +1,13 @@
 # Think in Japanese Portal
 
+Offline Japanese learning portal with kana practice, kanji study, English/Spanish lessons, and a 90-day study tracker.
+
+A project of **[ProgreTech LLC](https://progretech.com)**, owned and maintained by **Ed Rodriguez**. Third-party components and contributions retain their respective ownership and notices.
+
+[Project website](https://thinkinjapanese.com) · [Report an issue](https://github.com/eabdiel/abdiel-think-in-japanese/issues) · [Contribute](CONTRIBUTING.md)
+
+> Licensing needs clarification. See [License and reuse](#license-and-reuse) before redistribution.
+
 A fully offline-capable Japanese learning portal built as a static HTML/CSS/JavaScript website.
 
 The portal combines kana practice, kanji study, phrase-based thinking practice, reading aids, frequency-based character review, and a structured 90-day study path. It is designed for learners who want to start thinking in Japanese through short, practical phrases instead of only studying grammar rules in isolation.
@@ -69,7 +77,7 @@ The online version is the same style of static site, but hosted for easier acces
 Download or clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/think-in-japanese-portal.git
+git clone https://github.com/eabdiel/abdiel-think-in-japanese.git
 ```
 
 Then open:
@@ -563,3 +571,17 @@ Inspired by:
 - Spanish-to-Japanese learning bridges
 - Phrase-first language learning
 - Practical internal-monologue practice
+
+## Collaboration
+
+Japanese-language accuracy, spanish localization, keyboard accessibility, and offline study workflows are useful ways to help. Read [CONTRIBUTING.md](CONTRIBUTING.md) for issue reports, proposed changes, and attribution requirements.
+
+## License and reuse
+
+**License clarification needed:** the original README identifies code as MIT and learning content as CC BY-NC 4.0, while [license.md](license.md) contains custom ProgreTech terms. The scope of those grants needs clarification; this documentation update does not revoke previously granted rights. Preserve credits and obtain permission for any third-party lesson, illustration, or textbook material.
+
+## More from ProgreTech
+
+For more Japanese study tools, visit [Manabi Kōbō](https://manabikobo.com).
+
+Discover the wider portfolio at [progretech.com](https://progretech.com). These links identify related products; they do not imply a bundled integration or shared license.
